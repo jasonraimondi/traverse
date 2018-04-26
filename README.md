@@ -6,4 +6,6 @@ Typescript,
 Webpack,
 Sass,
 Extract CSS,
-Dev/Prod build
+Dev/Prod build,
+Tailwind,
+Prettier
