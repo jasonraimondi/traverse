@@ -64,7 +64,6 @@ module.exports = {
     devtool: devMode ? 'eval-cheap-module-source-map' : false,
     context: projectRoot,
     entry: {
-        'vendor': './src/vendor.ts',
         'main': './src/main.ts',
         'style': './src/scss/style.scss',
     },
