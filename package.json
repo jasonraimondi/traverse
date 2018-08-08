@@ -12,8 +12,10 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist/*",
-    "build:dev": "npm run clean && webpack --config build/webpack.conf.js",
-    "build": "npm run clean && cross-env NODE_ENV=production webpack --config build/webpack.conf.js",
+    "dev": "run-s clean build:dev",
+    "prod": "run-s clean build:prod",
+    "build:dev": "webpack --config build/webpack.conf.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config build/webpack.conf.js",
     "pretty": "prettier --write src/**/*.ts src/**/*.scss"
   },
   "engines": {
