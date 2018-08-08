@@ -8,17 +8,6 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 const projectRoot = path.resolve(__dirname, '../');
 
-const babelLoader = {
-  loader: 'babel-loader',
-  options: {
-    cacheDirectory: true,
-    presets: [
-      ['@babel/preset-env']
-    ],
-    compact: false
-  }
-};
-
 const postCssLoader = {
   loader: 'postcss-loader',
   options: {
@@ -58,17 +47,14 @@ module.exports = {
     filename: devMode ? '[name].package.js' : '[name].[hash].package.js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.scss'],
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          babelLoader,
-          {loader: 'ts-loader'}
-        ]
+        use: ['ts-loader']
       },
       {
         test: /\.scss$/,
