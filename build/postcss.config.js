@@ -5,4 +5,4 @@ module.exports = {
         tailwindcss('./build/tailwindcss.config.js'),
         require('autoprefixer')
     ]
-}
+};
