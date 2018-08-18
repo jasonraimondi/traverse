@@ -1,11 +1,6 @@
-### Fairly Simple Webpack Starter
+### Typescript Webpack 4 Starter
 
 Includes:
-Babel,
-Typescript,
-Webpack,
-Sass,
-Extract CSS,
-Dev/Prod build,
-Tailwind,
-Prettier
+Typescript
+PostCSS
+Webpack
