@@ -3,4 +3,5 @@ pipeline:
     image: node:alpine
     commands:
       - npm install -q --no-color --no-progress
-      - npm run build
+      - npm run dev
+      - npm run prod

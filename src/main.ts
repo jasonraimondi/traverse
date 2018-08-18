@@ -1,1 +1,1 @@
-console.log('success');
+import './css/style.pcss'

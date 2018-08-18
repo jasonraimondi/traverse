@@ -1,30 +1,21 @@
-'use strict';
+import { resolve } from 'path';
+import * as webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import postCssConfig from './postcss.config';
 
 const devMode = process.env.NODE_ENV !== 'production';
-
-const projectRoot = path.resolve(__dirname, '../');
+const projectRoot = resolve(__dirname, '../');
 
 const postCssLoader = {
   loader: 'postcss-loader',
   options: {
-    config: {
-      path: projectRoot + '/build/postcss.config.js'
-    }
+    plugins: postCssConfig
   }
 };
 
-const scssLoader = {
-  loader: 'sass-loader',
-  options: {
-    implementation: require("dart-sass")
-  }
-};
-
-const plugins = [
+const plugins: webpack.Plugin[] = [
   new HtmlWebpackPlugin({
     template: projectRoot + '/src/index.html'
   }),
@@ -34,13 +25,12 @@ const plugins = [
   }),
 ];
 
-module.exports = {
+const config: webpack.Configuration = {
   mode: devMode ? 'development' : 'production',
-  devtool: devMode ? 'eval-cheap-module-source-map' : false,
+  devtool: devMode ? 'cheap-module-eval-source-map' : false,
   context: projectRoot,
   entry: {
     'main': './src/main.ts',
-    'style': './src/scss/style.scss',
   },
   output: {
     path: projectRoot + '/dist',
@@ -57,15 +47,16 @@ module.exports = {
         use: ['ts-loader']
       },
       {
-        test: /\.scss$/,
+        test: /\.p?css$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           postCssLoader,
-          scssLoader,
         ],
       }
     ]
   },
   plugins
 };
+
+export default config;
