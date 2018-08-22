@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "jsx": "react",
     "baseUrl": "src",
     "declaration": false,
     "emitDecoratorMetadata": true,

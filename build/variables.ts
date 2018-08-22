@@ -77,11 +77,3 @@ export const properties = {
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
 };
-
-export const mediaQueries = {
-  smallOnly: 'screen and (max-width: 39.9375em)',
-  medium: 'screen and (min-width: 40em)',
-  mediumOnly: 'screen and (min-width: 40em) and (max-width: 63.9375em)',
-  large: 'screen and (min-width: 64em)',
-  largeOnly: 'screen and (min-width: 64em) and (max-width: 74.9375em)',
-};

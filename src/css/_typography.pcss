@@ -1,0 +1,87 @@
+html {
+  font-size: var(--base-rem);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  &:hover {
+    color: var(--green-dark)
+  }
+}
+
+pre {
+  color: var(--grey-lighter);
+  border-radius: 0.35rem;
+  padding: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+code {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 2px;
+  border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.888rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1.063rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+@media (--large) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.563rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+}
