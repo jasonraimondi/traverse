@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './App.pcss';
+// import './App.pcss';
 
 interface IProps {
   version: number;
@@ -34,7 +34,7 @@ export class App extends React.Component<IProps, IState> {
           />
         </label>
         <p>
-          <small>Version: {this.props.version}</small>
+          <small className='version'>Version: {this.props.version}</small>
         </p>
       </div>
     );
