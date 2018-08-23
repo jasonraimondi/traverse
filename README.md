@@ -1,7 +1,6 @@
-### Typescript Webpack 4 Starter
+React, Typescript, Jest
 
-![https://ci.jasonraimondi.com/api/badges/jason/react-typescript/status.svg](Build Status)
-
+[![Test Coverage](https://ci.jasonraimondi.com/api/badges/jason/react-typescript/status.svg)](https://ci.jasonraimondi.com/api/badges/jason/react-typescript)
 
 Includes:
 Typescript
