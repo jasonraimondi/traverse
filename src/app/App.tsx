@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-// import './App.pcss';
+import './App.pcss';
 
 interface IProps {
   version: number;
