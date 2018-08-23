@@ -1,5 +1,5 @@
 {
-  "name": "@jmondi/webpack-starter",
+  "name": "@jmondi/typescript-react-starter",
   "description": "Typescript Webpack Starter Pack",
   "scripts": {
     "test": "jest",
@@ -43,27 +43,5 @@
     "typescript": "^3.0.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "parser": "typescript"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "setupFiles": [
-      "<rootDir>/build/tests/setupTests.ts"
-    ]
   }
 }
