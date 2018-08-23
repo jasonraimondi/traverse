@@ -10,4 +10,5 @@
       <PhpCSConfiguration standards="MySource;PEAR;PHPCS;PSR1;PSR2;Squiz;Zend" tool_path="$PROJECT_DIR$/../eventfarm/ef-apps/Domain/vendor/squizlabs/php_codesniffer/scripts/phpcs" />
     </phpcs_settings>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
 </project>

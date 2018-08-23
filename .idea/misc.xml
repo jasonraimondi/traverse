@@ -62,13 +62,9 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="JSX" />
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings load_method="CUSTOM_LOADER" />
     </phpunit_settings>
-  </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="jraimondi" />
   </component>
 </project>
