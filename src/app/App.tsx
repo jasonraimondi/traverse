@@ -25,7 +25,7 @@ export class App extends React.Component<IProps, IState> {
   public render() {
     return (
       <div className='app'>
-        <p className='your-name'>{this.yourName}</p>
+        <p className='your-name'>Your Name: {this.yourName}</p>
         <label>
           Enter Your Name:
           <input type='text'
