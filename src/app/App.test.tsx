@@ -12,7 +12,7 @@ it('renders correct version', () => {
   expect(app.find('.version').text()).toEqual('Version: 1.1');
 });
 
-it('renders correct version', () => {
+it('renders the correct name after updating the input value', () => {
   const app = enzyme.shallow(<App version={1.1}/>);
   app.find('input').simulate('change', { target: { value: 'Jason Raimondi' } });
   expect(app.find('.your-name').text()).toEqual('Your Name: Jason Raimondi');
