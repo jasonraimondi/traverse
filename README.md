@@ -4,3 +4,5 @@ Includes:
 Typescript
 PostCSS
 Webpack
+React
+Jest
