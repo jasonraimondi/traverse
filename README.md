@@ -1,4 +1,4 @@
-# React Typescript
+# Test React - In Typescript
 
 [![Test Coverage](https://travis-ci.org/jasonraimondi/react-typescript.svg)](https://travis-ci.org/jasonraimondi/react-typescript#)
 
