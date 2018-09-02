@@ -1,34 +1,18 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { resolve } from 'path';
-import * as webpack from 'webpack';
+import { Configuration } from 'webpack';
+import { smart } from 'webpack-merge';
+import postCssConfig from '../build/postcss.config';
 
-import postCssConfig from './postcss.config';
+import { baseConfig, devMode, projectRoot } from './webpack.base';
 
-const devMode = process.env.NODE_ENV !== 'production';
-const projectRoot = resolve(__dirname, '../');
-
-const config: webpack.Configuration = {
-  mode: devMode ? 'development' : 'production',
-  devtool: devMode ? 'cheap-module-eval-source-map' : false,
-  context: projectRoot,
+export default smart(baseConfig, {
+  target: 'electron-renderer',
   entry: {
-    main: './src/main.tsx',
-  },
-  output: {
-    path: projectRoot + '/dist',
-    filename: devMode ? '[name].package.js' : '[name].[hash].package.js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.scss'],
+    renderer: './src/renderer.tsx',
   },
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
-      },
       {
         test: /\.p?css$/,
         use: [
@@ -64,6 +48,4 @@ const config: webpack.Configuration = {
       chunkFilename: '[id].[hash].css',
     }),
   ],
-};
-
-export default config;
+} as Configuration);
