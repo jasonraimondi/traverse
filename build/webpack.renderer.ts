@@ -41,11 +41,11 @@ export default smart(baseConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: projectRoot + '/src/index.html',
+      template: projectRoot + '/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 } as Configuration);

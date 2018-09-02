@@ -3,7 +3,7 @@ import * as React from 'react';
 import './App.pcss';
 
 interface IProps {
-  version: number;
+  version: string;
 }
 
 interface IState {

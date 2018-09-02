@@ -1,5 +1,4 @@
-import { mediaQueries } from '../settings/variables';
-import { properties } from './variables';
+import { mediaQueries, properties } from '../src/app/styles/variables';
 
 export default (loader) => [
   require('postcss-easy-import'),
