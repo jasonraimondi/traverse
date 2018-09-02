@@ -1,6 +1,6 @@
 # Test React - In Typescript
 
-[![Test Coverage](https://travis-ci.org/jasonraimondi/react-typescript.svg)](https://travis-ci.org/jasonraimondi/react-typescript#)
+[![Test Coverage](https://travis-ci.org/jasonraimondi/typescript-react-starter.svg)](https://travis-ci.org/jasonraimondi/typescript-react-starter#)
 
 [Blog Post](https://jasonraimondi.com/posts/testing-a-typescript-react-app-using-ts-jest-not-create-react-app)
 
