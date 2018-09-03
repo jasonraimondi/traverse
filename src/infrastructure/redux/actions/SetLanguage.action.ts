@@ -2,9 +2,9 @@ import { IActionResponse } from '../action-response';
 
 export const SET_LANGUAGE = '[LANGUAGE] Set';
 
-export type SetLanguageType = (language: string) => IActionResponse<string>;
+export type SetLanguageActionType = (language: string) => IActionResponse<string>;
 
-export const setLanguageAction: SetLanguageType = (language: string) => {
+export const SetLanguageAction: SetLanguageActionType = (language: string) => {
   return {
     type: SET_LANGUAGE,
     payload: language,

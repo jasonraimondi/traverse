@@ -1,24 +1,24 @@
 import configureStore from 'redux-mock-store';
 
-import { SET_FREQUENCY, setFrequencyAction } from './setFrequency.action';
+import { SET_LANGUAGE, SetLanguageAction } from './SetLanguage.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
-  frequency: 'weekly',
+  language: 'all',
 };
 const store = mockStore(INITIAL_STATE);
 
-describe('setFrequencyAction', () => {
+describe('SetLanguageAction', () => {
   beforeEach(() => {
     store.clearActions();
   });
 
-  test('set frequency is dispatched correctly', () => {
+  test('set language is dispatched correctly', () => {
     const expectedActions = [{
-      type: SET_FREQUENCY,
-      payload: 'monthly',
+      type: SET_LANGUAGE,
+      payload: 'typescript',
     }];
-    store.dispatch(setFrequencyAction('monthly'));
+    store.dispatch(SetLanguageAction('typescript'));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

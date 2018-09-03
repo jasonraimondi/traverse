@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store'; // Smart components
 
 import * as React from 'react';
-import { SET_FREQUENCY } from '../infrastructure/redux/actions/setFrequency.action';
+import { SET_FREQUENCY } from '../infrastructure/redux/actions/SetFrequency.action';
 
 import App from './App';
 

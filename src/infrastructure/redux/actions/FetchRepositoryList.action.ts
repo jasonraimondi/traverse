@@ -10,8 +10,8 @@ export interface FetchRepositoryListActionFields {
   language: string;
 }
 
-export type FetchRepositoryListActionType = (fields: FetchRepositoryListActionFields)
-  => IActionResponse<FetchRepositoryListActionFields>;
+export type FetchRepositoryListActionType =
+  (fields: FetchRepositoryListActionFields) => IActionResponse<FetchRepositoryListActionFields>;
 
 export const FetchRepositoryListAction: FetchRepositoryListActionType = (fields) => {
   return {

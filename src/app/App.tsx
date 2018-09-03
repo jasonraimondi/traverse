@@ -2,14 +2,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { setFrequencyAction, SetFrequencyType } from '../infrastructure/redux/actions/setFrequency.action';
+import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/redux/actions/SetFrequency.action';
 import './App.pcss';
 import { FrequencyType } from '../models/Frequency.type';
 import { Frequency } from './components/Frequency';
 
 interface IProps {
   frequency: FrequencyType;
-  setFrequencyAction: SetFrequencyType;
+  setFrequencyAction: SetFrequencyActionType;
 }
 
 class App extends React.Component<IProps> {
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      setFrequencyAction,
+      setFrequencyAction: SetFrequencyAction,
     },
     dispatch,
   );

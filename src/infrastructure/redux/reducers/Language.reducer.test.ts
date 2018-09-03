@@ -1,4 +1,4 @@
-import { setLanguageAction } from '../actions/setLanguage.action';
+import { SetLanguageAction } from '../actions/SetLanguage.action';
 import { languageReducer } from './Language.reducer';
 
 describe('Language Reducer', () => {
@@ -11,7 +11,7 @@ describe('Language Reducer', () => {
   });
   describe('SET_LANGUAGE', () => {
     test('returns the correct state', () => {
-      const action = setLanguageAction('javascript');
+      const action = SetLanguageAction('javascript');
       const expectedState = 'javascript';
       expect(languageReducer(undefined, action)).toEqual(expectedState);
     });

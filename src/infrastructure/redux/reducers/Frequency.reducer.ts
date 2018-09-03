@@ -1,5 +1,5 @@
 import { FrequencyType } from '../../../models/Frequency.type';
-import { SET_FREQUENCY } from '../actions/setFrequency.action';
+import { SET_FREQUENCY } from '../actions/SetFrequency.action';
 
 const INITIAL_STATE: FrequencyType = 'weekly';
 

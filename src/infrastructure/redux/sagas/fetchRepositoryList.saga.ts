@@ -4,7 +4,7 @@ import {
   FetchRepositoryListActionFields,
   fetchRepositoryListFailureAction,
   fetchRepositoryListSuccessAction,
-} from '../actions/fetchRepositoryList.action';
+} from '../actions/FetchRepositoryList.action';
 
 export function* fetchRepositoryListSaga() {
   yield takeEvery(FETCH_REPOSITORY_LIST, fetchRepositoryList);

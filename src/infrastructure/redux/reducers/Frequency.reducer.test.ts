@@ -1,4 +1,4 @@
-import { SET_FREQUENCY, setFrequencyAction } from '../actions/setFrequency.action';
+import { SET_FREQUENCY, SetFrequencyAction } from '../actions/SetFrequency.action';
 import { frequencyReducer } from './Frequency.reducer';
 
 describe('Frequency Reducer', () => {
@@ -12,7 +12,7 @@ describe('Frequency Reducer', () => {
 
   describe('SET_FREQUENCY', () => {
     test('returns the correct state', () => {
-      const action = setFrequencyAction('monthly');
+      const action = SetFrequencyAction('monthly');
       const expectedState = 'monthly';
       expect(frequencyReducer(undefined, action)).toEqual(expectedState);
     });

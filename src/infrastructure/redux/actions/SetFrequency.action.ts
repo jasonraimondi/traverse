@@ -3,9 +3,9 @@ import { IActionResponse } from '../action-response';
 
 export const SET_FREQUENCY = '[FREQUENCY] Set';
 
-export type SetFrequencyType = (frequency: FrequencyType) => IActionResponse<string>;
+export type SetFrequencyActionType = (frequency: FrequencyType) => IActionResponse<string>;
 
-export const setFrequencyAction: SetFrequencyType = (frequency: FrequencyType) => {
+export const SetFrequencyAction: SetFrequencyActionType = (frequency: FrequencyType) => {
   return {
     type: SET_FREQUENCY,
     payload: frequency,

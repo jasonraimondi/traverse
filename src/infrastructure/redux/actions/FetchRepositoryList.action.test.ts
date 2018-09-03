@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import { FETCH_REPOSITORY_LIST, FetchRepositoryListAction } from './fetchRepositoryList.action';
+import { FETCH_REPOSITORY_LIST, FetchRepositoryListAction } from './FetchRepositoryList.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

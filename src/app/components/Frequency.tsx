@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { SetFrequencyType } from '../../infrastructure/redux/actions/setFrequency.action';
+import { SetFrequencyActionType } from '../../infrastructure/redux/actions/SetFrequency.action';
 import { FrequencyType } from '../../models/Frequency.type';
 
 interface IProps {
   frequency: FrequencyType;
-  handleSetFrequency: SetFrequencyType;
+  handleSetFrequency: SetFrequencyActionType;
 }
 
 interface IState {
