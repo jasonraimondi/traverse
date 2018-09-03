@@ -1,20 +1,29 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store'; // Smart components
 
 import * as React from 'react';
+import { SET_FREQUENCY } from '../infrastructure/redux/actions/setFrequencyAction';
 
 import App from './App';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
-  frequency: 'All',
+  frequency: 'weekly',
 };
 const store = mockStore(INITIAL_STATE);
 
 describe('<App />', () => {
   it('renders viewport content correctly', () => {
-    const wrapper = shallow(<App store={store}/>);
-    const component = wrapper.dive();
-    expect(component.find('#app-viewport').text()).toEqual('Repository List');
+    const app = mount(<App store={store}/>);
+    expect(app.find('#app-viewport').text()).toBe('Repository List');
+  });
+
+  it('updates the store when selecting a new frequency', () => {
+    const app = mount(<App store={store}/>);
+    app.find('#select-monthly').simulate('click');
+    expect(store.getActions()).toEqual([{
+      type: SET_FREQUENCY,
+      payload: 'monthly',
+    }]);
   });
 });

@@ -2,12 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { setFrequencyAction } from '../infrastructure/redux/actions/setFrequencyAction';
+import { setFrequencyAction, SetFrequencyType } from '../infrastructure/redux/actions/setFrequencyAction';
 import './App.pcss';
 import { Frequency } from './components/Frequency';
 
 interface IProps {
   frequency: string;
+  setFrequencyAction: SetFrequencyType;
 }
 
 class App extends React.Component<IProps> {
@@ -18,7 +19,7 @@ class App extends React.Component<IProps> {
           Repository List
         </div>
         <div id='app-bottombar'>
-          <Frequency selected={this.props.frequency}/>
+          <Frequency frequency={this.props.frequency} handleSetFrequency={this.props.setFrequencyAction}/>
         </div>
       </div>
     );
@@ -27,14 +28,14 @@ class App extends React.Component<IProps> {
 
 function mapStateToProps(state) {
   return {
-    frequency: state.selected,
+    frequency: state.frequency,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      setSelectedFrequency: setFrequencyAction,
+      setFrequencyAction,
     },
     dispatch,
   );
