@@ -1,9 +1,16 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { setFrequencyAction } from '../infrastructure/redux/actions/setFrequencyAction';
 import './App.pcss';
-import Frequency from './Frequency';
+import { Frequency } from './components/Frequency';
 
-export class App extends React.Component {
+interface IProps {
+  frequency: string;
+}
+
+class App extends React.Component<IProps> {
   public render() {
     return (
       <div id='app-container'>
@@ -11,9 +18,26 @@ export class App extends React.Component {
           Repository List
         </div>
         <div id='app-bottombar'>
-          <Frequency/>
+          <Frequency selected={this.props.frequency}/>
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    frequency: state.selected,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      setSelectedFrequency: setFrequencyAction,
+    },
+    dispatch,
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
