@@ -8,6 +8,6 @@ describe('<Frequency />', () => {
     const mockOnClick = jest.fn();
     const component = shallow(<Frequency frequency='weekly' handleSetFrequency={mockOnClick}/>);
     component.find('#select-monthly').simulate('click');
-    expect(component.find('#frequency').text()).toEqual('Frequency: monthly');
+    expect(component.find('#selected-frequency').text()).toEqual('Frequency: monthly');
   });
 });

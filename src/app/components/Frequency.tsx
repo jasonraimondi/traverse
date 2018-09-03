@@ -14,11 +14,7 @@ interface IState {
 export class Frequency extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
-
-    console.log(props);
-
     this.state = {
       frequency: props.frequency,
     };
@@ -31,7 +27,7 @@ export class Frequency extends React.Component<IProps, IState> {
   public render() {
     return (
       <ul id='frequency-list'>
-        <li><p id='selected'>Frequency: {this.state.frequency}</p></li>
+        <li><p id='selected-frequency'>Frequency: {this.state.frequency}</p></li>
         <li>
           <a id='select-daily' onClick={() => this.handleSetFrequency('daily')}>Daily</a>
         </li>
