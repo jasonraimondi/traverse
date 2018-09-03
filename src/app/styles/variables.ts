@@ -1,3 +1,9 @@
+export const screenSizes = {
+  small: 320,
+  medium: 414,
+  large: 768,
+};
+
 export const properties = {
   // base
   'base-rem': '16px',
@@ -76,24 +82,4 @@ export const properties = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
-};
-
-const screens = {
-  small: 320,
-  medium: 414,
-  large: 768,
-};
-
-export const mediaQueries = () => {
-  const mq = {};
-
-  for (const screen in screens) {
-    if (screens.hasOwnProperty(screen)) {
-      const pixelSize = screens[screen];
-      mq[screen] = `screen and (min-width: ${pixelSize + 1}px)`;
-      mq[screen + 'Only'] = `screen and (max-width: ${pixelSize}px)`;
-    }
-  }
-
-  return mq;
 };
