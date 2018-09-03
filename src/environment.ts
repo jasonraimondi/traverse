@@ -12,6 +12,7 @@ function fetchComposeEnhancers() {
   let compEnhancers = compose;
 
   if (IS_DEV_ENV) {
+    console.log('is dev');
     compEnhancers = (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
   }
 

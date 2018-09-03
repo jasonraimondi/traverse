@@ -21,6 +21,7 @@ export const FetchRepositoryListAction: FetchRepositoryListActionType = (fields)
 };
 
 export function fetchRepositoryListSuccessAction(data: any): IActionResponse<any> {
+  console.log('SUCCESS');
   return {
     type: FETCH_REPOSITORY_LIST_SUCCESS,
     payload: data,

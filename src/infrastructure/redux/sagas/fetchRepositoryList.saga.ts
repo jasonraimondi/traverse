@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { fetchRepositoryListFromGithub } from '../../github/fetchRepositoryListFromGithub';
 import {
   FETCH_REPOSITORY_LIST,
   FetchRepositoryListActionFields,
@@ -11,7 +12,7 @@ export function* fetchRepositoryListSaga() {
 }
 
 function fetchRepositoryListApiCall(fields: FetchRepositoryListActionFields) {
-  return fields;
+  return fetchRepositoryListFromGithub(fields.language, fields.frequency);
 }
 
 function* fetchRepositoryList(action) {
