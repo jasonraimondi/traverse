@@ -1,5 +1,5 @@
-import { setLanguageAction } from '../actions/setLanguageAction';
-import { languageReducer } from './LanguageReducer';
+import { setLanguageAction } from '../actions/setLanguage.action';
+import { languageReducer } from './Language.reducer';
 
 describe('Language Reducer', () => {
   describe('INITIAL_STATE', () => {

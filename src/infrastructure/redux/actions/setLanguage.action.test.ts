@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 
-import { SET_LANGUAGE, setLanguageAction } from './setLanguageAction';
+import { SET_LANGUAGE, setLanguageAction } from './setLanguage.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

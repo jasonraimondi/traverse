@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 
-import { SET_FREQUENCY, setFrequencyAction } from './setFrequencyAction';
+import { SET_FREQUENCY, setFrequencyAction } from './setFrequency.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

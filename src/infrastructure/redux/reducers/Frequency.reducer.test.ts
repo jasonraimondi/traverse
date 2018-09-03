@@ -1,5 +1,5 @@
-import { SET_FREQUENCY, setFrequencyAction } from '../actions/setFrequencyAction';
-import { frequencyReducer } from './FrequencyReducer';
+import { SET_FREQUENCY, setFrequencyAction } from '../actions/setFrequency.action';
+import { frequencyReducer } from './Frequency.reducer';
 
 describe('Frequency Reducer', () => {
   describe('INITIAL_STATE', () => {

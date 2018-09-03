@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { setFrequencyAction, SetFrequencyType } from '../infrastructure/redux/actions/setFrequencyAction';
+import { setFrequencyAction, SetFrequencyType } from '../infrastructure/redux/actions/setFrequency.action';
 import './App.pcss';
 import { FrequencyType } from '../models/Frequency.type';
 import { Frequency } from './components/Frequency';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SetFrequencyType } from '../../infrastructure/redux/actions/setFrequencyAction';
+import { SetFrequencyType } from '../../infrastructure/redux/actions/setFrequency.action';
 import { FrequencyType } from '../../models/Frequency.type';
 
 interface IProps {

@@ -1,4 +1,4 @@
-import { repositoryListReducer } from './RepositoryListReducer';
+import { repositoryListReducer } from './RepositoryList.reducer';
 
 describe('RepositoryList Reducer', () => {
   describe('INITIAL_STATE', () => {

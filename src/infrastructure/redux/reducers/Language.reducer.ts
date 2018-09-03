@@ -1,4 +1,4 @@
-import { SET_LANGUAGE } from '../actions/setLanguageAction';
+import { SET_LANGUAGE } from '../actions/setLanguage.action';
 
 const INITIAL_STATE = 'all';
 

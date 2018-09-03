@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import { FETCH_REPOSITORY_LIST, fetchRepositoryListAction } from './fetchRepositoryListAction';
+import { FETCH_REPOSITORY_LIST, FetchRepositoryListAction } from './fetchRepositoryList.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 };
 const store = mockStore(INITIAL_STATE);
 
-describe('fetchRepositoryListAction', () => {
+describe('FetchRepositoryListAction', () => {
   beforeEach(() => {
     store.clearActions();
   });
@@ -15,9 +15,15 @@ describe('fetchRepositoryListAction', () => {
   test('set language is dispatched correctly', () => {
     const expectedActions = [{
       type: FETCH_REPOSITORY_LIST,
-      payload: {},
+      payload: {
+        frequency: 'weekly',
+        language: 'typescript',
+      },
     }];
-    store.dispatch(fetchRepositoryListAction('weekly', 'typescript'));
+    store.dispatch(FetchRepositoryListAction({
+      frequency: 'weekly',
+      language: 'typescript',
+    }));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });
