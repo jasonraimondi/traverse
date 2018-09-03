@@ -16,7 +16,12 @@ class Frequency extends React.Component<IProps> {
 
   public render() {
     return (
-      <p id='frequency'>Frequency: {this.props.frequency}</p>
+      <ul id='frequency-list'>
+        <li><p id='frequency'>Frequency: {this.props.frequency}</p></li>
+        <li>Daily</li>
+        <li>Weekly</li>
+        <li>Monthly</li>
+      </ul>
     );
   }
 }

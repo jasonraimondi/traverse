@@ -17,7 +17,7 @@ export const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-      <App version='0.0.1'/>
+      <App/>
   </Provider>,
   document.getElementById('app-root'),
 );
