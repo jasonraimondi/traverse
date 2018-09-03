@@ -1,6 +1,6 @@
 import { IActionResponse } from '../action-response';
 
-export const SET_LANGUAGE = '[LANGUAGE] Set Language';
+export const SET_LANGUAGE = '[LANGUAGE] Set';
 
 export type SetLanguageType = (language: string) => IActionResponse<string>;
 

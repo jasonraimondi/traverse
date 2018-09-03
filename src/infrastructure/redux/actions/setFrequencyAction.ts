@@ -1,7 +1,7 @@
 import { FrequencyType } from '../../../models/Frequency.type';
 import { IActionResponse } from '../action-response';
 
-export const SET_FREQUENCY = '[FREQUENCY] Set Frequency';
+export const SET_FREQUENCY = '[FREQUENCY] Set';
 
 export type SetFrequencyType = (frequency: FrequencyType) => IActionResponse<string>;
 
