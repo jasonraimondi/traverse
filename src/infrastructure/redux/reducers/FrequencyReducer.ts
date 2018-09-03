@@ -1,6 +1,7 @@
+import { FrequencyType } from '../../../models/Frequency.type';
 import { SET_FREQUENCY } from '../actions/setFrequencyAction';
 
-const INITIAL_STATE = 'weekly';
+const INITIAL_STATE: FrequencyType = 'weekly';
 
 export const frequencyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

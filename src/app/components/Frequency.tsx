@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 import { SetFrequencyType } from '../../infrastructure/redux/actions/setFrequencyAction';
+import { FrequencyType } from '../../models/Frequency.type';
 
 interface IProps {
-  frequency: string;
+  frequency: FrequencyType;
   handleSetFrequency: SetFrequencyType;
 }
 
 interface IState {
-  frequency: string;
+  frequency: FrequencyType;
 }
 
 export class Frequency extends React.Component<IProps, IState> {
@@ -20,7 +21,7 @@ export class Frequency extends React.Component<IProps, IState> {
     };
   }
 
-  public handleSetFrequency(frequency: string) {
+  public handleSetFrequency(frequency: FrequencyType) {
     this.setState({ frequency }, () => this.props.handleSetFrequency(frequency));
   }
 

@@ -4,10 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { setFrequencyAction, SetFrequencyType } from '../infrastructure/redux/actions/setFrequencyAction';
 import './App.pcss';
+import { FrequencyType } from '../models/Frequency.type';
 import { Frequency } from './components/Frequency';
 
 interface IProps {
-  frequency: string;
+  frequency: FrequencyType;
   setFrequencyAction: SetFrequencyType;
 }
 
