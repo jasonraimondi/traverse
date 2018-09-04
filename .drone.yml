@@ -4,3 +4,4 @@ pipeline:
     commands:
       - npm install -q --no-color --no-progress
       - npm run test
+      - npm run build:prod

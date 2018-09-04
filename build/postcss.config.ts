@@ -1,5 +1,5 @@
 import { properties, screenSizes } from '../src/app/styles/variables';
-import { mediaQueries } from '../src/infrastructure/media-queries';
+import { mediaQueries } from '../src/infrastructure/styles/media-queries';
 
 export default (loader) => [
   require('postcss-easy-import'),
