@@ -13,6 +13,10 @@ const INITIAL_STATE = {
 const store = mockStore(INITIAL_STATE);
 
 describe('<App />', () => {
+  beforeEach(() => {
+    store.clearActions();
+  });
+
   it('renders viewport content correctly', () => {
     const app = mount(<App store={store}/>);
     expect(app.find('#app-viewport').text()).toBe('Repository List');
@@ -20,7 +24,10 @@ describe('<App />', () => {
 
   it('updates the store when selecting a new frequency', () => {
     const app = mount(<App store={store}/>);
+    store.clearActions();
+
     app.find('#select-monthly').simulate('click');
+
     expect(store.getActions()).toEqual([{
       type: SET_FREQUENCY,
       payload: 'monthly',
