@@ -16,7 +16,7 @@ export async function fetchRepositoryListFromGithub(language: string, frequency:
 async function searchForRepositories(q: string, sort: Sort, order: Order) {
   let search;
   search = await GithubRestClient('/search/repositories', { q, sort, order });
-  return search.data.items;
+  return search.data;
 }
 
 function getDateForFrequency(frequency: FrequencyType) {

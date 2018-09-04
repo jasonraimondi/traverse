@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { RepositoryEntity } from '../../models/Repository.entity';
 
 interface IProps {
-  list: { [id: string]: any };
+  list: { [id: string]: RepositoryEntity };
 }
 
 export class RepositoryList extends React.Component<IProps> {
@@ -11,7 +12,7 @@ export class RepositoryList extends React.Component<IProps> {
 
   get listItems() {
     return Object.values(this.props.list).map((repository) => {
-      return <li key={repository.toString().toLowerCase()}>{repository}</li>;
+      return <li key={repository.id}>{repository.name}</li>;
     });
   }
 

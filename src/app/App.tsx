@@ -13,6 +13,7 @@ import { Frequency } from './components/Frequency';
 import { RepositoryList } from './components/RepositoryList';
 
 interface IProps {
+  repositoryList: any;
   frequency: FrequencyType;
   setFrequencyAction: SetFrequencyActionType;
   fetchRepositoryListAction: FetchRepositoryListActionType;
@@ -29,9 +30,7 @@ class App extends React.Component<IProps> {
     return (
       <div id='app-container'>
         <div id='app-viewport'>
-          <RepositoryList list={{
-            a: 'Repository List',
-          }}/>
+          <RepositoryList list={this.props.repositoryList}/>
         </div>
         <div id='app-bottombar'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.props.setFrequencyAction}/>
@@ -44,6 +43,7 @@ class App extends React.Component<IProps> {
 function mapStateToProps(state) {
   return {
     frequency: state.frequency,
+    repositoryList: state.repositoryList,
   };
 }
 

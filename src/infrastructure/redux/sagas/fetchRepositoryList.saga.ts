@@ -3,8 +3,8 @@ import { fetchRepositoryListFromGithub } from '../../github/fetchRepositoryListF
 import {
   FETCH_REPOSITORY_LIST,
   FetchRepositoryListActionFields,
-  fetchRepositoryListFailureAction,
-  fetchRepositoryListSuccessAction,
+  FetchRepositoryListFailureAction,
+  FetchRepositoryListSuccessAction,
 } from '../actions/FetchRepositoryList.action';
 
 export function* fetchRepositoryListSaga() {
@@ -18,8 +18,8 @@ function fetchRepositoryListApiCall(fields: FetchRepositoryListActionFields) {
 function* fetchRepositoryList(action) {
   try {
     const response = yield call(fetchRepositoryListApiCall, action.payload);
-    yield put(fetchRepositoryListSuccessAction(response));
+    yield put(FetchRepositoryListSuccessAction(response));
   } catch (error) {
-    yield put(fetchRepositoryListFailureAction(error.message));
+    yield put(FetchRepositoryListFailureAction(error.message));
   }
 }

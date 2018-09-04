@@ -1,14 +1,18 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
+import { RepositoryEntity } from '../../models/Repository.entity';
 
 import { RepositoryList } from './RepositoryList';
 
 describe('<RepositoryList />', () => {
   test('displays list items', () => {
     const list = {
-      a: 'List Item',
+      abc: new RepositoryEntity(
+        'abc',
+        'RepositoryName',
+      ),
     };
     const component = shallow(<RepositoryList list={list}/>);
-    expect(component.find('#repository-list').text()).toEqual('List Item');
+    expect(component.find('#repository-list').text()).toEqual('RepositoryName');
   });
 });
