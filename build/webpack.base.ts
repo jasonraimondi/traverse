@@ -26,7 +26,7 @@ export const baseConfig: Configuration = {
               emitErrors: false,
               failOnHint: true,
               typeCheck: false,
-              fix: true,
+              // fix: true,
               tsConfigFile: projectRoot + '/tsconfig.json',
             },
           },

@@ -6,13 +6,8 @@ import { RepositoryList } from './RepositoryList';
 
 describe('<RepositoryList />', () => {
   test('displays list items', () => {
-    const list = {
-      abc: new RepositoryEntity(
-        'abc',
-        'RepositoryName',
-      ),
-    };
+    const list = { abc: new RepositoryEntity('abc') };
     const component = shallow(<RepositoryList list={list}/>);
-    expect(component.find('#repository-list').text()).toEqual('RepositoryName');
+    expect(component.find('#repository-list').text()).toEqual('No Name');
   });
 });

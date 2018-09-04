@@ -11,8 +11,9 @@ export class RepositoryList extends React.Component<IProps> {
   }
 
   get listItems() {
+    let keyCount = 0;
     return Object.values(this.props.list).map((repository) => {
-      return <li key={repository.id}>{repository.name}</li>;
+      return <li key={keyCount++}>{repository.attributes ? repository.attributes.name : 'No Name'}</li>;
     });
   }
 

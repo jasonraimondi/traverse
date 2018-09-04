@@ -23,10 +23,7 @@ export const FetchRepositoryListAction: FetchRepositoryListActionType = (fields)
 
 export function FetchRepositoryListSuccessAction(data: any): IActionResponse<{ [id: string]: RepositoryEntity }> {
   data = data.items
-    .map((response) => new RepositoryEntity(
-      response.id,
-      response.name,
-    ))
+    .map((response) => RepositoryEntity.fromResponse(response))
     .reduce(
       (entities, currentItem: RepositoryEntity) => {
         return {

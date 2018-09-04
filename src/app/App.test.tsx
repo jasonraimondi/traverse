@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store'; // Smart components
 
 import * as React from 'react';
@@ -11,10 +11,7 @@ const mockStore = configureStore();
 const INITIAL_STATE = {
   frequency: 'weekly',
   repositoryList: {
-    abc: new RepositoryEntity(
-      'abc',
-      'RepositoryName',
-    ),
+    abc: new RepositoryEntity('abc'),
   },
 };
 const store = mockStore(INITIAL_STATE);
@@ -26,7 +23,7 @@ describe('<App />', () => {
 
   it('renders viewport content correctly', () => {
     const app = mount(<App store={store}/>);
-    expect(app.find('#app-viewport').text()).toBe('RepositoryName');
+    expect(app.find('#app-viewport').text()).toBe('No Name');
   });
 
   it('updates the store when selecting a new frequency', () => {
