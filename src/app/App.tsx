@@ -10,6 +10,7 @@ import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/re
 import { FrequencyType } from '../models/Frequency.type';
 import './App.pcss';
 import { Frequency } from './components/Frequency';
+import { RepositoryList } from './components/RepositoryList';
 
 interface IProps {
   frequency: FrequencyType;
@@ -28,7 +29,9 @@ class App extends React.Component<IProps> {
     return (
       <div id='app-container'>
         <div id='app-viewport'>
-          Repository List
+          <RepositoryList list={{
+            a: 'Repository List',
+          }}/>
         </div>
         <div id='app-bottombar'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.props.setFrequencyAction}/>
