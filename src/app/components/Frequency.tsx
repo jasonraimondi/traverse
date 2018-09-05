@@ -5,7 +5,7 @@ import { FrequencyType } from '../../models/Frequency.type';
 
 interface IProps {
   frequency: FrequencyType;
-  handleSetFrequency: SetFrequencyActionType;
+  handleSetFrequency: (frequency: FrequencyType) => void;
 }
 
 interface IState {

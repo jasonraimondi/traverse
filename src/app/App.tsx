@@ -20,12 +20,26 @@ interface IProps {
 }
 
 class App extends React.Component<IProps> {
+  constructor(props) {
+    super(props);
+    this.handleSetFrequency = this.handleSetFrequency.bind(this);
+  }
+
   public componentDidMount() {
     this.props.fetchRepositoryListAction({
       language: 'typescript',
       frequency: 'daily',
     });
   }
+
+  public handleSetFrequency(frequency: FrequencyType) {
+    this.props.setFrequencyAction(frequency);
+    this.props.fetchRepositoryListAction({
+      language: 'typescript',
+      frequency,
+    });
+  }
+
   public render() {
     return (
       <div id='app-container'>
@@ -33,7 +47,7 @@ class App extends React.Component<IProps> {
           <RepositoryList list={this.props.repositoryList}/>
         </div>
         <div id='app-bottombar'>
-          <Frequency frequency={this.props.frequency} handleSetFrequency={this.props.setFrequencyAction}/>
+          <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
         </div>
       </div>
     );
