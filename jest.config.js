@@ -1,6 +1,6 @@
 module.exports = {
   "collectCoverage": true,
-  "coverageReporters": ["json", "html"],
+  "coverageReporters": ["lcov"],
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
