@@ -16,7 +16,7 @@ export class Repository extends React.Component<InferProps> {
     const description = this.attributes ? this.attributes.description : false;
     return <li className='repository-list-item'>
       <span className='name'>{name}</span>
-      {description ? <span className='description'>{description}</span> : null}
+      {description ? <small style={{ color: 'grey' }} className='description'>{description}</small> : null}
     </li>;
   }
 }
