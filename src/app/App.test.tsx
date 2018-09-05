@@ -1,8 +1,12 @@
 import { mount } from 'enzyme';
+import * as React from 'react';
 import configureStore from 'redux-mock-store'; // Smart components
 
-import * as React from 'react';
-import { SET_FREQUENCY } from '../infrastructure/redux/actions/SetFrequency.action';
+import {
+  FetchRepositoryListAction,
+  FetchRepositoryListActionFields,
+} from '../infrastructure/redux/actions/FetchRepositoryList.action';
+import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency.action';
 import { RepositoryEntity } from '../models/Repository.entity';
 
 import App from './App';
@@ -26,15 +30,19 @@ describe('<App />', () => {
     expect(app.find('#app-viewport').text()).toBe('No Name');
   });
 
-  it('updates the store when selecting a new frequency', () => {
+  it('selecting frequency runs set frequency action and fetch repository list', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
     app.find('#select-monthly').simulate('click');
 
-    expect(store.getActions()).toEqual([{
-      type: SET_FREQUENCY,
-      payload: 'monthly',
-    }]);
+    const language = 'typescript';
+    const frequency = 'monthly';
+    const fields = {
+      language,
+      frequency,
+    } as FetchRepositoryListActionFields;
+
+    expect(store.getActions()).toEqual([SetFrequencyAction(frequency), FetchRepositoryListAction(fields)]);
   });
 });
