@@ -30,13 +30,20 @@ export class LanguageList extends React.Component<IProps, IState> {
 
   get languageList() {
     return this.props.languageList.map((language, idx) => {
-      return <li key={idx} className='language-list-item'>{language.title}</li>;
+      return (
+        <li key={idx}
+            className='language-list-item'
+        >
+          <a onClick={() => this.handleSetLanguage(language.value)}>{language.title}</a>
+        </li>
+      );
     });
   }
 
   public render() {
     return (
       <ul id='language-list'>
+        <li><p id='selected-language'>Frequency: {this.state.selectedLanguage}</p></li>
         {this.languageList}
       </ul>
     );

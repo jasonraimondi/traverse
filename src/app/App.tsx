@@ -6,37 +6,51 @@ import {
   FetchRepositoryListActionType,
 } from '../infrastructure/redux/actions/FetchRepositoryList.action';
 
+import { ALL_LANGUAGES } from '../infrastructure/data/AllLanguages';
 import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/redux/actions/SetFrequency.action';
+import { SetLanguageAction, SetLanguageActionType } from '../infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '../models/Frequency.type';
 import './App.pcss';
 import { Frequency } from './components/Frequency';
+import { LanguageList } from './components/LanguageList';
 import { RepositoryList } from './components/RepositoryList';
 
 interface IProps {
   repositoryList: any;
   frequency: FrequencyType;
-  setFrequencyAction: SetFrequencyActionType;
-  fetchRepositoryListAction: FetchRepositoryListActionType;
+  language: string;
+  SetLanguageAction: SetLanguageActionType;
+  SetFrequencyAction: SetFrequencyActionType;
+  FetchRepositoryListAction: FetchRepositoryListActionType;
 }
 
 class App extends React.Component<IProps> {
   constructor(props) {
     super(props);
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
+    this.handleSetLanguage = this.handleSetLanguage.bind(this);
   }
 
   public componentDidMount() {
-    this.props.fetchRepositoryListAction({
-      language: 'typescript',
-      frequency: 'daily',
+    this.props.FetchRepositoryListAction({
+      language: this.props.language,
+      frequency: this.props.frequency,
     });
   }
 
   public handleSetFrequency(frequency: FrequencyType) {
-    this.props.setFrequencyAction(frequency);
-    this.props.fetchRepositoryListAction({
-      language: 'typescript',
+    this.props.SetFrequencyAction(frequency);
+    this.props.FetchRepositoryListAction({
+      language: this.props.language,
       frequency,
+    });
+  }
+
+  public handleSetLanguage(language: string) {
+    this.props.SetLanguageAction(language);
+    this.props.FetchRepositoryListAction({
+      language,
+      frequency: this.props.frequency,
     });
   }
 
@@ -48,6 +62,11 @@ class App extends React.Component<IProps> {
         </div>
         <div id='app-bottombar'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+          <LanguageList
+            selectedLanguage={'typescript'}
+            languageList={ALL_LANGUAGES}
+            handleSetLanguage={this.handleSetLanguage}
+          />
         </div>
       </div>
     );
@@ -56,6 +75,7 @@ class App extends React.Component<IProps> {
 
 function mapStateToProps(state) {
   return {
+    language: state.language,
     frequency: state.frequency,
     repositoryList: state.repositoryList,
   };
@@ -64,8 +84,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      setFrequencyAction: SetFrequencyAction,
-      fetchRepositoryListAction: FetchRepositoryListAction,
+      SetLanguageAction,
+      SetFrequencyAction,
+      FetchRepositoryListAction,
     },
     dispatch,
   );

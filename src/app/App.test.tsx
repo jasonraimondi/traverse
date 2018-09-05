@@ -10,9 +10,11 @@ import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency
 import { RepositoryEntity } from '../models/Repository.entity';
 
 import App from './App';
+import { SetLanguageAction } from '../infrastructure/redux/actions/SetLanguage.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
+  language: 'typescript',
   frequency: 'weekly',
   repositoryList: {
     abc: new RepositoryEntity('abc'),
@@ -30,19 +32,33 @@ describe('<App />', () => {
     expect(app.find('#app-viewport').text()).toBe('No Name');
   });
 
-  it('selecting frequency runs set frequency action and fetch repository list', () => {
+  it('selecting frequency runs set action and fetch repository list action', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
     app.find('#select-monthly').simulate('click');
 
-    const language = 'typescript';
     const frequency = 'monthly';
     const fields = {
-      language,
+      language: INITIAL_STATE.language,
       frequency,
     } as FetchRepositoryListActionFields;
 
     expect(store.getActions()).toEqual([SetFrequencyAction(frequency), FetchRepositoryListAction(fields)]);
+  });
+
+  it('selecting language runs set action and fetch repository list action', () => {
+    const app = mount(<App store={store}/>);
+    store.clearActions();
+
+    app.find('.language-list-item a').at(2).simulate('click');
+
+    const language = 'ActionScript';
+    const fields = {
+      language,
+      frequency: INITIAL_STATE.frequency,
+    } as FetchRepositoryListActionFields;
+
+    expect(store.getActions()).toEqual([SetLanguageAction(language), FetchRepositoryListAction(fields)]);
   });
 });

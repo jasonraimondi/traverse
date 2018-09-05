@@ -6,6 +6,7 @@ export class RepositoryEntity {
       {
         name: response.name,
         description: response.description,
+        language: response.language,
         owner: {
           login: response.owner.login,
           htmlUrl: response.owner.html_url,
@@ -30,6 +31,7 @@ export class RepositoryEntity {
 interface RepositoryEntityAttributes {
   name: string;
   description: string;
+  language: string;
   owner: Owner;
   longName: string;
   htmlUrl: string;

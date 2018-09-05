@@ -9,6 +9,6 @@ describe('<Repository />', () => {
   test('displays list items', () => {
     const repository = new RepositoryEntity('def');
     const component = shallow(<Repository repository={repository}/>);
-    assert.isNull(component.find('.description'));
+    assert.isEmpty(component.find('.description'));
   });
 });
