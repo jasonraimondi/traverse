@@ -1,5 +1,7 @@
 dist/
 node_modules/
+
+coverage/
 __snapshots__/
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
