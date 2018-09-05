@@ -6,7 +6,6 @@ import {
   FetchRepositoryListActionType,
 } from '../infrastructure/redux/actions/FetchRepositoryList.action';
 
-import { ALL_LANGUAGES } from '../infrastructure/data/AllLanguages';
 import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/redux/actions/SetFrequency.action';
 import { SetLanguageAction, SetLanguageActionType } from '../infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '../models/Frequency.type';
@@ -25,6 +24,8 @@ interface IProps {
 }
 
 class App extends React.Component<IProps> {
+  private readonly ALL_LANGUAGES = require('../infrastructure/data/all-languages.json');
+
   constructor(props) {
     super(props);
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
@@ -64,7 +65,7 @@ class App extends React.Component<IProps> {
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
             selectedLanguage={'typescript'}
-            languageList={ALL_LANGUAGES}
+            languageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
         </div>

@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import configureStore from 'redux-mock-store'; // Smart components
-
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionFields,
@@ -9,8 +8,8 @@ import {
 import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency.action';
 import { RepositoryEntity } from '../models/Repository.entity';
 
-import App from './App';
 import { SetLanguageAction } from '../infrastructure/redux/actions/SetLanguage.action';
+import App from './App';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

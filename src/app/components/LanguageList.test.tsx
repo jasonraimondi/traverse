@@ -2,11 +2,11 @@ import { expect } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-import { ALL_LANGUAGES } from '../../infrastructure/data/AllLanguages';
 import { LanguageList } from './LanguageList';
 
 describe('<LanguageList />', () => {
   test('loads all languages', () => {
+    const ALL_LANGUAGES = require('../../infrastructure/data/all-languages.json');
     const HANDLE_SET_LANGUAGE = jest.fn();
     const component = mount(<LanguageList
       selectedLanguage='typescript'
