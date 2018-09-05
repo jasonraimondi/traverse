@@ -44,7 +44,7 @@ class App extends React.Component<IProps> {
     return (
       <div id='app-container'>
         <div id='app-viewport'>
-          <RepositoryList list={this.props.repositoryList}/>
+          <RepositoryList repositoryList={this.props.repositoryList}/>
         </div>
         <div id='app-bottombar'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
