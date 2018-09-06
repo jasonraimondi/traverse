@@ -6,9 +6,9 @@ import {
   FetchRepositoryListActionFields,
 } from '../infrastructure/redux/actions/FetchRepositoryList.action';
 import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency.action';
-import { RepositoryEntity } from '../models/Repository.entity';
 
 import { SetLanguageAction } from '../infrastructure/redux/actions/SetLanguage.action';
+import { RepositoryEntity } from '../models/Repository.entity';
 import App from './App';
 
 const mockStore = configureStore();
@@ -28,7 +28,7 @@ describe('<App />', () => {
 
   it('renders viewport content correctly', () => {
     const app = mount(<App store={store}/>);
-    expect(app.find('#app-viewport').text()).toBe('No Name');
+    expect(app.find('#app-content').text()).toBe('No Name');
   });
 
   it('selecting frequency runs set action and fetch repository list action', () => {
@@ -38,12 +38,12 @@ describe('<App />', () => {
     app.find('#select-monthly').simulate('click');
 
     const frequency = 'monthly';
-    const fields = {
+
+    expect(store.getActions()[0]).toEqual(SetFrequencyAction(frequency));
+    expect(store.getActions()[1]).toEqual(FetchRepositoryListAction({
       language: INITIAL_STATE.language,
       frequency,
-    } as FetchRepositoryListActionFields;
-
-    expect(store.getActions()).toEqual([SetFrequencyAction(frequency), FetchRepositoryListAction(fields)]);
+    }));
   });
 
   it('selecting language runs set action and fetch repository list action', () => {
@@ -53,11 +53,11 @@ describe('<App />', () => {
     app.find('.language-list-item a').at(2).simulate('click');
 
     const language = 'ActionScript';
-    const fields = {
+
+    expect(store.getActions()[0]).toEqual(SetLanguageAction(language));
+    expect(store.getActions()[1]).toEqual(FetchRepositoryListAction({
       language,
       frequency: INITIAL_STATE.frequency,
-    } as FetchRepositoryListActionFields;
-
-    expect(store.getActions()).toEqual([SetLanguageAction(language), FetchRepositoryListAction(fields)]);
+    } as FetchRepositoryListActionFields));
   });
 });

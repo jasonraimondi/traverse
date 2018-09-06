@@ -57,8 +57,8 @@ class App extends React.Component<IProps> {
 
   public render() {
     return (
-      <div id='app-container'>
-        <div id='app-viewport'>
+      <main id='app-container'>
+        <div id='app-content'>
           <RepositoryList repositoryList={this.props.repositoryList}/>
         </div>
         <div id='app-bottombar'>
@@ -69,7 +69,7 @@ class App extends React.Component<IProps> {
             handleSetLanguage={this.handleSetLanguage}
           />
         </div>
-      </div>
+      </main>
     );
   }
 }
