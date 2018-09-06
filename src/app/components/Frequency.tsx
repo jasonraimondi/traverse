@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-import { SetFrequencyActionType } from '../../infrastructure/redux/actions/SetFrequency.action';
 import { FrequencyType } from '../../models/Frequency.type';
 
 interface IProps {
@@ -25,19 +23,22 @@ export class Frequency extends React.Component<IProps, IState> {
     this.setState({ frequency }, () => this.props.handleSetFrequency(frequency));
   }
 
+  get list() {
+    return ['daily', 'weekly', 'monthly', 'yearly'].map((frequency: FrequencyType) => {
+      const frequencyTitleCase = frequency.replace(/^\w/, (c) => c.toUpperCase());
+      return <li key={frequency}>
+        <a id={`select-${frequency}`} onClick={() => this.handleSetFrequency(frequency)}>
+          {frequencyTitleCase}
+        </a>
+      </li>;
+    });
+  }
+
   public render() {
     return (
       <ul id='frequency-list'>
         <li><p id='selected-frequency'>Frequency: {this.state.frequency}</p></li>
-        <li>
-          <a id='select-daily' onClick={() => this.handleSetFrequency('daily')}>Daily</a>
-        </li>
-        <li>
-          <a id='select-weekly' onClick={() => this.handleSetFrequency('weekly')}>Weekly</a>
-        </li>
-        <li>
-          <a id='select-monthly' onClick={() => this.handleSetFrequency('monthly')}>Monthly</a>
-        </li>
+        {this.list}
       </ul>
     );
   }

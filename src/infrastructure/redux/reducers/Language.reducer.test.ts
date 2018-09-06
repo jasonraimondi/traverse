@@ -2,18 +2,15 @@ import { SetLanguageAction } from '../actions/SetLanguage.action';
 import { languageReducer } from './Language.reducer';
 
 describe('Language Reducer', () => {
-  describe('INITIAL_STATE', () => {
-    test('is correct', () => {
-      const action = { type: undefined };
-      const initialState = 'all';
-      expect(languageReducer(undefined, action)).toEqual(initialState);
-    });
+  test('INITIAL_STATE language is blank string', () => {
+    const action = { type: undefined };
+    const initialState = '';
+    expect(languageReducer(undefined, action)).toEqual(initialState);
   });
-  describe('SET_LANGUAGE', () => {
-    test('returns the correct state', () => {
-      const action = SetLanguageAction('javascript');
-      const expectedState = 'javascript';
-      expect(languageReducer(undefined, action)).toEqual(expectedState);
-    });
+
+  test('SET_LANGUAGE updates the language reducer properly', () => {
+    const action = SetLanguageAction('javascript');
+    const expectedState = 'javascript';
+    expect(languageReducer(undefined, action)).toEqual(expectedState);
   });
 });

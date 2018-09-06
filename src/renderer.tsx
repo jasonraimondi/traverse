@@ -21,7 +21,7 @@ export const store = createStore(
 
 sagaMiddleware.run(sagas);
 
-ReactDOM.render(
+export default ReactDOM.render(
   <Provider store={store}>
     <App/>
   </Provider>,

@@ -1,6 +1,7 @@
 import configureStore from 'redux-mock-store';
 
-import { SET_FREQUENCY, SetFrequencyAction } from './SetFrequency.action';
+import { FrequencyType } from '../../../models/Frequency.type';
+import { SetFrequencyAction } from './SetFrequency.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
@@ -9,16 +10,10 @@ const INITIAL_STATE = {
 const store = mockStore(INITIAL_STATE);
 
 describe('SetFrequencyAction', () => {
-  beforeEach(() => {
-    store.clearActions();
-  });
-
-  test('set frequency is dispatched correctly', () => {
-    const expectedActions = [{
-      type: SET_FREQUENCY,
-      payload: 'monthly',
-    }];
-    store.dispatch(SetFrequencyAction('monthly'));
+  test('SetFrequencyAction is dispatched correctly', () => {
+    const frequency: FrequencyType = 'monthly';
+    const expectedActions = [SetFrequencyAction(frequency)];
+    store.dispatch(SetFrequencyAction(frequency));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

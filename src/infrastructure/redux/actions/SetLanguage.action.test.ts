@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 
-import { SET_LANGUAGE, SetLanguageAction } from './SetLanguage.action';
+import { SetLanguageAction } from './SetLanguage.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
@@ -9,16 +9,10 @@ const INITIAL_STATE = {
 const store = mockStore(INITIAL_STATE);
 
 describe('SetLanguageAction', () => {
-  beforeEach(() => {
-    store.clearActions();
-  });
-
-  test('set language is dispatched correctly', () => {
-    const expectedActions = [{
-      type: SET_LANGUAGE,
-      payload: 'typescript',
-    }];
-    store.dispatch(SetLanguageAction('typescript'));
+  test('SetLanguageAction is dispatched correctly', () => {
+    const language = 'typescript';
+    const expectedActions = [SetLanguageAction(language)];
+    store.dispatch(SetLanguageAction(language));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

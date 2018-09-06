@@ -1,5 +1,10 @@
+import { assert } from 'chai';
 import configureStore from 'redux-mock-store';
-import { FETCH_REPOSITORY_LIST, FetchRepositoryListAction } from './FetchRepositoryList.action';
+
+import {
+  FetchRepositoryListAction,
+  FetchRepositoryListActionFields, FetchRepositoryListFailureAction,
+} from './FetchRepositoryList.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
@@ -12,18 +17,20 @@ describe('FetchRepositoryListAction', () => {
     store.clearActions();
   });
 
-  test('set language is dispatched correctly', () => {
-    const expectedActions = [{
-      type: FETCH_REPOSITORY_LIST,
-      payload: {
-        frequency: 'weekly',
-        language: 'typescript',
-      },
-    }];
-    store.dispatch(FetchRepositoryListAction({
+  test('FetchRepositoryListAction is dispatched correctly', () => {
+    const fields = {
       frequency: 'weekly',
       language: 'typescript',
-    }));
+    } as FetchRepositoryListActionFields;
+    const expectedActions = [FetchRepositoryListAction(fields)];
+    store.dispatch(FetchRepositoryListAction(fields));
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+
+  test('FetchRepositoryListFailureAction returns error', () => {
+    const errorMessage = 'I failed!';
+    const expectedActions = [FetchRepositoryListFailureAction(errorMessage)];
+    store.dispatch(FetchRepositoryListFailureAction(errorMessage));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

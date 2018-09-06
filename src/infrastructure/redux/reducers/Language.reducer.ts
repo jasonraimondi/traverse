@@ -1,6 +1,7 @@
 import { SET_LANGUAGE } from '../actions/SetLanguage.action';
 
-const INITIAL_STATE = 'all';
+// blank string = all languages
+const INITIAL_STATE = '';
 
 export const languageReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
