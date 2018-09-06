@@ -1,5 +1,6 @@
 module.exports = {
   "collectCoverage": true,
+  "collectCoverageFrom": ["src/{app,infrastructure,models}/**/*.{js,jsx,ts,tsx}"],
   "coverageReporters": ["lcov"],
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
