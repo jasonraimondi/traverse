@@ -1,6 +1,6 @@
 [![Test Coverage](https://travis-ci.org/jasonraimondi/traverse.svg)](https://travis-ci.org/jasonraimondi/traverse#)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/82c89e1eac3a57862421/test_coverage)](https://codeclimate.com/github/jasonraimondi/traverse/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/82c89e1eac3a57862421/maintainability)](https://codeclimate.com/github/jasonraimondi/traverse/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/test_coverage)](https://codeclimate.com/github/jasonraimondi/traverse/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/maintainability)](https://codeclimate.com/github/jasonraimondi/traverse/maintainability)
 
 # Traverse
 
