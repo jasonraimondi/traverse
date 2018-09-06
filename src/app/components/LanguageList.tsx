@@ -43,7 +43,7 @@ export class LanguageList extends React.Component<IProps, IState> {
   public render() {
     return (
       <ul id='language-list'>
-        <li><p id='selected-language'>Frequency: {this.state.selectedLanguage}</p></li>
+        <li><p id='selected-language'>Language: {this.state.selectedLanguage}</p></li>
         {this.languageList}
       </ul>
     );
