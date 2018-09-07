@@ -1,3 +1,4 @@
+import { assert } from 'chai';
 import configureStore from 'redux-mock-store';
 
 import { FrequencyType } from '../../../models/Frequency.type';
@@ -13,7 +14,9 @@ describe('SetFrequencyAction', () => {
   test('SetFrequencyAction is dispatched correctly', () => {
     const frequency: FrequencyType = 'monthly';
     const expectedActions = [SetFrequencyAction(frequency)];
+
     store.dispatch(SetFrequencyAction(frequency));
-    expect(store.getActions()).toEqual(expectedActions);
+
+    assert.deepEqual(store.getActions(), expectedActions);
   });
 });

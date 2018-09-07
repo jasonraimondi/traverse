@@ -1,4 +1,5 @@
 import './app/styles/style.pcss';
+import './infrastructure/electron/openLinkExternally';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

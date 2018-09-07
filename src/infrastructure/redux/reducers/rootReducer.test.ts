@@ -1,3 +1,4 @@
+import { assert } from 'chai';
 import { createStore } from 'redux';
 
 import { rootReducer } from './rootReducer';
@@ -5,8 +6,9 @@ import { rootReducer } from './rootReducer';
 describe('rootReducer.ts', () => {
   test('rootReducer is initialized', () => {
     const store = createStore(rootReducer);
-    expect(store.getState().language).toEqual('');
-    expect(store.getState().frequency).toEqual('weekly');
-    expect(store.getState().repositoryList).toEqual({});
+
+    assert.equal(store.getState().language, '');
+    assert.equal(store.getState().frequency, 'weekly');
+    assert.deepEqual(store.getState().repositoryList, {});
   });
 });

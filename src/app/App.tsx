@@ -58,9 +58,6 @@ class App extends React.Component<IProps> {
   public render() {
     return (
       <main id='app-container'>
-        <div id='app-content'>
-          <RepositoryList repositoryList={this.props.repositoryList}/>
-        </div>
         <div id='app-bottombar'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
@@ -68,6 +65,9 @@ class App extends React.Component<IProps> {
             languageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
+        </div>
+        <div id='app-content'>
+          <RepositoryList repositoryList={this.props.repositoryList}/>
         </div>
       </main>
     );

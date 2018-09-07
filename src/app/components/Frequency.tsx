@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import { FrequencyType } from '../../models/Frequency.type';
+import './Frequency.pcss';
 
 interface IProps {
   frequency: FrequencyType;
@@ -26,8 +28,9 @@ export class Frequency extends React.Component<IProps, IState> {
   get list() {
     return ['daily', 'weekly', 'monthly', 'yearly'].map((frequency: FrequencyType) => {
       const frequencyTitleCase = frequency.replace(/^\w/, (c) => c.toUpperCase());
-      return <li key={frequency}>
-        <a id={`select-${frequency}`} onClick={() => this.handleSetFrequency(frequency)}>
+      const selectedClass = this.props.frequency === frequency ? 'selected' : null;
+      return <li id={`frequency-${frequency}`} key={frequency}>
+        <a id={`select-${frequency}`} className={selectedClass} onClick={() => this.handleSetFrequency(frequency)}>
           {frequencyTitleCase}
         </a>
       </li>;
@@ -37,7 +40,6 @@ export class Frequency extends React.Component<IProps, IState> {
   public render() {
     return (
       <ul id='frequency-list'>
-        <li><p id='selected-frequency'>Frequency: {this.state.frequency}</p></li>
         {this.list}
       </ul>
     );

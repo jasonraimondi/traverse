@@ -1,0 +1,20 @@
+#frequency-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#frequency-list li a {
+  display: inline-block;
+  border: 1px solid var(--blue);
+  padding: 2px;
+  border-radius: 3px;
+}
+
+#frequency-list li a.selected {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background-color: var(--blue);
+}

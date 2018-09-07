@@ -1,12 +1,13 @@
+import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import configureStore from 'redux-mock-store'; // Smart components
+import configureStore from 'redux-mock-store';
+
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionFields,
 } from '../infrastructure/redux/actions/FetchRepositoryList.action';
 import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency.action';
-
 import { SetLanguageAction } from '../infrastructure/redux/actions/SetLanguage.action';
 import { RepositoryEntity } from '../models/Repository.entity';
 import App from './App';
@@ -26,12 +27,13 @@ describe('<App />', () => {
     store.clearActions();
   });
 
-  it('renders viewport content correctly', () => {
+  test('renders viewport content correctly', () => {
     const app = mount(<App store={store}/>);
-    expect(app.find('#app-content').text()).toBe('No Name');
+
+    assert.equal(app.find('#app-content').text(), 'No Name');
   });
 
-  it('selecting frequency runs set action and fetch repository list action', () => {
+  test('selecting frequency runs set action and fetch repository list action', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
@@ -39,14 +41,14 @@ describe('<App />', () => {
 
     const frequency = 'monthly';
 
-    expect(store.getActions()[0]).toEqual(SetFrequencyAction(frequency));
-    expect(store.getActions()[1]).toEqual(FetchRepositoryListAction({
+    assert.deepEqual(store.getActions()[0], SetFrequencyAction(frequency));
+    assert.deepEqual(store.getActions()[1], FetchRepositoryListAction({
       language: INITIAL_STATE.language,
       frequency,
     }));
   });
 
-  it('selecting language runs set action and fetch repository list action', () => {
+  test('selecting language runs set action and fetch repository list action', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
@@ -54,8 +56,8 @@ describe('<App />', () => {
 
     const language = 'ActionScript';
 
-    expect(store.getActions()[0]).toEqual(SetLanguageAction(language));
-    expect(store.getActions()[1]).toEqual(FetchRepositoryListAction({
+    assert.deepEqual(store.getActions()[0], SetLanguageAction(language));
+    assert.deepEqual(store.getActions()[1], FetchRepositoryListAction({
       language,
       frequency: INITIAL_STATE.frequency,
     } as FetchRepositoryListActionFields));

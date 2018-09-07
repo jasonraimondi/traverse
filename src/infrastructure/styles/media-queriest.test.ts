@@ -1,3 +1,5 @@
+import { assert } from 'chai';
+
 import { mediaQueries } from './media-queries';
 
 describe('media-queries', () => {
@@ -9,9 +11,9 @@ describe('media-queries', () => {
 
     const mq = mediaQueries(screenSizes);
 
-    expect(mq.smallOnly).toBe('screen and (max-width: 100px)');
-    expect(mq.small).toBe('screen and (min-width: 101px)');
-    expect(mq.mediumOnly).toBe('screen and (max-width: 200px)');
-    expect(mq.medium).toBe('screen and (min-width: 201px)');
+    assert.equal(mq.smallOnly, 'screen and (max-width: 100px)');
+    assert.equal(mq.small, 'screen and (min-width: 101px)');
+    assert.equal(mq.mediumOnly, 'screen and (max-width: 200px)');
+    assert.equal(mq.medium, 'screen and (min-width: 201px)');
   });
 });

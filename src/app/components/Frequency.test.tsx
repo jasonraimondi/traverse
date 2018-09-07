@@ -1,3 +1,4 @@
+import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
@@ -7,7 +8,11 @@ describe('<Frequency />', () => {
   test('displays correct frequency', () => {
     const mockOnClick = jest.fn();
     const component = shallow(<Frequency frequency='weekly' handleSetFrequency={mockOnClick}/>);
+
     component.find('#select-monthly').simulate('click');
-    expect(component.find('#selected-frequency').text()).toEqual('Frequency: monthly');
+
+    assert.lengthOf(component.find('#frequency-list').children(), 4);
+    assert.equal(component.find('#frequency-list').children().get(0).key, 'daily');
+    assert.equal(component.find('#frequency-list').children().get(1).key, 'weekly');
   });
 });

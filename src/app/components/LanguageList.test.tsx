@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
@@ -13,6 +13,7 @@ describe('<LanguageList />', () => {
       languageList={ALL_LANGUAGES}
       handleSetLanguage={HANDLE_SET_LANGUAGE}
     />);
-    expect(component.find('.language-list-item')).to.have.lengthOf(304);
+
+    assert.lengthOf(component.find('.language-list-item'), 304);
   });
 });

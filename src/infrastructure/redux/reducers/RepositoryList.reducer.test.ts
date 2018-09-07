@@ -1,3 +1,5 @@
+import { assert } from 'chai';
+
 import { FetchRepositoryListSuccessAction } from '../actions/FetchRepositoryList.action';
 import { repositoryListReducer } from './RepositoryList.reducer';
 
@@ -5,7 +7,7 @@ describe('RepositoryList Reducer', () => {
   test('INITIAL_STATE for repository list is blank', () => {
     const action = { type: undefined };
     const initialState = {};
-    expect(repositoryListReducer(undefined, action)).toEqual(initialState);
+    assert.deepEqual(repositoryListReducer(undefined, action), initialState);
   });
 
   test('FETCH_REPOSITORY_LIST_SUCCESS updates the repository list reducer properly', () => {
@@ -14,16 +16,16 @@ describe('RepositoryList Reducer', () => {
     const action = FetchRepositoryListSuccessAction(data);
 
     const repositoryList = repositoryListReducer(undefined, action);
-    expect(Object.values(repositoryList)[0].id).toEqual(147134009);
-    expect(Object.values(repositoryList)[0].attributes.name).toEqual('vscode-wal');
-    expect(Object.values(repositoryList)[0].attributes.htmlUrl).toEqual('https://github.com/cmschuetz/vscode-wal');
-    expect(Object.values(repositoryList)[0].attributes.forksCount).toEqual(0);
-    expect(Object.values(repositoryList)[0].attributes.watchersCount).toEqual(1);
-    expect(Object.values(repositoryList)[0].attributes.stargazersCount).toEqual(1);
-    expect(Object.values(repositoryList)[0].attributes.longName).toEqual('cmschuetz/vscode-wal');
-    expect(Object.values(repositoryList)[0].attributes.description).toEqual('Fake description Jason added');
-    expect(Object.values(repositoryList)[0].attributes.owner.login).toEqual('cmschuetz');
-    expect(Object.values(repositoryList)[0].attributes.owner.htmlUrl).toEqual('https://github.com/cmschuetz');
-    expect(Object.keys(repositoryList).length).toEqual(30);
+    assert.strictEqual(Object.values(repositoryList)[0].id, 147134009);
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.name, 'vscode-wal');
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.htmlUrl, 'https://github.com/cmschuetz/vscode-wal');
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.forksCount, 0);
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.watchersCount, 1);
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.stargazersCount, 1);
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.longName, 'cmschuetz/vscode-wal');
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.description, 'Fake description Jason added');
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.owner.login, 'cmschuetz');
+    assert.strictEqual(Object.values(repositoryList)[0].attributes.owner.htmlUrl, 'https://github.com/cmschuetz');
+    assert.strictEqual(Object.keys(repositoryList).length, 30);
   });
 });
