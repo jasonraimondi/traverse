@@ -1,20 +1,24 @@
 #frequency-list {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   list-style: none;
   margin: 0;
   padding: 0;
-}
+  border-bottom: 1px solid var(--grey);
 
-#frequency-list li a {
-  display: inline-block;
-  border: 1px solid var(--blue);
-  padding: 2px;
-  border-radius: 3px;
-}
+  & li {
+    flex: 1;
+    text-align: center;
+  }
 
-#frequency-list li a.selected {
-  border: 1px solid var(--white);
-  color: var(--white);
-  background-color: var(--blue);
+  & li a {
+    display: block;
+    padding: 0.5rem;
+    background-color: var(--black);
+
+    &:hover,
+    &.selected {
+      background-color: var(--white);
+    }
+  }
 }

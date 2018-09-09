@@ -8,7 +8,7 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     height: 600,
-    width: 800,
+    width: 600,
     resizable: false,
   });
 

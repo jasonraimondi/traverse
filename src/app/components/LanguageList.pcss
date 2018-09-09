@@ -1,0 +1,32 @@
+#language-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#language-list {
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+
+  & li {
+    text-align: center;
+  }
+
+  & li a {
+    display: block;
+    padding: 0.5rem 0;
+    background-color: var(--black);
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--green);
+    }
+    &.selected {
+      color: var(--green);
+      background-color: var(--white);
+    }
+  }
+}

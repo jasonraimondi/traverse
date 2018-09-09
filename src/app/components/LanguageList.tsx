@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './LanguageList.pcss';
 
 export interface ILanguage {
   title: string;
@@ -30,11 +31,12 @@ export class LanguageList extends React.Component<IProps, IState> {
 
   get languageList() {
     return this.props.languageList.map((language, idx) => {
+      const selectedClass = this.state.selectedLanguage === language.value ? 'selected' : null;
       return (
         <li key={idx}
             className='language-list-item'
         >
-          <a onClick={() => this.handleSetLanguage(language.value)}>{language.title}</a>
+          <a className={selectedClass} onClick={() => this.handleSetLanguage(language.value)}>{language.title}</a>
         </li>
       );
     });
@@ -42,10 +44,11 @@ export class LanguageList extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <ul id='language-list'>
-        <li><p id='selected-language'>Language: {this.state.selectedLanguage}</p></li>
-        {this.languageList}
-      </ul>
+      <div id='language-container'>
+        <ul id='language-list'>
+          {this.languageList}
+        </ul>
+      </div>
     );
   }
 }

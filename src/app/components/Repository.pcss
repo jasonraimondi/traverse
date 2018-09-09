@@ -1,0 +1,34 @@
+.repository-list-item {
+  display: block;
+  padding: 0.5rem;
+  padding-right: 1.25rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--black);
+
+  & .language {
+    font-weight: 700;
+  }
+
+  & .description {
+    color: var(--black);
+    padding: 0.5rem 0;
+  }
+
+  &:first-child {
+    border-top-color: transparent;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid var(--black);
+  }
+
+  & header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

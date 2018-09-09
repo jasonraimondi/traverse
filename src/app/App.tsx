@@ -58,10 +58,10 @@ class App extends React.Component<IProps> {
   public render() {
     return (
       <main id='app-container'>
-        <div id='app-bottombar'>
+        <div id='app-navigation'>
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
-            selectedLanguage={'typescript'}
+            selectedLanguage={this.props.language}
             languageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
