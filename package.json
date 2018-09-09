@@ -42,6 +42,7 @@
     "postcss-easy-import": "^3.0.0",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^2.1.6",
+    "postcss-strip-inline-comments": "^0.1.5",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",

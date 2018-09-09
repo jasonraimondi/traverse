@@ -10,5 +10,6 @@ export default (loader) => {
         customMedia: { extensions: mediaQueries(variables.screenSizes) },
       },
     }),
+    require('postcss-strip-inline-comments'),
   ];
 };
