@@ -4,11 +4,12 @@
 
 # Traverse
 
-Traverse is a GitHub explorer
+Traverse is a GitHub explorer.
 
-#### What?
+It is an Electron app built with React, in TypeScript. We are using Jest/Chai + Enzyme as our test framework. It uses Webpack to bundle, Redux and Redux Saga for the store, and uses the GitHub REST API with the Axios rest client. 
 
-An Electron app in React + TypeScript, as close to fully tested as possible. It uses Webpack to bundle, Redux and Redux Saga for the store, and uses the GitHub REST API with the Axios rest client. We are using Jest/Chai + Enzyme as our test framework.
+### Screen Shots
 
-![Preview 1](https://res.cloudinary.com/jmondi/image/upload/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-1.png)
-![Preview 2](https://res.cloudinary.com/jmondi/image/upload/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-2.png)
+![Preview 1](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_600/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-1.png)
+
+![Preview 2](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_600/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-2.png)
