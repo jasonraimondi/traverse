@@ -1,10 +1,10 @@
-[![Test Coverage](https://travis-ci.org/jasonraimondi/traverse.svg)](https://travis-ci.org/jasonraimondi/traverse#)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/test_coverage)](https://codeclimate.com/github/jasonraimondi/traverse/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/maintainability)](https://codeclimate.com/github/jasonraimondi/traverse/maintainability)
-
 ![Traverse Spaceman Logo](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_150/v1534475620/jasonraimondi.com/traverse/pointing.png)
 
 # Traverse
+
+[![Test Coverage](https://travis-ci.org/jasonraimondi/traverse.svg)](https://travis-ci.org/jasonraimondi/traverse#)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/test_coverage)](https://codeclimate.com/github/jasonraimondi/traverse/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/maintainability)](https://codeclimate.com/github/jasonraimondi/traverse/maintainability)
 
 Traverse is a GitHub explorer.
 
