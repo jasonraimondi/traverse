@@ -47,4 +47,4 @@ If you are using an IntelliJ IDE, you should see an option for 'Unit Tests' in t
 
 ### License
 
-Traverse is [MIT licensed](./LICENSE);
+Traverse is [MIT licensed](./LICENSE).
