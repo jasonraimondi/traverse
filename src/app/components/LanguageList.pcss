@@ -30,3 +30,25 @@
     }
   }
 }
+
+#language-list-type {
+  display: flex;
+  text-align: center;
+  border-bottom: 1px solid var(--grey);
+
+  & a {
+    display: block;
+    flex: 1;
+    padding: 0.5rem 0;
+    background-color: var(--black);
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--green);
+    }
+    &.selected {
+      color: var(--green);
+      background-color: var(--white);
+    }
+  }
+}

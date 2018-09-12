@@ -1,0 +1,150 @@
+[
+  {
+    "value": "",
+    "title": "All"
+  },
+  {
+    "value": "c",
+    "title": "C"
+  },
+  {
+    "value": "CSharp",
+    "title": "C#"
+  },
+  {
+    "value": "c++",
+    "title": "C++"
+  },
+  {
+    "value": "clojure",
+    "title": "Clojure"
+  },
+  {
+    "value": "dart",
+    "title": "Dart"
+  },
+  {
+    "value": "dockerfile",
+    "title": "Dockerfile"
+  },
+  {
+    "value": "elixir",
+    "title": "Elixir"
+  },
+  {
+    "value": "erlang",
+    "title": "Erlang"
+  },
+  {
+    "value": "fortran",
+    "title": "Fortran"
+  },
+  {
+    "value": "go",
+    "title": "Go"
+  },
+  {
+    "value": "hack",
+    "title": "Hack"
+  },
+  {
+    "value": "haskell",
+    "title": "Haskell"
+  },
+  {
+    "value": "java",
+    "title": "Java"
+  },
+  {
+    "value": "javascript",
+    "title": "JavaScript"
+  },
+  {
+    "value": "json",
+    "title": "JSON"
+  },
+  {
+    "value": "kotlin",
+    "title": "Kotlin"
+  },
+  {
+    "value": "lua",
+    "title": "Lua"
+  },
+  {
+    "value": "markdown",
+    "title": "Markdown"
+  },
+  {
+    "value": "objective-c",
+    "title": "Objective-C"
+  },
+  {
+    "value": "perl",
+    "title": "Perl"
+  },
+  {
+    "value": "perl-6",
+    "title": "Perl 6"
+  },
+  {
+    "value": "php",
+    "title": "PHP"
+  },
+  {
+    "value": "postcss",
+    "title": "PostCSS"
+  },
+  {
+    "value": "powershell",
+    "title": "PowerShell"
+  },
+  {
+    "value": "python",
+    "title": "Python"
+  },
+  {
+    "value": "r",
+    "title": "R"
+  },
+  {
+    "value": "ruby",
+    "title": "Ruby"
+  },
+  {
+    "value": "rust",
+    "title": "Rust"
+  },
+  {
+    "value": "scala",
+    "title": "Scala"
+  },
+  {
+    "value": "shell",
+    "title": "Shell"
+  },
+  {
+    "value": "sql",
+    "title": "SQL"
+  },
+  {
+    "value": "swift",
+    "title": "Swift"
+  },
+  {
+    "value": "svg",
+    "title": "SVG"
+  },
+  {
+    "value": "twig",
+    "title": "Twig"
+  },
+  {
+    "value": "typescript",
+    "title": "TypeScript"
+  },
+  {
+    "value": "webassembly",
+    "title": "WebAssembly"
+  }
+]

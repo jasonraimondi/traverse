@@ -25,6 +25,7 @@ interface IProps {
 
 class App extends React.Component<IProps> {
   private readonly ALL_LANGUAGES = require('../infrastructure/data/all-languages.json');
+  private readonly POPULAR_LANGUAGES = require('../infrastructure/data/popular-languages.json');
 
   constructor(props) {
     super(props);
@@ -62,7 +63,10 @@ class App extends React.Component<IProps> {
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
             selectedLanguage={this.props.language}
-            languageList={this.ALL_LANGUAGES}
+            languageList={{
+              'All Languages': this.ALL_LANGUAGES,
+              'Popular Languages': this.POPULAR_LANGUAGES,
+            }}
             handleSetLanguage={this.handleSetLanguage}
           />
         </div>
