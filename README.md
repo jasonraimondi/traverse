@@ -1,6 +1,6 @@
-![Traverse Spaceman Logo](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_150/v1534475620/jasonraimondi.com/traverse/pointing.png)
-
-# Traverse
+<h1 align="center">
+  	<img height="100" src="https://res.cloudinary.com/jmondi/image/upload/c_scale,w_150/v1534475620/jasonraimondi.com/traverse/pointing.png" alt="Traverse" /> <br /> Traverse
+</h1>
 
 [![Test Coverage](https://travis-ci.org/jasonraimondi/traverse.svg)](https://travis-ci.org/jasonraimondi/traverse#)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/test_coverage)](https://codeclimate.com/github/jasonraimondi/traverse/test_coverage)
