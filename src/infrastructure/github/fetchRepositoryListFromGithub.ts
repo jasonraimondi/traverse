@@ -1,7 +1,8 @@
+import axios from 'axios';
 import * as dayjs from 'dayjs';
 
 import { FrequencyType, frequencyTypeDate } from '../../models/Frequency.type';
-import { GithubRestClient } from './GithubRestClient';
+import { GitHubRest } from './GitHubRest';
 
 export type Sort = 'stars' | 'forks' | 'updated';
 export type Order = 'asc' | 'desc';
@@ -22,6 +23,7 @@ export async function fetchRepositoryListFromGithub(language: string, frequency:
 }
 
 async function searchForRepositories(q: string, sort: Sort, order: Order) {
-  const search = await GithubRestClient('/search/repositories', { q, sort, order });
+  const githubRest = GitHubRest('/search/repositories', { q, sort, order });
+  const search = await axios.get(githubRest.url, githubRest.config);
   return search.data;
 }
