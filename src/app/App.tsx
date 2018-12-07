@@ -13,6 +13,7 @@ import './App.pcss';
 import { Frequency } from './components/Frequency';
 import { LanguageList } from './components/LanguageList';
 import { RepositoryList } from './components/RepositoryList';
+import { TitleBar } from './components/TitleBar';
 
 interface IProps {
   repositoryList: any;
@@ -58,18 +59,23 @@ class App extends React.Component<IProps> {
 
   public render() {
     return (
-      <main id='app-container'>
-        <div id='app-navigation'>
-          <LanguageList
-            selectedLanguage={this.props.language}
-            popularLanguageList={this.POPULAR_LANGUAGES}
-            allLanguageList={this.ALL_LANGUAGES}
-            handleSetLanguage={this.handleSetLanguage}
-          />
+      <main id='main-container'>
+        <div id='main-title'>
+          <TitleBar frequency={this.props.frequency} language={this.props.language} />
         </div>
-        <div id='app-content'>
-          <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
-          <RepositoryList repositoryList={this.props.repositoryList}/>
+        <div id='app-container'>
+          <div id='app-navigation'>
+            <LanguageList
+              selectedLanguage={this.props.language}
+              popularLanguageList={this.POPULAR_LANGUAGES}
+              allLanguageList={this.ALL_LANGUAGES}
+              handleSetLanguage={this.handleSetLanguage}
+            />
+          </div>
+          <div id='app-content'>
+            <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+            <RepositoryList repositoryList={this.props.repositoryList}/>
+          </div>
         </div>
       </main>
     );

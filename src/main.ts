@@ -7,9 +7,12 @@ let mainWindow: Electron.BrowserWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    title: 'Traverse',
     height: 600,
     width: 600,
-    resizable: false,
+    titleBarStyle: 'hiddenInset',
+    resizable: true,
+    backgroundColor: '#22292f',
   });
 
   const filePath = format({
