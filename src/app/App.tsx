@@ -60,7 +60,6 @@ class App extends React.Component<IProps> {
     return (
       <main id='app-container'>
         <div id='app-navigation'>
-          <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
             selectedLanguage={this.props.language}
             popularLanguageList={this.POPULAR_LANGUAGES}
@@ -69,6 +68,7 @@ class App extends React.Component<IProps> {
           />
         </div>
         <div id='app-content'>
+          <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <RepositoryList repositoryList={this.props.repositoryList}/>
         </div>
       </main>
