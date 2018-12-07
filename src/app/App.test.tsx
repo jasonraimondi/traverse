@@ -54,7 +54,7 @@ describe('<App />', () => {
 
     app.find('.language-list-item a').at(2).simulate('click');
 
-    const language = 'ActionScript';
+    const language = 'CSharp';
 
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
     assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({

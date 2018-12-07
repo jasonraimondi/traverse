@@ -16,6 +16,8 @@ describe('<LanguageList />', () => {
       handleSetLanguage={HANDLE_SET_LANGUAGE}
     />);
 
+    component.setState({  selectedLanguageListType: 'all'});
+
     assert.lengthOf(component.find('.language-list-item'), 304);
   });
 });
