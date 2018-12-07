@@ -63,10 +63,8 @@ class App extends React.Component<IProps> {
           <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
           <LanguageList
             selectedLanguage={this.props.language}
-            languageList={{
-              'All Languages': this.ALL_LANGUAGES,
-              'Popular Languages': this.POPULAR_LANGUAGES,
-            }}
+            popularLanguageList={this.POPULAR_LANGUAGES}
+            allLanguageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
         </div>

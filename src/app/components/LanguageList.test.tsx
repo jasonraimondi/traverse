@@ -7,10 +7,12 @@ import { LanguageList } from './LanguageList';
 describe('<LanguageList />', () => {
   test('loads all languages', () => {
     const ALL_LANGUAGES = require('../../infrastructure/data/all-languages.json');
+    const POPULAR_LANGUAGES = require('../../infrastructure/data/popular-languages.json');
     const HANDLE_SET_LANGUAGE = jest.fn();
     const component = mount(<LanguageList
       selectedLanguage='typescript'
-      languageList={ALL_LANGUAGES}
+      allLanguageList={ALL_LANGUAGES}
+      popularLanguageList={POPULAR_LANGUAGES}
       handleSetLanguage={HANDLE_SET_LANGUAGE}
     />);
 

@@ -7,27 +7,25 @@ export interface ILanguage {
 }
 
 interface IProps {
-  languageList: {
-    [name: string]: ILanguage[],
-  };
+  allLanguageList: ILanguage[],
+  popularLanguageList: ILanguage[],
   selectedLanguage: string;
   handleSetLanguage: (language: string) => void;
 }
 
+type selectedLanguageListType = 'all' | 'popular';
+
 interface IState {
-  languageListType: 'all' | 'popular';
+  selectedLanguageListType: selectedLanguageListType;
   selectedLanguage: string;
 }
 
 export class LanguageList extends React.Component<IProps, IState> {
-  public readonly ALL_LANGUAGES_KEY = 'All Languages';
-  public readonly POPULAR_LANGUAGES_KEY = 'Popular Languages';
-
   constructor(props: IProps) {
     super(props);
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
     this.state = {
-      languageListType: 'popular',
+      selectedLanguageListType: 'popular',
       selectedLanguage: props.selectedLanguage,
     };
   }
@@ -37,10 +35,10 @@ export class LanguageList extends React.Component<IProps, IState> {
   }
 
   get languageList() {
-    let languageList = this.props.languageList[this.POPULAR_LANGUAGES_KEY];
+    let languageList = this.props.popularLanguageList;
 
-    if (this.state.languageListType === 'all') {
-      languageList = this.props.languageList[this.ALL_LANGUAGES_KEY];
+    if (this.state.selectedLanguageListType === 'all') {
+      languageList = this.props.allLanguageList;
     }
 
     return languageList.map((language, idx) => {
@@ -59,13 +57,13 @@ export class LanguageList extends React.Component<IProps, IState> {
     return (
       <div id='language-container'>
         <div id='language-list-type'>
-          <a className={this.state.languageListType === 'all' ? 'selected' : null}
-             onClick={() => this.setState({ languageListType: 'all' })}
+          <a className={this.state.selectedLanguageListType === 'all' ? 'selected' : null}
+             onClick={() => this.setState({ selectedLanguageListType: 'all' })}
           >
             ALL
           </a>
-          <a className={this.state.languageListType === 'popular' ? 'selected' : null}
-             onClick={() => this.setState({ languageListType: 'popular' })}
+          <a className={this.state.selectedLanguageListType === 'popular' ? 'selected' : null}
+             onClick={() => this.setState({ selectedLanguageListType: 'popular' })}
           >
             POPULAR
           </a>
