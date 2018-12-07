@@ -17,6 +17,6 @@ describe('SetFrequencyAction', () => {
 
     store.dispatch(SetFrequencyAction(frequency));
 
-    assert.deepEqual(store.getActions(), expectedActions);
+    assert.deepStrictEqual(store.getActions(), expectedActions);
   });
 });

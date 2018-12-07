@@ -16,6 +16,6 @@ describe('SetLanguageAction', () => {
 
     store.dispatch(SetLanguageAction(language));
 
-    assert.deepEqual(store.getActions(), expectedActions);
+    assert.deepStrictEqual(store.getActions(), expectedActions);
   });
 });

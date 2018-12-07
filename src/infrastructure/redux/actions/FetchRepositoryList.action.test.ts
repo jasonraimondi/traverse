@@ -24,13 +24,13 @@ describe('FetchRepositoryListAction', () => {
     } as FetchRepositoryListActionFields;
     const expectedActions = [FetchRepositoryListAction(fields)];
     store.dispatch(FetchRepositoryListAction(fields));
-    assert.deepEqual(store.getActions(), expectedActions);
+    assert.deepStrictEqual(store.getActions(), expectedActions);
   });
 
   test('FetchRepositoryListFailureAction returns error', () => {
     const errorMessage = 'I failed!';
     const expectedActions = [FetchRepositoryListFailureAction(errorMessage)];
     store.dispatch(FetchRepositoryListFailureAction(errorMessage));
-    assert.deepEqual(store.getActions(), expectedActions);
+    assert.deepStrictEqual(store.getActions(), expectedActions);
   });
 });

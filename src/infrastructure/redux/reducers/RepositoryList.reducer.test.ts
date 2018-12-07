@@ -7,7 +7,7 @@ describe('RepositoryList Reducer', () => {
   test('INITIAL_STATE for repository list is blank', () => {
     const action = { type: undefined };
     const initialState = {};
-    assert.deepEqual(repositoryListReducer(undefined, action), initialState);
+    assert.deepStrictEqual(repositoryListReducer(undefined, action), initialState);
   });
 
   test('FETCH_REPOSITORY_LIST_SUCCESS updates the repository list reducer properly', () => {

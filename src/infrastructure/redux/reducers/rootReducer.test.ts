@@ -9,6 +9,6 @@ describe('rootReducer.ts', () => {
 
     assert.equal(store.getState().language, '');
     assert.equal(store.getState().frequency, 'weekly');
-    assert.deepEqual(store.getState().repositoryList, {});
+    assert.deepStrictEqual(store.getState().repositoryList, {});
   });
 });

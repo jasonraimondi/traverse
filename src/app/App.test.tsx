@@ -41,8 +41,8 @@ describe('<App />', () => {
 
     const frequency = 'monthly';
 
-    assert.deepEqual(store.getActions()[0], SetFrequencyAction(frequency));
-    assert.deepEqual(store.getActions()[1], FetchRepositoryListAction({
+    assert.deepStrictEqual(store.getActions()[0], SetFrequencyAction(frequency));
+    assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({
       language: INITIAL_STATE.language,
       frequency,
     }));
@@ -56,8 +56,8 @@ describe('<App />', () => {
 
     const language = 'ActionScript';
 
-    assert.deepEqual(store.getActions()[0], SetLanguageAction(language));
-    assert.deepEqual(store.getActions()[1], FetchRepositoryListAction({
+    assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
+    assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({
       language,
       frequency: INITIAL_STATE.frequency,
     } as FetchRepositoryListActionFields));
