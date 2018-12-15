@@ -1,18 +1,23 @@
 {
   "name": "@jmondi/typescript-react-starter",
   "description": "Typescript Webpack Starter Pack",
+  "version": "0.0.1-rc.1",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "run-s webpack:prod builder",
     "clean": "rm -rf dist/*",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prestart": "run-s clean build:prod",
-    "start": "run-p build:main-dev build:renderer-dev serve",
+    "prestart": "run-s clean webpack:prod",
+    "start": "run-p webpack:main-dev webpack:renderer-dev serve",
     "serve": "electron ./dist",
-    "build:main-dev": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --watch --config build/webpack.main.ts",
-    "build:renderer-dev": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --watch --config build/webpack.renderer.ts",
-    "build:prod": "run-p build:main-prod build:renderer-prod",
-    "build:main-prod": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json NODE_ENV=production webpack --config build/webpack.main.ts",
-    "build:renderer-prod": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json NODE_ENV=production webpack --config build/webpack.renderer.ts"
+    "builder": "electron-builder --config electron-builder.yml",
+    "builder:publish": "electron-builder --config electron-builder.yml -p always",
+    "webpack:main-dev": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --watch --config build/webpack.main.ts",
+    "webpack:renderer-dev": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --watch --config build/webpack.renderer.ts",
+    "webpack:prod": "run-p webpack:main-prod webpack:renderer-prod",
+    "webpack:main-prod": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json NODE_ENV=production webpack --config build/webpack.main.ts",
+    "webpack:renderer-prod": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json NODE_ENV=production webpack --config build/webpack.renderer.ts"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.13",
@@ -28,6 +33,7 @@
     "css-loader": "^0.28.11",
     "dayjs": "^1.7.5",
     "electron": "^3.0.0-beta.8",
+    "electron-builder": "^20.38.3",
     "electron-devtools-installer": "^2.2.4",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.2.0",

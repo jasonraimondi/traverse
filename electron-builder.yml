@@ -1,0 +1,45 @@
+appId: site.traverse.app
+productName: Traverse
+copyright: Copyright © 2018 Digital Canvas Design, LLC
+
+directories:
+#  buildResources: resources/
+  output: dist-build/
+
+files:
+  - package.json
+  - node_modules/**/*
+  - dist/**/*
+
+mac:
+  target:
+    - zip
+    - dmg
+  category: public.app-category.productivity
+  electronUpdaterCompatibility: '>=2.16.0'
+
+#win:
+#  target: nsis
+
+dmg:
+  contents:
+    - type: link
+      path: /Applications
+      x: 410
+      y: 150
+    - type: file
+      x: 130
+      y: 150
+
+publish:
+  provider: github
+  repo: traverse
+  owner: jasonraimondi
+
+asar: true
+
+
+#linux:
+#  target:
+#    - deb
+#    - AppImage

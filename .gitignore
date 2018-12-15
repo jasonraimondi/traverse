@@ -1,4 +1,6 @@
+.env.sh
 dist/
+dist-build/
 node_modules/
 
 coverage/
