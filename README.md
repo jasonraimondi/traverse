@@ -46,6 +46,21 @@ If you are using an IntelliJ IDE, you should see an option for 'Unit Tests' in t
 
 ![IntelliJ Unit Test Runner](https://i.imgur.com/6nw5rvZ.png)
 
+### Building
+
+First you need to create a personal access token with the "repo" scope selected. Copy this access token, we are going to need to add it as `GH_TOKEN` in our [.env.sh](.env.sample.sh).
+
+```
+cp .env.sample.sh .env.sh
+vim .env.sh
+```
+
+After you add your token, make sure the [package.json](./package.json) version is updated.
+
+```
+./publish.sh
+```
+
 ### Screen Shots
 
 ![Preview 1](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_600/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-1.png)
