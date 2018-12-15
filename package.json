@@ -1,7 +1,7 @@
 {
   "name": "@jmondi/typescript-react-starter",
   "description": "Typescript Webpack Starter Pack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "run-s webpack:prod builder",
