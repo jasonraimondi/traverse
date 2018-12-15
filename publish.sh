@@ -6,6 +6,11 @@ then
   exit 1
 fi
 
+if [ ! -f ./.env.sh ]; then
+    echo ".env.sh not found"
+    exit 1
+fi
+
 source ./.env.sh
 
 npm install
