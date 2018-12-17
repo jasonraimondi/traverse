@@ -7,7 +7,7 @@
     <a href="https://codeclimate.com/github/jasonraimondi/traverse/maintainability"><img src="https://api.codeclimate.com/v1/badges/ad2b588b8f655bc8f384/maintainability" alt="Maintainability" /></a>
 </h1>
 
-Traverse is a GitHub explorer. You can browse repositories trending by frequency and language.
+[Traverse](https://traverse.site) is a GitHub explorer. You can browse repositories trending by frequency and language.
 
 ## Why?
 
