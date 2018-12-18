@@ -24,6 +24,31 @@ interface IProps {
   FetchRepositoryListAction: FetchRepositoryListActionType;
 }
 
+const Main = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: purple;
+  overflow: hidden;
+`;
+
+const Title = styled.div`
+  height: 43px;
+`;
+
+const AppContainer = styled.div`
+  flex: 1;
+  display: flex;
+`;
+
+const LanguageContainer = styled.div`
+  flex: 1;
+`;
+
+const RepoListContainer = styled.div`
+  flex: 2;
+`;
+
 class App extends React.Component<IProps> {
   private readonly ALL_LANGUAGES = require('../infrastructure/data/all-languages.json');
   private readonly POPULAR_LANGUAGES = require('../infrastructure/data/popular-languages.json');
@@ -59,25 +84,23 @@ class App extends React.Component<IProps> {
 
   public render() {
     return (
-      <main id='main-container'>
-        <div id='main-title'>
-          <TitleBar frequency={this.props.frequency} language={this.props.language} />
-        </div>
-        <div id='app-container'>
-          <div id='app-navigation'>
-            <LanguageList
-              selectedLanguage={this.props.language}
-              popularLanguageList={this.POPULAR_LANGUAGES}
-              allLanguageList={this.ALL_LANGUAGES}
-              handleSetLanguage={this.handleSetLanguage}
-            />
-          </div>
-          <div id='app-content'>
+      <Main>
+        <Title>
+          <TitleBar frequency={this.props.frequency} language={this.props.language}/>
+        </Title>
+        <AppContainer>
+          <LanguageList
+            selectedLanguage={this.props.language}
+            popularLanguageList={this.POPULAR_LANGUAGES}
+            allLanguageList={this.ALL_LANGUAGES}
+            handleSetLanguage={this.handleSetLanguage}
+          />
+          <RepoListContainer>
             <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
             <RepositoryList repositoryList={this.props.repositoryList}/>
-          </div>
-        </div>
-      </main>
+          </RepoListContainer>
+        </AppContainer>
+      </Main>
     );
   }
 }
