@@ -11,9 +11,9 @@ describe('media-queries', () => {
 
     const mq = mediaQueries(screenSizes);
 
-    assert.equal(mq.smallOnly, 'screen and (max-width: 100px)');
-    assert.equal(mq.small, 'screen and (min-width: 101px)');
-    assert.equal(mq.mediumOnly, 'screen and (max-width: 200px)');
-    assert.equal(mq.medium, 'screen and (min-width: 201px)');
+    assert.strictEqual(mq.smallOnly, 'screen and (max-width: 100px)');
+    assert.strictEqual(mq.small, 'screen and (min-width: 101px)');
+    assert.strictEqual(mq.mediumOnly, 'screen and (max-width: 200px)');
+    assert.strictEqual(mq.medium, 'screen and (min-width: 201px)');
   });
 });

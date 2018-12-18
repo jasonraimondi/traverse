@@ -8,13 +8,13 @@ describe('Language Reducer', () => {
     const action = { type: undefined };
     const initialState = '';
 
-    assert.equal(languageReducer(undefined, action), initialState);
+    assert.strictEqual(languageReducer(undefined, action), initialState);
   });
 
   test('SET_LANGUAGE updates the language reducer properly', () => {
     const action = SetLanguageAction('javascript');
     const expectedState = 'javascript';
 
-    assert.equal(languageReducer(undefined, action), expectedState);
+    assert.strictEqual(languageReducer(undefined, action), expectedState);
   });
 });

@@ -12,7 +12,7 @@ describe('<Frequency />', () => {
     component.find('#select-monthly').simulate('click');
 
     assert.lengthOf(component.find('#frequency-list').children(), 4);
-    assert.equal(component.find('#frequency-list').children().get(0).key, 'daily');
-    assert.equal(component.find('#frequency-list').children().get(1).key, 'weekly');
+    assert.strictEqual(component.find('#frequency-list').children().get(0).key, 'daily');
+    assert.strictEqual(component.find('#frequency-list').children().get(1).key, 'weekly');
   });
 });

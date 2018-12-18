@@ -29,8 +29,8 @@ describe('<App />', () => {
 
   test('renders viewport content correctly', () => {
     const app = mount(<App store={store}/>);
-    assert.equal(app.find('.name').first().text(), 'Unknown');
-    assert.equal(app.find('.language').first().text(), 'Unknown');
+    assert.strictEqual(app.find('.name').first().text(), 'Unknown');
+    assert.strictEqual(app.find('.language').first().text(), 'Unknown');
   });
 
   test('selecting frequency runs set action and fetch repository list action', () => {
