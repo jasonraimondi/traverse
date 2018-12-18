@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+
 import { fetchRepositoryListFromGithub } from '@/infrastructure/github/fetchRepositoryListFromGithub';
 import {
   FETCH_REPOSITORY_LIST,

@@ -1,8 +1,8 @@
 import { assert } from 'chai';
 import configureStore from 'redux-mock-store';
 
-import { FrequencyType } from '@/models/Frequency.type';
 import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequency.action';
+import { FrequencyType } from '@/models/Frequency.type';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

@@ -1,5 +1,5 @@
-import { FrequencyType } from '@/models/Frequency.type';
 import { SET_FREQUENCY } from '@/infrastructure/redux/actions/SetFrequency.action';
+import { FrequencyType } from '@/models/Frequency.type';
 
 const INITIAL_STATE: FrequencyType = 'weekly';
 

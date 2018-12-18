@@ -12,6 +12,9 @@ export const baseConfig: Configuration = {
     path: projectRoot + '/dist',
   },
   resolve: {
+    alias: {
+      '@': projectRoot + '/src',
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { SetFrequencyAction } from '@/Infrastructure/redux/actions/SetFrequency.action';
-import { frequencyReducer } from '@/Infrastructure/redux/reducers/Frequency.reducer';
+import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequency.action';
+import { frequencyReducer } from '@/infrastructure/redux/reducers/Frequency.reducer';
 
 describe('Frequency Reducer', () => {
   test('INITIAL_STATE is set to weekly', () => {

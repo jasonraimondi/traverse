@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

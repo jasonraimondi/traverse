@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { RepositoryEntity } from '@/models/Repository.entity';
 import { Repository } from '@/app/components/Repository';
+import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface IProps {
   repositoryList: { [id: string]: RepositoryEntity };

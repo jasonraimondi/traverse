@@ -6,8 +6,8 @@ export interface ILanguage {
 }
 
 interface IProps {
-  allLanguageList: ILanguage[],
-  popularLanguageList: ILanguage[],
+  allLanguageList: ILanguage[];
+  popularLanguageList: ILanguage[];
   selectedLanguage: string;
   handleSetLanguage: (language: string) => void;
 }

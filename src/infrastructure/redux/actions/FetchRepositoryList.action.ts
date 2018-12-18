@@ -1,6 +1,6 @@
+import { IActionResponse } from '@/infrastructure/redux/action-response';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
-import { IActionResponse } from '@/infrastructure/redux/action-response';
 
 export const FETCH_REPOSITORY_LIST = '[REPOSITORY LIST] fetch';
 export const FETCH_REPOSITORY_LIST_SUCCESS = '[REPOSITORY LIST] fetch - success';
