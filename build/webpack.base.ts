@@ -12,7 +12,7 @@ export const baseConfig: Configuration = {
     path: projectRoot + '/dist',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
     rules: [

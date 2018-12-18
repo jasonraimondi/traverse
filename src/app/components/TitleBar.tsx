@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { FrequencyType } from '../../models/Frequency.type';
-import './TitleBar.pcss';
 
 interface IProps {
   frequency: FrequencyType;

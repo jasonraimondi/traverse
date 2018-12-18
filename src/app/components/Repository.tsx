@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { RepositoryEntity } from '../../models/Repository.entity';
-import './Repository.pcss';
 
 interface InferProps {
   repository: RepositoryEntity;

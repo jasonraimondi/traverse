@@ -1,10 +1,8 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration } from 'webpack';
 import { smart } from 'webpack-merge';
-import postCssConfig from '../build/postcss.config';
 
-import { baseConfig, devMode, projectRoot } from './webpack.base';
+import { baseConfig, projectRoot } from './webpack.base';
 
 export default smart(baseConfig, {
   target: 'electron-renderer',
@@ -13,19 +11,6 @@ export default smart(baseConfig, {
   },
   module: {
     rules: [
-      {
-        test: /\.p?css$/,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: postCssConfig,
-            },
-          },
-        ],
-      },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
@@ -42,10 +27,6 @@ export default smart(baseConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       template: projectRoot + '/index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
     }),
   ],
 } as Configuration);

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
 } from '../infrastructure/redux/actions/FetchRepositoryList.action';
-
 import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/redux/actions/SetFrequency.action';
 import { SetLanguageAction, SetLanguageActionType } from '../infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '../models/Frequency.type';
-import './App.pcss';
 import { Frequency } from './components/Frequency';
 import { LanguageList } from './components/LanguageList';
 import { RepositoryList } from './components/RepositoryList';
