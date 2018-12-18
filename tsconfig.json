@@ -8,6 +8,11 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    },
     "sourceMap": true,
     "target": "es6",
     "typeRoots": [

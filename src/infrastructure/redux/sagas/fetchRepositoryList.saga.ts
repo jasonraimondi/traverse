@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchRepositoryListFromGithub } from '../../github/fetchRepositoryListFromGithub';
+import { fetchRepositoryListFromGithub } from '@/infrastructure/github/fetchRepositoryListFromGithub';
 import {
   FETCH_REPOSITORY_LIST,
   FetchRepositoryListActionFields,
   FetchRepositoryListFailureAction,
   FetchRepositoryListSuccessAction,
-} from '../actions/FetchRepositoryList.action';
+} from '@/infrastructure/redux/actions/FetchRepositoryList.action';
 
 export function* fetchRepositoryListSaga() {
   yield takeEvery(FETCH_REPOSITORY_LIST, fetchRepositoryList);

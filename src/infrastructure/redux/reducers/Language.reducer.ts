@@ -1,4 +1,4 @@
-import { SET_LANGUAGE } from '../actions/SetLanguage.action';
+import { SET_LANGUAGE } from '@/infrastructure/redux/actions/SetLanguage.action';
 
 // blank string = all languages
 const INITIAL_STATE = '';

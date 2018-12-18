@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as dayjs from 'dayjs';
 
-import { FrequencyType, frequencyTypeDate } from '../../models/Frequency.type';
-import { GitHubRest } from './GitHubRest';
+import { FrequencyType, frequencyTypeDate } from '@/models/Frequency.type';
+import { GitHubRest } from '@/infrastructure/github/GitHubRest';
 
 export type Sort = 'stars' | 'forks' | 'updated';
 export type Order = 'asc' | 'desc';

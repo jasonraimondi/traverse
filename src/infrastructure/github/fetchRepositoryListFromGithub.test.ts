@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import * as dayjs from 'dayjs';
 
-import { trendingGitHubQueryString } from './fetchRepositoryListFromGithub';
+import { trendingGitHubQueryString } from '@/infrastructure/github/fetchRepositoryListFromGithub';
 
 describe('fetchRepositoryListFromGithub', () => {
   test('GitHub query string is formatted properly', () => {

@@ -1,5 +1,6 @@
 import { assert } from 'chai';
-import { GitHubRest } from './GitHubRest';
+
+import { GitHubRest } from '@/infrastructure/github/GitHubRest';
 
 describe('GitHubRest', () => {
   test('GitHubRest with additional params and headers', () => {

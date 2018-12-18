@@ -1,4 +1,4 @@
-import { IActionResponse } from '../action-response';
+import { IActionResponse } from '@/infrastructure/redux/action-response';
 
 export const SET_LANGUAGE = '[LANGUAGE] Set';
 

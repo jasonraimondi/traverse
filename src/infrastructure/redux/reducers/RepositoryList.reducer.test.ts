@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { FetchRepositoryListSuccessAction } from '../actions/FetchRepositoryList.action';
-import { repositoryListReducer } from './RepositoryList.reducer';
+import { FetchRepositoryListSuccessAction } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
+import { repositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 
 describe('RepositoryList Reducer', () => {
   test('INITIAL_STATE for repository list is blank', () => {

@@ -1,4 +1,4 @@
-import './infrastructure/electron/openLinkExternally';
+import '@/infrastructure/electron/openLinkExternally';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

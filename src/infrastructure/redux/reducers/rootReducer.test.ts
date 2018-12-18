@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { createStore } from 'redux';
 
-import { rootReducer } from './rootReducer';
+import { rootReducer } from '@/infrastructure/redux/reducers/rootReducer';
 
 describe('rootReducer.ts', () => {
   test('rootReducer is initialized', () => {

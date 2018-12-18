@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { SetLanguageAction } from '../actions/SetLanguage.action';
-import { languageReducer } from './Language.reducer';
+import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
+import { languageReducer } from '@/infrastructure/redux/reducers/Language.reducer';
 
 describe('Language Reducer', () => {
   test('INITIAL_STATE language is blank string', () => {

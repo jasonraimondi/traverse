@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FrequencyType } from '../../models/Frequency.type';
+import { FrequencyType } from '@/models/Frequency.type';
 
 interface IProps {
   frequency: FrequencyType;

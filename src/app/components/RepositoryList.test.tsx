@@ -1,9 +1,9 @@
 import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { RepositoryEntity } from '../../models/Repository.entity';
 
-import { RepositoryList } from './RepositoryList';
+import { RepositoryList } from '@/app/components/RepositoryList';
+import { RepositoryEntity } from '@/models/Repository.entity';
 
 describe('<RepositoryList />', () => {
   test('displays list items', () => {

@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { Frequency } from '@/app/components/Frequency';
+import { LanguageList } from '@/app/components/LanguageList';
+import { RepositoryList } from '@/app/components/RepositoryList';
+import { TitleBar } from '@/app/components/TitleBar';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
-} from '../infrastructure/redux/actions/FetchRepositoryList.action';
-import { SetFrequencyAction, SetFrequencyActionType } from '../infrastructure/redux/actions/SetFrequency.action';
-import { SetLanguageAction, SetLanguageActionType } from '../infrastructure/redux/actions/SetLanguage.action';
-import { FrequencyType } from '../models/Frequency.type';
-import { Frequency } from './components/Frequency';
-import { LanguageList } from './components/LanguageList';
-import { RepositoryList } from './components/RepositoryList';
-import { TitleBar } from './components/TitleBar';
+} from '@/infrastructure/redux/actions/FetchRepositoryList.action';
+import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequency.action';
+import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
+import { FrequencyType } from '@/models/Frequency.type';
 
 interface IProps {
   repositoryList: any;
@@ -50,8 +50,8 @@ const RepoListContainer = styled.div`
 `;
 
 class App extends React.Component<IProps> {
-  private readonly ALL_LANGUAGES = require('../infrastructure/data/all-languages.json');
-  private readonly POPULAR_LANGUAGES = require('../infrastructure/data/popular-languages.json');
+  private readonly ALL_LANGUAGES = require('@/infrastructure/data/all-languages.json');
+  private readonly POPULAR_LANGUAGES = require('@/infrastructure/data/popular-languages.json');
 
   constructor(props) {
     super(props);

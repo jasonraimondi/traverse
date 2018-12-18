@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import configureStore from 'redux-mock-store';
 
-import { SetLanguageAction } from './SetLanguage.action';
+import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

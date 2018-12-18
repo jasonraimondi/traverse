@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { Frequency } from './Frequency';
+import { Frequency } from '@/app/components/Frequency';
 
 describe('<Frequency />', () => {
   test('displays correct frequency', () => {

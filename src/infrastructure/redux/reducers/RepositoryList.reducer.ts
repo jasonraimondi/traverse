@@ -1,5 +1,5 @@
-import { RepositoryEntity } from '../../../models/Repository.entity';
-import { FETCH_REPOSITORY_LIST_SUCCESS } from '../actions/FetchRepositoryList.action';
+import { RepositoryEntity } from '@/models/Repository.entity';
+import { FETCH_REPOSITORY_LIST_SUCCESS } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
 
 const INITIAL_STATE = {};
 

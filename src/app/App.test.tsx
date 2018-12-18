@@ -3,14 +3,14 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import configureStore from 'redux-mock-store';
 
+import App from '@/app/App';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionFields,
-} from '../infrastructure/redux/actions/FetchRepositoryList.action';
-import { SetFrequencyAction } from '../infrastructure/redux/actions/SetFrequency.action';
-import { SetLanguageAction } from '../infrastructure/redux/actions/SetLanguage.action';
-import { RepositoryEntity } from '../models/Repository.entity';
-import App from './App';
+} from '@/infrastructure/redux/actions/FetchRepositoryList.action';
+import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequency.action';
+import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
+import { RepositoryEntity } from '@/models/Repository.entity';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {

@@ -2,8 +2,8 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { RepositoryEntity } from '../../models/Repository.entity';
-import { Repository } from './Repository';
+import { RepositoryEntity } from '@/models/Repository.entity';
+import { Repository } from '@/app/components/Repository';
 
 describe('<Repository />', () => {
   test('displays list items', () => {

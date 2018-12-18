@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-import { TitleBar } from './TitleBar';
+import { TitleBar } from '@/app/components/TitleBar';
 
 describe('<TitleBar />', () => {
   test('displays list items', () => {

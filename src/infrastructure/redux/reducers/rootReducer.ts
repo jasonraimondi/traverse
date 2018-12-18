@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { frequencyReducer } from './Frequency.reducer';
-import { languageReducer } from './Language.reducer';
-import { repositoryListReducer } from './RepositoryList.reducer';
+import { frequencyReducer } from '@/infrastructure/redux/reducers/Frequency.reducer';
+import { languageReducer } from '@/infrastructure/redux/reducers/Language.reducer';
+import { repositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 
 export const rootReducer = combineReducers({
   language: languageReducer,
