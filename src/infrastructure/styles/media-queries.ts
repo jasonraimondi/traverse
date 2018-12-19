@@ -1,15 +1,13 @@
 import { css, DefaultTheme, ThemedCssFunction } from 'styled-components';
 
-import * as variables from '../data/variables.json';
-
 interface ScreenSizes {
   [size: string]: number;
 }
 
 type mqFuncType = (arg, ...args) => ThemedCssFunction<DefaultTheme>;
 
-interface ScreenSizesFunctions {
-  [size: string]: mqFuncType|any;
+export interface ScreenSizesFunctions {
+  [size: string]: mqFuncType | any;
 }
 
 const mqFunc: mqFuncType = (label: string) => {
@@ -22,7 +20,7 @@ const mqFunc: mqFuncType = (label: string) => {
   };
 };
 
-function mediaQueries(screenSizes: ScreenSizes): ScreenSizesFunctions {
+export function mediaQueries(screenSizes: ScreenSizes): ScreenSizesFunctions {
   const mq = {};
 
   for (const screen in screenSizes) {
@@ -35,9 +33,3 @@ function mediaQueries(screenSizes: ScreenSizes): ScreenSizesFunctions {
 
   return mq;
 }
-
-export const screens: ScreenSizesFunctions = mediaQueries(variables.screenSizes);
-
-console.log(
-  screens.smallOnly`background-color:red`,
-);

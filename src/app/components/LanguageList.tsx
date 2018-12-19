@@ -20,6 +20,14 @@ interface IState {
   selectedLanguage: string;
 }
 
+const LanguageSelect = styled.div`
+  margin: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+`;
+
 const List = styled.ul`
   list-style-type: none;
   padding-left: 0;
@@ -67,7 +75,7 @@ export class LanguageList extends React.Component<IProps, IState> {
     return languageList.map((language, idx) => {
       const selectedClass = this.state.selectedLanguage === language.value ? 'selected' : null;
       return (
-        <ListItem key={idx}>
+        <ListItem key={idx} className='language-list-item'>
           <Label className={selectedClass}
                  onClick={() => this.handleSetLanguage(language.value)}>
             {language.title}
@@ -80,7 +88,7 @@ export class LanguageList extends React.Component<IProps, IState> {
   public render() {
     return (
       <div id='language-container'>
-        <LanguageSelect>
+        <LanguageSelect id='language-list-type'>
           <a className={this.state.selectedLanguageListType === 'all' ? 'selected' : null}
              onClick={() => this.setState({selectedLanguageListType: 'all'})}
           >
@@ -99,11 +107,3 @@ export class LanguageList extends React.Component<IProps, IState> {
     );
   }
 }
-
-const LanguageSelect = styled.div`
-  margin: 0;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  background-color: blue;
-`;

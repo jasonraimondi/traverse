@@ -22,7 +22,7 @@ export class RepositoryEntity {
   }
 
   constructor(
-    public readonly id: string,
+    public readonly id: string|number,
     public readonly attributes?: RepositoryEntityAttributes,
   ) {
   }

@@ -64,7 +64,7 @@ export class Frequency extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <List>
+      <List id='frequency-list'>
         {this.list}
       </List>
     );

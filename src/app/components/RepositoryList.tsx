@@ -30,7 +30,7 @@ export class RepositoryList extends React.Component<IProps> {
 
   public render() {
     return (
-      <List>
+      <List id='repository-list'>
         {this.listItems}
       </List>
     );

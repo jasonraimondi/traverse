@@ -47,35 +47,35 @@ export class Repository extends React.Component<InferProps> {
 
   public get longName() {
     const longName = this.attributes ? this.attributes.longName : 'Unknown';
-    return <Name>{longName.replace('/', ' / ')}</Name>;
+    return <Name className='name'>{longName.replace('/', ' / ')}</Name>;
   }
 
   public get language() {
     const language = this.attributes && this.attributes.language !== null ? this.attributes.language : 'Unknown';
-    return <Language>{language}</Language>;
+    return <Language className='language'>{language}</Language>;
   }
 
   public get description() {
     const description = this.attributes ? this.attributes.description : false;
     if (description) {
-      return <Description>{description}</Description>;
+      return <Description className='description'>{description}</Description>;
     }
     return null;
   }
 
   public get forksCount() {
     const forksCount = this.attributes ? this.attributes.forksCount : false;
-    return <ForksCount>Forks: {forksCount}</ForksCount>;
+    return <ForksCount className='forks-count'>Forks: {forksCount}</ForksCount>;
   }
 
   public get watchersCount() {
     const watchersCount = this.attributes ? this.attributes.watchersCount : false;
-    return <WatchersCount>Watchers: {watchersCount}</WatchersCount>;
+    return <WatchersCount className='watchers-count'>Watchers: {watchersCount}</WatchersCount>;
   }
 
   public get stargazersCount() {
     const stargazersCount = this.attributes ? this.attributes.stargazersCount : false;
-    return <StargazersCount>Stargazers: {stargazersCount}</StargazersCount>;
+    return <StargazersCount className='stargazers-count'>Stargazers: {stargazersCount}</StargazersCount>;
   }
 
   public get htmlUrl() {
@@ -84,7 +84,7 @@ export class Repository extends React.Component<InferProps> {
 
   public render() {
     return (
-      <Item>
+      <Item className='repository-list-item'>
         <ItemHeader>
           <NameLink href={this.htmlUrl} className='open-link-externally'>
             {this.longName}
