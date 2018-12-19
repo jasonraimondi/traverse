@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 export interface ILanguage {
   title: string;
@@ -19,6 +20,29 @@ interface IState {
   selectedLanguage: string;
 }
 
+const List = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+`;
+
+const ListItem = styled.li`
+  padding: 7.5px 0;
+`;
+
+const Label = styled.button`
+  width: 100%;
+  color: black;
+  border: none;
+  border-radius: 19px;
+  &:active, &.selected {
+    text-decoration: underline;
+    outline: none;
+  }
+  &:hover {
+    color: grey;
+  }
+`;
+
 export class LanguageList extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
@@ -30,7 +54,7 @@ export class LanguageList extends React.Component<IProps, IState> {
   }
 
   public handleSetLanguage(language: string) {
-    this.setState({ selectedLanguage: language }, () => this.props.handleSetLanguage(language));
+    this.setState({selectedLanguage: language}, () => this.props.handleSetLanguage(language));
   }
 
   get languageList() {
@@ -43,11 +67,12 @@ export class LanguageList extends React.Component<IProps, IState> {
     return languageList.map((language, idx) => {
       const selectedClass = this.state.selectedLanguage === language.value ? 'selected' : null;
       return (
-        <li key={idx}
-            className='language-list-item'
-        >
-          <a className={selectedClass} onClick={() => this.handleSetLanguage(language.value)}>{language.title}</a>
-        </li>
+        <ListItem key={idx}>
+          <Label className={selectedClass}
+                 onClick={() => this.handleSetLanguage(language.value)}>
+            {language.title}
+          </Label>
+        </ListItem>
       );
     });
   }
@@ -55,22 +80,30 @@ export class LanguageList extends React.Component<IProps, IState> {
   public render() {
     return (
       <div id='language-container'>
-        <div id='language-list-type'>
+        <LanguageSelect>
           <a className={this.state.selectedLanguageListType === 'all' ? 'selected' : null}
-             onClick={() => this.setState({ selectedLanguageListType: 'all' })}
+             onClick={() => this.setState({selectedLanguageListType: 'all'})}
           >
             ALL
           </a>
           <a className={this.state.selectedLanguageListType === 'popular' ? 'selected' : null}
-             onClick={() => this.setState({ selectedLanguageListType: 'popular' })}
+             onClick={() => this.setState({selectedLanguageListType: 'popular'})}
           >
             POPULAR
           </a>
-        </div>
-        <ul id='language-list'>
+        </LanguageSelect>
+        <List id='language-list'>
           {this.languageList}
-        </ul>
+        </List>
       </div>
     );
   }
 }
+
+const LanguageSelect = styled.div`
+  margin: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+`;

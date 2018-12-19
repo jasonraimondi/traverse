@@ -12,7 +12,7 @@ function createWindow() {
     width: 600,
     titleBarStyle: 'hiddenInset',
     resizable: true,
-    backgroundColor: '#22292f',
+    // backgroundColor: '#22292f',
   });
 
   const filePath = format({

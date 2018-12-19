@@ -1,8 +1,11 @@
-import { resolve } from 'path';
-import { Configuration } from 'webpack';
+import {resolve} from 'path';
+import createStyledComponentsTransformer from 'typescript-plugin-styled-components';
+import {Configuration} from 'webpack';
 
 export const devMode = process.env.NODE_ENV !== 'production';
 export const projectRoot = resolve(__dirname, '../');
+
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 export const baseConfig: Configuration = {
   mode: devMode ? 'development' : 'production',
@@ -38,7 +41,16 @@ export const baseConfig: Configuration = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: ['ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              getCustomTransformers: () => ({
+                before: [styledComponentsTransformer],
+              }),
+            },
+          },
+        ],
       },
     ],
   },

@@ -1,7 +1,7 @@
 {
   "name": "@jmondi/typescript-react-starter",
   "description": "Typescript Webpack Starter Pack",
-  "version": "0.0.2",
+  "version": "0.0.3-rc.1",
   "main": "dist/index.js",
   "scripts": {
     "build": "run-s webpack:prod builder",
@@ -48,12 +48,14 @@
     "redux-mock-store": "^1.5.3",
     "redux-saga": "^0.16.2",
     "styled-components": "^4.1.3",
+    "styled-normalize": "^8.0.4",
     "ts-jest": "^23.10.5",
     "ts-loader": "^4.5.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^3.2.2",
+    "typescript-plugin-styled-components": "^1.0.0",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-merge": "^4.1.5"

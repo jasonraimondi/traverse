@@ -12,6 +12,7 @@ export class TitleBar extends React.Component<IProps> {
     return (
       <div className='title-bar'>
         <span className='selected-frequency'>{this.ucFirst(this.props.frequency)}</span>
+        &nbsp;
         <span className='selected-language'>{this.filterLanguage(this.props.language)}</span>
       </div>
     );

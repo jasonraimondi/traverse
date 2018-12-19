@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
+import { Normalize } from 'styled-normalize';
 
 import { Frequency } from '@/app/components/Frequency';
 import { LanguageList } from '@/app/components/LanguageList';
@@ -26,27 +27,39 @@ interface IProps {
 
 const Main = styled.main`
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: purple;
-  overflow: hidden;
+  width: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-areas:
+    "title title"
+    "sidebar content";
+  grid-template-rows: 43px 1fr;
+  grid-template-columns: 175px 1fr;
 `;
 
 const Title = styled.div`
-  height: 43px;
-`;
-
-const AppContainer = styled.div`
-  flex: 1;
+  grid-area: title;
+  -webkit-app-region: drag;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
 `;
 
-const LanguageContainer = styled.div`
-  flex: 1;
+const LanguageListContainer = styled.div`
+  grid-area: sidebar;
+  min-height: 0;
+  overflow-y: auto;
+  border-right: 2px solid black;
 `;
 
 const RepoListContainer = styled.div`
-  flex: 2;
+  grid-area: content;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 `;
 
 class App extends React.Component<IProps> {
@@ -84,23 +97,26 @@ class App extends React.Component<IProps> {
 
   public render() {
     return (
-      <Main>
-        <Title>
-          <TitleBar frequency={this.props.frequency} language={this.props.language}/>
-        </Title>
-        <AppContainer>
-          <LanguageList
-            selectedLanguage={this.props.language}
-            popularLanguageList={this.POPULAR_LANGUAGES}
-            allLanguageList={this.ALL_LANGUAGES}
-            handleSetLanguage={this.handleSetLanguage}
-          />
+      <>
+        <Normalize/>
+        <Main>
+          <Title>
+            <TitleBar frequency={this.props.frequency} language={this.props.language}/>
+          </Title>
+          <LanguageListContainer>
+            <LanguageList
+              selectedLanguage={this.props.language}
+              popularLanguageList={this.POPULAR_LANGUAGES}
+              allLanguageList={this.ALL_LANGUAGES}
+              handleSetLanguage={this.handleSetLanguage}
+            />
+          </LanguageListContainer>
           <RepoListContainer>
             <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
             <RepositoryList repositoryList={this.props.repositoryList}/>
           </RepoListContainer>
-        </AppContainer>
-      </Main>
+        </Main>
+      </>
     );
   }
 }
