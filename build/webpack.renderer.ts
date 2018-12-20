@@ -12,7 +12,7 @@ export default smart(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -21,6 +21,10 @@ export default smart(baseConfig, {
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: 'svg-inline-loader',
       },
     ],
   },

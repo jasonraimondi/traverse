@@ -2,12 +2,12 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { Frequency } from '@/app/components/Frequency';
+import { FrequencyPicker } from '@/app/components/FrequencyPicker';
 
-describe('<Frequency />', () => {
+describe('<FrequencyPicker />', () => {
   test('displays correct frequency', () => {
     const mockOnClick = jest.fn();
-    const component = shallow(<Frequency frequency='weekly' handleSetFrequency={mockOnClick}/>);
+    const component = shallow(<FrequencyPicker frequency='weekly' handleSetFrequency={mockOnClick}/>);
 
     component.find('#select-monthly').simulate('click');
 

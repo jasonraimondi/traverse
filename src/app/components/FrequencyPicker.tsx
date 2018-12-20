@@ -3,14 +3,20 @@ import styled from 'styled-components';
 
 import { FrequencyType } from '@/models/Frequency.type';
 
-interface IProps {
+interface Props {
   frequency: FrequencyType;
   handleSetFrequency: (frequency: FrequencyType) => void;
 }
 
-interface IState {
+interface State {
   frequency: FrequencyType;
 }
+
+const Banner = styled.div`
+  background-color: blue;
+  height: 40px;
+  width: 100%;
+`;
 
 const List = styled.ul`
   list-style-type: none;
@@ -18,7 +24,6 @@ const List = styled.ul`
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
-  background-color: blue;
 `;
 
 const ListItem = styled.li`
@@ -37,8 +42,8 @@ const Label = styled.button`
   }
 `;
 
-export class Frequency extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+export class FrequencyPicker extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
     this.state = {
@@ -64,9 +69,11 @@ export class Frequency extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <List id='frequency-list'>
-        {this.list}
-      </List>
+      <Banner>
+        <List id='frequency-list'>
+          {this.list}
+        </List>
+      </Banner>
     );
   }
 }

@@ -1,10 +1,12 @@
+import { LanguagePicker, ListType } from '@/app/components/LanguagePicker';
+import { RepositoryEntity } from '@/models/Repository.entity';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Normalize } from 'styled-normalize';
 
-import { Frequency } from '@/app/components/Frequency';
+import { FrequencyPicker } from '@/app/components/FrequencyPicker';
 import { LanguageList } from '@/app/components/LanguageList';
 import { RepositoryList } from '@/app/components/RepositoryList';
 import { TitleBar } from '@/app/components/TitleBar';
@@ -16,8 +18,8 @@ import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/red
 import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '@/models/Frequency.type';
 
-interface IProps {
-  repositoryList: any;
+interface Props {
+  repositoryList: { [id: string]: RepositoryEntity };
   frequency: FrequencyType;
   language: string;
   SetLanguageAction: SetLanguageActionType;
@@ -52,6 +54,9 @@ const LanguageListContainer = styled.div`
   min-height: 0;
   overflow-y: auto;
   border-right: 2px solid black;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
 `;
 
 const RepoListContainer = styled.div`
@@ -62,7 +67,11 @@ const RepoListContainer = styled.div`
   min-height: 0;
 `;
 
-class App extends React.Component<IProps> {
+interface State {
+  selectedLanguageListType: 'all'|'popular';
+}
+
+class App extends React.Component<Props, State> {
   private readonly ALL_LANGUAGES = require('@/infrastructure/data/all-languages.json');
   private readonly POPULAR_LANGUAGES = require('@/infrastructure/data/popular-languages.json');
 
@@ -70,6 +79,10 @@ class App extends React.Component<IProps> {
     super(props);
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
+    this.handleSetLanguageList = this.handleSetLanguageList.bind(this);
+    this.state = {
+      selectedLanguageListType: 'all',
+    };
   }
 
   public componentDidMount() {
@@ -94,6 +107,9 @@ class App extends React.Component<IProps> {
       frequency: this.props.frequency,
     });
   }
+  public handleSetLanguageList(listType: ListType) {
+    this.setState({ selectedLanguageListType: listType });
+  }
 
   public render() {
     return (
@@ -104,7 +120,11 @@ class App extends React.Component<IProps> {
             <TitleBar frequency={this.props.frequency} language={this.props.language}/>
           </Title>
           <LanguageListContainer id='language-container'>
+            <LanguagePicker selected={this.state.selectedLanguageListType}
+                            handleSetLanguageList={this.handleSetLanguageList}
+            />
             <LanguageList
+              selectedLanguageListType={this.state.selectedLanguageListType}
               selectedLanguage={this.props.language}
               popularLanguageList={this.POPULAR_LANGUAGES}
               allLanguageList={this.ALL_LANGUAGES}
@@ -112,7 +132,7 @@ class App extends React.Component<IProps> {
             />
           </LanguageListContainer>
           <RepoListContainer>
-            <Frequency frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+            <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
             <RepositoryList repositoryList={this.props.repositoryList}/>
           </RepoListContainer>
         </Main>

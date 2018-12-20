@@ -10,6 +10,7 @@ describe('<LanguageList />', () => {
     const POPULAR_LANGUAGES = require('@/infrastructure/data/popular-languages.json');
     const HANDLE_SET_LANGUAGE = jest.fn();
     const component = mount(<LanguageList
+      selectedLanguageListType='popular'
       selectedLanguage='typescript'
       allLanguageList={ALL_LANGUAGES}
       popularLanguageList={POPULAR_LANGUAGES}

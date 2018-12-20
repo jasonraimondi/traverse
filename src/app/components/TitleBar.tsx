@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { FrequencyType } from '@/models/Frequency.type';
 
-interface IProps {
+interface Props {
   frequency: FrequencyType;
   language: string;
 }
 
-export class TitleBar extends React.Component<IProps> {
+export class TitleBar extends React.Component<Props> {
   public render() {
     return (
       <div className='title-bar'>

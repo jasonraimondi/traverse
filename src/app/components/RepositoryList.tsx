@@ -4,7 +4,7 @@ import { Repository } from '@/app/components/Repository';
 import { RepositoryEntity } from '@/models/Repository.entity';
 import styled from 'styled-components';
 
-interface IProps {
+interface Props {
   repositoryList: { [id: string]: RepositoryEntity };
 }
 
@@ -16,8 +16,8 @@ const List = styled.ul`
   overflow-y: auto;
 `;
 
-export class RepositoryList extends React.Component<IProps> {
-  constructor(props: IProps) {
+export class RepositoryList extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 

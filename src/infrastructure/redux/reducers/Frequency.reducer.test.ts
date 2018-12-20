@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequency.action';
 import { frequencyReducer } from '@/infrastructure/redux/reducers/Frequency.reducer';
 
-describe('Frequency Reducer', () => {
+describe('FrequencyPicker Reducer', () => {
   test('INITIAL_STATE is set to weekly', () => {
     const action = { type: undefined };
     const initialState = 'weekly';

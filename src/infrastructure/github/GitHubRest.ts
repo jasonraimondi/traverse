@@ -1,4 +1,4 @@
-interface IProps {
+interface Props {
   [name: string]: string;
 }
 
@@ -6,7 +6,7 @@ interface IHeaders {
   [name: string]: string;
 }
 
-export function GitHubRest(path: string, params?: IProps, headers?: IHeaders, accessToken?: string) {
+export function GitHubRest(path: string, params?: Props, headers?: IHeaders, accessToken?: string) {
   params = {
     ...params,
   };
