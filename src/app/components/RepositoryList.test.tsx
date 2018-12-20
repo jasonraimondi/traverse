@@ -9,6 +9,6 @@ describe('<RepositoryList />', () => {
   test('displays list items', () => {
     const list = { abc: new RepositoryEntity('abc'), def: new RepositoryEntity('def') };
     const component = mount(<RepositoryList repositoryList={list}/>);
-    assert.lengthOf(component.find('.repository-list-item'), 2);
+    assert.lengthOf(component.find('li.repository-list-item'), 2);
   });
 });

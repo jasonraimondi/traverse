@@ -18,6 +18,6 @@ describe('<LanguageList />', () => {
 
     component.setState({  selectedLanguageListType: 'all'});
 
-    assert.lengthOf(component.find('.language-list-item'), 304);
+    assert.lengthOf(component.find('li.language-list-item'), 304);
   });
 });

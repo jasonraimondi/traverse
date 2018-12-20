@@ -37,7 +37,7 @@ describe('<App />', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
-    app.find('#select-monthly').simulate('click');
+    app.find('button#select-monthly').simulate('click');
 
     const frequency = 'monthly';
 
@@ -52,7 +52,7 @@ describe('<App />', () => {
     const app = mount(<App store={store}/>);
     store.clearActions();
 
-    app.find('.language-list-item a').at(2).simulate('click');
+    app.find('li.language-list-item button').at(2).simulate('click');
 
     const language = 'CSharp';
 
