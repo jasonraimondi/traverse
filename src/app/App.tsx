@@ -103,7 +103,7 @@ class App extends React.Component<IProps> {
           <Title>
             <TitleBar frequency={this.props.frequency} language={this.props.language}/>
           </Title>
-          <LanguageListContainer>
+          <LanguageListContainer id='language-container'>
             <LanguageList
               selectedLanguage={this.props.language}
               popularLanguageList={this.POPULAR_LANGUAGES}

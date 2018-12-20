@@ -1,3 +1,5 @@
+import { Language } from '@/app/components/Language';
+import { LanguagePicker } from '@/app/components/LanguagePicker';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -20,35 +22,9 @@ interface IState {
   selectedLanguage: string;
 }
 
-const LanguageSelect = styled.div`
-  margin: 0;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  background-color: blue;
-`;
-
 const List = styled.ul`
   list-style-type: none;
   padding-left: 0;
-`;
-
-const ListItem = styled.li`
-  padding: 7.5px 0;
-`;
-
-const Label = styled.button`
-  width: 100%;
-  color: black;
-  border: none;
-  border-radius: 19px;
-  &:active, &.selected {
-    text-decoration: underline;
-    outline: none;
-  }
-  &:hover {
-    color: grey;
-  }
 `;
 
 export class LanguageList extends React.Component<IProps, IState> {
@@ -62,7 +38,7 @@ export class LanguageList extends React.Component<IProps, IState> {
   }
 
   public handleSetLanguage(language: string) {
-    this.setState({selectedLanguage: language}, () => this.props.handleSetLanguage(language));
+    this.setState({ selectedLanguage: language }, () => this.props.handleSetLanguage(language));
   }
 
   get languageList() {
@@ -73,37 +49,23 @@ export class LanguageList extends React.Component<IProps, IState> {
     }
 
     return languageList.map((language, idx) => {
-      const selectedClass = this.state.selectedLanguage === language.value ? 'selected' : null;
-      return (
-        <ListItem key={idx} className='language-list-item'>
-          <Label className={selectedClass}
-                 onClick={() => this.handleSetLanguage(language.value)}>
-            {language.title}
-          </Label>
-        </ListItem>
-      );
+      const isSelected = this.state.selectedLanguage === language.value;
+      return <Language key={idx}
+                       isSelected={isSelected}
+                       language={language}
+                       selectLanguage={() => this.handleSetLanguage(language.value)}
+      />;
     });
   }
 
   public render() {
     return (
-      <div id='language-container'>
-        <LanguageSelect id='language-list-type'>
-          <a className={this.state.selectedLanguageListType === 'all' ? 'selected' : null}
-             onClick={() => this.setState({selectedLanguageListType: 'all'})}
-          >
-            ALL
-          </a>
-          <a className={this.state.selectedLanguageListType === 'popular' ? 'selected' : null}
-             onClick={() => this.setState({selectedLanguageListType: 'popular'})}
-          >
-            POPULAR
-          </a>
-        </LanguageSelect>
+      <>
+        <LanguagePicker selectedLanguageListType={this.state.selectedLanguageListType} />
         <List id='language-list'>
           {this.languageList}
         </List>
-      </div>
+      </>
     );
   }
 }
