@@ -1,7 +1,7 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 import { RepositoryEntity } from '@/models/Repository.entity';
-import styled from 'styled-components';
 
 interface InferProps {
   repository: RepositoryEntity;
@@ -40,7 +40,7 @@ const ItemFooter = styled.footer`
   justify-content: space-between;
 `;
 
-export class Repository extends React.Component<InferProps> {
+export class RepositoryDetail extends React.Component<InferProps> {
   public get attributes() {
     return this.props.repository.attributes;
   }

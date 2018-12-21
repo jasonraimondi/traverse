@@ -1,7 +1,9 @@
-import { Language } from '@/app/components/Language';
-import { LanguagePicker, ListType } from '@/app/components/LanguagePicker';
 import * as React from 'react';
 import styled from 'styled-components';
+
+import { UnstyledList } from '@/app/elements/base';
+import { LanguageDetail } from '@/app/TrendingRepos/LanguageDetail';
+import { ListType } from '@/app/TrendingRepos/LanguageListPicker';
 
 export interface ILanguage {
   title: string;
@@ -11,15 +13,12 @@ export interface ILanguage {
 interface Props {
   allLanguageList: ILanguage[];
   popularLanguageList: ILanguage[];
-  selectedLanguage: string;
+  selectedLanguage: ILanguage;
   selectedLanguageListType: ListType;
-  handleSetLanguage: (language: string) => void;
+  handleSetLanguage: (language: ILanguage) => void;
 }
 
-const List = styled.ul`
-  list-style-type: none;
-  margin: 0
-  padding-left: 0;
+const List = styled(UnstyledList)`
 `;
 
 export class LanguageList extends React.Component<Props> {
@@ -28,7 +27,7 @@ export class LanguageList extends React.Component<Props> {
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
   }
 
-  public handleSetLanguage(language: string) {
+  public handleSetLanguage(language: ILanguage) {
     this.props.handleSetLanguage(language);
   }
 
@@ -39,12 +38,12 @@ export class LanguageList extends React.Component<Props> {
       languageList = this.props.allLanguageList;
     }
 
-    return languageList.map((language, idx) => {
-      const isSelected = this.props.selectedLanguage === language.value;
-      return <Language key={idx}
-                       isSelected={isSelected}
-                       language={language}
-                       selectLanguage={() => this.handleSetLanguage(language.value)}
+    return languageList.map((language: ILanguage, idx) => {
+      const isSelected = this.props.selectedLanguage === language;
+      return <LanguageDetail key={idx}
+                             isSelected={isSelected}
+                             language={language}
+                             selectLanguage={() => this.handleSetLanguage(language)}
       />;
     });
   }

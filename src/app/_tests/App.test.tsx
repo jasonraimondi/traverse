@@ -14,7 +14,10 @@ import { RepositoryEntity } from '@/models/Repository.entity';
 
 const mockStore = configureStore();
 const INITIAL_STATE = {
-  language: 'typescript',
+  language: {
+    value: 'typescript',
+    title: 'TypeScript',
+  },
   frequency: 'weekly',
   repositoryList: {
     abc: new RepositoryEntity('abc'),
@@ -54,7 +57,10 @@ describe('<App />', () => {
 
     app.find('li.language-list-item button').at(2).simulate('click');
 
-    const language = 'CSharp';
+    const language = {
+      value: 'ActionScript',
+      title: 'ActionScript',
+    };
 
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
     assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({

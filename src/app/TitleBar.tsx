@@ -1,10 +1,11 @@
+import { ILanguage } from '@/app/TrendingRepos/LanguageList';
 import * as React from 'react';
 
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
   frequency: FrequencyType;
-  language: string;
+  language: ILanguage;
 }
 
 export class TitleBar extends React.Component<Props> {
@@ -13,7 +14,7 @@ export class TitleBar extends React.Component<Props> {
       <div className='title-bar'>
         <span className='selected-frequency'>{this.ucFirst(this.props.frequency)}</span>
         &nbsp;
-        <span className='selected-language'>{this.filterLanguage(this.props.language)}</span>
+        <span className='selected-language'>{this.filterLanguage(this.props.language.title)}</span>
       </div>
     );
   }

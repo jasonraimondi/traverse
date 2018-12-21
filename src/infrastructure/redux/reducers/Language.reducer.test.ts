@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
 import { languageReducer } from '@/infrastructure/redux/reducers/Language.reducer';
 
-describe('Language Reducer', () => {
+describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE language is blank string', () => {
     const action = { type: undefined };
     const initialState = '';
@@ -12,9 +12,9 @@ describe('Language Reducer', () => {
   });
 
   test('SET_LANGUAGE updates the language reducer properly', () => {
-    const action = SetLanguageAction('javascript');
-    const expectedState = 'javascript';
+    const language = { value: 'javascript', title: 'Javascript' };
+    const action = SetLanguageAction(language);
 
-    assert.strictEqual(languageReducer(undefined, action), expectedState);
+    assert.strictEqual(languageReducer(undefined, action), language);
   });
 });

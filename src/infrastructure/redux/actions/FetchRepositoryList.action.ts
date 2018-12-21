@@ -1,3 +1,4 @@
+import { ILanguage } from '@/app/TrendingRepos/LanguageList';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
@@ -8,7 +9,7 @@ export const FETCH_REPOSITORY_LIST_FAILURE = '[REPOSITORY LIST] fetch - failure'
 
 export interface FetchRepositoryListActionFields {
   frequency: FrequencyType;
-  language: string;
+  language: ILanguage;
 }
 
 export type FetchRepositoryListActionType =

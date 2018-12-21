@@ -1,12 +1,13 @@
-import { ILanguage } from '@/app/components/LanguageList';
 import * as React from 'react';
 import styled from 'styled-components';
 
-const ListItem = styled.li`
+import { ILanguage } from '@/app/TrendingRepos/LanguageList';
+
+const LanguageContainer = styled.li`
   padding: 7.5px 0;
 `;
 
-const Label = styled.button`
+const LanguageButton = styled.button`
   width: 100%;
   color: black;
   border: none;
@@ -26,13 +27,13 @@ interface Props {
   selectLanguage(): void;
 }
 
-export class Language extends React.Component<Props> {
+export class LanguageDetail extends React.Component<Props> {
   public render() {
-    return <ListItem className='language-list-item'>
-      <Label className={this.props.isSelected ? 'selected' : null}
+    return <LanguageContainer className='language-list-item'>
+      <LanguageButton className={this.props.isSelected ? 'selected' : null}
              onClick={this.props.selectLanguage}>
         {this.props.language.title}
-      </Label>
-    </ListItem>;
+      </LanguageButton>
+    </LanguageContainer>;
   }
 }

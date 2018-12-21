@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { UnstyledList } from '@/app/elements/base';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -12,34 +13,18 @@ interface State {
   frequency: FrequencyType;
 }
 
-const Banner = styled.div`
-  background-color: blue;
-  height: 40px;
-  width: 100%;
-`;
-
-const List = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 10px 20px;
+const List = styled(UnstyledList)`
   display: flex;
-  justify-content: space-between;
+  height: 100%;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 const ListItem = styled.li`
 `;
 
 const Label = styled.button`
-  background-color: white;
-  color: black;
-  border: none;
-  &:active, &.selected {
-    text-decoration: underline;
-    outline: none;
-  }
-  &:hover {
-    color: grey;
-  }
 `;
 
 export class FrequencyPicker extends React.Component<Props, State> {
@@ -52,7 +37,7 @@ export class FrequencyPicker extends React.Component<Props, State> {
   }
 
   public handleSetFrequency(frequency: FrequencyType) {
-    this.setState({frequency}, () => this.props.handleSetFrequency(frequency));
+    this.setState({ frequency }, () => this.props.handleSetFrequency(frequency));
   }
 
   get list() {
@@ -69,11 +54,9 @@ export class FrequencyPicker extends React.Component<Props, State> {
 
   public render() {
     return (
-      <Banner>
-        <List id='frequency-list'>
-          {this.list}
-        </List>
-      </Banner>
+      <List id='frequency-list'>
+        {this.list}
+      </List>
     );
   }
 }

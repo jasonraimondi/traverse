@@ -1,15 +1,14 @@
-import { LanguagePicker, ListType } from '@/app/components/LanguagePicker';
-import { RepositoryEntity } from '@/models/Repository.entity';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Normalize } from 'styled-normalize';
 
-import { FrequencyPicker } from '@/app/components/FrequencyPicker';
-import { LanguageList } from '@/app/components/LanguageList';
-import { RepositoryList } from '@/app/components/RepositoryList';
-import { TitleBar } from '@/app/components/TitleBar';
+import { TitleBar } from '@/app/TitleBar';
+import { FrequencyPicker } from '@/app/TrendingRepos/FrequencyPicker';
+import { ILanguage, LanguageList } from '@/app/TrendingRepos/LanguageList';
+import { LanguageListPicker, ListType } from '@/app/TrendingRepos/LanguageListPicker';
+import { RepositoryList } from '@/app/TrendingRepos/RepositoryList';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
@@ -17,58 +16,19 @@ import {
 import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequency.action';
 import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '@/models/Frequency.type';
+import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface Props {
   repositoryList: { [id: string]: RepositoryEntity };
   frequency: FrequencyType;
-  language: string;
+  language: ILanguage;
   SetLanguageAction: SetLanguageActionType;
   SetFrequencyAction: SetFrequencyActionType;
   FetchRepositoryListAction: FetchRepositoryListActionType;
 }
 
-const Main = styled.main`
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-gap: 0;
-  grid-template-areas:
-    "title title"
-    "sidebar content";
-  grid-template-rows: 43px 1fr;
-  grid-template-columns: 175px 1fr;
-`;
-
-const Title = styled.div`
-  grid-area: title;
-  -webkit-app-region: drag;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid black;
-`;
-
-const LanguageListContainer = styled.div`
-  grid-area: sidebar;
-  min-height: 0;
-  overflow-y: auto;
-  border-right: 2px solid black;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-`;
-
-const RepoListContainer = styled.div`
-  grid-area: content;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-`;
-
 interface State {
-  selectedLanguageListType: 'all'|'popular';
+  selectedLanguageListType: 'all' | 'popular';
 }
 
 class App extends React.Component<Props, State> {
@@ -100,13 +60,14 @@ class App extends React.Component<Props, State> {
     });
   }
 
-  public handleSetLanguage(language: string) {
+  public handleSetLanguage(language: ILanguage) {
     this.props.SetLanguageAction(language);
     this.props.FetchRepositoryListAction({
       language,
       frequency: this.props.frequency,
     });
   }
+
   public handleSetLanguageList(listType: ListType) {
     this.setState({ selectedLanguageListType: listType });
   }
@@ -116,13 +77,16 @@ class App extends React.Component<Props, State> {
       <>
         <Normalize/>
         <Main>
-          <Title>
+          <TitleContainer>
             <TitleBar frequency={this.props.frequency} language={this.props.language}/>
-          </Title>
-          <LanguageListContainer id='language-container'>
-            <LanguagePicker selected={this.state.selectedLanguageListType}
+          </TitleContainer>
+          <NavContainer>
+            <LanguageListPicker selected={this.state.selectedLanguageListType}
                             handleSetLanguageList={this.handleSetLanguageList}
             />
+            <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+          </NavContainer>
+          <LanguageListContainer id='language-container'>
             <LanguageList
               selectedLanguageListType={this.state.selectedLanguageListType}
               selectedLanguage={this.props.language}
@@ -132,8 +96,10 @@ class App extends React.Component<Props, State> {
             />
           </LanguageListContainer>
           <RepoListContainer>
-            <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
-            <RepositoryList repositoryList={this.props.repositoryList}/>
+            <RepositoryList repositoryList={this.props.repositoryList}
+                            language={this.props.language}
+                            frequency={this.props.frequency}
+            />
           </RepoListContainer>
         </Main>
       </>
@@ -159,5 +125,55 @@ function mapDispatchToProps(dispatch) {
     dispatch,
   );
 }
+
+const Main = styled.main`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-areas:
+    "title title"
+    "nav nav"
+    "sidebar content";
+  grid-template-rows: 43px 1fr;
+  grid-template-columns: 175px 1fr;
+`;
+
+const TitleContainer = styled.div`
+  grid-area: title;
+  -webkit-app-region: drag;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
+`;
+
+const NavContainer = styled.nav`
+  grid-area: nav;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-bottom: 2px solid black;
+`;
+
+const LanguageListContainer = styled.div`
+  grid-area: sidebar;
+  min-height: 0;
+  overflow-y: auto;
+  border-right: 2px solid black;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+`;
+
+const RepoListContainer = styled.div`
+  grid-area: content;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+`;
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
