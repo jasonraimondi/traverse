@@ -1,6 +1,8 @@
 import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import { compose } from 'redux';
 
+export const IS_MAC_OS = process.platform === 'darwin';
+
 export const IS_DEV_ENV = process.env.NODE_ENV !== 'production';
 
 declare global {
