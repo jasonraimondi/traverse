@@ -18,9 +18,13 @@ describe('FetchRepositoryListAction', () => {
   });
 
   test('FetchRepositoryListAction is dispatched correctly', () => {
+    const language = {
+      value: 'typescript',
+      title: 'TypeScript',
+    };
     const fields = {
+      language,
       frequency: 'weekly',
-      language: 'typescript',
     } as FetchRepositoryListActionFields;
     const expectedActions = [FetchRepositoryListAction(fields)];
     store.dispatch(FetchRepositoryListAction(fields));

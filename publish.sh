@@ -15,4 +15,4 @@ source ./.env.sh
 
 npm install
 npm run webpack:prod
-npm run builder:publish
+npm run electron:publish

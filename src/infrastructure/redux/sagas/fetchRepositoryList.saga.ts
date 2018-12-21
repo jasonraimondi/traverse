@@ -13,7 +13,7 @@ export function* fetchRepositoryListSaga() {
 }
 
 function fetchRepositoryListApiCall(fields: FetchRepositoryListActionFields) {
-  return fetchRepositoryListFromGithub(fields.language, fields.frequency);
+  return fetchRepositoryListFromGithub(fields.language.value, fields.frequency);
 }
 
 function* fetchRepositoryList(action) {

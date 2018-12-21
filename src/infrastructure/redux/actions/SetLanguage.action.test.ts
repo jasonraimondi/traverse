@@ -11,7 +11,10 @@ const store = mockStore(INITIAL_STATE);
 
 describe('SetLanguageAction', () => {
   test('SetLanguageAction is dispatched correctly', () => {
-    const language = 'typescript';
+    const language = {
+      value: 'typescript',
+      title: 'TypeScript',
+    };
     const expectedActions = [SetLanguageAction(language)];
 
     store.dispatch(SetLanguageAction(language));
