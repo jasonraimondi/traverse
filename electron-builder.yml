@@ -3,7 +3,7 @@ productName: Traverse
 copyright: Copyright © 2018 Digital Canvas Design, LLC
 
 directories:
-#  buildResources: resources/
+  buildResources: resources/
   output: dist-build/
 
 files:
