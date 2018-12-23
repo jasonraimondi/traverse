@@ -36,7 +36,7 @@ export class FrequencyPicker extends React.Component<Props, State> {
     };
   }
 
-  public handleSetFrequency(frequency: FrequencyType) {
+  handleSetFrequency(frequency: FrequencyType) {
     this.setState({ frequency }, () => this.props.handleSetFrequency(frequency));
   }
 
@@ -52,7 +52,7 @@ export class FrequencyPicker extends React.Component<Props, State> {
     });
   }
 
-  public render() {
+  render() {
     return (
       <List id='frequency-list'>
         {this.list}

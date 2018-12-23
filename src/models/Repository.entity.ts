@@ -1,6 +1,6 @@
 export class RepositoryEntity {
 
-  public static fromResponse(response: any) {
+  static fromResponse(response: any) {
     return new RepositoryEntity(
       response.id,
       {
@@ -22,8 +22,8 @@ export class RepositoryEntity {
   }
 
   constructor(
-    public readonly id: string|number,
-    public readonly attributes?: RepositoryEntityAttributes,
+    readonly id: string|number,
+    readonly attributes?: RepositoryEntityAttributes,
   ) {
   }
 }

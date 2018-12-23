@@ -26,7 +26,7 @@ export class RepositoryList extends React.Component<Props> {
     return <EmptyRepositoryList language={this.props.language} frequency={this.props.frequency} />;
   }
 
-  public render() {
+  render() {
     return <List id='repository-list'>
       {this.listItems.length === 0 ? this.emptyList : this.listItems}
     </List>;
