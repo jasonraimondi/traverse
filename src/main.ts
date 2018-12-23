@@ -1,5 +1,6 @@
 import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
-import { initializeAppUserId } from '@/infrastructure/github/analytics';
+import { AnalyticsTracker } from '@/infrastructure/github/AnalyticsTracker';
+
 import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
@@ -41,7 +42,7 @@ app.on('ready', () => {
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   createWindow();
   autoUpdater.checkForUpdatesAndNotify();
-  initializeAppUserId();
+  AnalyticsTracker.initializeAppUserId();
 });
 
 // Quit when all windows are closed.
@@ -60,4 +61,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
