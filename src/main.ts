@@ -1,7 +1,9 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
 import { format } from 'url';
+
+import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -36,6 +38,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
+  Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   createWindow();
   autoUpdater.checkForUpdatesAndNotify();
 });

@@ -1,8 +1,7 @@
 {
-  "name": "@jmondi/typescript-react-starter",
-  "description": "Typescript Webpack Starter Pack",
+  "name": "traverse",
   "author": "Jason Raimondi <jason@raimondi.us>",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
@@ -35,7 +34,7 @@
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "dayjs": "^1.7.8",
-    "electron": "^3.0.13",
+    "electron": "^4.0.0",
     "electron-builder": "^20.38.3",
     "electron-devtools-installer": "^2.2.4",
     "electron-updater": "^4.0.6",

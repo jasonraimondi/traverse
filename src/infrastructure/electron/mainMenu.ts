@@ -70,8 +70,6 @@ const macTraverseAppMenu: MenuItemConstructorOptions = {
   submenu: [
     { role: 'about' },
     { type: 'separator' },
-    { role: 'api', submenu: [] },
-    { type: 'separator' },
     { role: 'hide' },
     { role: 'hideothers' },
     { role: 'unhide' },
