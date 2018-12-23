@@ -1,33 +1,30 @@
-import ua from 'universal-analytics';
+import { GOOGLE_ANALYTICS_ID } from '@/constants';
+import * as ua from 'universal-analytics';
 import * as uuid from 'uuid/v4';
 
 import { ElectronSettingService } from '@/infrastructure/electron/settingsService';
 
-export class AnalyticsTracker {
-  constructor(
-    private readonly analytics: ua.Visitor,
-    private readonly googleAnalyticsId: string,
-    private readonly appUserId: string,
-  ) {}
+export function initializeAppUserId() {
+  const appUserId = ElectronSettingService.get('appUserId') || uuid();
+  ElectronSettingService.set('appUserId', appUserId);
+}
 
-  static initializeAppUserId() {
-    let appUserId = ElectronSettingService.get('appUserId');
+export function trackSetLanguage(language: string) {
+  trackEvent('trending-repos', 'set-language', 'language', language);
+}
 
-    if (!appUserId) {
-      appUserId = uuid();
-    }
+export function trackCreateWindow() {
+  trackEvent('application', 'create-window');
+}
 
-    ElectronSettingService.set('appUserId', appUserId);
-  }
-
-  private trackEvent(category, action, label, value = null) {
-    const usr = this.analytics(this.googleAnalyticsId, this.appUserId);
-    const params = {
-      ec: category,
-      ea: action,
-      el: label,
-      ev: value,
-    };
-    usr.event(params).send();
-  }
+function trackEvent(category, action, label = null, value = null) {
+  const appUserId = ElectronSettingService.get('appUserId') || 'unknown';
+  const usr = ua(GOOGLE_ANALYTICS_ID, appUserId);
+  const params = {
+    ec: category,
+    ea: action,
+    el: label,
+    ev: value,
+  };
+  usr.event(params).send();
 }

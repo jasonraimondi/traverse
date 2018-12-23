@@ -13,6 +13,7 @@ import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
 } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
+import { trackSetLanguage } from '@/infrastructure/github/AnalyticsTracker';
 import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequency.action';
 import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
 import { FrequencyType } from '@/models/Frequency.type';
@@ -66,6 +67,7 @@ class App extends React.Component<Props, State> {
       language,
       frequency: this.props.frequency,
     });
+    trackSetLanguage(language.title);
   }
 
   handleSetLanguageList(listType: ListType) {
