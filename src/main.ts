@@ -1,5 +1,5 @@
 import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
-import { AnalyticsTracker } from '@/infrastructure/github/AnalyticsTracker';
+import { initializeAppUserId, trackCreateWindow } from '@/infrastructure/github/AnalyticsTracker';
 
 import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
@@ -9,6 +9,8 @@ import { format } from 'url';
 let mainWindow: BrowserWindow;
 
 function createWindow() {
+  trackCreateWindow();
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     title: 'Traverse',
@@ -41,8 +43,8 @@ function createWindow() {
 app.on('ready', () => {
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   createWindow();
+  initializeAppUserId();
   autoUpdater.checkForUpdatesAndNotify();
-  AnalyticsTracker.initializeAppUserId();
 });
 
 // Quit when all windows are closed.
