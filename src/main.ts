@@ -1,14 +1,11 @@
-import { app, BrowserWindow, ipcMain, Menu } from 'electron';
+import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
+import { initializeAppUserId } from '@/infrastructure/github/analytics';
+import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
-import * as ua from 'universal-analytics';
 import { format } from 'url';
-import * as uuid from 'uuid/v4';
 
-import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
-import { ElectronSettingService } from '@/infrastructure/electron/settingsService';
-
-let mainWindow: Electron.BrowserWindow;
+let mainWindow: BrowserWindow;
 
 function createWindow() {
   // Create the browser window.
@@ -44,12 +41,11 @@ app.on('ready', () => {
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   createWindow();
   autoUpdater.checkForUpdatesAndNotify();
-  initializeGoogleAnalytics();
+  initializeAppUserId();
 });
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  trackEvent('application', 'windows', 'close-all');
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -65,24 +61,3 @@ app.on('activate', () => {
   }
 });
 
-function initializeGoogleAnalytics() {
-  let appUserId = ElectronSettingService.get('appUserId');
-
-  if (!appUserId) {
-    appUserId = uuid();
-  }
-
-  ElectronSettingService.set('appUserId', appUserId);
-}
-
-function trackEvent(category, action, label, value = null) {
-  const appUserId = ElectronSettingService.get('appUserId');
-  const usr = ua('UA-54092750-6', appUserId);
-  const params = {
-    ec: category,
-    ea: action,
-    el: label,
-    ev: value,
-  };
-  usr.event(params).send();
-}
