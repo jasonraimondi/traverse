@@ -1,11 +1,12 @@
+import { IS_DEV_ENV } from '@/environment';
+import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
+
 import { app, BrowserWindow, Menu } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import { join } from 'path';
 import { format } from 'url';
 
-import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
-
-let mainWindow: Electron.BrowserWindow;
+let mainWindow: BrowserWindow;
 
 function createWindow() {
   // Create the browser window.
@@ -38,7 +39,9 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
+  if (!IS_DEV_ENV) {
+    Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
+  }
   createWindow();
   autoUpdater.checkForUpdatesAndNotify();
 });

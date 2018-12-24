@@ -10,14 +10,30 @@
         html {
             font-size: 18px;
         }
-        html, body, #app-root {
+        html, 
+        body, 
+        #app-root {
             height: 100%;
             width: 100%;
             /*overflow: hidden;*/
         }
+        #app-root .loader {
+            font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-<div id="app-root">Loading...</div>
+<div id="app-root">
+    <div class="loader">
+        <img src="../resources/traverse-spinner-cropped.gif" alt="traverse spinner logo">
+        <h1>Traverse</h1>
+    </div>
+</div>
 </body>
 </html>
