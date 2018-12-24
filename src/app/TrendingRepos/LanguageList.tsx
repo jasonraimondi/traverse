@@ -27,7 +27,7 @@ export class LanguageList extends React.Component<Props> {
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
   }
 
-  public handleSetLanguage(language: ILanguage) {
+  handleSetLanguage(language: ILanguage) {
     this.props.handleSetLanguage(language);
   }
 
@@ -48,7 +48,7 @@ export class LanguageList extends React.Component<Props> {
     });
   }
 
-  public render() {
+  render() {
     return (
       <List id='language-list'>
         {this.languageList}

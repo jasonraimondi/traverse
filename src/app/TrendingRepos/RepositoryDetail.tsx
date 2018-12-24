@@ -41,21 +41,21 @@ const ItemFooter = styled.footer`
 `;
 
 export class RepositoryDetail extends React.Component<InferProps> {
-  public get attributes() {
+  get attributes() {
     return this.props.repository.attributes;
   }
 
-  public get longName() {
+  get longName() {
     const longName = this.attributes ? this.attributes.longName : 'Unknown';
     return <Name className='name'>{longName.replace('/', ' / ')}</Name>;
   }
 
-  public get language() {
+  get language() {
     const language = this.attributes && this.attributes.language !== null ? this.attributes.language : 'Unknown';
     return <Language className='language'>{language}</Language>;
   }
 
-  public get description() {
+  get description() {
     const description = this.attributes ? this.attributes.description : false;
     if (description) {
       return <Description className='description'>{description}</Description>;
@@ -63,26 +63,26 @@ export class RepositoryDetail extends React.Component<InferProps> {
     return null;
   }
 
-  public get forksCount() {
+  get forksCount() {
     const forksCount = this.attributes ? this.attributes.forksCount : false;
     return <ForksCount className='forks-count'>Forks: {forksCount}</ForksCount>;
   }
 
-  public get watchersCount() {
+  get watchersCount() {
     const watchersCount = this.attributes ? this.attributes.watchersCount : false;
     return <WatchersCount className='watchers-count'>Watchers: {watchersCount}</WatchersCount>;
   }
 
-  public get stargazersCount() {
+  get stargazersCount() {
     const stargazersCount = this.attributes ? this.attributes.stargazersCount : false;
     return <StargazersCount className='stargazers-count'>Stargazers: {stargazersCount}</StargazersCount>;
   }
 
-  public get htmlUrl() {
+  get htmlUrl() {
     return this.attributes ? this.attributes.htmlUrl : null;
   }
 
-  public render() {
+  render() {
     return (
       <Item className='repository-list-item'>
         <ItemHeader>

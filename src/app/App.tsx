@@ -45,14 +45,14 @@ class App extends React.Component<Props, State> {
     };
   }
 
-  public componentDidMount() {
+  componentDidMount() {
     this.props.FetchRepositoryListAction({
       language: this.props.language,
       frequency: this.props.frequency,
     });
   }
 
-  public handleSetFrequency(frequency: FrequencyType) {
+  handleSetFrequency(frequency: FrequencyType) {
     this.props.SetFrequencyAction(frequency);
     this.props.FetchRepositoryListAction({
       language: this.props.language,
@@ -60,7 +60,7 @@ class App extends React.Component<Props, State> {
     });
   }
 
-  public handleSetLanguage(language: ILanguage) {
+  handleSetLanguage(language: ILanguage) {
     this.props.SetLanguageAction(language);
     this.props.FetchRepositoryListAction({
       language,
@@ -68,11 +68,11 @@ class App extends React.Component<Props, State> {
     });
   }
 
-  public handleSetLanguageList(listType: ListType) {
+  handleSetLanguageList(listType: ListType) {
     this.setState({ selectedLanguageListType: listType });
   }
 
-  public render() {
+  render() {
     return (
       <>
         <Normalize/>

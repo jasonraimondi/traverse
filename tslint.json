@@ -11,6 +11,8 @@
         120
       ]
     },
+    "member-access": [true, "no-public"],
+    "member-ordering": false,
     "new-parens": true,
     "no-arg": true,
     "no-bitwise": true,

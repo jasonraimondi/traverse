@@ -28,7 +28,7 @@ interface Props {
 }
 
 export class LanguageDetail extends React.Component<Props> {
-  public render() {
+  render() {
     return <LanguageContainer className='language-list-item'>
       <LanguageButton className={this.props.isSelected ? 'selected' : null}
              onClick={this.props.selectLanguage}>

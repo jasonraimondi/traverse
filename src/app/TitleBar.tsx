@@ -20,7 +20,7 @@ const Title = styled.div`
 `;
 
 export class TitleBar extends React.Component<Props> {
-  public render() {
+  render() {
     return (
       <Title className='title-bar'>
         <span className='selected-frequency'>{this.ucFirst(this.props.frequency)}</span>

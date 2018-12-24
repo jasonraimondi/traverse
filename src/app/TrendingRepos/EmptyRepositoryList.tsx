@@ -13,7 +13,7 @@ export class EmptyRepositoryList extends React.Component<Props> {
     return `https://github.com/trending/${this.props.language.value}?since=${this.props.frequency}`;
   }
 
-  public render() {
+  render() {
     return (
       <EmptyContainer>
         <h4>
