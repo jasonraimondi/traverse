@@ -1,3 +1,4 @@
+import { IS_DEV_ENV } from '@/environment';
 import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
 import { initializeAppUserId, trackCreateWindow } from '@/infrastructure/github/AnalyticsTracker';
 
@@ -41,7 +42,9 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
+  if (!IS_DEV_ENV) {
+    Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
+  }
   createWindow();
   initializeAppUserId();
   autoUpdater.checkForUpdatesAndNotify();

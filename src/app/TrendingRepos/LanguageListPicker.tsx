@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { DieRoller } from '@/app/TrendingRepos/DieRoller';
+
 export type ListType = 'all' | 'popular';
 
 const LanguageSelect = styled.div`
@@ -11,7 +13,7 @@ const LanguageSelect = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.a`
+export const Icon = styled.a`
   color: white;
   border-color: orange;
   > svg {
@@ -38,18 +40,19 @@ export class LanguageListPicker extends React.Component<Props> {
 
   render() {
     return <LanguageSelect id='language-select'>
-        <Icon className={this.props.selected === 'all' ? 'selected' : null}
-              onClick={() => this.handleSelectLanguage('all')}
+      <DieRoller onClickRoll={() => console.log('hi')} />
+      <Icon className={this.props.selected === 'all' ? 'selected' : null}
+              onClick={() => this.handleSelectLanguageList('all')}
               dangerouslySetInnerHTML={{ __html: this.iconAll }}
         />
         <Icon className={this.props.selected === 'popular' ? 'selected' : null}
-              onClick={() => this.handleSelectLanguage('popular')}
+              onClick={() => this.handleSelectLanguageList('popular')}
               dangerouslySetInnerHTML={{ __html: this.iconPopular }}
         />
       </LanguageSelect>;
   }
 
-  private handleSelectLanguage(listType: ListType) {
+  private handleSelectLanguageList(listType: ListType) {
     this.props.handleSetLanguageList(listType);
   }
 }
