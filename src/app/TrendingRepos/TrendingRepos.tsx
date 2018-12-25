@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
-import { Normalize } from 'styled-normalize';
 
-import { About } from '@/app/About/About';
-import { TitleBar } from '@/app/TitleBar';
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
-import { ListType } from '@/app/TrendingRepos/LanguageListPicker';
-import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
+import { FrequencyPicker } from '@/app/TrendingRepos/FrequencyPicker';
+import { ILanguage, LanguageList } from '@/app/TrendingRepos/LanguageList';
+import { LanguageListPicker, ListType } from '@/app/TrendingRepos/LanguageListPicker';
+import { RepositoryList } from '@/app/TrendingRepos/RepositoryList';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
@@ -75,29 +72,29 @@ class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
-        <Normalize/>
-        <Main>
-          <TitleContainer>
-            <TitleBar frequency={this.props.frequency} language={this.props.language}/>
-          </TitleContainer>
-          <RouterOutlet>
-            <Switch>
-              <Route
-                path='/'
-                exact
-                component={() => < TrendingRepos/>}/>
-              <Route
-                path='/about'
-                component={() => < About/>}/>
-            </Switch>
-          </RouterOutlet>
-          <NavigationContainer>
-            <Link to='/'>Home</Link>
-            <Link to='/about'>About</Link>
-          </NavigationContainer>
-        </Main>
-      </>
+      <Main>
+        <NavContainer>
+          <LanguageListPicker selected={this.state.selectedLanguageListType}
+                          handleSetLanguageList={this.handleSetLanguageList}
+          />
+          <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+        </NavContainer>
+        <LanguageListContainer id='language-container'>
+          <LanguageList
+            selectedLanguageListType={this.state.selectedLanguageListType}
+            selectedLanguage={this.props.language}
+            popularLanguageList={this.POPULAR_LANGUAGES}
+            allLanguageList={this.ALL_LANGUAGES}
+            handleSetLanguage={this.handleSetLanguage}
+          />
+        </LanguageListContainer>
+        <RepoListContainer>
+          <RepositoryList repositoryList={this.props.repositoryList}
+                          language={this.props.language}
+                          frequency={this.props.frequency}
+          />
+        </RepoListContainer>
+      </Main>
     );
   }
 }
@@ -127,30 +124,37 @@ const Main = styled.main`
   display: grid;
   grid-gap: 0;
   grid-template-areas:
-    "title"
-    "content"
-    "bottom-nav";
-  grid-template-rows: 43px 1fr 43px;
+    "nav nav"
+    "sidebar content";
+  grid-template-rows: 43px 1fr;
+  grid-template-columns: 175px 1fr;
 `;
 
-const TitleContainer = styled.div`
-  grid-area: title;
-  -webkit-app-region: drag;
+const NavContainer = styled.nav`
+  grid-area: nav;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  height: 40px;
   border-bottom: 2px solid black;
 `;
 
-const RouterOutlet = styled.div`
+const LanguageListContainer = styled.div`
+  grid-area: sidebar;
+  min-height: 0;
   overflow-y: auto;
+  border-right: 2px solid black;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+`;
+
+const RepoListContainer = styled.div`
   grid-area: content;
-  background-color: purple;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 `;
 
-const NavigationContainer = styled.div`
-  grid-area: bottom-nav;
-`;
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

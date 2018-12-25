@@ -3,6 +3,7 @@ import '@/infrastructure/electron/openLinkExternally';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
@@ -23,7 +24,9 @@ sagaMiddleware.run(sagas);
 
 export default ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Router>
+      <App/>
+    </Router>
   </Provider>,
   document.getElementById('app-root'),
 );
