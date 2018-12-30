@@ -146,7 +146,7 @@ const TitleContainer = styled.div`
 const RouterOutlet = styled.div`
   overflow-y: auto;
   grid-area: content;
-  background-color: purple;
+  background-color: tomato;
 `;
 
 const NavigationContainer = styled.div`

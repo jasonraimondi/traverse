@@ -137,6 +137,7 @@ const NavContainer = styled.nav`
   align-items: center;
   height: 40px;
   border-bottom: 2px solid black;
+  background-color: teal;
 `;
 
 const LanguageListContainer = styled.div`

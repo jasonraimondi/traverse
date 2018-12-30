@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { ILanguage } from '@/app/TrendingRepos/LanguageList';
 
 const LanguageContainer = styled.li`
-  padding: 7.5px 0;
 `;
 
 const LanguageButton = styled.button`
+  // padding: 7.5px 0;
   width: 100%;
   color: black;
   border: none;
-  border-radius: 19px;
   &:active, &.selected {
     text-decoration: underline;
     outline: none;
