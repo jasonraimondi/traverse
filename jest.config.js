@@ -1,4 +1,9 @@
 module.exports = {
+    globals: {
+        'ts-jest': {
+          diagnostics: false,
+        },
+    },
     preset: "ts-jest",
     collectCoverage: true,
     collectCoverageFrom: ["src/{app,infrastructure,models}/**/*.{js,jsx,ts,tsx}"],
