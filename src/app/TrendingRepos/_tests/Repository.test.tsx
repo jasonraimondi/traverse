@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { RepositoryDetail } from '@/app/TrendingRepos/RepositoryDetail';
+import { RepositoryDetail } from '@/app/TrendingRepos/components/RepositoryDetail';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 describe('<Repository />', () => {

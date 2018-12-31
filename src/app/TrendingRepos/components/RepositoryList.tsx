@@ -1,11 +1,11 @@
-import { UnstyledList } from '@/app/elements/base';
-import { EmptyRepositoryList } from '@/app/TrendingRepos/EmptyRepositoryList';
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
-import { FrequencyType } from '@/models/Frequency.type';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { RepositoryDetail } from '@/app/TrendingRepos/RepositoryDetail';
+import { UnstyledList } from '@/app/elements/base';
+import { EmptyRepositoryList } from '@/app/TrendingRepos/components/EmptyRepositoryList';
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { RepositoryDetail } from '@/app/TrendingRepos/components/RepositoryDetail';
+import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface Props {

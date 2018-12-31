@@ -3,29 +3,6 @@ import styled from 'styled-components';
 
 export type ListType = 'all' | 'popular';
 
-const LanguageSelect = styled.div`
-  width: 175px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Icon = styled.a`
-  color: white;
-  border-color: orange;
-  > svg {
-    height: 1rem;
-    max-height: 100%;
-    max-width: 100%;
-    fill: currentColor;
-    stroke: currentColor;
-  }
-  &:first-child {
-    margin-right: 1rem;
-  }
-`;
-
 interface Props {
   selected: ListType;
 
@@ -53,3 +30,26 @@ export class LanguageListPicker extends React.Component<Props> {
     this.props.handleSetLanguageList(listType);
   }
 }
+
+const LanguageSelect = styled.div`
+  width: 175px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Icon = styled.a`
+  color: white;
+  border-color: orange;
+  > svg {
+    height: 1rem;
+    max-height: 100%;
+    max-width: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+  }
+  &:first-child {
+    margin-right: 1rem;
+  }
+`;

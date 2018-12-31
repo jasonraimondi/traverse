@@ -7,8 +7,8 @@ import { Normalize } from 'styled-normalize';
 
 import { About } from '@/app/About/About';
 import { TitleBar } from '@/app/TitleBar';
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
-import { ListType } from '@/app/TrendingRepos/LanguageListPicker';
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import {
   FetchRepositoryListAction,

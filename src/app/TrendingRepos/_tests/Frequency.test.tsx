@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { FrequencyPicker } from '@/app/TrendingRepos/FrequencyPicker';
+import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
 
 describe('<FrequencyPicker />', () => {
   test('displays correct frequency', () => {

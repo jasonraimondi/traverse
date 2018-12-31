@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { UnstyledList } from '@/app/elements/base';
-import { LanguageDetail } from '@/app/TrendingRepos/LanguageDetail';
-import { ListType } from '@/app/TrendingRepos/LanguageListPicker';
+import { LanguageDetail } from '@/app/TrendingRepos/components/LanguageDetail';
+import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
 
 export interface ILanguage {
   title: string;

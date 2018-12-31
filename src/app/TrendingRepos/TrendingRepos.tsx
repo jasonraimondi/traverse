@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { FrequencyPicker } from '@/app/TrendingRepos/FrequencyPicker';
-import { ILanguage, LanguageList } from '@/app/TrendingRepos/LanguageList';
-import { LanguageListPicker, ListType } from '@/app/TrendingRepos/LanguageListPicker';
-import { RepositoryList } from '@/app/TrendingRepos/RepositoryList';
+import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
+import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
+import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
+import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
@@ -158,4 +159,4 @@ const RepoListContainer = styled.div`
   min-height: 0;
 `;
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

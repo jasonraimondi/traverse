@@ -7,39 +7,6 @@ interface InferProps {
   repository: RepositoryEntity;
 }
 
-const Name = styled.p`
-`;
-const NameLink = styled.a`
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
-  hyphens: auto;
-`;
-const Language = styled.p`
-  font-size: 0.8rem;
-`;
-const Description = styled.p`
-`;
-const ForksCount = styled.p`
-`;
-const WatchersCount = styled.p`
-`;
-const StargazersCount = styled.p`
-`;
-const Item = styled.li`
-  padding: 0 15px;
-  border-bottom: 1px solid black;
-`;
-const ItemHeader = styled.header`
-`;
-const ItemBody = styled.article`
-`;
-const ItemFooter = styled.footer`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export class RepositoryDetail extends React.Component<InferProps> {
   get attributes() {
     return this.props.repository.attributes;
@@ -103,3 +70,36 @@ export class RepositoryDetail extends React.Component<InferProps> {
     );
   }
 }
+
+const Name = styled.p`
+`;
+const NameLink = styled.a`
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+`;
+const Language = styled.p`
+  font-size: 0.8rem;
+`;
+const Description = styled.p`
+`;
+const ForksCount = styled.p`
+`;
+const WatchersCount = styled.p`
+`;
+const StargazersCount = styled.p`
+`;
+const Item = styled.li`
+  padding: 0 15px;
+  border-bottom: 1px solid black;
+`;
+const ItemHeader = styled.header`
+`;
+const ItemBody = styled.article`
+`;
+const ItemFooter = styled.footer`
+  display: flex;
+  justify-content: space-between;
+`;

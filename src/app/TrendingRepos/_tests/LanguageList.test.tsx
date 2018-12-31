@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-import { LanguageList } from '@/app/TrendingRepos/LanguageList';
+import { LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 
 describe('<LanguageList />', () => {
   test('loads all languages', () => {

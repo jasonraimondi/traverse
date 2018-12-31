@@ -1,4 +1,4 @@
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import { FrequencyType } from '@/models/Frequency.type';
 import * as React from 'react';
 import styled from 'styled-components';

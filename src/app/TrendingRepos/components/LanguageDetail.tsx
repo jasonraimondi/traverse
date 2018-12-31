@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 
 const LanguageContainer = styled.li`
 `;

@@ -1,4 +1,4 @@
-import { ILanguage } from '@/app/TrendingRepos/LanguageList';
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
