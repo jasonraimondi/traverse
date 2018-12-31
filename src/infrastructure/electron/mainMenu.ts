@@ -1,6 +1,9 @@
 import { app, Menu, MenuItemConstructorOptions, shell } from 'electron';
+import * as findKey from 'lodash.findkey';
 
 import { IS_DEV_ENV, IS_MAC_OS } from '@/environment';
+import { ElectronSettingService } from '@/infrastructure/electron/SettingsService';
+import { openMainWindow, reloadAllWindows } from '@/main';
 
 const editMenu: MenuItemConstructorOptions = {
   label: 'Edit',
@@ -24,7 +27,7 @@ const windowMenu: MenuItemConstructorOptions = {
   ],
 };
 
-const windowMenuMacSubmenu: Menu|MenuItemConstructorOptions[] = [
+const windowMenuMacSubmenu: Menu | MenuItemConstructorOptions[] = [
   { role: 'minimize' },
   { role: 'zoom' },
   { type: 'separator' },
@@ -34,6 +37,13 @@ const windowMenuMacSubmenu: Menu|MenuItemConstructorOptions[] = [
 const helpMenu: MenuItemConstructorOptions = {
   role: 'help',
   submenu: [
+    {
+      label: 'Reset Settings',
+      click() {
+        ElectronSettingService.deleteAll();
+        reloadAllWindows();
+      },
+    },
     {
       label: 'Traverse Website',
       click() {
@@ -46,21 +56,21 @@ const helpMenu: MenuItemConstructorOptions = {
 const fileMenu: MenuItemConstructorOptions = {
   label: 'File',
   submenu: [
-    // {
-    //   label: 'New Window',
-    //   accelerator: 'CmdOrCtrl+N',
-    //   click() {
-    //     openMainWindow();
-    //   }
-    // },
-    // {
-    //   label: 'Reload',
-    //   accelerator: 'CmdOrCtrl+R',
-    //   click() {
-    //     reloadAllWindows();
-    //   }
-    // },
-    // { type: 'separator' },
+    {
+      label: 'New Window',
+      accelerator: 'CmdOrCtrl+N',
+      click() {
+        openMainWindow();
+      },
+    },
+    {
+      label: 'Reload',
+      accelerator: 'CmdOrCtrl+R',
+      click() {
+        reloadAllWindows();
+      },
+    },
+    { type: 'separator' },
     { role: 'close' },
   ],
 };
@@ -69,6 +79,8 @@ const macTraverseAppMenu: MenuItemConstructorOptions = {
   label: app.getName(),
   submenu: [
     { role: 'about' },
+    // { type: 'separator' },
+    // { role: 'api', submenu: [] },
     { type: 'separator' },
     { role: 'hide' },
     { role: 'hideothers' },
@@ -100,21 +112,6 @@ if (IS_MAC_OS) {
 
 if (IS_DEV_ENV) {
   template.push(developerMenu);
-}
-
-function findKey(object, predicate) {
-  let result;
-  if (object == null) {
-    return result;
-  }
-  Object.keys(object).some((key) => {
-    const value = object[key];
-    if (predicate(value, key, object)) {
-      result = key;
-      return true;
-    }
-  });
-  return result;
 }
 
 export const fileMenuTemplate = template;

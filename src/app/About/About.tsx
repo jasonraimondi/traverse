@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export class About extends React.Component {
+class About extends React.Component {
     render() {
         return <div>I am an about component</div>;
     }
 }
+
+export default withRouter(About);

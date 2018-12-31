@@ -1,64 +1,38 @@
-import { IS_DEV_ENV } from '@/environment';
+import { app, Menu } from 'electron';
+
+import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
 import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
+import { WindowManager } from '@/infrastructure/electron/WindowManager';
 
-import { app, BrowserWindow, Menu } from 'electron';
-import { autoUpdater } from 'electron-updater';
-import { join } from 'path';
-import { format } from 'url';
+const windowManager: WindowManager = new WindowManager();
 
-let mainWindow: BrowserWindow;
-
-function createWindow() {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    title: 'Traverse',
-    height: 600,
-    width: 600,
-    titleBarStyle: 'hiddenInset',
-    resizable: true,
-    // backgroundColor: '#22292f',
-  });
-
-  const filePath = format({
-    pathname: join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true,
-  });
-  mainWindow.loadURL(filePath);
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
-
-  // Emitted when the window is closed.
-  mainWindow.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null;
-  });
+export function openMainWindow() {
+  windowManager.createMainWindow();
+}
+export function reloadAllWindows() {
+  windowManager.reloadAll();
 }
 
 app.on('ready', () => {
-  if (!IS_DEV_ENV) {
-    Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
-  }
-  createWindow();
-  autoUpdater.checkForUpdatesAndNotify();
-});
-
-// Quit when all windows are closed.
-app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
+  Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
+  openMainWindow();
+  if (IS_DEV_ENV) {
+    installExtensions();
   }
 });
 
 app.on('activate', () => {
   // On OS X it"s common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow();
+  if (IS_MAC_OS) {
+    windowManager.focusOrCreate();
+  }
+});
+
+app.on('window-all-closed', () => {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (!IS_MAC_OS) {
+    app.quit();
   }
 });

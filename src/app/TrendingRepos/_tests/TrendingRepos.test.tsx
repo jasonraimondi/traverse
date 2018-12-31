@@ -1,9 +1,10 @@
 import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 
-import App from '@/app/App';
+import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionFields,
@@ -25,19 +26,24 @@ const INITIAL_STATE = {
 };
 const store = mockStore(INITIAL_STATE);
 
-describe('<App />', () => {
+describe('<TrendingRepos />', () => {
+  let app;
+
   beforeEach(() => {
     store.clearActions();
+    app = mount(
+      <MemoryRouter initialEntries={['/']} initialIndex={0}>
+        <TrendingRepos store={store}/>
+      </MemoryRouter>,
+    );
   });
 
   test('renders viewport content correctly', () => {
-    const app = mount(<App store={store}/>);
     assert.strictEqual(app.find('.name').first().text(), 'Unknown');
     assert.strictEqual(app.find('.language').first().text(), 'Unknown');
   });
 
   test('selecting frequency runs set action and fetch repository list action', () => {
-    const app = mount(<App store={store}/>);
     store.clearActions();
 
     app.find('button#select-monthly').simulate('click');
@@ -52,7 +58,6 @@ describe('<App />', () => {
   });
 
   test('selecting language runs set action and fetch repository list action', () => {
-    const app = mount(<App store={store}/>);
     store.clearActions();
 
     app.find('li.language-list-item button').at(2).simulate('click');

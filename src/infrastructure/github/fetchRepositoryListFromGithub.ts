@@ -23,7 +23,11 @@ export async function fetchRepositoryListFromGithub(language: string, frequency:
 }
 
 async function searchForRepositories(q: string, sort: Sort, order: Order) {
-  const githubRest = GitHubRest('/search/repositories', { q, sort, order });
+  const githubRest = GitHubRest(
+    '/search/repositories',
+    { q, sort, order },
+    null,
+  );
   const search = await axios.get(githubRest.url, githubRest.config);
   return search.data;
 }

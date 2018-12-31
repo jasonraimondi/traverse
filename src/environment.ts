@@ -25,3 +25,14 @@ function fetchComposeEnhancers() {
 }
 
 export const composeEnhancers = fetchComposeEnhancers();
+
+export async function installExtensions() {
+  try {
+    const reactDevTools = await installExtension(REACT_DEVELOPER_TOOLS);
+    console.log(`installed ${reactDevTools}`);
+    const reduxDevTools = await installExtension(REDUX_DEVTOOLS);
+    console.log(`installed ${reduxDevTools}`);
+  } catch (err) {
+    console.log('An error occurred: ', err);
+  }
+}
