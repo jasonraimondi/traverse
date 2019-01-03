@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -16,7 +17,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   background-color: black;
-  color: white;
+  color: ${theme.colors.white};
 `;
 
 export class TitleBar extends React.Component<Props> {

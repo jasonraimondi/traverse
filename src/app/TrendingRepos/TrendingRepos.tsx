@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -119,7 +120,7 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-const Main = styled.main`
+const Main = styled.div`
   height: 100%;
   width: 100%;
   display: grid;
@@ -127,7 +128,6 @@ const Main = styled.main`
   grid-template-areas:
     "nav nav"
     "sidebar content";
-  grid-template-rows: 43px 1fr;
   grid-template-columns: 175px 1fr;
 `;
 
@@ -138,7 +138,7 @@ const NavContainer = styled.nav`
   align-items: center;
   height: 40px;
   border-bottom: 2px solid black;
-  background-color: teal;
+  background-color: ${theme.colors.purple};
 `;
 
 const LanguageListContainer = styled.div`

@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -7,7 +8,7 @@ const LanguageContainer = styled.li`
 `;
 
 const LanguageButton = styled.button`
-  // padding: 7.5px 0;
+  padding: 7.5px 0;
   width: 100%;
   color: black;
   border: none;
@@ -16,7 +17,7 @@ const LanguageButton = styled.button`
     outline: none;
   }
   &:hover {
-    color: grey;
+    color: ${theme.colors.grey};
   }
 `;
 

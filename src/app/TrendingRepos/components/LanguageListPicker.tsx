@@ -40,7 +40,7 @@ const LanguageSelect = styled.div`
 `;
 
 const Icon = styled.a`
-  color: white;
+  color: #ffffff;
   border-color: orange;
   > svg {
     height: 1rem;

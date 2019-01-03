@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
@@ -57,7 +58,9 @@ const Main = styled.main`
     "title"
     "content"
     "bottom-nav";
-  grid-template-rows: 43px 1fr 43px;
+  grid-template-rows: 43px 1fr;
+  overflow-wrap: normal;
+  overflow-wrap: break-word;
 `;
 
 const TitleContainer = styled.div`
@@ -73,11 +76,20 @@ const TitleContainer = styled.div`
 const RouterOutlet = styled.div`
   overflow-y: auto;
   grid-area: content;
-  background-color: tomato;
+  background-color: ${theme.colors.white};
+  overflow-wrap: normal;
+  overflow-wrap: break-word;
 `;
 
 const NavigationContainer = styled.div`
   grid-area: bottom-nav;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  & a {
+    color: ${theme.colors.white};
+  }
 `;
 
 export default connect(mapStateToProps)(App);

@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -79,6 +80,12 @@ const NameLink = styled.a`
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
+  color: ${theme.colors.purple};
+  text-decoration: none;
+  &:hover {
+    color: ${theme.colors['purple-darker']}
+    text-decoration: underline;
+  }
 `;
 const Language = styled.p`
   font-size: 0.8rem;
