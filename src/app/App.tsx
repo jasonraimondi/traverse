@@ -34,7 +34,7 @@ class App extends React.Component<Props> {
           <NavigationContainer>
             <Link to='/'>Home</Link>
             <Link to='/about'>About</Link>
-            <Link to='/settings'>Settings</Link>
+            {/*<Link to='/settings'>Settings</Link>*/}
           </NavigationContainer>
         </Main>
       </Router>
