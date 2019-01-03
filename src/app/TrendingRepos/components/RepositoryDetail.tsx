@@ -75,11 +75,7 @@ export class RepositoryDetail extends React.Component<InferProps> {
 const Name = styled.p`
 `;
 const NameLink = styled.a`
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
-  hyphens: auto;
+  font-weight: 600;
   color: ${theme.colors.purple};
   text-decoration: none;
   &:hover {
@@ -88,15 +84,21 @@ const NameLink = styled.a`
   }
 `;
 const Language = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: ${theme.colors['grey-darker']}
 `;
 const Description = styled.p`
 `;
-const ForksCount = styled.p`
+const Bottom = styled.p`
+  font-weight: 400;
+  font-size: 0.7rem;
 `;
-const WatchersCount = styled.p`
+const ForksCount = styled(Bottom)`
 `;
-const StargazersCount = styled.p`
+const WatchersCount = styled(Bottom)`
+`;
+const StargazersCount = styled(Bottom)`
 `;
 const Item = styled.li`
   padding: 0 15px;

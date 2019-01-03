@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -40,14 +41,14 @@ const LanguageSelect = styled.div`
 `;
 
 const Icon = styled.a`
-  color: #ffffff;
-  border-color: orange;
+  color: ${theme.colors.white};
   > svg {
     height: 1rem;
     max-height: 100%;
     max-width: 100%;
     fill: currentColor;
     stroke: currentColor;
+    color: inherit;
   }
   &:first-child {
     margin-right: 1rem;

@@ -36,4 +36,9 @@ export class RepositoryList extends React.Component<Props> {
 const List = styled(UnstyledList)`
   flex: 1;
   overflow-y: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
 `;

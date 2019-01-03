@@ -1,4 +1,5 @@
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { theme } from '@/infrastructure/styles/theme';
 import { FrequencyType } from '@/models/Frequency.type';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -20,12 +21,16 @@ export class EmptyRepositoryList extends React.Component<Props> {
           I didn't find any {this.props.language.title} repos trending {this.props.frequency}.
         </h4>
         <div>
-          <a href={this.githubLink} className='open-link-externally'>Check Github?</a>
+          <CheckGithubLink href={this.githubLink} className='open-link-externally'>Check Github?</CheckGithubLink>
         </div>
       </EmptyContainer>
     );
   }
 }
+
+const CheckGithubLink = styled.a`
+  color: ${theme.colors.purple};
+`;
 
 const EmptyContainer = styled.div`
   height: 100%;
@@ -34,4 +39,6 @@ const EmptyContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 1rem 0;
 `;

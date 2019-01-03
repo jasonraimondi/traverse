@@ -12,12 +12,13 @@ const LanguageButton = styled.button`
   width: 100%;
   color: black;
   border: none;
-  &:active, &.selected {
-    text-decoration: underline;
+  &:active, &:hover, &.selected {
     outline: none;
+    color: ${theme.colors.white};
+    background-color: ${theme.colors['purple-darker']};
   }
   &:hover {
-    color: ${theme.colors.grey};
+    background-color: ${theme.colors.purple};
   }
 `;
 

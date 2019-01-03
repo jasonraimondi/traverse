@@ -58,7 +58,7 @@ const Main = styled.main`
     "title"
     "content"
     "bottom-nav";
-  grid-template-rows: 43px 1fr;
+  grid-template-rows: 43px 1fr 40px;
   overflow-wrap: normal;
   overflow-wrap: break-word;
 `;
@@ -86,7 +86,7 @@ const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0 1rem;
   & a {
     color: ${theme.colors.white};
   }
