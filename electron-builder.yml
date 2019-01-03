@@ -1,6 +1,6 @@
 appId: site.traverse.app
 productName: Traverse
-copyright: Copyright © 2018 Digital Canvas Design, LLC
+copyright: Copyright © 2019 Jason Raimondi, Digital Canvas Design LLC
 
 directories:
   buildResources: resources/
