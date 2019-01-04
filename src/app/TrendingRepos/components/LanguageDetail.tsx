@@ -10,15 +10,18 @@ const LanguageContainer = styled.li`
 const LanguageButton = styled.button`
   padding: 7.5px 0;
   width: 100%;
-  color: black;
+  color: ${theme.colors.black};
+  background-color: ${theme.colors.white};
   border: none;
   &:active, &:hover, &.selected {
     outline: none;
-    color: ${theme.colors.white};
-    background-color: ${theme.colors['purple-darker']};
   }
-  &:hover {
-    background-color: ${theme.colors.purple};
+  &:active span, &:hover span, &.selected span {
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.green};
+  }
+  &:hover span {
+    background-color: ${theme.colors.green};
   }
 `;
 
@@ -33,8 +36,13 @@ export class LanguageDetail extends React.Component<Props> {
     return <LanguageContainer className='language-list-item'>
       <LanguageButton className={this.props.isSelected ? 'selected' : null}
              onClick={this.props.selectLanguage}>
-        {this.props.language.title}
+        <Title>{this.props.language.title}</Title>
       </LanguageButton>
     </LanguageContainer>;
   }
 }
+
+const Title = styled.span`
+  padding: 0.2rem 0.4rem 0.3rem;
+  border-radius: 0.5rem;
+`;

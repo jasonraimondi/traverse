@@ -1,7 +1,7 @@
 import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
-import { HashRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
+import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import About from '@/app/About/About';
@@ -32,8 +32,8 @@ class App extends React.Component<Props> {
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
-            <Link to='/'>Home</Link>
-            <Link to='/about'>About</Link>
+            <NavLink to='/' exact activeClassName='selected'>Home</NavLink>
+            <NavLink to='/about' exact activeClassName='selected'>About</NavLink>
             {/*<Link to='/settings'>Settings</Link>*/}
           </NavigationContainer>
         </Main>
@@ -61,6 +61,8 @@ const Main = styled.main`
   grid-template-rows: 43px 1fr 40px;
   overflow-wrap: normal;
   overflow-wrap: break-word;
+  color: ${theme.colors.black};
+  background-color: ${theme.colors.black};
 `;
 
 const TitleContainer = styled.div`
@@ -70,7 +72,7 @@ const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid ${theme.colors.black};
 `;
 
 const RouterOutlet = styled.div`
@@ -87,8 +89,17 @@ const NavigationContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
   & a {
     color: ${theme.colors.white};
+  }
+  & a:hover {
+    text-decoration: none;
+  }
+  & a.selected {
+    text-decoration: underline;
   }
 `;
 

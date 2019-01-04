@@ -1,3 +1,7 @@
+import {
+  SetLanguageListTypeAction,
+  SetLanguageListTypeActionType,
+} from '@/infrastructure/redux/actions/SetLanguageListType.action';
 import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -22,13 +26,15 @@ interface Props {
   repositoryList: { [id: string]: RepositoryEntity };
   frequency: FrequencyType;
   language: ILanguage;
+  languageListType: ListType;
   SetLanguageAction: SetLanguageActionType;
   SetFrequencyAction: SetFrequencyActionType;
+  SetLanguageListTypeAction: SetLanguageListTypeActionType;
   FetchRepositoryListAction: FetchRepositoryListActionType;
 }
 
 interface State {
-  selectedLanguageListType: 'all' | 'popular';
+  selectedLanguageListType: ListType;
 }
 
 class App extends React.Component<Props, State> {
@@ -41,7 +47,7 @@ class App extends React.Component<Props, State> {
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
     this.handleSetLanguageList = this.handleSetLanguageList.bind(this);
     this.state = {
-      selectedLanguageListType: 'all',
+      selectedLanguageListType: props.languageListType,
     };
   }
 
@@ -69,6 +75,7 @@ class App extends React.Component<Props, State> {
   }
 
   handleSetLanguageList(listType: ListType) {
+    this.props.SetLanguageListTypeAction(listType);
     this.setState({ selectedLanguageListType: listType });
   }
 
@@ -83,7 +90,7 @@ class App extends React.Component<Props, State> {
         </NavContainer>
         <LanguageListContainer id='language-container'>
           <LanguageList
-            selectedLanguageListType={this.state.selectedLanguageListType}
+            languageListType={this.state.selectedLanguageListType}
             selectedLanguage={this.props.language}
             popularLanguageList={this.POPULAR_LANGUAGES}
             allLanguageList={this.ALL_LANGUAGES}
@@ -106,6 +113,7 @@ function mapStateToProps(state) {
     language: state.language,
     frequency: state.frequency,
     repositoryList: state.repositoryList,
+    languageListType: state.languageListType,
   };
 }
 
@@ -115,6 +123,7 @@ function mapDispatchToProps(dispatch) {
       SetLanguageAction,
       SetFrequencyAction,
       FetchRepositoryListAction,
+      SetLanguageListTypeAction,
     },
     dispatch,
   );
@@ -128,7 +137,7 @@ const Main = styled.div`
   grid-template-areas:
     "nav nav"
     "sidebar content";
-  grid-template-columns: 175px 1fr;
+  grid-template-columns: 140px 1fr;
 `;
 
 const NavContainer = styled.nav`
@@ -137,7 +146,7 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid ${theme.colors.black};
   background-color: ${theme.colors.purple};
 `;
 
@@ -145,7 +154,7 @@ const LanguageListContainer = styled.div`
   grid-area: sidebar;
   min-height: 0;
   overflow-y: auto;
-  border-right: 2px solid black;
+  border-right: 2px solid ${theme.colors.black};
   word-wrap: break-word;
   display: flex;
   flex-direction: column;

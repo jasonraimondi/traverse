@@ -10,6 +10,7 @@ class About extends React.Component {
     return <>
       <AboutContainer>
         <TraverseTitle>
+          <Icon src='../resources/icon.png' alt='Traverse Icon'/>
           Traverse
           <br/>
           <Version>v{remote.app.getVersion()}</Version>
@@ -19,6 +20,11 @@ class About extends React.Component {
     </>;
   }
 }
+
+const Icon = styled.img`
+    width: 175px;
+    height: 175px;
+`;
 
 const AboutContainer = styled.div`
     display: flex;

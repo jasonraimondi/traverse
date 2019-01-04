@@ -1,3 +1,4 @@
+import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -18,13 +19,26 @@ const List = styled(UnstyledList)`
   height: 100%;
   flex: 1;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 const ListItem = styled.li`
+  margin-right: 1rem;
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const Label = styled.button`
+  background-color: ${theme.colors.white};
+  border-radius: 999px;
+  border: 2px solid ${theme.colors.white};
+  font-size: 0.8rem;
+  color: ${theme.colors.black};
+  &:active, &:hover, &.selected {
+    outline: none;
+    text-decoration: underline;
+  }
 `;
 
 export class FrequencyPicker extends React.Component<Props, State> {

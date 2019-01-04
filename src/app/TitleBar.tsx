@@ -16,7 +16,7 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: ${theme.colors.black};
   color: ${theme.colors.white};
 `;
 
@@ -24,9 +24,9 @@ export class TitleBar extends React.Component<Props> {
   render() {
     return (
       <Title className='title-bar'>
-        <span className='selected-frequency'>{this.ucFirst(this.props.frequency)}</span>
-        &nbsp;
         <span className='selected-language'>{this.filterLanguage(this.props.language.title)}</span>
+        &nbsp;|&nbsp;
+        <span className='selected-frequency'>{this.ucFirst(this.props.frequency)}</span>
       </Title>
     );
   }

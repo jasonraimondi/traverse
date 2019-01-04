@@ -63,8 +63,8 @@ describe('<TrendingRepos />', () => {
     app.find('li.language-list-item button').at(2).simulate('click');
 
     const language = {
-      value: 'ActionScript',
-      title: 'ActionScript',
+      value: 'CSharp',
+      title: 'C#',
     };
 
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));

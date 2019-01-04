@@ -101,8 +101,9 @@ const WatchersCount = styled(Bottom)`
 const StargazersCount = styled(Bottom)`
 `;
 const Item = styled.li`
-  padding: 0 15px;
-  border-bottom: 1px solid black;
+  padding: 0.5rem 1.25rem 0.5rem 1rem;
+  background-color: ${theme.colors['grey-lightest']};
+  border-bottom: 1px solid ${theme.colors.black};
 `;
 const ItemHeader = styled.header`
 `;

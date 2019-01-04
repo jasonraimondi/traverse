@@ -1,9 +1,10 @@
 import { mediaQueries, ScreenSizesFunctions } from '@/infrastructure/styles/media-queries';
 
 class Theme {
-  colors = require('@/infrastructure/data/colors.json');
-  screens = require('@/infrastructure/data/screens.json');
-  mediaQuery: ScreenSizesFunctions = mediaQueries(this.screens);
+  readonly colors = require('@/infrastructure/data/colors.json');
+  readonly screens = require('@/infrastructure/data/screens.json');
+  readonly mediaQuery: ScreenSizesFunctions = mediaQueries(this.screens);
+  readonly sidebarWidth: '140px';
 }
 
 export const theme = new Theme();

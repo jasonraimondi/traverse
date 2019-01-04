@@ -26,6 +26,7 @@ store.subscribe(() => {
   saveStateToElectronSettings({
     language: store.getState().language,
     frequency: store.getState().frequency,
+    languageListType: store.getState().languageListType,
     githubAccessToken: store.getState().githubAccessToken,
   });
 });
@@ -34,7 +35,7 @@ sagaMiddleware.run(sagas);
 
 export default ReactDOM.render(
   <Provider store={store}>
-      <App/>
+    <App/>
   </Provider>,
   document.getElementById('app-root'),
 );
