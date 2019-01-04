@@ -65,10 +65,26 @@ After you add your token, make sure the [package.json](./package.json) version i
 
 ### Screen Shots
 
-![Preview 1](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_600/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-1.png)
+![Current Main 1](./screenshots/0.10.1-main1.png)
 
-![Preview 2](https://res.cloudinary.com/jmondi/image/upload/c_scale,w_600/v1536468459/jasonraimondi.com/traverse-rewrite/traverse-rewrite-2.png)
+![Current Main 2](./screenshots/0.10.1-main2.png)
+
+![Current About](./screenshots/0.10.1-about.png)
 
 ### License
 
 Traverse is [MIT licensed](./LICENSE).
+
+### Archived Images
+
+![Preview 6](./screenshots/0.10.0-main1.png)
+
+![Preview 5](./screenshots/0.10.0-about.png)
+
+![Preview 4](./screenshots/0.0.8-2.png)
+
+![Preview 3](./screenshots/0.0.8-1.png)
+
+![Preview 2](./screenshots/0.0.2-1.png)
+
+![Preview 1](./screenshots/0.0.2-2.png)
