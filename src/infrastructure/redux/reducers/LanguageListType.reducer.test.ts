@@ -2,7 +2,6 @@ import { SetLanguageListTypeAction } from '@/infrastructure/redux/actions/SetLan
 import { languageListTypeReducer } from '@/infrastructure/redux/reducers/LanguageListType.reducer';
 import { assert } from 'chai';
 
-
 describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE languageListType is popular', () => {
     const action = { type: undefined };

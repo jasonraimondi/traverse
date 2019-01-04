@@ -65,11 +65,17 @@ After you add your token, make sure the [package.json](./package.json) version i
 
 ### Screen Shots
 
-![Current Main 1](./screenshots/0.10.1-main1.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main1.png"
+     width="500px"
+     alt="Current Image">
 
-![Current Main 2](./screenshots/0.10.1-main2.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main2.png"
+     width="500px"
+     alt="Current Image">
 
-![Current About](./screenshots/0.10.1-about.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-about.png"
+     width="500px"
+     alt="Current Image">
 
 ### License
 
@@ -77,14 +83,32 @@ Traverse is [MIT licensed](./LICENSE).
 
 ### Archived Images
 
-![Preview 6](./screenshots/0.10.0-main1.png)
+##### 0.10.0
 
-![Preview 5](./screenshots/0.10.0-about.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.0-main1.png"
+     width="500px"
+     alt="Archived Image">
 
-![Preview 4](./screenshots/0.0.8-2.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.0-about.png"
+     width="500px"
+     alt="Archived Image">
 
-![Preview 3](./screenshots/0.0.8-1.png)
+##### 0.0.8
 
-![Preview 2](./screenshots/0.0.2-1.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.8-2.png"
+     width="500px"
+     alt="Archived Image">
 
-![Preview 1](./screenshots/0.0.2-2.png)
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.8-1.png"
+     width="500px"
+     alt="Archived Image">
+
+##### 0.0.2
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.2-1.png"
+     width="500px"
+     alt="Archived Image">
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.2-2.png"
+     width="500px"
+     alt="Archived Image">
