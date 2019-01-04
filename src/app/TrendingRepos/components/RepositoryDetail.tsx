@@ -79,7 +79,7 @@ const NameLink = styled.a`
   color: ${theme.colors.purple};
   text-decoration: none;
   &:hover {
-    color: ${theme.colors['purple-darker']}
+    color: ${theme.colors['purple-dark']}
     text-decoration: underline;
   }
 `;

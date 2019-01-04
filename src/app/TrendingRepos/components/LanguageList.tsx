@@ -66,4 +66,5 @@ const ListTitle = styled.li`
   font-size: 0.65rem;
   text-transform: uppercase;
   font-weight: 700;
+  padding-top: 0.65rem;
 `;

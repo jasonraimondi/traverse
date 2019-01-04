@@ -34,10 +34,12 @@ const Label = styled.button`
   border-radius: 999px;
   border: 2px solid ${theme.colors.white};
   font-size: 0.8rem;
+  font-weight: 700;
   color: ${theme.colors.black};
   &:active, &:hover, &.selected {
     outline: none;
     text-decoration: underline;
+    color: ${theme.colors['green-dark']};
   }
 `;
 

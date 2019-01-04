@@ -17,6 +17,9 @@ interface Props {
 }
 
 class App extends React.Component<Props> {
+  readonly homeIcon = require('@/assets/icons/icon-dashboard.svg');
+  readonly aboutIcon = require('@/assets/icons/icon-bug.svg');
+
   render() {
     return (
       <Router>
@@ -32,10 +35,18 @@ class App extends React.Component<Props> {
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
-            <NavLink to='/' exact activeClassName='selected'>Home</NavLink>
-            <NavLink to='/about' exact activeClassName='selected'>About</NavLink>
+            <NavLink to='/'
+                     exact
+                     activeClassName='selected'
+                     dangerouslySetInnerHTML={{ __html: this.homeIcon }}
+            />
+            <NavLink to='/about'
+                     exact
+                     activeClassName='selected'
+            >About</NavLink>
             {/*<Link to='/settings'>Settings</Link>*/}
           </NavigationContainer>
+          <style>{iconStyle}</style>
         </Main>
       </Router>
     );
@@ -100,6 +111,28 @@ const NavigationContainer = styled.div`
   }
   & a.selected {
     text-decoration: underline;
+  }
+`;
+
+const iconStyle = `
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: ${theme.colors.white};
+    border-radius: 999px;
+    padding: 0.1rem;
+  }
+  svg .primary {
+    fill: ${theme.colors['grey-darker']};
+  }
+  svg .secondary {
+    fill: ${theme.colors.grey};
+  }
+  .selected .primary {
+    fill: ${theme.colors['green-darker']};
+  }
+  .selected .secondary {
+    fill: ${theme.colors.green};
   }
 `;
 
