@@ -1,4 +1,5 @@
-import { remote } from 'electron';
+import { Donation } from '@/app/About/components/Donation';
+import { clipboard, remote } from 'electron';
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
@@ -17,16 +18,8 @@ class About extends React.Component {
             <Version>v{remote.app.getVersion()}</Version>
           </TraverseTitle>
           <DonateTitle>Beer Me</DonateTitle>
-          <DonationAddress>
-            Ether
-            <br/>
-            <code>0x13EcA749be300C1951bD6E9d86bB395e2734BE20</code>
-          </DonationAddress>
-          <DonationAddress>
-            Nano
-            <br/>
-            <code>xrb_3ii5t9x8a7or17zkf6syp7ntprd77z7tx9migsghb9rx5ymiop76kyrahef8</code>
-          </DonationAddress>
+          <Donation walletType='Ether' address='0x13EcA749be300C1951bD6E9d86bB395e2734BE20'/>
+          <Donation walletType='Nano' address='xrb_3ii5t9x8a7or17zkf6syp7ntprd77z7tx9migsghb9rx5ymiop76kyrahef8'/>
         </Main>
         <Copyright>Copyright © 2019 Jason Raimondi, Digital Canvas Design LLC</Copyright>
       </AboutContainer>
@@ -42,15 +35,6 @@ const Icon = styled.img`
 const DonateTitle = styled.p`
     font-size: 0.8rem;
     font-weight: 600;
-`;
-
-const DonationAddress = styled.p`
-    color: ${theme.colors.grey};
-    font-size: 0.6rem;
-    font-weight: 600;
-    & code {
-      color: ${theme.colors.purple};
-    }
 `;
 
 const Main = styled.div`
