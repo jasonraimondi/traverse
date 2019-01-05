@@ -65,17 +65,17 @@ After you add your token, make sure the [package.json](./package.json) version i
 
 ### Screen Shots
 
-<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main1.png"
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.2-1.png"
      width="500px"
-     alt="Current Image">
+     alt="Version 0.10.2 Screenshot 1">
 
-<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main2.png"
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.2-2.png"
      width="500px"
-     alt="Current Image">
-
-<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-about.png"
+     alt="Version 0.10.2 Screenshot 2">
+     
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.2-3.png"
      width="500px"
-     alt="Current Image">
+     alt="Version 0.10.2 Screenshot 3">
 
 ### License
 
@@ -83,32 +83,46 @@ Traverse is [MIT licensed](./LICENSE).
 
 ### Archived Images
 
+##### 0.10.1
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main1.png"
+     width="500px"
+     alt="Version 0.10.1 Screenshot 1">
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-main2.png"
+     width="500px"
+     alt="Version 0.10.1 Screenshot 2">
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.1-about.png"
+     width="500px"
+     alt="Version 0.10.1 Screenshot 3">
+
 ##### 0.10.0
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.0-main1.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.10.0 Screenshot 1">
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.0-about.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.10.0 Screenshot 2">
 
 ##### 0.0.8
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.8-2.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.0.8 Screenshot 1">
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.8-1.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.0.8 Screenshot 2">
 
 ##### 0.0.2
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.2-1.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.0.2 Screenshot 1">
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.0.2-2.png"
      width="500px"
-     alt="Archived Image">
+     alt="Version 0.0.2 Screenshot 2">
