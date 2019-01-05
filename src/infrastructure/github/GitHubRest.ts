@@ -6,7 +6,7 @@ interface IHeaders {
   [name: string]: string;
 }
 
-export function GitHubRest(path: string, params?: Props, headers?: IHeaders, accessToken?: string) {
+export function GitHubRest(path: string, params: Props = {}, headers: IHeaders = {}, accessToken?: string) {
   params = {
     ...params,
   };

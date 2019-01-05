@@ -3,6 +3,7 @@ import * as dayjs from 'dayjs';
 
 import { GitHubRest } from '@/infrastructure/github/GitHubRest';
 import { FrequencyType, frequencyTypeDate } from '@/models/Frequency.type';
+import { store } from '@/renderer';
 
 export type Sort = 'stars' | 'forks' | 'updated';
 export type Order = 'asc' | 'desc';
@@ -27,6 +28,7 @@ async function searchForRepositories(q: string, sort: Sort, order: Order) {
     '/search/repositories',
     { q, sort, order },
     null,
+    store.getState().githubAccessToken,
   );
   const search = await axios.get(githubRest.url, githubRest.config);
   return search.data;

@@ -36,8 +36,8 @@ class App extends React.Component<Props> {
           <RouterOutlet>
             <Switch>
               <Route path='/' exact component={TrendingRepos}/>
-              <Route path='/about' component={About}/>
               <Route path='/settings' component={Settings}/>
+              <Route path='/about' component={About}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
@@ -45,14 +45,15 @@ class App extends React.Component<Props> {
               <NavLink to='/'
                        exact
                        activeClassName='selected'
-                       title='Trending Repositories Page'
+                       title='Trending Repositories'
                        dangerouslySetInnerHTML={{ __html: this.homeIcon }}
               />
-              {/*<NavLink to='/settings'*/}
-                       {/*exact*/}
-                       {/*activeClassName='selected'*/}
-                       {/*dangerouslySetInnerHTML={{ __html: this.settingsIcon }}*/}
-              {/*/>*/}
+              <NavLink to='/settings'
+                       exact
+                       activeClassName='selected'
+                       title='Settings'
+                       dangerouslySetInnerHTML={{ __html: this.settingsIcon }}
+              />
             </Left>
             <Right>
               <NavLink to='/about'

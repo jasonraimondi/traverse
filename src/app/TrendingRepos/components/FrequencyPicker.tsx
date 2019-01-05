@@ -1,8 +1,7 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UnstyledList } from '@/app/elements/base';
+import { PillButton, UnstyledList } from '@/app/elements/base';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -29,19 +28,7 @@ const ListItem = styled.li`
   }
 `;
 
-const Label = styled.button`
-  background-color: ${theme.colors.white};
-  border-radius: 999px;
-  border: 2px solid ${theme.colors.white};
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: ${theme.colors.black};
-  &:active, &:hover, &.selected {
-    outline: none;
-    text-decoration: underline;
-    color: ${theme.colors['green-dark']};
-  }
-`;
+const Label = styled(PillButton)``;
 
 export class FrequencyPicker extends React.Component<Props, State> {
   constructor(props: Props) {

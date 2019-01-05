@@ -1,19 +1,27 @@
+import { ClearGithubAccessTokenAction } from '@/infrastructure/redux/actions/ClearGithubAccessToken.action';
 import { SetGithubAccessTokenAction } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
 import { githubAccessTokenReducer } from '@/infrastructure/redux/reducers/GithubAccessToken.reducer';
 import { assert } from 'chai';
 
 describe('LanguageDetail Reducer', () => {
-  test('INITIAL_STATE language is blank string', () => {
+  test('INITIAL_STATE accessToken is blank string', () => {
     const action = { type: undefined };
     const initialState = '';
 
     assert.strictEqual(githubAccessTokenReducer(undefined, action), initialState);
   });
 
-  test('SET_LANGUAGE updates the language reducer properly', () => {
-    const language = '12345';
-    const action = SetGithubAccessTokenAction(language);
+  test('SET_ACCESS_TOKEN updates the accessToken reducer properly', () => {
+    const accessToken = '12345';
+    const action = SetGithubAccessTokenAction(accessToken);
 
-    assert.strictEqual(githubAccessTokenReducer(undefined, action), language);
+    assert.strictEqual(githubAccessTokenReducer(undefined, action), accessToken);
+  });
+
+  test('CLEAR_ACCESS_TOKEN updates the accessToken reducer properly', () => {
+    const accessToken = null;
+    const action = ClearGithubAccessTokenAction();
+
+    assert.strictEqual(githubAccessTokenReducer(undefined, action), accessToken);
   });
 });
