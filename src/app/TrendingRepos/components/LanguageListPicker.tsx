@@ -1,12 +1,15 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
+
+import { DieRoller } from '@/app/TrendingRepos/components/DieRoller';
+import { theme } from '@/infrastructure/styles/theme';
 
 export type ListType = 'all' | 'popular';
 
 interface Props {
   selected: ListType;
   handleSetLanguageList(listType: ListType): void;
+  onClickRoll(): void;
 }
 
 export class LanguageListPicker extends React.Component<Props> {
@@ -15,15 +18,16 @@ export class LanguageListPicker extends React.Component<Props> {
 
   render() {
     return <LanguageSelect id='language-select'>
-        <Icon className={this.props.selected === 'all' ? 'selected' : null}
-              onClick={() => this.handleSelectLanguage('all')}
-              dangerouslySetInnerHTML={{ __html: this.iconAll }}
-        />
-        <Icon className={this.props.selected === 'popular' ? 'selected' : null}
-              onClick={() => this.handleSelectLanguage('popular')}
-              dangerouslySetInnerHTML={{ __html: this.iconPopular }}
-        />
-      </LanguageSelect>;
+      <DieRoller onClickRoll={this.props.onClickRoll}/>
+      <Icon className={this.props.selected === 'all' ? 'selected' : null}
+            onClick={() => this.handleSelectLanguage('all')}
+            dangerouslySetInnerHTML={{ __html: this.iconAll }}
+      />
+      <Icon className={this.props.selected === 'popular' ? 'selected' : null}
+            onClick={() => this.handleSelectLanguage('popular')}
+            dangerouslySetInnerHTML={{ __html: this.iconPopular }}
+      />
+    </LanguageSelect>;
   }
 
   private handleSelectLanguage(listType: ListType) {

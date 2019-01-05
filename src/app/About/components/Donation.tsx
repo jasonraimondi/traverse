@@ -44,7 +44,7 @@ const Copied = styled.span`
     position: absolute;
     font-size: 0.5rem;
     margin-left: 10px;
-    color: ${theme.colors['purple-light']};
+    color: ${theme.colors.green};
 `;
 
 const DonationAddress = styled.p`

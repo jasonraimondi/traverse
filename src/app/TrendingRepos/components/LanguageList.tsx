@@ -19,19 +19,7 @@ interface Props {
   handleSetLanguage: (language: ILanguage) => void;
 }
 
-const List = styled(UnstyledList)`
-`;
-
 export class LanguageList extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.handleSetLanguage = this.handleSetLanguage.bind(this);
-  }
-
-  handleSetLanguage(language: ILanguage) {
-    this.props.handleSetLanguage(language);
-  }
-
   get languageList() {
     let languageList = this.props.popularLanguageList;
 
@@ -44,7 +32,7 @@ export class LanguageList extends React.Component<Props> {
       return <LanguageDetail key={idx}
                              isSelected={isSelected}
                              language={language}
-                             selectLanguage={() => this.handleSetLanguage(language)}
+                             selectLanguage={() => this.props.handleSetLanguage(language)}
       />;
     });
   }
@@ -58,6 +46,9 @@ export class LanguageList extends React.Component<Props> {
     );
   }
 }
+
+const List = styled(UnstyledList)`
+`;
 
 const ListTitle = styled.li`
   background-color: ${theme.colors.white};

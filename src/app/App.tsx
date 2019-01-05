@@ -1,4 +1,3 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -9,6 +8,7 @@ import Settings from '@/app/Settings/Settings';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
+import { theme } from '@/infrastructure/styles/theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -17,8 +17,8 @@ interface Props {
 }
 
 class App extends React.Component<Props> {
-  readonly homeIcon = require('@/assets/icons/icon-dashboard.svg');
-  readonly aboutIcon = require('@/assets/icons/icon-bug.svg');
+  readonly homeIcon = require('@/assets/icons/icon-code.svg');
+  readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
 
   render() {
     return (
@@ -35,16 +35,24 @@ class App extends React.Component<Props> {
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
-            <NavLink to='/'
-                     exact
-                     activeClassName='selected'
-                     dangerouslySetInnerHTML={{ __html: this.homeIcon }}
-            />
-            <NavLink to='/about'
-                     exact
-                     activeClassName='selected'
-            >About</NavLink>
-            {/*<Link to='/settings'>Settings</Link>*/}
+            <Left>
+              <NavLink to='/'
+                       exact
+                       activeClassName='selected'
+                       dangerouslySetInnerHTML={{ __html: this.homeIcon }}
+              />
+              {/*<NavLink to='/settings'*/}
+                       {/*exact*/}
+                       {/*activeClassName='selected'*/}
+                       {/*dangerouslySetInnerHTML={{ __html: this.settingsIcon }}*/}
+              {/*/>*/}
+            </Left>
+            <Right>
+              <NavLink to='/about'
+                       exact
+                       activeClassName='selected'
+              >About</NavLink>
+            </Right>
           </NavigationContainer>
           <style>{iconStyle}</style>
         </Main>
@@ -99,7 +107,7 @@ const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0.15rem 1rem 0;
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: 700;
@@ -111,6 +119,16 @@ const NavigationContainer = styled.div`
   }
   & a.selected {
     text-decoration: underline;
+  }
+`;
+
+const Right = styled.div`
+`;
+
+const Left = styled.div`
+  flex: 1;
+  > a {
+    margin-right: 0.75rem;
   }
 `;
 

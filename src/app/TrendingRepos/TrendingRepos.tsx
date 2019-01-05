@@ -46,6 +46,7 @@ class App extends React.Component<Props, State> {
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
     this.handleSetLanguageList = this.handleSetLanguageList.bind(this);
+    this.handleRollDice = this.handleRollDice.bind(this);
     this.state = {
       selectedLanguageListType: props.languageListType,
     };
@@ -79,12 +80,28 @@ class App extends React.Component<Props, State> {
     this.setState({ selectedLanguageListType: listType });
   }
 
+  handleRollDice() {
+    const lang = this.randomLanguage;
+    this.props.SetLanguageAction(lang);
+  }
+  private get useAllLanguageList() {
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    return randomNumber === 1;
+  }
+
+  private get randomLanguage(): ILanguage {
+    const list = this.useAllLanguageList ? this.ALL_LANGUAGES : this.POPULAR_LANGUAGES;
+    const randomKey = Math.floor(Math.random() * list.length);
+    return list[randomKey];
+  }
+
   render() {
     return (
       <Main>
         <NavContainer>
           <LanguageListPicker selected={this.state.selectedLanguageListType}
-                          handleSetLanguageList={this.handleSetLanguageList}
+                              handleSetLanguageList={this.handleSetLanguageList}
+                              onClickRoll={this.handleRollDice}
           />
           <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
         </NavContainer>
