@@ -21,10 +21,12 @@ export class LanguageListPicker extends React.Component<Props> {
       <DieRoller onClickRoll={this.props.onClickRoll}/>
       <Icon className={this.props.selected === 'all' ? 'selected' : null}
             onClick={() => this.handleSelectLanguage('all')}
+            title='All Languages'
             dangerouslySetInnerHTML={{ __html: this.iconAll }}
       />
       <Icon className={this.props.selected === 'popular' ? 'selected' : null}
             onClick={() => this.handleSelectLanguage('popular')}
+            title='Popular Languages'
             dangerouslySetInnerHTML={{ __html: this.iconPopular }}
       />
     </LanguageSelect>;

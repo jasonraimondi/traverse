@@ -165,6 +165,9 @@ const NavContainer = styled.nav`
   height: 40px;
   border-bottom: 2px solid ${theme.colors.black};
   background-color: ${theme.colors.purple};
+  & a:hover, button:hover {
+    cursor: pointer;
+  }
 `;
 
 const LanguageListContainer = styled.div`

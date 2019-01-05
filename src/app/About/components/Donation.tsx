@@ -54,4 +54,7 @@ const DonationAddress = styled.p`
     & code {
       color: ${theme.colors.purple};
     }
+    & a:hover {
+      cursor: pointer;
+    }
 `;

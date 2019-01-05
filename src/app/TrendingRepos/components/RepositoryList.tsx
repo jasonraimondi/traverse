@@ -15,6 +15,10 @@ interface Props {
 }
 
 export class RepositoryList extends React.Component<Props> {
+  static readonly FORKS_ICON = require('@/assets/icons/icon-arrows-split.svg');
+  static readonly STARGAZERS_ICON = require('@/assets/icons/icon-star.svg');
+  static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
+
   get listItems() {
     let keyCount = 0;
     return Object.values(this.props.repositoryList).map((repository) => {

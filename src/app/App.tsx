@@ -39,6 +39,7 @@ class App extends React.Component<Props> {
               <NavLink to='/'
                        exact
                        activeClassName='selected'
+                       title='Trending Repositories Page'
                        dangerouslySetInnerHTML={{ __html: this.homeIcon }}
               />
               {/*<NavLink to='/settings'*/}
@@ -50,6 +51,7 @@ class App extends React.Component<Props> {
             <Right>
               <NavLink to='/about'
                        exact
+                       title='About Page'
                        activeClassName='selected'
               >About</NavLink>
             </Right>

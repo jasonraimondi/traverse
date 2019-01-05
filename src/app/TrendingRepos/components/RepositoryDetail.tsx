@@ -1,7 +1,8 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
+import { theme } from '@/infrastructure/styles/theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface InferProps {
@@ -33,17 +34,29 @@ export class RepositoryDetail extends React.Component<InferProps> {
 
   get forksCount() {
     const forksCount = this.attributes ? this.attributes.forksCount : false;
-    return <ForksCount className='forks-count'>Forks: {forksCount}</ForksCount>;
+    const title = `${forksCount} Forks`;
+    return <ForksCount title={title} className='forks-count'>
+      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.FORKS_ICON }}/>
+      {forksCount}
+    </ForksCount>;
   }
 
   get watchersCount() {
     const watchersCount = this.attributes ? this.attributes.watchersCount : false;
-    return <WatchersCount className='watchers-count'>Watchers: {watchersCount}</WatchersCount>;
+    const title = `${watchersCount} Watchers`;
+    return <WatchersCount title={title} className='watchers-count'>
+      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.WATCHERS_ICON }} />
+      {watchersCount}
+    </WatchersCount>;
   }
 
   get stargazersCount() {
     const stargazersCount = this.attributes ? this.attributes.stargazersCount : false;
-    return <StargazersCount className='stargazers-count'>Stargazers: {stargazersCount}</StargazersCount>;
+    const title = `${stargazersCount} Stargazers`;
+    return <StargazersCount title={title} className='stargazers-count'>
+      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.STARGAZERS_ICON }} />
+      {stargazersCount}
+    </StargazersCount>;
   }
 
   get htmlUrl() {
@@ -91,8 +104,10 @@ const Language = styled.p`
 const Description = styled.p`
 `;
 const Bottom = styled.p`
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.7rem;
+  display: flex;
+  align-items: center;
 `;
 const ForksCount = styled(Bottom)`
 `;
@@ -112,4 +127,17 @@ const ItemBody = styled.article`
 const ItemFooter = styled.footer`
   display: flex;
   justify-content: space-between;
+`;
+const MiniIcon = styled.span`
+  margin-right: 0.25rem;
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  & svg .primary {
+    fill: ${theme.colors['green-darker']};
+  }
+  & svg .secondary {
+    fill: ${theme.colors.green};
+  }
 `;

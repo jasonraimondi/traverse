@@ -61,7 +61,10 @@ export class FrequencyPicker extends React.Component<Props, State> {
       const frequencyTitleCase = frequency.replace(/^\w/, (c) => c.toUpperCase());
       const selectedClass = this.props.frequency === frequency ? 'selected' : null;
       return <ListItem key={frequency}>
-        <Label id={`select-${frequency}`} className={selectedClass} onClick={() => this.handleSetFrequency(frequency)}>
+        <Label id={`select-${frequency}`}
+               className={selectedClass}
+               title={`Repositories Trending ${frequencyTitleCase}`}
+               onClick={() => this.handleSetFrequency(frequency)}>
           {frequencyTitleCase}
         </Label>
       </ListItem>;
