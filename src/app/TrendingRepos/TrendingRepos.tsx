@@ -1,14 +1,3 @@
-import {
-  SetLanguageListTypeAction,
-  SetLanguageListTypeActionType,
-} from '@/infrastructure/redux/actions/SetLanguageListType.action';
-import { theme } from '@/infrastructure/styles/theme';
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
-
 import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
@@ -19,8 +8,18 @@ import {
 } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
 import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequency.action';
 import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
+import {
+  SetLanguageListTypeAction,
+  SetLanguageListTypeActionType,
+} from '@/infrastructure/redux/actions/SetLanguageListType.action';
+import { theme } from '@/infrastructure/styles/theme';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
 
 interface Props {
   repositoryList: { [id: string]: RepositoryEntity };
@@ -81,9 +80,9 @@ class App extends React.Component<Props, State> {
   }
 
   handleRollDice() {
-    const lang = this.randomLanguage;
-    this.props.SetLanguageAction(lang);
+    this.handleSetLanguage(this.randomLanguage);
   }
+
   private get useAllLanguageList() {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
     return randomNumber === 1;

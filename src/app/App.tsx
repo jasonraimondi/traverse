@@ -14,6 +14,7 @@ import { FrequencyType } from '@/models/Frequency.type';
 interface Props {
   frequency: FrequencyType;
   language: ILanguage;
+  errorMessage: string;
 }
 
 class App extends React.Component<Props> {
@@ -21,11 +22,16 @@ class App extends React.Component<Props> {
   readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
 
   render() {
+    const error = this.props.errorMessage;
     return (
       <Router>
         <Main>
           <TitleContainer>
-            <TitleBar frequency={this.props.frequency} language={this.props.language}/>
+            {error ? (
+              <ErrorMessage>{error}</ErrorMessage>
+              ) : (
+              <TitleBar frequency={this.props.frequency} language={this.props.language}/>
+            )}
           </TitleContainer>
           <RouterOutlet>
             <Switch>
@@ -65,6 +71,7 @@ class App extends React.Component<Props> {
 
 function mapStateToProps(state) {
   return {
+    errorMessage: state.errorMessage,
     language: state.language,
     frequency: state.frequency,
   };
@@ -84,6 +91,16 @@ const Main = styled.main`
   overflow-wrap: break-word;
   color: ${theme.colors.black};
   background-color: ${theme.colors.black};
+`;
+
+const ErrorMessage = styled.p`
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.red};
+  margin: 0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.7rem;
 `;
 
 const TitleContainer = styled.div`

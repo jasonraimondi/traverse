@@ -1,4 +1,5 @@
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { flashErrorMessage } from '@/infrastructure/error';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
@@ -41,6 +42,7 @@ export function FetchRepositoryListSuccessAction(data: any): IActionResponse<{ [
 }
 
 export function FetchRepositoryListFailureAction(message): IActionResponse<string> {
+  flashErrorMessage(message);
   return {
     type: FETCH_REPOSITORY_LIST_FAILURE,
     payload: message,
