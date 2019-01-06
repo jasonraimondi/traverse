@@ -6,7 +6,7 @@ import { assert } from 'chai';
 describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE accessToken is blank string', () => {
     const action = { type: undefined };
-    const initialState = '';
+    const initialState = null;
 
     assert.strictEqual(githubAccessTokenReducer(undefined, action), initialState);
   });
