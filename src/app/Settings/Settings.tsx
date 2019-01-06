@@ -1,3 +1,4 @@
+import { validateGithubAccessToken } from '@/infrastructure/github-sdk/api/validate-github-access-token';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -5,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { FormBlock } from '@/app/Settings/FormBlock';
-import { validateGithubAccessToken } from '@/infrastructure/github/validateGithubAccessToken';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,

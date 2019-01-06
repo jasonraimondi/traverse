@@ -1,5 +1,4 @@
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { flashErrorMessage } from '@/infrastructure/error';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
@@ -23,28 +22,25 @@ export const FetchRepositoryListAction: FetchRepositoryListActionType = (fields)
   };
 };
 
-export function FetchRepositoryListSuccessAction(data: any): IActionResponse<{ [id: string]: RepositoryEntity }> {
-  data = data.items
-    .map((response) => RepositoryEntity.fromResponse(response))
-    .reduce(
-      (entities, currentItem: RepositoryEntity) => {
-        return {
-          ...entities,
-          [currentItem.id]: currentItem,
-        };
-      },
-      {},
-    );
+export function FetchRepositoryListSuccessAction(
+  data: RepositoryEntity[],
+): IActionResponse<{ [id: string]: RepositoryEntity }> {
   return {
     type: FETCH_REPOSITORY_LIST_SUCCESS,
-    payload: data,
+    payload: data.reduce(listByIdsReducer, {}),
   };
 }
 
 export function FetchRepositoryListFailureAction(message): IActionResponse<string> {
-  flashErrorMessage(message);
   return {
     type: FETCH_REPOSITORY_LIST_FAILURE,
     payload: message,
   };
 }
+
+const listByIdsReducer = (entities, currentItem: RepositoryEntity) => {
+  return {
+    ...entities,
+    [currentItem.id]: currentItem,
+  };
+};

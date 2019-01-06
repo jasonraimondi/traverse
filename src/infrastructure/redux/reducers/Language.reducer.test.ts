@@ -6,9 +6,9 @@ import { languageReducer } from '@/infrastructure/redux/reducers/Language.reduce
 describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE language is blank string', () => {
     const action = { type: undefined };
-    const initialState = '';
+    const initialState = { title: 'All', value: ''};
 
-    assert.strictEqual(languageReducer(undefined, action), initialState);
+    assert.deepStrictEqual(languageReducer(undefined, action), initialState);
   });
 
   test('SET_LANGUAGE updates the language reducer properly', () => {

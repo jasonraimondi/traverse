@@ -7,7 +7,7 @@ describe('rootReducer.ts', () => {
   test('rootReducer is initialized', () => {
     const store = createStore(rootReducer);
 
-    assert.strictEqual(store.getState().language, '');
+    assert.deepStrictEqual(store.getState().language, { title: 'All', value: ''} );
     assert.strictEqual(store.getState().frequency, 'weekly');
     assert.deepStrictEqual(store.getState().repositoryList, {});
   });

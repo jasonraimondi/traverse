@@ -1,7 +1,7 @@
 import { SET_LANGUAGE } from '@/infrastructure/redux/actions/SetLanguage.action';
 
 // blank string = all languages
-const INITIAL_STATE = '';
+const INITIAL_STATE = { title: 'All', value: ''};
 
 export const languageReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

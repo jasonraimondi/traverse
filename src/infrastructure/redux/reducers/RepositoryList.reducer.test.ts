@@ -1,3 +1,4 @@
+import { RepositoryEntity } from '@/models/Repository.entity';
 import { assert } from 'chai';
 
 import { FetchRepositoryListSuccessAction } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
@@ -12,8 +13,8 @@ describe('RepositoryList Reducer', () => {
 
   test('FETCH_REPOSITORY_LIST_SUCCESS updates the repository list reducer properly', () => {
     const data = require('../../../../test/responses/fake-fetch-repository-list-success.json');
-
-    const action = FetchRepositoryListSuccessAction(data);
+    const list = data.items.map((repo) => RepositoryEntity.fromResponse(repo));
+    const action = FetchRepositoryListSuccessAction(list);
 
     const repositoryList = repositoryListReducer(undefined, action);
     assert.strictEqual(Object.values(repositoryList)[0].id, 147134009);
