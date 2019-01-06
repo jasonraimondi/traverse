@@ -6,7 +6,7 @@ import { languageReducer } from '@/infrastructure/redux/reducers/Language.reduce
 describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE language is blank string', () => {
     const action = { type: undefined };
-    const initialState = { title: 'All', value: ''};
+    const initialState = { title: 'TypeScript', value: 'typescript'};
 
     assert.deepStrictEqual(languageReducer(undefined, action), initialState);
   });
