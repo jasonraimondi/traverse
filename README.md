@@ -11,11 +11,23 @@
 
 [Traverse](https://traverse.site) is a GitHub explorer. You can browse repositories trending by frequency and language.
 
+If you find Traverse interesting, please consider giving it a Star.
+
 ## Why?
 
 I love browsing [trending repositories on GitHub](https://github.com/trending). Historically, that page was kinda hidden and took some digging to get to. I wanted to build an app that would make findind new repositories easier.
 
 I was building this app, and ended up finding this awesome extension called [GitHunt](http://github.com/kamranahmedse/githunt) using Traverse. My only complaint about GitHunt is that it opens every new tab, even when I am in the middle of something. I've gotten sidetracked before while opening a new tab and finding a cool project. Need to focus? Not a problem, Traverse is a dedicated application you can open and close at your hearts content.
+
+## Installing
+
+Traverse is available in Homebrew Cask. If you find Traverse interesting, please consider giving it a Star. I need a minimum of 50 stars to keep this project on Homebrew Cask.
+
+```
+brew cask install traverse
+```
+
+Note: Homebrew Cask might not have the most up to date version of Traverse, don't worry, when you launch Traverse, it will download the newest version in the background. Quitting and reopening Traverse will open the updated version.
 
 ## Stack
 
