@@ -17,6 +17,9 @@ export class WindowManager {
     backgroundColor: '#22292f',
     minHeight: 400,
     minWidth: 500,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   };
   private windows: Map<string, BrowserWindow> = new Map();
   private settingsWindow: BrowserWindow | null = null;

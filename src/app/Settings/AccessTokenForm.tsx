@@ -1,3 +1,4 @@
+import { SetGithubAccessTokenActionType } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,7 +11,8 @@ interface Props {
   title: string;
   small?: string;
   formValue: string;
-  handleSubmit(): void;
+
+  handleSubmit(accessToken: string): void;
 }
 
 interface State {
@@ -18,7 +20,7 @@ interface State {
   formValue: string;
 }
 
-export class FormBlock extends React.Component<Props, State> {
+export class AccessTokenForm extends React.Component<Props, State> {
   readonly editIcon = require('@/assets/icons/icon-edit.svg');
 
   constructor(props: Props) {
@@ -27,37 +29,37 @@ export class FormBlock extends React.Component<Props, State> {
       isEditMode: false,
       formValue: props.formValue,
     };
-
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ formValue: event.target.value });
+  handleSubmit(e) {
+    this.props.handleSubmit(this.state.formValue);
+    e.preventDefault();
   }
 
   render() {
-    const isEditable = this.state.isEditMode || !this.props.formValue;
+    const isEditable = this.state.isEditMode;
     const title = <Title>{this.props.title}</Title>;
     const small = this.props.small ? <Small>{this.props.small}</Small> : null;
 
-    return <FormContainer onSubmit={this.props.handleSubmit}>
-        <ToggleEditButton
-          className={isEditable ? 'selected' : null}
-          onClick={() => this.setState({ isEditMode: !this.state.isEditMode })}
-          dangerouslySetInnerHTML={{ __html: this.editIcon }}
+    return <FormContainer onSubmit={this.handleSubmit}>
+      <ToggleEditButton
+        className={isEditable ? 'selected' : null}
+        onClick={() => this.setState({ isEditMode: !this.state.isEditMode })}
+        dangerouslySetInnerHTML={{ __html: this.editIcon }}
+      />
+      <Label htmlFor='github-access-token' className={isEditable ? 'selected' : null}>
+        {title}
+        {small}
+        <Input id='github-access-token'
+               type='text'
+               disabled={!isEditable}
+               value={this.state.formValue}
+               onChange={(e) => this.setState({ formValue: e.target.value })}
         />
-        <Label htmlFor='github-access-token' className={isEditable ? 'selected' : null} >
-          {title}
-          {small}
-          <Input id='github-access-token'
-                 type='text'
-                 disabled={!isEditable}
-                 value={this.state.formValue}
-                 onChange={this.handleChange}
-          />
-        </Label>
-        <Submit className={isEditable ? null : 'invisible'} type='submit'>Submit</Submit>
-      </FormContainer>;
+      </Label>
+      <Submit disabled={!isEditable} type='submit'>Submit</Submit>
+    </FormContainer>;
   }
 }
 

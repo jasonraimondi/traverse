@@ -1,11 +1,11 @@
-import { validateGithubAccessToken } from '@/infrastructure/github-sdk/api/validate-github-access-token';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { FormBlock } from '@/app/Settings/FormBlock';
+import { AccessTokenForm } from '@/app/Settings/AccessTokenForm';
+
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
@@ -33,25 +33,15 @@ class Settings extends React.Component<Props, State> {
       isEditMode: false,
       githubAccessToken: props.githubAccessToken,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  async handleSubmit() {
-    const isValid = await validateGithubAccessToken(this.state.githubAccessToken);
-    if (!isValid) {
-      this.props.ClearGithubAccessTokenAction();
-      return;
-    }
-    this.props.SetGithubAccessTokenAction(this.state.githubAccessToken);
   }
 
   render() {
     return <SettingsContainer>
       <SettingsTitle>Settings</SettingsTitle>
-      <FormBlock title='Github Access Token'
-                 small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
-                 formValue={this.props.githubAccessToken}
-                 handleSubmit={this.handleSubmit}
+      <AccessTokenForm title='Github Access Token'
+                       small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
+                       formValue={this.props.githubAccessToken}
+                       handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
       />
     </SettingsContainer>;
   }

@@ -1,5 +1,5 @@
 import { ClearGithubAccessTokenAction } from '@/infrastructure/redux/actions/ClearGithubAccessToken.action';
-import { SetGithubAccessTokenAction } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
+import { SetGithubAccessTokenSuccessAction } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
 import { githubAccessTokenReducer } from '@/infrastructure/redux/reducers/GithubAccessToken.reducer';
 import { assert } from 'chai';
 
@@ -11,9 +11,9 @@ describe('LanguageDetail Reducer', () => {
     assert.strictEqual(githubAccessTokenReducer(undefined, action), initialState);
   });
 
-  test('SET_ACCESS_TOKEN updates the accessToken reducer properly', () => {
+  test('SET_ACCESS_TOKEN_SUCCESS updates the accessToken reducer properly', () => {
     const accessToken = '12345';
-    const action = SetGithubAccessTokenAction(accessToken);
+    const action = SetGithubAccessTokenSuccessAction(accessToken);
 
     assert.strictEqual(githubAccessTokenReducer(undefined, action), accessToken);
   });
