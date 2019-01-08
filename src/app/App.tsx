@@ -23,13 +23,14 @@ class App extends React.Component<Props> {
 
   render() {
     const error = this.props.errorMessage;
-    return (
+    return <>
+      <style>{iconStyles}</style>
       <Router>
         <Main>
           <TitleContainer>
             {error ? (
               <ErrorMessage>{error}</ErrorMessage>
-              ) : (
+            ) : (
               <TitleBar frequency={this.props.frequency} language={this.props.language}/>
             )}
           </TitleContainer>
@@ -46,13 +47,13 @@ class App extends React.Component<Props> {
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
-                       dangerouslySetInnerHTML={{ __html: this.homeIcon }}
+                       dangerouslySetInnerHTML={{__html: this.homeIcon}}
               />
               <NavLink to='/settings'
                        exact
                        activeClassName='selected'
                        title='Settings'
-                       dangerouslySetInnerHTML={{ __html: this.settingsIcon }}
+                       dangerouslySetInnerHTML={{__html: this.settingsIcon}}
               />
             </Left>
             <Right>
@@ -63,10 +64,9 @@ class App extends React.Component<Props> {
               >About</NavLink>
             </Right>
           </NavigationContainer>
-          <style>{iconStyle}</style>
         </Main>
       </Router>
-    );
+    </>;
   }
 }
 
@@ -152,7 +152,7 @@ const Left = styled.div`
   }
 `;
 
-const iconStyle = `
+const iconStyles = `
   svg {
     width: 1.5rem;
     height: 1.5rem;

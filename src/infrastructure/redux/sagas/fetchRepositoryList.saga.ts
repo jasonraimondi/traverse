@@ -1,4 +1,3 @@
-import { fetchRepositoryListFromGithub } from '@/infrastructure/github-sdk/api/fetch-repository-list-from-github';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { flashErrorMessage } from '@/infrastructure/error';
@@ -9,13 +8,14 @@ import {
   FetchRepositoryListFailureAction,
   FetchRepositoryListSuccessAction,
 } from '@/infrastructure/redux/actions/FetchRepositoryList.action';
+import { serviceFactory } from '@/infrastructure/services/service-factory';
 
 export function* fetchRepositoryListSaga() {
   yield takeEvery(FETCH_REPOSITORY_LIST, fetchRepositoryList);
 }
 
 function fetchRepositoryListApiCall(fields: FetchRepositoryListActionFields) {
-  return fetchRepositoryListFromGithub(fields.language, fields.frequency);
+  return serviceFactory.githubClient.search.forRepositories(fields.language, fields.frequency);
 }
 
 function* fetchRepositoryList(action) {

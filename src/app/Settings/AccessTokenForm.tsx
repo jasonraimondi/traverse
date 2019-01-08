@@ -1,11 +1,11 @@
-import { SetGithubAccessTokenActionType } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
+import { Field, Form, Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { PillButton } from '@/app/elements/base';
 import { theme } from '@/infrastructure/styles/theme';
-import styled from 'styled-components';
 
 interface Props {
   title: string;
@@ -20,6 +20,10 @@ interface State {
   formValue: string;
 }
 
+interface FormValues {
+  githubAccessToken: string;
+}
+
 export class AccessTokenForm extends React.Component<Props, State> {
   readonly editIcon = require('@/assets/icons/icon-edit.svg');
 
@@ -27,39 +31,40 @@ export class AccessTokenForm extends React.Component<Props, State> {
     super(props);
     this.state = {
       isEditMode: false,
-      formValue: props.formValue,
+      formValue: props.formValue || '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.handleSubmit(this.state.formValue);
-    e.preventDefault();
+  handleSubmit(values: FormValues, { setSubmitting }: FormikActions<FormValues>) {
+    setTimeout(() => setSubmitting(false), 500);
+    this.props.handleSubmit(values.githubAccessToken);
   }
 
   render() {
     const isEditable = this.state.isEditMode;
-    const title = <Title>{this.props.title}</Title>;
     const small = this.props.small ? <Small>{this.props.small}</Small> : null;
 
-    return <FormContainer onSubmit={this.handleSubmit}>
-      <ToggleEditButton
-        className={isEditable ? 'selected' : null}
-        onClick={() => this.setState({ isEditMode: !this.state.isEditMode })}
-        dangerouslySetInnerHTML={{ __html: this.editIcon }}
-      />
-      <Label htmlFor='github-access-token' className={isEditable ? 'selected' : null}>
-        {title}
-        {small}
-        <Input id='github-access-token'
-               type='text'
-               disabled={!isEditable}
-               value={this.state.formValue}
-               onChange={(e) => this.setState({ formValue: e.target.value })}
-        />
-      </Label>
-      <Submit disabled={!isEditable} type='submit'>Submit</Submit>
-    </FormContainer>;
+    return <Formik
+      initialValues={{
+        githubAccessToken: '',
+      }}
+      onSubmit={this.handleSubmit}
+      render={() => (
+        <Form>
+          <Label htmlFor='githubAccessToken'>
+            <Title>{this.props.title}</Title>
+            {small}
+          </Label>
+          <Field id='githubAccessToken'
+                 name='githubAccessToken'
+                 placeholder='github-personal-access-token'
+                 type='text'
+          />
+          <Submit type='submit'>Submit</Submit>
+        </Form>
+      )}
+    />;
   }
 }
 
@@ -84,54 +89,61 @@ const Small = styled.p`
   margin: 0;
   color: ${theme.colors['grey-dark']};
 `;
-const Input = styled.input`
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid ${theme.colors.grey};
-  min-width: 273px;
-  .selected & {
-    border-bottom-color: ${theme.colors.purple};
-  }
-`;
-const ToggleEditButton = styled.span`
-  float: right;
-  &:hover {
-    cursor: pointer;
-  }
-  & svg {
-    width: 2rem;
-    height: 2rem;
-  }
-  & svg .primary {
-    fill: ${theme.colors['grey-darker']};
-  }
-  & svg .secondary {
-    fill: ${theme.colors.grey};
-  }
-  &:hover svg .primary {
-    fill: ${theme.colors['purple-darker']};
-  }
-  &:hover svg .secondary {
-    fill: ${theme.colors.purple};
-  }
-  &.selected svg .primary {
-    fill: ${theme.colors['green-darker']};
-  }
-  &.selected svg .secondary {
-    fill: ${theme.colors.green};
-  }
-`;
+// const Input = `
+//   background-color: transparent;
+//   outline: none;
+//   border: none;
+//   border-bottom: 2px solid ${theme.colors.grey};
+//   min-width: 273px;
+//   .selected & {
+//     border-bottom-color: ${theme.colors.purple};
+//   }
+// `;
+
+// const ToggleEditButton = styled.span`
+//   float: right;
+//   &:hover {
+//     cursor: pointer;
+//   }
+//   & svg {
+//     width: 2rem;
+//     height: 2rem;
+//   }
+//   & svg .primary {
+//     fill: ${theme.colors['grey-darker']};
+//   }
+//   & svg .secondary {
+//     fill: ${theme.colors.grey};
+//   }
+//   &:hover svg .primary {
+//     fill: ${theme.colors['purple-darker']};
+//   }
+//   &:hover svg .secondary {
+//     fill: ${theme.colors.purple};
+//   }
+//   &.selected svg .primary {
+//     fill: ${theme.colors['green-darker']};
+//   }
+//   &.selected svg .secondary {
+//     fill: ${theme.colors.green};
+//   }
+// `;
 
 const Submit = styled(PillButton)`
+  display: block;
   margin-top: 0.5rem;
+  background-color: ${theme.colors.grey};
+  &:hover {
+    color: ${theme.colors['']};
+  }
 `;
 
-const FormContainer = styled.form`
-  margin-top: 1rem;
-  background-color: ${theme.colors['grey-lightest']};
-  padding: 0.5rem;
-`;
-const SettingsContainer = styled.div`
-  padding: 0.5rem;
-`;
+// const FormContainer = styled.form`
+//   margin-top: 1rem;
+//   background-color: ${theme.colors['grey-lightest']};
+//   padding: 0.5rem;
+// `;
+
+// const SettingsContainer = styled.div`
+//   padding: 0.5rem;
+// `;

@@ -1,8 +1,8 @@
-import { Search } from '@/infrastructure/github-sdk/search';
-import { User } from '@/infrastructure/github-sdk/user';
 import { RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
+import { Search } from '@/infrastructure/services/github/search/search';
+import { User } from '@/infrastructure/services/github/user/user';
 
-export class GithubClient {
+export class GithubClientService {
   constructor(private readonly restClient: RestClientInterface) {
   }
 
@@ -10,10 +10,7 @@ export class GithubClient {
     const search = await this.restClient.get('/users', {
       access_token: accessToken,
     });
-
-    if (search.status < 300) {
-      throw Error('Invalid Access Token');
-    }
+    return search.status < 300 || search.status === 304;
   }
 
   get search() {

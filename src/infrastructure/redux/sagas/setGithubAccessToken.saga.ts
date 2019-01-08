@@ -16,15 +16,13 @@ async function validateAccessToken(accessToken: string) {
 
 function* setGithubAccessToken(action) {
   try {
-    // @TODO here
     const isValid = yield call(validateAccessToken, action.payload);
     if (isValid) {
       yield put(SetGithubAccessTokenSuccessAction(action.payload));
     } else {
-      yield put(SetGithubAccessTokenFailureAction('Invalid Error Message'));
+      yield put(SetGithubAccessTokenFailureAction('Bad Token'));
     }
   } catch (error) {
-    alert(`error ${error.message}`);
-    // yield put(SetGithubAccessTokenFailureAction(error.message));
+    yield put(SetGithubAccessTokenFailureAction(error.message));
   }
 }

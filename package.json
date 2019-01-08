@@ -47,6 +47,7 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "file-loader": "^2.0.0",
+    "formik": "^1.4.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
     "lodash.findkey": "^4.6.0",

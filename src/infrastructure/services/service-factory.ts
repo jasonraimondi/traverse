@@ -1,10 +1,10 @@
-import { GithubClient } from '@/infrastructure/github-sdk/github-client';
 import { AxiosRestClient } from '@/infrastructure/rest/axios-rest-client';
 import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
+import { GithubClientService } from '@/infrastructure/services/github/github-client-service';
 
 class ServiceFactory {
-  get githubClient(): GithubClient {
-    return new GithubClient(
+  get githubClient() {
+    return new GithubClientService(
       new GithubRestClient(
         new AxiosRestClient('https://api.github.com'),
       ),
