@@ -1,4 +1,4 @@
-import { Form, Formik, FormikActions } from 'formik';
+import { Field, Form, Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -39,6 +39,7 @@ export class AccessTokenForm extends React.Component<Props, State> {
     const small = this.props.small ? <Small>{this.props.small}</Small> : null;
 
     return <>
+      <style>{inputStyle}</style>
       <FormContainer>
         <Formik
           initialValues={{
@@ -51,7 +52,7 @@ export class AccessTokenForm extends React.Component<Props, State> {
                 <Title>{this.props.title}</Title>
                 {small}
               </Label>
-              <Input id='githubAccessToken'
+              <Field id='githubAccessToken'
                      name='githubAccessToken'
                      disabled={isSubmitting}
                      placeholder='personal-access-token'
@@ -95,22 +96,24 @@ const Small = styled.p`
   margin: 0;
   color: ${theme.colors['grey-dark']};
 `;
-const Input = styled.input`
-  display: block;
-  font-size: 1rem;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  min-width: 350px;
-  max-width: 450px;
-  width: 100%;
-  padding: 0.25rem 0.5rem 0.35rem;
-  margin-top: 0.5rem;
-  border: 1px solid ${theme.colors.purple};
-  &:disabled,
-  &[disabled] {
-    border-color: ${theme.colors.grey};
+const inputStyle = `
+  #githubAccessToken {
+    display: block;
+    font-size: 1rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    min-width: 350px;
+    max-width: 450px;
+    width: 100%;
+    padding: 0.25rem 0.5rem 0.35rem;
+    margin-top: 0.5rem;
+    border: 1px solid ${theme.colors.purple};
+    &:disabled,
+    &[disabled] {
+      border-color: ${theme.colors.grey};
+    }
   }
 `;
 
