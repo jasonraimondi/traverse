@@ -1,7 +1,7 @@
 import * as dayjs from 'dayjs';
 
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
+import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
 import { FrequencyType, frequencyTypeDate } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
@@ -16,21 +16,14 @@ export class Search {
     const q = Search.trendingGitHubQueryString(language.value, frequency);
     const sort: Sort = 'stars';
     const order: Order = 'desc';
-
-    let search;
-
-    try {
-      search = await this.restClient.get('/search/repositories', { q, sort, order });
-    } catch (err) {
-      const url = err.response.data.documentation_url || 'err';
-      const message = err.response.data.message || 'Something went wrong!';
-      throw new Error(`${message} ${url}`);
+    const search = await this.restClient.get('/search/repositories', {
+      q,
+      sort,
+      order,
+    }).catch(AxiosRestClient.handleError);
+    if (!search) {
+      return [];
     }
-
-    if (search.status === 403) {
-      throw new Error(search.data.message);
-    }
-
     return search.data.items.map((repo) => RepositoryEntity.fromResponse(repo));
   }
 

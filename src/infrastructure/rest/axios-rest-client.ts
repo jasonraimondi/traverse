@@ -1,4 +1,4 @@
-import axios, { AxiosPromise } from 'axios';
+import axios, { AxiosError, AxiosPromise } from 'axios';
 
 export interface RestClientInterface {
   get(path: string, queryParameters?: any, headers?: any, timeout?: number): AxiosPromise;
@@ -35,5 +35,15 @@ export class AxiosRestClient implements RestClientInterface {
       path = path.slice(1);
     }
     return `${this.basePath}/${path}`;
+  }
+
+  static handleError(err: AxiosError) {
+    if (err.response.status === 403) {
+      throw new Error('Hold on there Jethro! API Limit Reached');
+    }
+
+    const url = err.response.data.documentation_url || 'err';
+    const message = err.response.data.message || 'Something went wrong!';
+    throw new Error(`${message} ${url}`);
   }
 }

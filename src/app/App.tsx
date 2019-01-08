@@ -1,10 +1,10 @@
-import { FlashMessage, flashMessages$ } from '@/infrastructure/flashMessage';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import About from '@/app/About/About';
+import { FlashMessages } from '@/app/elements/FlashMessages';
 import Settings from '@/app/Settings/Settings';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
@@ -17,24 +17,9 @@ interface Props {
   language: ILanguage;
 }
 
-interface State {
-  flashMessage: FlashMessage|null;
-}
-
-class App extends React.Component<Props, State> {
+class App extends React.Component<Props> {
   readonly homeIcon = require('@/assets/icons/icon-code.svg');
   readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
-
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      flashMessage: null,
-    };
-  }
-
-  componentDidMount(): void {
-    flashMessages$.subscribe((message) => this.setState({ flashMessage: message }));
-  }
 
   render() {
     return <>
@@ -42,11 +27,8 @@ class App extends React.Component<Props, State> {
       <Router>
         <Main>
           <TitleContainer>
-            {this.state.flashMessage ? (
-              <Flash className={this.state.flashMessage.level}>{this.state.flashMessage.message}</Flash>
-            ) : (
-              <TitleBar frequency={this.props.frequency} language={this.props.language}/>
-            )}
+            <FlashMessages />
+            <TitleBar frequency={this.props.frequency} language={this.props.language}/>
           </TitleContainer>
           <RouterOutlet>
             <Switch>
@@ -61,13 +43,13 @@ class App extends React.Component<Props, State> {
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
-                       dangerouslySetInnerHTML={{ __html: this.homeIcon }}
+                       dangerouslySetInnerHTML={{__html: this.homeIcon}}
               />
               <NavLink to='/settings'
                        exact
                        activeClassName='selected'
                        title='Settings'
-                       dangerouslySetInnerHTML={{ __html: this.settingsIcon }}
+                       dangerouslySetInnerHTML={{__html: this.settingsIcon}}
               />
             </Left>
             <Right>
@@ -106,25 +88,6 @@ const Main = styled.main`
   overflow-wrap: break-word;
   color: ${theme.colors.black};
   background-color: ${theme.colors.black};
-`;
-
-const Flash = styled.p`
-  background-color: ${theme.colors.white};
-  color: ${theme.colors.red};
-  margin: 0;
-  padding: 0.1rem 0.35rem;
-  border-radius: 999px;
-  font-weight: 500;
-  font-size: 0.7rem;
-  &.success {
-    color: ${theme.colors.green};
-  }
-  &.info {
-    color: ${theme.colors.purple};
-  }
-  &.error {
-    color: ${theme.colors.red};
-  }
 `;
 
 const TitleContainer = styled.div`

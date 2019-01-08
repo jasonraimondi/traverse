@@ -1,4 +1,4 @@
-import { flashRandomSuccessMessage } from '@/infrastructure/flashMessage';
+import { flashSuccessMessage } from '@/infrastructure/flashMessage';
 import {
   SET_GITHUB_ACCESS_TOKEN,
   SetGithubAccessTokenFailureAction,
@@ -20,7 +20,7 @@ function* setGithubAccessToken(action) {
     const isValid = yield call(validateAccessToken, action.payload);
     if (isValid) {
       yield put(SetGithubAccessTokenSuccessAction(action.payload));
-      yield flashRandomSuccessMessage();
+      yield flashSuccessMessage('Token Saved');
     } else {
       yield fail();
     }
