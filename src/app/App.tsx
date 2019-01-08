@@ -1,3 +1,4 @@
+import { FlashMessage, flashMessages$ } from '@/infrastructure/flashMessage';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -14,22 +15,35 @@ import { FrequencyType } from '@/models/Frequency.type';
 interface Props {
   frequency: FrequencyType;
   language: ILanguage;
-  errorMessage: string;
 }
 
-class App extends React.Component<Props> {
+interface State {
+  flashMessage: FlashMessage|null;
+}
+
+class App extends React.Component<Props, State> {
   readonly homeIcon = require('@/assets/icons/icon-code.svg');
   readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
 
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      flashMessage: null,
+    };
+  }
+
+  componentDidMount(): void {
+    flashMessages$.subscribe((message) => this.setState({ flashMessage: message }));
+  }
+
   render() {
-    const error = this.props.errorMessage;
     return <>
       <style>{iconStyles}</style>
       <Router>
         <Main>
           <TitleContainer>
-            {error ? (
-              <ErrorMessage>{error}</ErrorMessage>
+            {this.state.flashMessage ? (
+              <Flash className={this.state.flashMessage.level}>{this.state.flashMessage.message}</Flash>
             ) : (
               <TitleBar frequency={this.props.frequency} language={this.props.language}/>
             )}
@@ -47,13 +61,13 @@ class App extends React.Component<Props> {
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
-                       dangerouslySetInnerHTML={{__html: this.homeIcon}}
+                       dangerouslySetInnerHTML={{ __html: this.homeIcon }}
               />
               <NavLink to='/settings'
                        exact
                        activeClassName='selected'
                        title='Settings'
-                       dangerouslySetInnerHTML={{__html: this.settingsIcon}}
+                       dangerouslySetInnerHTML={{ __html: this.settingsIcon }}
               />
             </Left>
             <Right>
@@ -94,7 +108,7 @@ const Main = styled.main`
   background-color: ${theme.colors.black};
 `;
 
-const ErrorMessage = styled.p`
+const Flash = styled.p`
   background-color: ${theme.colors.white};
   color: ${theme.colors.red};
   margin: 0;
@@ -102,6 +116,15 @@ const ErrorMessage = styled.p`
   border-radius: 999px;
   font-weight: 500;
   font-size: 0.7rem;
+  &.success {
+    color: ${theme.colors.green};
+  }
+  &.info {
+    color: ${theme.colors.purple};
+  }
+  &.error {
+    color: ${theme.colors.red};
+  }
 `;
 
 const TitleContainer = styled.div`

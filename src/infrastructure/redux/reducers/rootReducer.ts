@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 
-import { errorMessageReducer } from '@/infrastructure/redux/reducers/ErrorMessage.reducer';
 import { frequencyReducer } from '@/infrastructure/redux/reducers/Frequency.reducer';
 import {
   githubAccessTokenReducer,
@@ -10,7 +9,6 @@ import { languageListTypeReducer } from '@/infrastructure/redux/reducers/Languag
 import { repositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 
 export const rootReducer = combineReducers({
-  errorMessage: errorMessageReducer,
   language: languageReducer,
   frequency: frequencyReducer,
   repositoryList: repositoryListReducer,

@@ -1,4 +1,4 @@
-import { flashErrorMessage } from '@/infrastructure/error';
+import { flashErrorMessage } from '@/infrastructure/flashMessage';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
