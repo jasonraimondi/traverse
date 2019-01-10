@@ -21,13 +21,17 @@ export class RepositoryList extends React.Component<Props> {
 
   get sortedRepositoryList() {
     return Object.values(this.props.repositoryList)
-      .sort((a, b) => b.attributes.stargazersCount - a.attributes.stargazersCount);
+      .sort((a, b) => {
+        if (a.attributes && b.attributes) {
+          return b.attributes.stargazersCount - a.attributes.stargazersCount;
+        }
+        return -1;
+      });
   }
 
   get listItems() {
-    let keyCount = 0;
-    return this.sortedRepositoryList.map((repository) => {
-      return <RepositoryDetail key={keyCount++} repository={repository}/>;
+    return this.sortedRepositoryList.map((repository, idx) => {
+      return <RepositoryDetail key={idx} repository={repository}/>;
     });
   }
 

@@ -49,6 +49,7 @@ export class DieRoller extends React.Component<RollDiceProps, State> {
   render() {
     const diceIcon = this.dice[this.state.activeDiceKey];
     return <DiceIcon
+      id='dice-roller'
       title='Roll the Dice, Get a Random Language'
       onClick={this.onClickRoll}
       dangerouslySetInnerHTML={{ __html: diceIcon }}

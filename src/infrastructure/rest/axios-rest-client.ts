@@ -6,7 +6,7 @@ export interface RestClientInterface {
 }
 
 export class AxiosRestClient implements RestClientInterface {
-  constructor(private basePath: string) {}
+  constructor(private basePath: string = '/') {}
 
   get(path: string, queryParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
     return axios.get(

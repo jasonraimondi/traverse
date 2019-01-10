@@ -5,7 +5,7 @@ import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axio
 
 export class GithubRestClient implements RestClientInterface {
   constructor(
-    private readonly restClient: AxiosRestClient,
+    readonly restClient: AxiosRestClient,
   ) {
   }
 

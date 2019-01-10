@@ -1,5 +1,5 @@
 import { Donation } from '@/app/About/components/Donation';
-import { clipboard, remote } from 'electron';
+import { remote } from 'electron';
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ class About extends React.Component {
     return <>
       <AboutContainer>
         <Main>
-          <TraverseTitle>
+          <TraverseTitle id='traverse-title'>
             <Icon src='../resources/icon.png' alt='Traverse Icon'/>
             Traverse
             <br/>

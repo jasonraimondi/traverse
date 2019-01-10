@@ -1,4 +1,4 @@
-import { flashErrorMessage } from '@/infrastructure/flashMessage';
+import { flashMessage } from '@/infrastructure/flashMessage';
 import { IActionResponse } from '@/infrastructure/redux/action-response';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
@@ -15,6 +15,7 @@ export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (githu
 };
 
 export const SetGithubAccessTokenSuccessAction: SetGithubAccessTokenActionType = (githubAccessToken: string) => {
+  flashMessage.success('Token Saved');
   return {
     type: SET_GITHUB_ACCESS_TOKEN_SUCCESS,
     payload: githubAccessToken,
@@ -22,7 +23,7 @@ export const SetGithubAccessTokenSuccessAction: SetGithubAccessTokenActionType =
 };
 
 export const SetGithubAccessTokenFailureAction: SetGithubAccessTokenActionType = (message: string) => {
-  flashErrorMessage(message);
+  flashMessage.error(message);
   return {
     type: SET_GITHUB_ACCESS_TOKEN_FAILURE,
     payload: message,

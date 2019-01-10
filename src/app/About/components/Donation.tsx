@@ -30,10 +30,10 @@ export class Donation extends React.Component<Props, State> {
 
   render() {
     return <DonationAddress>
-      {this.props.walletType}
+      <span className='wallet-type'>{this.props.walletType}</span>
       <Copied>{this.state.wasCopied ? '(Copied to Clipboard)' : null}</Copied>
       <br/>
-      <a onClick={this.onClick}>
+      <a onClick={this.onClick} className={'donation-address'}>
         <code>{this.props.address}</code>
       </a>
     </DonationAddress>;

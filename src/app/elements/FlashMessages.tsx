@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { FlashMessage, flashMessageList$ } from '@/infrastructure/flashMessage';
+import { flashMessage, FlashMessage } from '@/infrastructure/flashMessage';
 import { theme } from '@/infrastructure/styles/theme';
 
 interface State {
@@ -17,13 +17,13 @@ export class FlashMessages extends React.Component<{}, State> {
   }
 
   get flashMessages() {
-    return this.state.flashMessages.map((flashMessage, idx) => {
-      return <Message key={idx} className={flashMessage.level}>{flashMessage.message}</Message>;
+    return this.state.flashMessages.map((message, idx) => {
+      return <Message key={idx} className={message.level}>{message.message}</Message>;
     });
   }
 
   componentDidMount(): void {
-    flashMessageList$.subscribe((messages) => this.setState({flashMessages: Object.values(messages)}));
+    flashMessage.messageList$.subscribe((messages) => this.setState({flashMessages: Object.values(messages)}));
   }
 
   render() {

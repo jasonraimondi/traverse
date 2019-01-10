@@ -1,6 +1,6 @@
+import { flashMessage } from '@/infrastructure/flashMessage';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { flashErrorMessage, flashSuccessMessage } from '@/infrastructure/flashMessage';
 import {
   FETCH_REPOSITORY_LIST,
   FetchRepositoryListActionFields,
@@ -22,7 +22,6 @@ function* fetchRepositoryList(action) {
     const response = yield call(fetchRepositoryListApiCall, action.payload);
     yield put(FetchRepositoryListSuccessAction(response));
   } catch (error) {
-    yield flashErrorMessage(error.message);
     yield put(FetchRepositoryListFailureAction(error.message));
   }
 }
