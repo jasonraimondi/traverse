@@ -19,9 +19,14 @@ export class RepositoryList extends React.Component<Props> {
   static readonly STARGAZERS_ICON = require('@/assets/icons/icon-star.svg');
   static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
 
+  get sortedRepositoryList() {
+    return Object.values(this.props.repositoryList)
+      .sort((a, b) => b.attributes.stargazersCount - a.attributes.stargazersCount);
+  }
+
   get listItems() {
     let keyCount = 0;
-    return Object.values(this.props.repositoryList).map((repository) => {
+    return this.sortedRepositoryList.map((repository) => {
       return <RepositoryDetail key={keyCount++} repository={repository}/>;
     });
   }
