@@ -1,9 +1,31 @@
 import { assert } from 'chai';
 import * as dayjs from 'dayjs';
 
+import { FakeRestClient } from '@/infrastructure/rest/_tests/fake-rest-client';
+import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
+import { GithubService } from '@/infrastructure/services/github/github-service';
 import { Search } from '@/infrastructure/services/github/search/search';
 
 describe('fetchRepositoryListFromGithub', () => {
+  let githubService: GithubService;
+
+  beforeEach(() => {
+    githubService = new GithubService(
+      new GithubRestClient(
+        new FakeRestClient(),
+        null,
+      ),
+    );
+  });
+
+  test('GithubFetch', async () => {
+    const repositories = await githubService.search.forRepositories('typescript', 'weekly');
+
+    assert.strictEqual(repositories[0].id, 147137240);
+    assert.strictEqual(repositories[0].attributes.name, 'redux-saga-starwars-react-native');
+    assert.strictEqual(repositories[0].attributes.stargazersCount, 6);
+  });
+
   test('GitHub query string is formatted properly', () => {
     const today = dayjs('2018-05-05');
 

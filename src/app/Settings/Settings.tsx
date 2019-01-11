@@ -1,10 +1,10 @@
+import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { AccessTokenForm } from '@/app/Settings/AccessTokenForm';
 
 import {
   ClearGithubAccessTokenAction,

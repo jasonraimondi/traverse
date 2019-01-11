@@ -60,10 +60,6 @@
     "title": "JavaScript"
   },
   {
-    "value": "json",
-    "title": "JSON"
-  },
-  {
     "value": "kotlin",
     "title": "Kotlin"
   },
@@ -90,10 +86,6 @@
   {
     "value": "php",
     "title": "PHP"
-  },
-  {
-    "value": "postcss",
-    "title": "PostCSS"
   },
   {
     "value": "powershell",

@@ -1,10 +1,10 @@
 import { AxiosRestClient } from '@/infrastructure/rest/axios-rest-client';
 import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
-import { GithubClientService } from '@/infrastructure/services/github/github-client-service';
+import { GithubService } from 'github-service.ts';
 
 class ServiceFactory {
   get githubClient() {
-    return new GithubClientService(
+    return new GithubService(
       new GithubRestClient(
         new AxiosRestClient('https://api.github.com'),
       ),

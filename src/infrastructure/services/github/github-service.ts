@@ -2,7 +2,7 @@ import { RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
 import { Search } from '@/infrastructure/services/github/search/search';
 import { User } from '@/infrastructure/services/github/user/user';
 
-export class GithubClientService {
+export class GithubService {
   constructor(private readonly restClient: RestClientInterface) {
   }
 

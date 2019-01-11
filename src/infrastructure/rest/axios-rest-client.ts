@@ -2,11 +2,13 @@ import axios, { AxiosError, AxiosPromise } from 'axios';
 
 export interface RestClientInterface {
   get(path: string, queryParameters?: any, headers?: any, timeout?: number): AxiosPromise;
+
   post(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 }
 
 export class AxiosRestClient implements RestClientInterface {
-  constructor(private basePath: string = '/') {}
+  constructor(private basePath: string = '/') {
+  }
 
   get(path: string, queryParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
     return axios.get(
@@ -42,8 +44,17 @@ export class AxiosRestClient implements RestClientInterface {
       throw new Error('Hold on there Jethro! API Limit Reached');
     }
 
-    const url = err.response.data.documentation_url || 'err';
-    const message = err.response.data.message || 'Something went wrong!';
+    let url: string;
+    let message: string;
+
+    if (err.response.data) {
+      url = err.response.data.documentation_url;
+      message = err.response.data.message;
+    } else {
+      url = '';
+      message = 'Rest Client Error!';
+    }
+
     throw new Error(`${message} ${url}`);
   }
 }

@@ -1,4 +1,3 @@
-import { flashMessage } from '@/infrastructure/flashMessage';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import {
@@ -14,7 +13,7 @@ export function* fetchRepositoryListSaga() {
 }
 
 function fetchRepositoryListApiCall(fields: FetchRepositoryListActionFields) {
-  return serviceFactory.githubClient.search.forRepositories(fields.language, fields.frequency);
+  return serviceFactory.githubClient.search.forRepositories(fields.language.value, fields.frequency);
 }
 
 function* fetchRepositoryList(action) {

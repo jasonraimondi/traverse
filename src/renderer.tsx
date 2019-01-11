@@ -1,3 +1,4 @@
+import { FlashMessages } from '@/app/elements/FlashMessages';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -35,7 +36,10 @@ sagaMiddleware.run(sagas);
 
 export default ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <>
+      <FlashMessages/>
+      <App/>
+    </>
   </Provider>,
   document.getElementById('app-root'),
 );

@@ -1,16 +1,16 @@
 import { AxiosPromise } from 'axios';
 
-import { ElectronSettingService } from '@/infrastructure/electron/SettingsService';
 import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
 
 export class GithubRestClient implements RestClientInterface {
   constructor(
     readonly restClient: AxiosRestClient,
+    private readonly githubAccessToken: string|null,
   ) {
   }
 
   private get accessToken() {
-    const accessToken = ElectronSettingService.get('github.apiKey') || null;
+    const accessToken = this.githubAccessToken;
     return accessToken === null ? {} : { access_token: accessToken };
   }
 

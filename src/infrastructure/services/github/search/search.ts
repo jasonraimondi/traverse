@@ -12,8 +12,8 @@ export class Search {
   constructor(private restClient: RestClientInterface) {
   }
 
-  async forRepositories(language: ILanguage, frequency: FrequencyType) {
-    const q = Search.trendingGitHubQueryString(language.value, frequency);
+  async forRepositories(language: string, frequency: FrequencyType): Promise<RepositoryEntity[]> {
+    const q = Search.trendingGitHubQueryString(language, frequency);
     const sort: Sort = 'stars';
     const order: Order = 'desc';
     const search = await this.restClient.get('/search/repositories', {

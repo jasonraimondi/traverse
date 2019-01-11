@@ -2,7 +2,7 @@ import { theme } from '@/infrastructure/styles/theme';
 import { assert } from 'chai';
 
 describe('theme', () => {
-  test('screen data', () => {
+  test('screen searchRepositoryData', () => {
     const screenData = require('@/infrastructure/data/screens');
     assert.deepStrictEqual(screenData, theme.screens);
   });

@@ -4,7 +4,7 @@ import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-
 import styled from 'styled-components';
 
 import About from '@/app/About/About';
-import { FlashMessages } from '@/app/elements/FlashMessages';
+import Starred from '@/app/Starred/Starred';
 import Settings from '@/app/Settings/Settings';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
@@ -20,6 +20,7 @@ interface Props {
 class App extends React.Component<Props> {
   readonly homeIcon = require('@/assets/icons/icon-code.svg');
   readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
+  readonly starredIcon = require('@/assets/icons/icon-star.svg');
 
   render() {
     return <>
@@ -27,12 +28,12 @@ class App extends React.Component<Props> {
       <Router>
         <Main>
           <TitleContainer>
-            <FlashMessages />
             <TitleBar frequency={this.props.frequency} language={this.props.language}/>
           </TitleContainer>
           <RouterOutlet>
             <Switch>
               <Route path='/' exact component={TrendingRepos}/>
+              <Route path='/starred' component={Starred}/>
               <Route path='/settings' component={Settings}/>
               <Route path='/about' component={About}/>
             </Switch>
@@ -44,6 +45,12 @@ class App extends React.Component<Props> {
                        activeClassName='selected'
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.homeIcon}}
+              />
+              <NavLink to='/starred'
+                       exact
+                       activeClassName='selected'
+                       title='Starred'
+                       dangerouslySetInnerHTML={{__html: this.starredIcon}}
               />
               <NavLink to='/settings'
                        exact
