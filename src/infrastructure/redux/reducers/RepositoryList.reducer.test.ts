@@ -12,7 +12,7 @@ describe('RepositoryList Reducer', () => {
   });
 
   test('FETCH_REPOSITORY_LIST_SUCCESS updates the repository list reducer properly', () => {
-    const data = require('../../../../test/responses/fake-fetch-repository-list-success.json');
+    const data = require('@/infrastructure/rest/_tests/responses/search-repository-success.json');
     const list = data.items.map((repo) => RepositoryEntity.fromResponse(repo));
     const action = FetchRepositoryListSuccessAction(list);
 

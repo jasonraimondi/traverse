@@ -6,19 +6,16 @@ import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
 import { GithubService } from '@/infrastructure/services/github/github-service';
 import { Search } from '@/infrastructure/services/github/search/search';
 
-describe('fetchRepositoryListFromGithub', () => {
+describe('Search Github Tests', () => {
   let githubService: GithubService;
 
   beforeEach(() => {
     githubService = new GithubService(
-      new GithubRestClient(
-        new FakeRestClient(),
-        null,
-      ),
+      new GithubRestClient(FakeRestClient.create(), null),
     );
   });
 
-  test('GithubFetch', async () => {
+  test('Fetches repository lists from Github', async () => {
     const repositories = await githubService.search.forRepositories('typescript', 'weekly');
 
     assert.strictEqual(repositories[0].id, 147137240);
