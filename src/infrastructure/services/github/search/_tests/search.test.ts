@@ -15,7 +15,7 @@ describe('Search Github Tests', () => {
     );
   });
 
-  test('Fetches repository lists from Github', async () => {
+  test('github search for repositories', async () => {
     const repositories = await githubService.search.forRepositories('typescript', 'weekly');
 
     assert.strictEqual(repositories[0].id, 147137240);
@@ -23,7 +23,7 @@ describe('Search Github Tests', () => {
     assert.strictEqual(repositories[0].attributes.stargazersCount, 6);
   });
 
-  test('GitHub query string is formatted properly', () => {
+  test('github query string is properly formatted', () => {
     const today = dayjs('2018-05-05');
 
     const yearlyQuery = Search.trendingGitHubQueryString('typescript', 'yearly', today);

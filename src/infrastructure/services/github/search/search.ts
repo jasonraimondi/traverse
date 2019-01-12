@@ -1,11 +1,10 @@
 import * as dayjs from 'dayjs';
 
-import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
 import { FrequencyType, frequencyTypeDate } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
-export type Sort = 'stars' | 'forks' | 'updated';
+export type SearchRepositorySort = 'stars' | 'forks' | 'updated';
 export type Order = 'asc' | 'desc';
 
 export class Search {
@@ -14,7 +13,7 @@ export class Search {
 
   async forRepositories(language: string, frequency: FrequencyType): Promise<RepositoryEntity[]> {
     const q = Search.trendingGitHubQueryString(language, frequency);
-    const sort: Sort = 'stars';
+    const sort: SearchRepositorySort = 'stars';
     const order: Order = 'desc';
     const search = await this.restClient.get('/search/repositories', {
       q,

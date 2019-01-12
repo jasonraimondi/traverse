@@ -1,3 +1,5 @@
+import { Owner } from '@/models/User.entity';
+
 export class RepositoryEntity {
 
   static fromResponse(response: any) {
@@ -38,10 +40,4 @@ interface RepositoryEntityAttributes {
   stargazersCount: number;
   watchersCount: number;
   forksCount: number;
-}
-
-interface Owner {
-  readonly login: string;
-  readonly htmlUrl: string;
-  readonly avatarUrl: string;
 }
