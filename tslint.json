@@ -3,6 +3,11 @@
   "extends": [
     "tslint:recommended"
   ],
+  "linterOptions": {
+    "exclude": [
+      "src/**/*.json"
+    ]
+  },
   "jsRules": {},
   "rules": {
     "interface-name": false,
