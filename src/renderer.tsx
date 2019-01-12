@@ -6,8 +6,8 @@ import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import App from '@/app/App';
+import { openLinkExternally } from '@/electron/openLinkExternally';
 import { composeEnhancers } from '@/environment';
-import '@/infrastructure/electron/openLinkExternally';
 import { rootReducer } from '@/infrastructure/redux/reducers/rootReducer';
 import sagas from '@/infrastructure/redux/sagas/rootSaga';
 import {
@@ -16,6 +16,7 @@ import {
 } from '@/infrastructure/redux/state-to-local-storage';
 
 const sagaMiddleware = createSagaMiddleware();
+
 
 export const store = createStore(
   rootReducer,
@@ -43,3 +44,5 @@ export default ReactDOM.render(
   </Provider>,
   document.getElementById('app-root'),
 );
+
+document.addEventListener('click', openLinkExternally, false);

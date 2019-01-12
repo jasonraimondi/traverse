@@ -15,9 +15,9 @@ interface Props {
 }
 
 export class RepositoryList extends React.Component<Props> {
-  static readonly FORKS_ICON = require('@/assets/icons/icon-arrows-split.svg');
-  static readonly STARGAZERS_ICON = require('@/assets/icons/icon-star.svg');
-  static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
+  static readonly FORKS_ICON = require('@/infrastructure/assets/icons/icon-arrows-split.svg');
+  static readonly STARGAZERS_ICON = require('@/infrastructure/assets/icons/icon-star.svg');
+  static readonly WATCHERS_ICON = require('@/infrastructure/assets/icons/icon-user-circle.svg');
 
   get sortedRepositoryList() {
     return Object.values(this.props.repositoryList)

@@ -18,9 +18,9 @@ interface Props {
 }
 
 class App extends React.Component<Props> {
-  readonly homeIcon = require('@/assets/icons/icon-code.svg');
-  readonly settingsIcon = require('@/assets/icons/icon-cog.svg');
-  readonly starredIcon = require('@/assets/icons/icon-star.svg');
+  readonly homeIcon = require('@/infrastructure/assets/icons/icon-code.svg');
+  readonly settingsIcon = require('@/infrastructure/assets/icons/icon-cog.svg');
+  readonly starredIcon = require('@/infrastructure/assets/icons/icon-star.svg');
 
   render() {
     return <>

@@ -4,8 +4,8 @@ import * as merge from 'lodash.merge';
 import { join } from 'path';
 import { format } from 'url';
 
+import { ElectronSettingService } from '@/electron/SettingsService';
 import { IS_DEV_ENV } from '@/environment';
-import { ElectronSettingService } from '@/infrastructure/electron/SettingsService';
 
 export class WindowManager {
   private readonly DEFAULT_OPTIONS: BrowserWindowConstructorOptions = {

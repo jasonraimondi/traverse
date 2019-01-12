@@ -14,12 +14,12 @@ interface State {
 export class DieRoller extends React.Component<RollDiceProps, State> {
 
   private readonly dice: string[] = [
-    require('@/assets/icons/dice/dice-1.svg'),
-    require('@/assets/icons/dice/dice-2.svg'),
-    require('@/assets/icons/dice/dice-3.svg'),
-    require('@/assets/icons/dice/dice-4.svg'),
-    require('@/assets/icons/dice/dice-5.svg'),
-    require('@/assets/icons/dice/dice-6.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-1.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-2.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-3.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-4.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-5.svg'),
+    require('@/infrastructure/assets/icons/dice/dice-6.svg'),
   ];
 
   constructor(props) {

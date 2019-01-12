@@ -1,8 +1,8 @@
 import { app, Menu, MenuItemConstructorOptions, shell } from 'electron';
 import * as findKey from 'lodash.findkey';
 
+import { ElectronSettingService } from '@/electron/SettingsService';
 import { IS_DEV_ENV, IS_MAC_OS } from '@/environment';
-import { ElectronSettingService } from '@/infrastructure/electron/SettingsService';
 import { openMainWindow, reloadAllWindows } from '@/main';
 
 const editMenu: MenuItemConstructorOptions = {

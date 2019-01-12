@@ -13,8 +13,8 @@ interface Props {
 }
 
 export class LanguageListPicker extends React.Component<Props> {
-  readonly iconAll = require('@/assets/icons/icon-collection.svg');
-  readonly iconPopular = require('@/assets/icons/icon-launch.svg');
+  readonly iconAll = require('@/infrastructure/assets/icons/icon-collection.svg');
+  readonly iconPopular = require('@/infrastructure/assets/icons/icon-launch.svg');
 
   render() {
     return <LanguageSelect id='language-select'>

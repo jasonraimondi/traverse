@@ -1,6 +1,6 @@
 import { shell } from 'electron';
 
-const openLinkExternally = (event) => {
+export const openLinkExternally = (event) => {
   let href;
   let isExternal = false;
 
@@ -21,5 +21,3 @@ const openLinkExternally = (event) => {
 
   checkDomElement(event.target);
 };
-
-document.addEventListener('click', openLinkExternally, false);

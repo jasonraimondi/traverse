@@ -1,10 +1,11 @@
 import { app, Menu } from 'electron';
 
-import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
-import { fileMenuTemplate } from '@/infrastructure/electron/mainMenu';
-import { WindowManager } from '@/infrastructure/electron/WindowManager';
+import { fileMenuTemplate } from '@/electron/mainMenu';
+import { WindowManager } from '@/electron/WindowManager';
 
-const windowManager: WindowManager = new WindowManager();
+import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
+
+export const windowManager: WindowManager = new WindowManager();
 
 export function openMainWindow() {
   windowManager.createMainWindow();

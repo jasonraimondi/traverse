@@ -1,4 +1,4 @@
-import { ElectronSettingService } from '@/infrastructure/electron/SettingsService';
+import { ElectronSettingService } from '@/electron/SettingsService';
 
 export const loadStateFromElectronSettings = () => {
   const serializedState = ElectronSettingService.get('state');
