@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { DieRoller } from '@/app/TrendingRepos/components/DieRoller';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 export type ListType = 'all' | 'popular';
 
@@ -53,20 +53,20 @@ const Icon = styled.a`
   & svg {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: ${theme.colors.white};
+    background-color: ${themeConfig.colors.white};
     border-radius: 999px;
     padding: 0.1rem;
   }
   & .primary {
-    fill: ${theme.colors['grey-darker']};
+    fill: ${themeConfig.colors['grey-darker']};
   }
   & .secondary {
-    fill: ${theme.colors.grey};
+    fill: ${themeConfig.colors.grey};
   }
   &.selected .primary {
-    fill: ${theme.colors['green-darker']};
+    fill: ${themeConfig.colors['green-darker']};
   }
   &.selected .secondary {
-    fill: ${theme.colors.green};
+    fill: ${themeConfig.colors.green};
   }
 `;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -16,8 +16,8 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.black};
-  color: ${theme.colors.white};
+  background-color: ${themeConfig.colors.black};
+  color: ${themeConfig.colors.white};
 `;
 
 export class TitleBar extends React.Component<Props> {

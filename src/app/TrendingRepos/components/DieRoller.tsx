@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface RollDiceProps {
   onClickRoll: () => void;
@@ -62,15 +62,15 @@ const DiceIcon = styled.a`
   & svg {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: ${theme.colors.white};
+    background-color: ${themeConfig.colors.white};
     border-radius: 999px;
     padding: 0.1rem;
   }
   & svg #primary {
-    fill: ${theme.colors['grey-darker']};
+    fill: ${themeConfig.colors['grey-darker']};
   }
   & svg #secondary,
   & svg #secondary path {
-    fill: ${theme.colors.grey};
+    fill: ${themeConfig.colors.grey};
   }
 `;

@@ -2,7 +2,7 @@ import { clipboard } from 'electron';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {
   walletType: string;
@@ -44,15 +44,15 @@ const Copied = styled.span`
     position: absolute;
     font-size: 0.5rem;
     margin-left: 10px;
-    color: ${theme.colors.green};
+    color: ${themeConfig.colors.green};
 `;
 
 const DonationAddress = styled.p`
-    color: ${theme.colors.grey};
+    color: ${themeConfig.colors.grey};
     font-size: 0.6rem;
     font-weight: 600;
     & code {
-      color: ${theme.colors.purple};
+      color: ${themeConfig.colors.purple};
     }
     & a:hover {
       cursor: pointer;

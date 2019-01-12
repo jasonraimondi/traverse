@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -30,7 +30,7 @@ export class EmptyRepositoryList extends React.Component<Props> {
 }
 
 const CheckGithubLink = styled.a`
-  color: ${theme.colors.purple};
+  color: ${themeConfig.colors.purple};
 `;
 
 const EmptyContainer = styled.div`

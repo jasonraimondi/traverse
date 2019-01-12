@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { UnstyledList } from '@/app/elements/Base';
 import { LanguageDetail } from '@/app/TrendingRepos/components/LanguageDetail';
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 export interface ILanguage {
   title: string;
@@ -51,7 +51,7 @@ const List = styled(UnstyledList)`
 `;
 
 const ListTitle = styled.li`
-  background-color: ${theme.colors.white};
+  background-color: ${themeConfig.colors.white};
   width: 100%;
   text-align: center;
   font-size: 0.65rem;

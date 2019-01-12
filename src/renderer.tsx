@@ -31,6 +31,8 @@ store.subscribe(() => {
 
 sagaMiddleware.run(sagas);
 
+document.addEventListener('click', openLinkExternally, false);
+
 export default ReactDOM.render(
   <Provider store={store}>
     <>
@@ -40,5 +42,3 @@ export default ReactDOM.render(
   </Provider>,
   document.getElementById('app-root'),
 );
-
-document.addEventListener('click', openLinkExternally, false);

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Donation } from '@/app/About/components/Donation';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 class About extends React.Component {
   render() {
@@ -69,17 +69,17 @@ const TraverseTitle = styled.div`
 
 const Version = styled.span`
     font-size: 0.85rem;
-    color: ${theme.colors.grey}
+    color: ${themeConfig.colors.grey}
 `;
 
 const Copyright = styled.h4`
    font-weight: 400;
    font-size: 0.45rem;
    & a {
-     color: ${theme.colors.purple}
+     color: ${themeConfig.colors.purple}
    }
    & a:hover, a:active {
-    color: ${theme.colors['purple-dark']}
+    color: ${themeConfig.colors['purple-dark']}
    }
 `;
 export default withRouter(About);

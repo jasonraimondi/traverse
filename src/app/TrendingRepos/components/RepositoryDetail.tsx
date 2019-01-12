@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface InferProps {
@@ -89,17 +89,17 @@ const Name = styled.p`
 `;
 const NameLink = styled.a`
   font-weight: 600;
-  color: ${theme.colors.purple};
+  color: ${themeConfig.colors.purple};
   text-decoration: none;
   &:hover {
-    color: ${theme.colors['purple-dark']}
+    color: ${themeConfig.colors['purple-dark']}
     text-decoration: underline;
   }
 `;
 const Language = styled.p`
   font-size: 0.7rem;
   font-weight: 400;
-  color: ${theme.colors['grey-darker']}
+  color: ${themeConfig.colors['grey-darker']}
 `;
 const Description = styled.p`
 `;
@@ -117,8 +117,8 @@ const StargazersCount = styled(Bottom)`
 `;
 const Item = styled.li`
   padding: 0.5rem 1.25rem 0.5rem 1rem;
-  background-color: ${theme.colors['grey-lightest']};
-  border-bottom: 1px solid ${theme.colors.black};
+  background-color: ${themeConfig.colors['grey-lightest']};
+  border-bottom: 1px solid ${themeConfig.colors.black};
 `;
 const ItemHeader = styled.header`
 `;
@@ -135,9 +135,9 @@ const MiniIcon = styled.span`
     height: 1rem;
   }
   & svg .primary {
-    fill: ${theme.colors['green-darker']};
+    fill: ${themeConfig.colors['green-darker']};
   }
   & svg .secondary {
-    fill: ${theme.colors.green};
+    fill: ${themeConfig.colors.green};
   }
 `;

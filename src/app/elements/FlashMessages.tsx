@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { flashMessage, FlashMessage } from '@/infrastructure/FlashMessage';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface State {
   flashMessages: FlashMessage[];
@@ -58,19 +58,19 @@ const Container = styled.div`
 `;
 
 const Message = styled.p`
-  background-color: ${theme.colors.grey};
-  color: ${theme.colors.white};
+  background-color: ${themeConfig.colors.grey};
+  color: ${themeConfig.colors.white};
   margin: 0;
   padding: 0.65rem 2rem;
   font-weight: 500;
   font-size: 0.7rem;
   &.success {
-    background-color: ${theme.colors.green};
+    background-color: ${themeConfig.colors.green};
   }
   &.info {
-    background-color: ${theme.colors.purple};
+    background-color: ${themeConfig.colors.purple};
   }
   &.error {
-    background-color: ${theme.colors.red};
+    background-color: ${themeConfig.colors.red};
   }
 `;

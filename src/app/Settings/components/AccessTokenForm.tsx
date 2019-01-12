@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {
   title: string;
@@ -38,9 +38,7 @@ export class AccessTokenForm extends React.Component<Props, State> {
   render() {
     const small = this.props.small ? <Small>{this.props.small}</Small> : null;
 
-    return <>
-      <style>{inputStyle}</style>
-      <FormContainer>
+    return <FormContainer>
         <Formik
           initialValues={{
             githubAccessToken: this.state.formValue,
@@ -62,16 +60,15 @@ export class AccessTokenForm extends React.Component<Props, State> {
             </Form>
           )}
         />
-      </FormContainer>
-    </>;
+      </FormContainer>;
   }
 }
 
 const FormContainer = styled.div`
   margin-top: 0.5rem;
   border-radius: 3px;
-  border: 2px solid ${theme.colors['grey-lighter']};
-  background-color: ${theme.colors['grey-lightest']};
+  border: 2px solid ${themeConfig.colors['grey-lighter']};
+  background-color: ${themeConfig.colors['grey-lightest']};
   padding: 0.35rem;
 `;
 
@@ -84,7 +81,7 @@ const Title = styled.h5`
   margin: 0;
   margin-bottom: 0.5rem;
   &.selected {
-    color: ${theme.colors['green-darker']}
+    color: ${themeConfig.colors['green-darker']}
   }
 `;
 const Small = styled.p`
@@ -94,27 +91,7 @@ const Small = styled.p`
   min-width: 300px;
   font-size: 0.8rem;
   margin: 0;
-  color: ${theme.colors['grey-dark']};
-`;
-const inputStyle = `
-  #githubAccessToken {
-    display: block;
-    font-size: 1rem;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    border-radius: 3px;
-    min-width: 350px;
-    max-width: 450px;
-    width: 100%;
-    padding: 0.25rem 0.5rem 0.35rem;
-    margin-top: 0.5rem;
-    border: 1px solid ${theme.colors.purple};
-    &:disabled,
-    &[disabled] {
-      border-color: ${theme.colors.grey};
-    }
-  }
+  color: ${themeConfig.colors['grey-dark']};
 `;
 
 const Submit = styled.button`
@@ -123,9 +100,9 @@ const Submit = styled.button`
   font-weight: 700;
   display: block;
   margin-top: 0.5rem;
-  color: ${theme.colors.purple};
-  background-color: ${theme.colors.white};
-  border-color: ${theme.colors.purple};
+  color: ${themeConfig.colors.purple};
+  background-color: ${themeConfig.colors.white};
+  border-color: ${themeConfig.colors.purple};
   &:active, &:hover, &.selected {
     text-decoration: none;
     outline: none;

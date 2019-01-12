@@ -7,4 +7,4 @@ class Theme {
   readonly sidebarWidth: '140px';
 }
 
-export const theme = new Theme();
+export const themeConfig = new Theme();

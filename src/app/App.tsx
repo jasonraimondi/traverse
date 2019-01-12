@@ -9,7 +9,7 @@ import Starred from '@/app/Starred/Starred';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 
 import { FrequencyType } from '@/models/Frequency.type';
 
@@ -25,6 +25,7 @@ class App extends React.Component<Props> {
 
   render() {
     return <>
+      <style>{inputStyle}</style>
       <style>{iconStyles}</style>
       <Router>
         <Main>
@@ -33,8 +34,8 @@ class App extends React.Component<Props> {
           </TitleContainer>
           <RouterOutlet>
             <Switch>
-              <Route path='/' exact component={TrendingRepos}/>
-              <Route path='/starred' component={Starred}/>
+              <Route path='/starred' exact component={TrendingRepos}/>
+              <Route path='/' component={Starred}/>
               <Route path='/settings' component={Settings}/>
               <Route path='/about' component={About}/>
             </Switch>
@@ -94,8 +95,8 @@ const Main = styled.main`
   grid-template-rows: 43px 1fr 40px;
   overflow-wrap: normal;
   overflow-wrap: break-word;
-  color: ${theme.colors.black};
-  background-color: ${theme.colors.black};
+  color: ${themeConfig.colors.black};
+  background-color: ${themeConfig.colors.black};
 `;
 
 const TitleContainer = styled.div`
@@ -105,13 +106,13 @@ const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid ${theme.colors.black};
+  border-bottom: 2px solid ${themeConfig.colors.black};
 `;
 
 const RouterOutlet = styled.div`
   overflow-y: auto;
   grid-area: content;
-  background-color: ${theme.colors.white};
+  background-color: ${themeConfig.colors.white};
   overflow-wrap: normal;
   overflow-wrap: break-word;
 `;
@@ -126,7 +127,7 @@ const NavigationContainer = styled.div`
   font-size: 0.75rem;
   font-weight: 700;
   & a {
-    color: ${theme.colors.white};
+    color: ${themeConfig.colors.white};
   }
   & a:hover {
     text-decoration: none;
@@ -150,21 +151,42 @@ const iconStyles = `
   svg {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: ${theme.colors.white};
+    background-color: ${themeConfig.colors.white};
     border-radius: 999px;
     padding: 0.1rem;
   }
   svg .primary {
-    fill: ${theme.colors['grey-darker']};
+    fill: ${themeConfig.colors['grey-darker']};
   }
   svg .secondary {
-    fill: ${theme.colors.grey};
+    fill: ${themeConfig.colors.grey};
   }
   .selected .primary {
-    fill: ${theme.colors['green-darker']};
+    fill: ${themeConfig.colors['green-darker']};
   }
   .selected .secondary {
-    fill: ${theme.colors.green};
+    fill: ${themeConfig.colors.green};
+  }
+`;
+
+const inputStyle = `
+  #githubAccessToken {
+    display: block;
+    font-size: 1rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    min-width: 350px;
+    max-width: 450px;
+    width: 100%;
+    padding: 0.25rem 0.5rem 0.35rem;
+    margin-top: 0.5rem;
+    border: 1px solid ${themeConfig.colors.purple};
+    &:disabled,
+    &[disabled] {
+      border-color: ${themeConfig.colors.grey};
+    }
   }
 `;
 

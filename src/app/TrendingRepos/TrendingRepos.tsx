@@ -18,7 +18,7 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
-import { theme } from '@/infrastructure/styles/Theme';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
@@ -163,8 +163,8 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  border-bottom: 2px solid ${theme.colors.black};
-  background-color: ${theme.colors.purple};
+  border-bottom: 2px solid ${themeConfig.colors.black};
+  background-color: ${themeConfig.colors.purple};
   & a:hover, button:hover {
     cursor: pointer;
   }
@@ -174,7 +174,7 @@ const LanguageListContainer = styled.div`
   grid-area: sidebar;
   min-height: 0;
   overflow-y: auto;
-  border-right: 2px solid ${theme.colors.black};
+  border-right: 2px solid ${themeConfig.colors.black};
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
