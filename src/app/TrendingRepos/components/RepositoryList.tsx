@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UnstyledList } from '@/app/elements/base';
+import { UnstyledList } from '@/app/elements/Base';
 import { EmptyRepositoryList } from '@/app/TrendingRepos/components/EmptyRepositoryList';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import { RepositoryDetail } from '@/app/TrendingRepos/components/RepositoryDetail';

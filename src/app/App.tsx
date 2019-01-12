@@ -4,12 +4,13 @@ import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-
 import styled from 'styled-components';
 
 import About from '@/app/About/About';
-import Starred from '@/app/Starred/Starred';
 import Settings from '@/app/Settings/Settings';
+import Starred from '@/app/Starred/Starred';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
-import { theme } from '@/infrastructure/styles/theme';
+import { theme } from '@/infrastructure/styles/Theme';
+
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {

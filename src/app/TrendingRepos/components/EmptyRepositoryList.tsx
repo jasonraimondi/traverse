@@ -1,8 +1,9 @@
-import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { theme } from '@/infrastructure/styles/theme';
-import { FrequencyType } from '@/models/Frequency.type';
 import * as React from 'react';
 import styled from 'styled-components';
+
+import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { theme } from '@/infrastructure/styles/Theme';
+import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
   language: ILanguage;

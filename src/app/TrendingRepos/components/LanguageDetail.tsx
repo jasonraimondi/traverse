@@ -1,8 +1,8 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
+import { theme } from '@/infrastructure/styles/Theme';
 
 interface Props {
   language: ILanguage;

@@ -1,7 +1,5 @@
-import { CLEAR_GITHUB_ACCESS_TOKEN } from '@/infrastructure/redux/actions/ClearGithubAccessToken.action';
-import {
-  SET_GITHUB_ACCESS_TOKEN_SUCCESS,
-} from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
+import { CLEAR_GITHUB_ACCESS_TOKEN } from '@/infrastructure/redux/actions/ClearGithubAccessTokenAction';
+import { SET_GITHUB_ACCESS_TOKEN_SUCCESS } from '@/infrastructure/redux/actions/SetGithubAccessTokenAction';
 
 const INITIAL_STATE: string = null;
 

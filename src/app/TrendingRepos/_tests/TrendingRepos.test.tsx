@@ -8,9 +8,9 @@ import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionFields,
-} from '@/infrastructure/redux/actions/FetchRepositoryList.action';
-import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequency.action';
-import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
+} from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequencyAction';
+import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguageAction';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 const mockStore = configureStore();

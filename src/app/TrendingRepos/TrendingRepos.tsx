@@ -1,3 +1,9 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+
 import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
@@ -5,21 +11,16 @@ import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
-} from '@/infrastructure/redux/actions/FetchRepositoryList.action';
-import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequency.action';
-import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguage.action';
+} from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequencyAction';
+import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguageAction';
 import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
-} from '@/infrastructure/redux/actions/SetLanguageListType.action';
-import { theme } from '@/infrastructure/styles/theme';
+} from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
+import { theme } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
 
 interface Props {
   repositoryList: { [id: string]: RepositoryEntity };

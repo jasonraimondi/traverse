@@ -1,19 +1,18 @@
-import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-
+import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
-} from '@/infrastructure/redux/actions/ClearGithubAccessToken.action';
+} from '@/infrastructure/redux/actions/ClearGithubAccessTokenAction';
 import {
   SetGithubAccessTokenAction,
   SetGithubAccessTokenActionType,
-} from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
+} from '@/infrastructure/redux/actions/SetGithubAccessTokenAction';
 
 interface Props {
   githubAccessToken: string;

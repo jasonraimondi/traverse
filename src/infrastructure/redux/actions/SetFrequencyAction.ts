@@ -1,4 +1,4 @@
-import { IActionResponse } from '@/infrastructure/redux/action-response';
+import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 import { FrequencyType } from '@/models/Frequency.type';
 
 export const SET_FREQUENCY = '[FREQUENCY] Set';

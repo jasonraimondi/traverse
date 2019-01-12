@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguage.action';
+import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguageAction';
 import { languageReducer } from '@/infrastructure/redux/reducers/Language.reducer';
 
 describe('LanguageDetail Reducer', () => {

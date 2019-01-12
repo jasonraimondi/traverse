@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { DieRoller } from '@/app/TrendingRepos/components/DieRoller';
-import { theme } from '@/infrastructure/styles/theme';
+import { theme } from '@/infrastructure/styles/Theme';
 
 export type ListType = 'all' | 'popular';
 

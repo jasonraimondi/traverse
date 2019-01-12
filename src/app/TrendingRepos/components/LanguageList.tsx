@@ -1,10 +1,10 @@
-import { theme } from '@/infrastructure/styles/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UnstyledList } from '@/app/elements/base';
+import { UnstyledList } from '@/app/elements/Base';
 import { LanguageDetail } from '@/app/TrendingRepos/components/LanguageDetail';
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
+import { theme } from '@/infrastructure/styles/Theme';
 
 export interface ILanguage {
   title: string;

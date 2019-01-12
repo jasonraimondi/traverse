@@ -1,10 +1,10 @@
 import { assert } from 'chai';
 import * as dayjs from 'dayjs';
 
-import { FakeRestClient } from '@/infrastructure/rest/_tests/fake-rest-client';
-import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
-import { GithubService } from '@/infrastructure/services/github/github-service';
-import { Search } from '@/infrastructure/services/github/search/search';
+import { FakeRestClient } from '@/infrastructure/rest/_tests/FakeRestClient';
+import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
+import { GithubService } from '@/infrastructure/services/github/GithubService';
+import { Search } from '@/infrastructure/services/github/search/Search';
 
 describe('Search Github Tests', () => {
   let githubService: GithubService;

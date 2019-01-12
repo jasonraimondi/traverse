@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { flashMessage, FlashMessage } from '@/infrastructure/flashMessage';
-import { theme } from '@/infrastructure/styles/theme';
+import { flashMessage, FlashMessage } from '@/infrastructure/FlashMessage';
+import { theme } from '@/infrastructure/styles/Theme';
 
 interface State {
   flashMessages: FlashMessage[];

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/theme';
+import { theme } from '@/infrastructure/styles/Theme';
 
 interface Props {
   title: string;

@@ -1,10 +1,10 @@
-import {
-  SET_GITHUB_ACCESS_TOKEN,
-  SetGithubAccessTokenFailureAction,
-  SetGithubAccessTokenSuccessAction,
-} from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
-import { serviceFactory } from '@/infrastructure/services/service-factory';
 import { call, put, takeEvery } from 'redux-saga/effects';
+
+import {
+  SET_GITHUB_ACCESS_TOKEN, SetGithubAccessTokenFailureAction,
+  SetGithubAccessTokenSuccessAction,
+} from '@/infrastructure/redux/actions/SetGithubAccessTokenAction';
+import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
 
 export function* setGithubAccessTokenSaga() {
   yield takeEvery(SET_GITHUB_ACCESS_TOKEN, setGithubAccessToken);

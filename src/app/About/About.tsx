@@ -1,10 +1,10 @@
-import { Donation } from '@/app/About/components/Donation';
 import { remote } from 'electron';
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/theme';
+import { Donation } from '@/app/About/components/Donation';
+import { theme } from '@/infrastructure/styles/Theme';
 
 class About extends React.Component {
   render() {

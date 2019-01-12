@@ -1,7 +1,7 @@
 import { ElectronSettingService } from '@/electron/SettingsService';
-import { AxiosRestClient } from '@/infrastructure/rest/axios-rest-client';
-import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
-import { GithubService } from '@/infrastructure/services/github/github-service';
+import { AxiosRestClient } from '@/infrastructure/rest/AxiosRestClient';
+import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
+import { GithubService } from '@/infrastructure/services/github/GithubService';
 
 class ServiceFactory {
   constructor(private readonly githubRestClient) {}

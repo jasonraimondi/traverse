@@ -1,5 +1,5 @@
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { SET_LANGUAGE_LIST_TYPE } from '@/infrastructure/redux/actions/SetLanguageListType.action';
+import { SET_LANGUAGE_LIST_TYPE } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
 
 const INITIAL_STATE: ListType = 'popular';
 

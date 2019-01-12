@@ -1,6 +1,6 @@
+import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/AxiosRestClient';
 import { AxiosPromise } from 'axios';
 
-import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
 
 export class GithubRestClient implements RestClientInterface {
   constructor(

@@ -1,7 +1,7 @@
 import { app, Menu } from 'electron';
 
-import { fileMenuTemplate } from '@/electron/mainMenu';
 import { WindowManager } from '@/electron/WindowManager';
+import { fileMenuTemplate } from 'MainMenu.ts';
 
 import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
 

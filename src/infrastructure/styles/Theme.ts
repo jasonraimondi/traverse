@@ -1,4 +1,4 @@
-import { mediaQueries, ScreenSizesFunctions } from '@/infrastructure/styles/media-queries';
+import { mediaQueries, ScreenSizesFunctions } from '@/infrastructure/styles/MediaQueries';
 
 class Theme {
   readonly colors = require('@/infrastructure/data/colors.json');

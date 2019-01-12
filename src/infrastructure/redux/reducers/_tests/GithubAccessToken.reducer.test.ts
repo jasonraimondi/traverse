@@ -1,7 +1,8 @@
-import { ClearGithubAccessTokenAction } from '@/infrastructure/redux/actions/ClearGithubAccessToken.action';
-import { SetGithubAccessTokenSuccessAction } from '@/infrastructure/redux/actions/SetGithubAccessToken.action';
-import { githubAccessTokenReducer } from '@/infrastructure/redux/reducers/GithubAccessToken.reducer';
 import { assert } from 'chai';
+
+import { ClearGithubAccessTokenAction } from '@/infrastructure/redux/actions/ClearGithubAccessTokenAction';
+import { SetGithubAccessTokenSuccessAction } from '@/infrastructure/redux/actions/SetGithubAccessTokenAction';
+import { githubAccessTokenReducer } from '@/infrastructure/redux/reducers/GithubAccessToken.reducer';
 
 describe('LanguageDetail Reducer', () => {
   test('INITIAL_STATE accessToken is blank string', () => {

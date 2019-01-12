@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { theme } from '@/infrastructure/styles/theme';
+import { theme } from '@/infrastructure/styles/Theme';
 
 export const UnstyledList = styled.ul`
   list-style-type: none;

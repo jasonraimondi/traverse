@@ -1,8 +1,8 @@
 import { assert } from 'chai';
 
-import { FakeRestClient } from '@/infrastructure/rest/_tests/fake-rest-client';
-import { GithubRestClient } from '@/infrastructure/rest/github-rest-client';
-import { GithubService } from '@/infrastructure/services/github/github-service';
+import { FakeRestClient } from '@/infrastructure/rest/_tests/FakeRestClient';
+import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
+import { GithubService } from '@/infrastructure/services/github/GithubService';
 
 describe('fetch user self', () => {
   let githubService: GithubService;

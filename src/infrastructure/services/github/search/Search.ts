@@ -1,6 +1,6 @@
 import * as dayjs from 'dayjs';
 
-import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
+import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/AxiosRestClient';
 import { FrequencyType, frequencyTypeDate } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 

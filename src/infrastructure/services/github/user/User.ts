@@ -1,5 +1,5 @@
-import { RestClientInterface } from '@/infrastructure/rest/axios-rest-client';
-import { Order } from '@/infrastructure/services/github/search/search';
+import { RestClientInterface } from '@/infrastructure/rest/AxiosRestClient';
+import { Order } from '@/infrastructure/services/github/search/Search';
 import { RepositoryEntity } from '@/models/Repository.entity';
 import { UserEntity } from '@/models/User.entity';
 

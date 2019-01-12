@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
-import { theme } from '@/infrastructure/styles/theme';
+import { theme } from '@/infrastructure/styles/Theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface InferProps {

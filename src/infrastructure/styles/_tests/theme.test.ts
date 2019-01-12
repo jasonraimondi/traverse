@@ -1,5 +1,6 @@
-import { theme } from '@/infrastructure/styles/theme';
 import { assert } from 'chai';
+
+import { theme } from '@/infrastructure/styles/Theme';
 
 describe('theme', () => {
   test('screen searchRepositoryData', () => {

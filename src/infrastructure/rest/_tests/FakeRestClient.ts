@@ -1,11 +1,10 @@
 import axios, { AxiosPromise } from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { AxiosRestClient } from '@/infrastructure/rest/axios-rest-client';
-
 import * as listStarredData from '@/infrastructure/rest/_tests/responses/list-starred-success.json';
 import * as searchRepositoryData from '@/infrastructure/rest/_tests/responses/search-repository-success.json';
 import * as userDetailData from '@/infrastructure/rest/_tests/responses/user-detail-success.json';
+import { AxiosRestClient } from '@/infrastructure/rest/AxiosRestClient';
 
 export class FakeRestClient extends AxiosRestClient {
   private readonly mock = new MockAdapter(axios);

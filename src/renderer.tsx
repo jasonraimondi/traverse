@@ -1,4 +1,3 @@
-import { FlashMessages } from '@/app/elements/FlashMessages';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,17 +5,14 @@ import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import App from '@/app/App';
-import { openLinkExternally } from '@/electron/openLinkExternally';
+import { FlashMessages } from '@/app/elements/FlashMessages';
+import { openLinkExternally } from '@/electron/OpenLinkExternally';
 import { composeEnhancers } from '@/environment';
 import { rootReducer } from '@/infrastructure/redux/reducers/rootReducer';
 import sagas from '@/infrastructure/redux/sagas/rootSaga';
-import {
-  loadStateFromElectronSettings,
-  saveStateToElectronSettings,
-} from '@/infrastructure/redux/state-to-local-storage';
+import { loadStateFromElectronSettings, saveStateToElectronSettings } from '@/infrastructure/redux/StateToLocalStorage';
 
 const sagaMiddleware = createSagaMiddleware();
-
 
 export const store = createStore(
   rootReducer,

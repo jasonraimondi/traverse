@@ -1,5 +1,5 @@
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { IActionResponse } from '@/infrastructure/redux/action-response';
+import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 
 export const SET_LANGUAGE_LIST_TYPE = '[LANGUAGE LIST TYPE] Set';
 

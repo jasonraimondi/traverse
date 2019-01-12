@@ -1,5 +1,5 @@
-import { flashMessage } from '@/infrastructure/flashMessage';
-import { IActionResponse } from '@/infrastructure/redux/action-response';
+import { flashMessage } from '@/infrastructure/FlashMessage';
+import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
 export const SET_GITHUB_ACCESS_TOKEN_SUCCESS = '[GITHUB ACCESS TOKEN] validate - success';
