@@ -1,7 +1,7 @@
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 import { UserEntity } from '@/models/User.entity';
 
-export const SET_CURRENT_STARGAZER = '[CURRENT STARGAZER] set';
+export const SET_CURRENT_STARGAZER = '[CURRENT CURRENT_STARGAZER] set';
 
 export type SetCurrentStargazerActionType =
   (user: UserEntity) => IActionResponse<UserEntity>;

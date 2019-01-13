@@ -9,8 +9,8 @@ import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface Props {
-  language: ILanguage;
-  frequency: FrequencyType;
+  language?: ILanguage;
+  frequency?: FrequencyType;
   repositoryList: { [id: string]: RepositoryEntity };
 }
 

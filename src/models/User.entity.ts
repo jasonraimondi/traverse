@@ -19,7 +19,7 @@ export class UserEntity {
   }
 }
 
-interface UserAttributes extends Owner {
+export interface UserAttributes extends Owner {
   name: string;
 }
 

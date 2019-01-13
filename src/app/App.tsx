@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import About from '@/app/About/About';
 import Settings from '@/app/Settings/Settings';
-import Starred from '@/app/Starred/Starred';
+import Stargazer from '@/app/Stargazer/Stargazer';
 import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
@@ -34,27 +34,26 @@ class App extends React.Component<Props> {
           </TitleContainer>
           <RouterOutlet>
             <Switch>
-              <Route path='/starred' exact component={TrendingRepos}/>
-              <Route path='/' component={Starred}/>
-              <Route path='/settings' component={Settings}/>
-              <Route path='/about' component={About}/>
+              <Route path={'/'} exact component={TrendingRepos}/>
+              <Route path={'/stargazers'} component={Stargazer}/>
+              <Route path={'/settings'} component={Settings}/>
+              <Route path={'/about'} component={About}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
             <Left>
-              <NavLink to='/'
+              <NavLink to={'/'}
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.homeIcon}}
               />
-              <NavLink to='/starred'
-                       exact
+              <NavLink to={'/stargazers'}
                        activeClassName='selected'
                        title='Starred'
                        dangerouslySetInnerHTML={{__html: this.starredIcon}}
               />
-              <NavLink to='/settings'
+              <NavLink to={'/settings'}
                        exact
                        activeClassName='selected'
                        title='Settings'
@@ -62,7 +61,7 @@ class App extends React.Component<Props> {
               />
             </Left>
             <Right>
-              <NavLink to='/about'
+              <NavLink to={'/about'}
                        exact
                        title='About Page'
                        activeClassName='selected'

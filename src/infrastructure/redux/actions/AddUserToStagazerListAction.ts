@@ -1,7 +1,7 @@
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 import { UserEntity } from '@/models/User.entity';
 
-export const ADD_USER_TO_STARGAZER_LIST = '[STARGAZER LIST] add user';
+export const ADD_USER_TO_STARGAZER_LIST = '[CURRENT_STARGAZER LIST] add user';
 
 export type AddUserToStargazerListActionType =
   (user: UserEntity) => IActionResponse<UserEntity>;
