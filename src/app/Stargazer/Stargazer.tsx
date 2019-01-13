@@ -1,3 +1,7 @@
+import {
+  AddUserToStargazerListAction,
+  AddUserToStargazerListActionType,
+} from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
@@ -51,7 +55,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    {},
+    {
+    },
     dispatch,
   );
 }

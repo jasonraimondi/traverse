@@ -1,3 +1,4 @@
+import { FormContainer, Label, Submit, Title } from '@/app/elements/Form';
 import { Field, Form, Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -64,26 +65,6 @@ export class AccessTokenForm extends React.Component<Props, State> {
   }
 }
 
-const FormContainer = styled.div`
-  margin-top: 0.5rem;
-  border-radius: 3px;
-  border: 2px solid ${themeConfig.colors['grey-lighter']};
-  background-color: ${themeConfig.colors['grey-lightest']};
-  padding: 0.35rem;
-`;
-
-const Label = styled.label`
-  display: block;
-  font-size: 1rem;
-`;
-const Title = styled.h5`
-  display: inline-block;
-  margin: 0;
-  margin-bottom: 0.5rem;
-  &.selected {
-    color: ${themeConfig.colors['green-darker']}
-  }
-`;
 const Small = styled.p`
   word-break: keep-all;
   width: 50%;
@@ -92,19 +73,4 @@ const Small = styled.p`
   font-size: 0.8rem;
   margin: 0;
   color: ${themeConfig.colors['grey-dark']};
-`;
-
-const Submit = styled.button`
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: block;
-  margin-top: 0.5rem;
-  color: ${themeConfig.colors.purple};
-  background-color: ${themeConfig.colors.white};
-  border-color: ${themeConfig.colors.purple};
-  &:active, &:hover, &.selected {
-    text-decoration: none;
-    outline: none;
-  }
 `;
