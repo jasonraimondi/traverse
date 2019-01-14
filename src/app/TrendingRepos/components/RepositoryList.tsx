@@ -1,3 +1,4 @@
+import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -6,12 +7,11 @@ import { EmptyRepositoryList } from '@/app/TrendingRepos/components/EmptyReposit
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import { RepositoryDetail } from '@/app/TrendingRepos/components/RepositoryDetail';
 import { FrequencyType } from '@/models/Frequency.type';
-import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface Props {
   language?: ILanguage;
   frequency?: FrequencyType;
-  repositoryList: { [id: string]: RepositoryEntity };
+  repositoryList: RepositoryListReducer;
 }
 
 export class RepositoryList extends React.Component<Props> {

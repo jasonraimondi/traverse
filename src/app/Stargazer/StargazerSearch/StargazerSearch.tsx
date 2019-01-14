@@ -1,6 +1,14 @@
-import { FormContainer, Label, Submit, Title } from '@/app/elements/Form';
+import {
+  AddUserToStargazerListAction,
+  AddUserToStargazerListActionType,
+} from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { Link, Route, Switch, withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+
+import { FormContainer, Label, Submit, Title } from '@/app/elements/Form';
 
 interface MyFormValues {
   githubUsername: string;
@@ -10,7 +18,11 @@ interface State {
   formValue: string;
 }
 
-export class StargazerSearch extends React.Component<{}, State> {
+interface Props {
+  AddUserToStargazerListAction: AddUserToStargazerListActionType;
+}
+
+class StargazerSearch extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +32,8 @@ export class StargazerSearch extends React.Component<{}, State> {
   }
 
   onSubmitSearch(values: MyFormValues) {
-    alert(JSON.stringify(values));
+    this.props.AddUserToStargazerListAction(values.githubUsername);
+    this.setState({ formValue: '' });
   }
 
   render() {
@@ -37,14 +50,30 @@ export class StargazerSearch extends React.Component<{}, State> {
             </Label>
             <Field id='githubUsername'
                    name='githubUsername'
-                   disabled={isSubmitting}
                    placeholder='GitHub Username'
                    type='text'
             />
-            <Submit disabled={isSubmitting} type='submit'>Submit</Submit>
+            <Submit type='submit'>Submit</Submit>
           </Form>
         )}
       />
     </FormContainer>;
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    currentStargazer: state.currentStargazer,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      AddUserToStargazerListAction,
+    },
+    dispatch,
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StargazerSearch);

@@ -20,9 +20,10 @@ describe('LanguageDetail Reducer', () => {
   });
 
   test('CLEAR_ACCESS_TOKEN updates the accessToken reducer properly', () => {
-    const accessToken = null;
     const action = ClearGithubAccessTokenAction();
 
-    assert.strictEqual(githubAccessTokenReducer(undefined, action), accessToken);
+    const state = githubAccessTokenReducer(undefined, action);
+
+    assert.isNull(state);
   });
 });

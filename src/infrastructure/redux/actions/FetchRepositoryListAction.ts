@@ -40,7 +40,7 @@ export function FetchRepositoryListFailureAction(message): IActionResponse<strin
   };
 }
 
-const listByIdsReducer = (entities, currentItem: RepositoryEntity) => {
+export const listByIdsReducer = (entities, currentItem: RepositoryEntity) => {
   return {
     ...entities,
     [currentItem.id]: currentItem,

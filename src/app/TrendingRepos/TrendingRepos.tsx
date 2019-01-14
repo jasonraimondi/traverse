@@ -19,11 +19,11 @@ import {
   SetLanguageListTypeActionType,
 } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
 import { themeConfig } from '@/infrastructure/styles/Theme';
+import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 import { FrequencyType } from '@/models/Frequency.type';
-import { RepositoryEntity } from '@/models/Repository.entity';
 
 interface Props {
-  repositoryList: { [id: string]: RepositoryEntity };
+  repositoryList: RepositoryListReducer;
   frequency: FrequencyType;
   language: ILanguage;
   languageListType: ListType;

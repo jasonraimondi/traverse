@@ -3,7 +3,11 @@ import { RepositoryEntity } from '@/models/Repository.entity';
 
 const INITIAL_STATE = {};
 
-export const repositoryListReducer = (state = INITIAL_STATE, action): { [id: string]: RepositoryEntity } => {
+export interface RepositoryListReducer {
+  [id: string]: RepositoryEntity;
+}
+
+export const repositoryListReducer = (state = INITIAL_STATE, action): RepositoryListReducer => {
   switch (action.type) {
     case FETCH_REPOSITORY_LIST_SUCCESS:
       return action.payload;

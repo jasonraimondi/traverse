@@ -1,3 +1,4 @@
+import { Routes } from '@/app/Routes';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -34,26 +35,26 @@ class App extends React.Component<Props> {
           </TitleContainer>
           <RouterOutlet>
             <Switch>
-              <Route path={'/'} exact component={TrendingRepos}/>
-              <Route path={'/stargazers'} component={Stargazer}/>
-              <Route path={'/settings'} component={Settings}/>
-              <Route path={'/about'} component={About}/>
+              <Route path={Routes.TRENDING.template()} exact component={TrendingRepos}/>
+              <Route path={Routes.STARGAZER.template()} component={Stargazer}/>
+              <Route path={Routes.SETTINGS.template()} component={Settings}/>
+              <Route path={Routes.ABOUT.template()} component={About}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
             <Left>
-              <NavLink to={'/'}
+              <NavLink to={Routes.TRENDING.create({})}
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.homeIcon}}
               />
-              <NavLink to={'/stargazers'}
+              <NavLink to={Routes.STARGAZER.create({})}
                        activeClassName='selected'
                        title='Starred'
                        dangerouslySetInnerHTML={{__html: this.starredIcon}}
               />
-              <NavLink to={'/settings'}
+              <NavLink to={Routes.SETTINGS.create({})}
                        exact
                        activeClassName='selected'
                        title='Settings'
@@ -61,7 +62,7 @@ class App extends React.Component<Props> {
               />
             </Left>
             <Right>
-              <NavLink to={'/about'}
+              <NavLink to={Routes.ABOUT.create({})}
                        exact
                        title='About Page'
                        activeClassName='selected'
@@ -91,7 +92,7 @@ const Main = styled.main`
     "title"
     "content"
     "bottom-nav";
-  grid-template-rows: 43px 1fr 40px;
+  grid-template-rows: ${themeConfig.sizes.topbarHeight} 1fr ${themeConfig.sizes.bottomNavHeight};
   overflow-wrap: normal;
   overflow-wrap: break-word;
   color: ${themeConfig.colors.black};

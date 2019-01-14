@@ -22,6 +22,7 @@ export const store = createStore(
 
 store.subscribe(() => {
   saveStateToElectronSettings({
+    stargazerList: store.getState().stargazerList,
     language: store.getState().language,
     frequency: store.getState().frequency,
     languageListType: store.getState().languageListType,

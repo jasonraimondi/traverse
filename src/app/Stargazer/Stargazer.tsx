@@ -1,38 +1,27 @@
-import {
-  AddUserToStargazerListAction,
-  AddUserToStargazerListActionType,
-} from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
+import { Routes } from '@/app/Routes';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { StargazerList } from '@/app/Stargazer/StargazerList/StargazerList';
-import { StargazerSearch } from '@/app/Stargazer/StargazerSearch/StargazerSearch';
-import { UserEntity } from '@/models/User.entity';
+import StargazerList from '@/app/Stargazer/StargazerList/StargazerList';
+import StargazerSearch from '@/app/Stargazer/StargazerSearch/StargazerSearch';
 
 interface Props {
   match: any;
-  currentStargazer: number | null;
-  stargazerList: { [id: number]: UserEntity };
 }
 
 class Stargazer extends React.Component<Props> {
   render() {
-    console.log(this.props.match);
     return <Container>
       <ul>
-        <li><Link to={`${this.props.match.url}`}>List</Link></li>
-        <li><Link to={`${this.props.match.url}/search`}>Search</Link></li>
-        {/*<li><Link to={Routes.STARGAZER_DETAIL.create({ username: 'jasonraimondi' })}>User</Link></li>*/}
+        <li><Link to={Routes.STARGAZER.create({})}>List</Link></li>
+        <li><Link to={Routes.STARGAZER_SEARCH.create({})}>Search</Link></li>
       </ul>
       <Switch>
-        <Route path={`${this.props.match.path}/search`} component={() => <StargazerSearch/>}/>
-        {/*<Route path={Routes.STARGAZER_DETAIL.template()} component={StargazerDetail} />*/}
-        <Route path={this.props.match.path}
-               component={() => <StargazerList stargazerList={this.props.stargazerList}/>}
-        />
+        <Route path={Routes.STARGAZER_SEARCH.template()} exact component={StargazerSearch}/>
+        <Route path={Routes.STARGAZER.template()} component={StargazerList}/>
       </Switch>
     </Container>;
   }

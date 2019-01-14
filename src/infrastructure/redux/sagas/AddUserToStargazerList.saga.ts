@@ -1,10 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
 import {
-  ADD_USER_TO_STARGAZER_LIST, AddUserToStargazerListFailureAction,
+  ADD_USER_TO_STARGAZER_LIST,
+  AddUserToStargazerListFailureAction,
   AddUserToStargazerListSuccessAction,
-} from 'AddUserToStargazerListAction.ts';
+} from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
+import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
 
 export function* addUserToStargazerListSaga() {
   yield takeEvery(ADD_USER_TO_STARGAZER_LIST, addUserToStargazerList);
