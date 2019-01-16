@@ -3,8 +3,8 @@ import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { formatRoute, Routes } from '@/app/Routes';
 import About from '@/app/About/About';
+import { formatRoute, Routes } from '@/app/Routes';
 import Settings from '@/app/Settings/Settings';
 import Stargazer from '@/app/Stargazer/Stargazer';
 import { TitleBar } from '@/app/TitleBar';

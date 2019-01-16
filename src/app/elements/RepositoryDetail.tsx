@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { RepositoryList } from '@/app/elements/RepositoryList';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
-import { RepositoryList } from '@/app/elements/RepositoryList';
 
 interface Props {
   handleStargazerClick(): void;

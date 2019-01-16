@@ -4,13 +4,13 @@ import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { formatRoute, Routes } from '@/app/Routes';
-import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
-import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import StargazerRepositoryList from '@/app/Stargazer/StargazerList/components/StargazerRepositoryList';
+import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
 import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
+import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import { StargazerListReducer } from '@/infrastructure/redux/reducers/StargazerList.reducer';
 import { UserEntity } from '@/models/User.entity';
 

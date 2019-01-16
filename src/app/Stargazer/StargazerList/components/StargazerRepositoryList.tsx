@@ -9,13 +9,13 @@ import {
   SetCurrentStargazerActionType,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { RepositoryList } from '@/app/elements/RepositoryList';
 import { EmptyStargazerRepositoryList } from '@/app/Stargazer/StargazerList/components/EmptyStargazerRepositoryList';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
-import { RepositoryList } from '@/app/elements/RepositoryList';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {
