@@ -1,17 +1,12 @@
-import { RepositoryList } from '@/app/elements/RepositoryList';
-import { EmptyStargazerRepositoryList } from '@/app/Stargazer/StargazerList/EmptyStargazerRepositoryList';
-import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
-import { listByIdsReducer } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
-import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
-import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
-import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
-import { themeConfig } from '@/infrastructure/styles/Theme';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, Switch, withRouter } from 'react-router-dom';
+import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
 
+import { formatRoute, Routes } from '@/app/Routes';
+import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
+import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
+import StargazerRepositoryList from '@/app/Stargazer/StargazerList/components/StargazerRepositoryList';
 import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
@@ -20,7 +15,7 @@ import { StargazerListReducer } from '@/infrastructure/redux/reducers/StargazerL
 import { UserEntity } from '@/models/User.entity';
 
 interface Props {
-  match: any;
+  history: any;
   currentStargazer: CurrentStargazerReducer;
   stargazerList: StargazerListReducer;
   SetCurrentStargazerAction: SetCurrentStargazerActionType;
@@ -34,7 +29,9 @@ class StargazerList extends React.Component<Props> {
   }
 
   handleSetStargazer(user: UserEntity) {
-    this.props.SetCurrentStargazerAction(user.attributes.login);
+    const login = user.attributes.login;
+    this.props.SetCurrentStargazerAction(login);
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
   }
 
   get stargazerList() {
@@ -45,36 +42,13 @@ class StargazerList extends React.Component<Props> {
       </div>);
   }
 
-  get stargazerDetail() {
-    return this.props.currentStargazer ? (
-      <StargazerDetail>
-        {this.props.currentStargazer.login}
-        <a onClick={this.props.ClearCurrentStargazerAction}>Clear</a>
-        <RepositoryList
-          emptyRepositoryList={<EmptyStargazerRepositoryList />}
-          repositoryList={this.props.currentStargazer.repositoryList}
-        />
-      </StargazerDetail>
-    ) : null;
-  }
-
   render() {
     return <>
-      {this.stargazerDetail}
       {this.stargazerList.length ? this.stargazerList : 'No stargazers'}
+      <Route path={Routes.STARGAZER_DETAIL} component={StargazerRepositoryList}/>
     </>;
   }
 }
-
-const StargazerDetail = styled.div`
-  position: absolute;
-  top: ${themeConfig.sizes.topbarHeight};
-  bottom: ${themeConfig.sizes.bottomNavHeight};
-  right: 0;
-  left: ${themeConfig.sizes.sidebarWidth};
-  background-color: rgba(255, 255, 255, 0.98);
-  overflow-y: auto;
-`;
 
 function mapStateToProps(state) {
   return {

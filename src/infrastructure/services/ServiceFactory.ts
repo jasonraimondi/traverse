@@ -1,4 +1,3 @@
-import { ElectronSettingService } from '@/electron/SettingsService';
 import { AxiosRestClient } from '@/infrastructure/rest/AxiosRestClient';
 import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
 import { GithubService } from '@/infrastructure/services/github/GithubService';
@@ -11,9 +10,11 @@ class ServiceFactory {
   }
 }
 
+const githubAccessToken = null;
+
 export const serviceFactory = new ServiceFactory(
   new GithubRestClient(
     new AxiosRestClient('https://api.github.com'),
-    ElectronSettingService.get('github.apiKey') || null,
+    githubAccessToken,
   ),
 );

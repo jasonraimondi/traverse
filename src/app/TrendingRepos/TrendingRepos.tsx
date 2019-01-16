@@ -1,3 +1,8 @@
+import { formatRoute, Routes } from '@/app/Routes';
+import {
+  SetCurrentStargazerAction,
+  SetCurrentStargazerActionType,
+} from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -24,6 +29,7 @@ import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
+  history: any;
   repositoryList: RepositoryListReducer;
   frequency: FrequencyType;
   language: ILanguage;
@@ -32,6 +38,7 @@ interface Props {
   SetFrequencyAction: SetFrequencyActionType;
   SetLanguageListTypeAction: SetLanguageListTypeActionType;
   FetchRepositoryListAction: FetchRepositoryListActionType;
+  SetCurrentStargazerAction: SetCurrentStargazerActionType;
 }
 
 interface State {
@@ -48,6 +55,7 @@ class App extends React.Component<Props, State> {
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
     this.handleSetLanguageList = this.handleSetLanguageList.bind(this);
     this.handleRollDice = this.handleRollDice.bind(this);
+    this.handleStargazerClick = this.handleStargazerClick.bind(this);
     this.state = {
       selectedLanguageListType: props.languageListType,
     };
@@ -79,6 +87,11 @@ class App extends React.Component<Props, State> {
   handleSetLanguageList(listType: ListType) {
     this.props.SetLanguageListTypeAction(listType);
     this.setState({ selectedLanguageListType: listType });
+  }
+
+  handleStargazerClick(login: string) {
+    this.props.SetCurrentStargazerAction(login);
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
   }
 
   handleRollDice() {
@@ -117,6 +130,7 @@ class App extends React.Component<Props, State> {
         </LanguageListContainer>
         <RepoListContainer>
           <RepositoryList repositoryList={this.props.repositoryList}
+                          handleStargazerClick={this.handleStargazerClick}
                           emptyRepositoryList={
                             <EmptyTrendingRepositoryList frequency={this.props.frequency}
                                                          language={this.props.language}
@@ -145,6 +159,7 @@ function mapDispatchToProps(dispatch) {
       SetFrequencyAction,
       FetchRepositoryListAction,
       SetLanguageListTypeAction,
+      SetCurrentStargazerAction,
     },
     dispatch,
   );
@@ -192,4 +207,4 @@ const RepoListContainer = styled.div`
   min-height: 0;
 `;
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

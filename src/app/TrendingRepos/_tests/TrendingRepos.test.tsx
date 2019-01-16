@@ -31,11 +31,7 @@ describe('<TrendingRepos />', () => {
 
   beforeEach(() => {
     store.clearActions();
-    app = mount(
-      <MemoryRouter initialEntries={['/']} initialIndex={0}>
-        <TrendingRepos store={store}/>
-      </MemoryRouter>,
-    );
+    app = mount(<TrendingRepos store={store}/>);
   });
 
   test('renders viewport content correctly', () => {

@@ -11,6 +11,9 @@ module.exports = {
     transform: {
         "^.+\\.tsx?$": "ts-jest"
     },
+    "transformIgnorePatterns": [
+        "node_modules/?!(typesafe-react-router)"
+    ],
     moduleFileExtensions: [
         "ts",
         "tsx",

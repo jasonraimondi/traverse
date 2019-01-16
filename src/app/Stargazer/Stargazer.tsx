@@ -1,5 +1,5 @@
 import { UnstyledList } from '@/app/elements/Base';
-import { Routes } from '@/app/Routes';
+import { formatRoute, Routes } from '@/app/Routes';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
@@ -17,12 +17,12 @@ class Stargazer extends React.Component<Props> {
   render() {
     return <Container>
       <UnstyledList>
-        <li><Link to={Routes.STARGAZER.create({})}>List</Link></li>
-        <li><Link to={Routes.STARGAZER_SEARCH.create({})}>Search</Link></li>
+        <li><Link to={formatRoute(Routes.STARGAZER)}>List</Link></li>
+        <li><Link to={formatRoute(Routes.STARGAZER_SEARCH)}>Search</Link></li>
       </UnstyledList>
       <Switch>
-        <Route path={Routes.STARGAZER_SEARCH.template()} exact component={StargazerSearch}/>
-        <Route path={Routes.STARGAZER.template()} component={StargazerList}/>
+        <Route path={Routes.STARGAZER_SEARCH} exact component={StargazerSearch}/>
+        <Route path={Routes.STARGAZER} component={StargazerList}/>
       </Switch>
     </Container>;
   }

@@ -9,6 +9,7 @@ describe('<RepositoryList />', () => {
   test('displays list items', () => {
     const list = { abc: new RepositoryEntity('abc'), def: new RepositoryEntity('def') };
     const component = mount(<RepositoryList
+      handleStargazerClick={() => null}
       repositoryList={list}
       emptyRepositoryList={'empty'}
     />);

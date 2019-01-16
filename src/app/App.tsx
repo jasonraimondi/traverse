@@ -1,9 +1,9 @@
-import { Routes } from '@/app/Routes';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { formatRoute, Routes } from '@/app/Routes';
 import About from '@/app/About/About';
 import Settings from '@/app/Settings/Settings';
 import Stargazer from '@/app/Stargazer/Stargazer';
@@ -35,26 +35,26 @@ class App extends React.Component<Props> {
           </TitleContainer>
           <RouterOutlet>
             <Switch>
-              <Route path={Routes.TRENDING.template()} exact component={TrendingRepos}/>
-              <Route path={Routes.STARGAZER.template()} component={Stargazer}/>
-              <Route path={Routes.SETTINGS.template()} component={Settings}/>
-              <Route path={Routes.ABOUT.template()} component={About}/>
+              <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
+              <Route path={Routes.STARGAZER} component={Stargazer}/>
+              <Route path={Routes.SETTINGS} component={Settings}/>
+              <Route path={Routes.ABOUT} component={About}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
             <Left>
-              <NavLink to={Routes.TRENDING.create({})}
+              <NavLink to={formatRoute(Routes.TRENDING)}
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.homeIcon}}
               />
-              <NavLink to={Routes.STARGAZER.create({})}
+              <NavLink to={formatRoute(Routes.STARGAZER)}
                        activeClassName='selected'
                        title='Starred'
                        dangerouslySetInnerHTML={{__html: this.starredIcon}}
               />
-              <NavLink to={Routes.SETTINGS.create({})}
+              <NavLink to={formatRoute(Routes.SETTINGS)}
                        exact
                        activeClassName='selected'
                        title='Settings'
@@ -62,7 +62,7 @@ class App extends React.Component<Props> {
               />
             </Left>
             <Right>
-              <NavLink to={Routes.ABOUT.create({})}
+              <NavLink to={formatRoute(Routes.ABOUT)}
                        exact
                        title='About Page'
                        activeClassName='selected'

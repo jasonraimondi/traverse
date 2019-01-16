@@ -1,15 +1,18 @@
-import { RepositoryList } from '@/app/elements/RepositoryList';
+import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import * as React from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
+import { RepositoryList } from '@/app/elements/RepositoryList';
 
-interface InferProps {
+interface Props {
+  handleStargazerClick(): void;
   repository: RepositoryEntity;
 }
 
-export class RepositoryDetail extends React.Component<InferProps> {
+export class RepositoryDetail extends React.Component<Props> {
   get attributes() {
     return this.props.repository.attributes;
   }
@@ -68,16 +71,12 @@ export class RepositoryDetail extends React.Component<InferProps> {
     return this.attributes ? this.attributes.htmlUrl : null;
   }
 
-  handleStargazerClick() {
-
-  }
-
   render() {
     return (
       <Item className='repository-list-item'>
         <ItemHeader>
           <Links>
-            <StargazerLink onClick={this.handleStargazerClick}>
+            <StargazerLink onClick={this.props.handleStargazerClick}>
               {this.stargazerLink}
             </StargazerLink>
             <NameLink href={this.htmlUrl} className='open-link-externally'>

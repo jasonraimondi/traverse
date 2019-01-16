@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { UnstyledList } from '@/app/elements/Base';
 
 interface Props {
+  handleStargazerClick(login: string): void;
   emptyRepositoryList: string|JSX.Element;
   repositoryList: RepositoryListReducer;
 }
@@ -27,7 +28,11 @@ export class RepositoryList extends React.Component<Props> {
 
   get listItems() {
     return this.sortedRepositoryList.map((repository, idx) => {
-      return <RepositoryDetail key={idx} repository={repository}/>;
+      const handleStargazerClick = () => this.props.handleStargazerClick(repository.attributes.owner.login);
+      return <RepositoryDetail handleStargazerClick={handleStargazerClick}
+                               key={idx}
+                               repository={repository}
+      />;
     });
   }
 
