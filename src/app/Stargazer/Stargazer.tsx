@@ -1,3 +1,4 @@
+import { UnstyledList } from '@/app/elements/Base';
 import { Routes } from '@/app/Routes';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -15,10 +16,10 @@ interface Props {
 class Stargazer extends React.Component<Props> {
   render() {
     return <Container>
-      <ul>
+      <UnstyledList>
         <li><Link to={Routes.STARGAZER.create({})}>List</Link></li>
         <li><Link to={Routes.STARGAZER_SEARCH.create({})}>Search</Link></li>
-      </ul>
+      </UnstyledList>
       <Switch>
         <Route path={Routes.STARGAZER_SEARCH.template()} exact component={StargazerSearch}/>
         <Route path={Routes.STARGAZER.template()} component={StargazerList}/>

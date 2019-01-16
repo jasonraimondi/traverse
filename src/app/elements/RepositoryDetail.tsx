@@ -1,7 +1,7 @@
+import { RepositoryList } from '@/app/elements/RepositoryList';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
@@ -14,9 +14,14 @@ export class RepositoryDetail extends React.Component<InferProps> {
     return this.props.repository.attributes;
   }
 
-  get longName() {
-    const longName = this.attributes ? this.attributes.longName : 'Unknown';
-    return <Name className='name'>{longName.replace('/', ' / ')}</Name>;
+  get stargazerLink() {
+    const login = this.attributes ? this.attributes.owner.login : 'Unknown';
+    return <Name className='name'>{login.replace('/', ' / ')}</Name>;
+  }
+
+  get name() {
+    const name = this.attributes ? this.attributes.name : 'Unknown';
+    return <Name className='name'>{name}</Name>;
   }
 
   get language() {
@@ -63,13 +68,22 @@ export class RepositoryDetail extends React.Component<InferProps> {
     return this.attributes ? this.attributes.htmlUrl : null;
   }
 
+  handleStargazerClick() {
+
+  }
+
   render() {
     return (
       <Item className='repository-list-item'>
         <ItemHeader>
-          <NameLink href={this.htmlUrl} className='open-link-externally'>
-            {this.longName}
-          </NameLink>
+          <Links>
+            <StargazerLink onClick={this.handleStargazerClick}>
+              {this.stargazerLink}
+            </StargazerLink>
+            <NameLink href={this.htmlUrl} className='open-link-externally'>
+              {this.name}
+            </NameLink>
+          </Links>
           {this.language}
         </ItemHeader>
         <ItemBody>
@@ -87,6 +101,14 @@ export class RepositoryDetail extends React.Component<InferProps> {
 
 const Name = styled.p`
 `;
+
+const Links = styled.div`
+  display: flex;
+`;
+
+const StargazerLink = styled.a`
+`;
+
 const NameLink = styled.a`
   font-weight: 600;
   color: ${themeConfig.colors.purple};

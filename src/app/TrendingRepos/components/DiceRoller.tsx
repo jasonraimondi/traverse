@@ -11,7 +11,7 @@ interface State {
   activeDiceKey: number;
 }
 
-export class DieRoller extends React.Component<RollDiceProps, State> {
+export class DiceRoller extends React.Component<RollDiceProps, State> {
 
   private readonly dice: string[] = [
     require('@/infrastructure/assets/icons/dice/dice-1.svg'),

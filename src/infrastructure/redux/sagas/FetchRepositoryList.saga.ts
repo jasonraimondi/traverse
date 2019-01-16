@@ -2,7 +2,6 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 import {
   FETCH_REPOSITORY_LIST,
-  FetchRepositoryListAction,
   FetchRepositoryListActionFields,
   FetchRepositoryListFailureAction,
   FetchRepositoryListSuccessAction,

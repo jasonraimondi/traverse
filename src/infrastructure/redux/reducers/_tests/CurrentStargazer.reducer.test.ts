@@ -17,7 +17,7 @@ describe('RepositoryList Reducer', () => {
 
     const currentStargazer = currentStargazerReducer(undefined, action);
 
-    assert.strictEqual(currentStargazer, 'jasonraimondi');
+    assert.strictEqual(currentStargazer, null);
   });
 
   test('CLEAR_CURRENT_STARGAZER sets the current stargazer reducer properly', () => {

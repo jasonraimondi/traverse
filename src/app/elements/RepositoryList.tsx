@@ -1,16 +1,12 @@
+import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
 import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 import * as React from 'react';
 import styled from 'styled-components';
 
 import { UnstyledList } from '@/app/elements/Base';
-import { EmptyRepositoryList } from '@/app/TrendingRepos/components/EmptyRepositoryList';
-import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { RepositoryDetail } from '@/app/TrendingRepos/components/RepositoryDetail';
-import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
-  language?: ILanguage;
-  frequency?: FrequencyType;
+  emptyRepositoryList: string|JSX.Element;
   repositoryList: RepositoryListReducer;
 }
 
@@ -36,7 +32,7 @@ export class RepositoryList extends React.Component<Props> {
   }
 
   get emptyList() {
-    return <EmptyRepositoryList language={this.props.language} frequency={this.props.frequency} />;
+    return this.props.emptyRepositoryList;
   }
 
   render() {

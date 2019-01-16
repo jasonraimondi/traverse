@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { DieRoller } from '@/app/TrendingRepos/components/DieRoller';
+import { DiceRoller } from '@/app/TrendingRepos/components/DiceRoller';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 export type ListType = 'all' | 'popular';
@@ -18,7 +18,7 @@ export class LanguageListPicker extends React.Component<Props> {
 
   render() {
     return <LanguageSelect id='language-select'>
-      <DieRoller onClickRoll={this.props.onClickRoll}/>
+      <DiceRoller onClickRoll={this.props.onClickRoll}/>
       <Icon className={this.props.selected === 'all' ? 'selected' : null}
             onClick={() => this.handleSelectLanguage('all')}
             title='All Languages'

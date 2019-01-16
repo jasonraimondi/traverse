@@ -4,10 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { RepositoryList } from '@/app/elements/RepositoryList';
+import { EmptyTrendingRepositoryList } from '@/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
 import {
   FetchRepositoryListAction,
   FetchRepositoryListActionType,
@@ -18,8 +19,8 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
-import { themeConfig } from '@/infrastructure/styles/Theme';
 import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
+import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
@@ -116,8 +117,11 @@ class App extends React.Component<Props, State> {
         </LanguageListContainer>
         <RepoListContainer>
           <RepositoryList repositoryList={this.props.repositoryList}
-                          language={this.props.language}
-                          frequency={this.props.frequency}
+                          emptyRepositoryList={
+                            <EmptyTrendingRepositoryList frequency={this.props.frequency}
+                                                         language={this.props.language}
+                            />
+                          }
           />
         </RepoListContainer>
       </Main>

@@ -1,5 +1,3 @@
-
-// blank string = all languages
 import { SET_LANGUAGE } from '@/infrastructure/redux/actions/SetLanguageAction';
 
 const INITIAL_STATE = { title: 'TypeScript', value: 'typescript'};

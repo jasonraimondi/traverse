@@ -1,8 +1,11 @@
-import { RepositoryList } from '@/app/TrendingRepos/components/RepositoryList';
+import { RepositoryList } from '@/app/elements/RepositoryList';
+import { EmptyStargazerRepositoryList } from '@/app/Stargazer/StargazerList/EmptyStargazerRepositoryList';
 import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
+import { listByIdsReducer } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
+import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
 import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
 import { themeConfig } from '@/infrastructure/styles/Theme';
-import { RepositoryEntity } from '@/models/Repository.entity';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
@@ -18,31 +21,20 @@ import { UserEntity } from '@/models/User.entity';
 
 interface Props {
   match: any;
-  currentStargazer: string;
+  currentStargazer: CurrentStargazerReducer;
   stargazerList: StargazerListReducer;
   SetCurrentStargazerAction: SetCurrentStargazerActionType;
   ClearCurrentStargazerAction: () => void;
 }
 
-interface State {
-  currentUserStarredRepositoryList: RepositoryEntity[];
-}
-
-class StargazerList extends React.Component<Props, State> {
+class StargazerList extends React.Component<Props> {
   constructor(props) {
     super(props);
-    this.state = {
-      currentUserStarredRepositoryList: [],
-    };
     this.handleSetStargazer = this.handleSetStargazer.bind(this);
   }
 
   handleSetStargazer(user: UserEntity) {
     this.props.SetCurrentStargazerAction(user.attributes.login);
-    this.setState({ currentUserStarredRepositoryList: [] }, async () => {
-      const repos = await serviceFactory.githubClient.user.listStarred(user.attributes.login);
-      this.setState({ currentUserStarredRepositoryList: repos });
-    });
   }
 
   get stargazerList() {
@@ -56,9 +48,12 @@ class StargazerList extends React.Component<Props, State> {
   get stargazerDetail() {
     return this.props.currentStargazer ? (
       <StargazerDetail>
-        {this.props.currentStargazer}
+        {this.props.currentStargazer.login}
         <a onClick={this.props.ClearCurrentStargazerAction}>Clear</a>
-        {this.state.currentUserStarredRepositoryList.map((repo) => <p>{repo.attributes.longName}</p>)}
+        <RepositoryList
+          emptyRepositoryList={<EmptyStargazerRepositoryList />}
+          repositoryList={this.props.currentStargazer.repositoryList}
+        />
       </StargazerDetail>
     ) : null;
   }
@@ -76,7 +71,7 @@ const StargazerDetail = styled.div`
   top: ${themeConfig.sizes.topbarHeight};
   bottom: ${themeConfig.sizes.bottomNavHeight};
   right: 0;
-  left: 69px;
+  left: ${themeConfig.sizes.sidebarWidth};
   background-color: rgba(255, 255, 255, 0.98);
   overflow-y: auto;
 `;
