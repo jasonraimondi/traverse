@@ -15,6 +15,7 @@ import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
+  match: any;
   frequency: FrequencyType;
   language: ILanguage;
 }
@@ -30,9 +31,7 @@ class App extends React.Component<Props> {
       <style>{iconStyles}</style>
       <Router>
         <Main>
-          <TitleContainer>
-            <TitleBar frequency={this.props.frequency} language={this.props.language}/>
-          </TitleContainer>
+          <TitleContainer />
           <RouterOutlet>
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>

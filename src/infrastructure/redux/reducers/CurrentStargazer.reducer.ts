@@ -1,6 +1,5 @@
 import { CLEAR_CURRENT_STARGAZER } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
 import {
-  SET_CURRENT_STARGAZER,
   SET_CURRENT_STARGAZER_SUCCESS,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
 import { RepositoryEntity } from '@/models/Repository.entity';

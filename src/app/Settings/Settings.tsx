@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { Title } from '@/app/elements/Base';
 import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
 import {
   ClearGithubAccessTokenAction,
@@ -35,14 +36,17 @@ class Settings extends React.Component<Props, State> {
   }
 
   render() {
-    return <SettingsContainer>
-      <SettingsTitle>Settings</SettingsTitle>
-      <AccessTokenForm title='Github Access Token'
-                       small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
-                       formValue={this.props.githubAccessToken}
-                       handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
-      />
-    </SettingsContainer>;
+    return <>
+      <Title>Settings</Title>
+      <SettingsContainer>
+        <SettingsTitle>Settings</SettingsTitle>
+        <AccessTokenForm title='Github Access Token'
+                         small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
+                         formValue={this.props.githubAccessToken}
+                         handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
+        />
+      </SettingsContainer>
+    </>;
   }
 }
 

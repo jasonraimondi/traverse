@@ -14,7 +14,7 @@ export const Label = styled.label`
   font-size: 1rem;
 `;
 
-export const Title = styled.h5`
+export const FormTitle = styled.h5`
   display: inline-block;
   margin: 0;
   margin-bottom: 0.5rem;

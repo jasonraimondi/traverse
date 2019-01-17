@@ -4,13 +4,18 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Donation } from '@/app/About/components/Donation';
+import { Title } from '@/app/elements/Base';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 class About extends React.Component {
   render() {
     return <>
+      <Title>About</Title>
       <AboutContainer>
         <Main>
+          <OpenSource href='https://github.com/jasonraimondi/traverse' className='open-link-externally'>
+            Traverse is Open Source
+          </OpenSource>
           <TraverseTitle id='traverse-title'>
             <Icon src='../resources/icon.png' alt='Traverse Icon'/>
             Traverse
@@ -32,7 +37,11 @@ class About extends React.Component {
     </>;
   }
 }
-
+const OpenSource = styled.a`
+  padding-top: 0.5rem;
+  font-size: 0.7rem;
+  color: ${themeConfig.colors.purple};
+`;
 const Icon = styled.img`
     width: 175px;
     height: 175px;

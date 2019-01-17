@@ -1,4 +1,12 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+
+import { RepositoryList } from '@/app/elements/RepositoryList';
 import { formatRoute, Routes } from '@/app/Routes';
+import { EmptyStargazerRepositoryList } from '@/app/Stargazer/StargazerList/components/EmptyStargazerRepositoryList';
+import { Icon } from '@/app/TrendingRepos/components/LanguageListPicker';
 import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
@@ -8,13 +16,6 @@ import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
-
-import { RepositoryList } from '@/app/elements/RepositoryList';
-import { EmptyStargazerRepositoryList } from '@/app/Stargazer/StargazerList/components/EmptyStargazerRepositoryList';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
@@ -27,6 +28,9 @@ interface Props {
 }
 
 class StargazerRepositoryList extends React.Component<Props> {
+  readonly iconPin = require('@/infrastructure/assets/icons/icon-pin.svg');
+  readonly iconClose = require('@/infrastructure/assets/icons/icon-close-circle.svg');
+
   constructor(props: Props) {
     super(props);
     this.handleStargazerClick = this.handleStargazerClick.bind(this);
@@ -53,22 +57,56 @@ class StargazerRepositoryList extends React.Component<Props> {
 
     if (this.props.currentStargazer) {
       content = <>
-        <h4>
-          {this.props.currentStargazer.login}
-          <a onClick={this.handleStargazerClear}> Clear</a>
-          <a onClick={this.handleStargazerPin}> Pin</a>
-        </h4>
-        <RepositoryList
-          handleStargazerClick={this.handleStargazerClick}
-          emptyRepositoryList={<EmptyStargazerRepositoryList/>}
-          repositoryList={this.props.currentStargazer.repositoryList}
-        />
+        <TitleBar>
+          <Icon onClick={this.handleStargazerPin}
+                title='Add to your stargazer list'
+                dangerouslySetInnerHTML={{ __html: this.iconPin }}
+          />
+          <Icon onClick={this.handleStargazerClear}
+                title='Add to your stargazer list'
+                dangerouslySetInnerHTML={{ __html: this.iconClose }}
+          />
+        </TitleBar>
+        <ScrollView>
+          <RepositoryList
+            handleStargazerClick={this.handleStargazerClick}
+            emptyRepositoryList={<EmptyStargazerRepositoryList/>}
+            repositoryList={this.props.currentStargazer.repositoryList}
+          />
+        </ScrollView>
       </>;
     }
 
-    return <StargazerDetail>{content}</StargazerDetail>;
+    return <>
+      <StargazerDetail>{content}</StargazerDetail>
+    </>;
   }
 }
+
+const ScrollView = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`;
+
+const TitleBar = styled.div`
+  background-color: ${themeConfig.colors.purple};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 1rem;
+`;
+
+const Close = styled.a`
+  display: block;
+  position: absolute;
+  top: ${themeConfig.sizes.topbarHeight};
+  left: 0;
+  bottom: ${themeConfig.sizes.bottomNavHeight};
+  background-color: rgba(63, 63, 63, 0.5);
+  right: calc(100% - ${themeConfig.sizes.sidebarWidth});
+`;
 
 const StargazerDetail = styled.div`
   position: absolute;

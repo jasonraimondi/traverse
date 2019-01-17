@@ -2,6 +2,19 @@ import styled from 'styled-components';
 
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
+export const Title = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: ${themeConfig.sizes.topbarHeight};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${themeConfig.colors.white};
+`;
+
 export const UnstyledList = styled.ul`
   list-style-type: none;
   margin: 0;

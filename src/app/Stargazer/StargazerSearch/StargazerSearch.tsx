@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { FormContainer, Label, Submit, Title } from '@/app/elements/Form';
+import { FormContainer, FormTitle, Label, Submit } from '@/app/elements/Form';
 
 interface MyFormValues {
   githubUsername: string;
@@ -46,7 +46,7 @@ class StargazerSearch extends React.Component<Props, State> {
         render={({ isSubmitting }) => (
           <Form>
             <Label htmlFor='githubUsername'>
-              <Title>Search by GitHub username</Title>
+              <FormTitle>Search by GitHub username</FormTitle>
             </Label>
             <Field id='githubUsername'
                    name='githubUsername'

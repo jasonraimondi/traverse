@@ -1,4 +1,4 @@
-import { FormContainer, Label, Submit, Title } from '@/app/elements/Form';
+import { FormContainer, FormTitle, Label, Submit } from '@/app/elements/Form';
 import { Field, Form, Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -48,7 +48,7 @@ export class AccessTokenForm extends React.Component<Props, State> {
           render={({ isSubmitting }) => (
             <Form>
               <Label htmlFor='githubAccessToken'>
-                <Title>{this.props.title}</Title>
+                <FormTitle>{this.props.title}</FormTitle>
                 {small}
               </Label>
               <Field id='githubAccessToken'

@@ -1,6 +1,7 @@
 import {
   AddUserToStargazerListSuccessAction,
 } from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
+import { RemoveUserFromStargazerListAction } from '@/infrastructure/redux/actions/RemoveUserFromStargazerListAction';
 import { assert } from 'chai';
 
 import { stargazerListReducer } from '@/infrastructure/redux/reducers/StargazerList.reducer';
@@ -22,5 +23,13 @@ describe('RepositoryList Reducer', () => {
 
     assert.strictEqual(Object.values(stargazerList)[0].id, 5787967);
     assert.strictEqual(Object.values(stargazerList)[0].attributes.name, 'Jason Raimondi');
+  });
+
+  test('REMOVE_USER_FROM_STARGAZER_LIST updates the stargazer list reducer properly', () => {
+    const action = RemoveUserFromStargazerListAction('jasonraimondi');
+
+    const stargazerList = stargazerListReducer({ jasonraimondi: {} }, action);
+
+    assert.deepStrictEqual(stargazerList, {});
   });
 });

@@ -1,4 +1,3 @@
-import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
@@ -79,6 +78,7 @@ export class RepositoryDetail extends React.Component<Props> {
             <StargazerLink onClick={this.props.handleStargazerClick}>
               {this.stargazerLink}
             </StargazerLink>
+            &nbsp;/&nbsp;
             <NameLink href={this.htmlUrl} className='open-link-externally'>
               {this.name}
             </NameLink>
@@ -105,9 +105,6 @@ const Links = styled.div`
   display: flex;
 `;
 
-const StargazerLink = styled.a`
-`;
-
 const NameLink = styled.a`
   font-weight: 600;
   color: ${themeConfig.colors.purple};
@@ -117,6 +114,10 @@ const NameLink = styled.a`
     text-decoration: underline;
   }
 `;
+
+const StargazerLink = styled(NameLink)`
+`;
+
 const Language = styled.p`
   font-size: 0.7rem;
   font-weight: 400;

@@ -1,3 +1,5 @@
+import { Title } from '@/app/elements/Base';
+import { FormTitle } from '@/app/elements/Form';
 import { formatRoute, Routes } from '@/app/Routes';
 import {
   SetCurrentStargazerAction,
@@ -109,8 +111,20 @@ class App extends React.Component<Props, State> {
     return list[randomKey];
   }
 
+  private ucFirst(str: string): string {
+    return str[0].toUpperCase() + str.slice(1);
+  }
+
+  private filterLanguage(language: string): string {
+    if (language === '') {
+      return 'All Languages';
+    }
+    return language;
+  }
+
   render() {
-    return (
+    return <>
+      <Title>{this.filterLanguage(this.props.language.title)} | {this.ucFirst(this.props.frequency)}</Title>
       <Main>
         <NavContainer>
           <LanguageListPicker selected={this.state.selectedLanguageListType}
@@ -139,7 +153,7 @@ class App extends React.Component<Props, State> {
           />
         </RepoListContainer>
       </Main>
-    );
+    </>;
   }
 }
 

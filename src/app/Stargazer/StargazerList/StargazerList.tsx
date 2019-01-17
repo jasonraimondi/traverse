@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-
 import { formatRoute, Routes } from '@/app/Routes';
+import { StargazerDetail } from '@/app/Stargazer/StargazerList/components/StargazerDetail';
 import StargazerRepositoryList from '@/app/Stargazer/StargazerList/components/StargazerRepositoryList';
 import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
+import {
+  RemoveUserFromStargazerListAction,
+  RemoveUserFromStargazerListActionType,
+} from '@/infrastructure/redux/actions/RemoveUserFromStargazerListAction';
 import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
@@ -13,6 +13,10 @@ import {
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 import { StargazerListReducer } from '@/infrastructure/redux/reducers/StargazerList.reducer';
 import { UserEntity } from '@/models/User.entity';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
 interface Props {
   history: any;
@@ -20,12 +24,20 @@ interface Props {
   stargazerList: StargazerListReducer;
   SetCurrentStargazerAction: SetCurrentStargazerActionType;
   ClearCurrentStargazerAction: () => void;
+  RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
 }
 
 class StargazerList extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.handleSetStargazer = this.handleSetStargazer.bind(this);
+    this.handleRemoveStargazer = this.handleRemoveStargazer.bind(this);
+  }
+
+  componentDidUpdate(): void {
+    if (this.props.history.location.pathname === '/stargazer' && this.props.currentStargazer) {
+      this.props.ClearCurrentStargazerAction();
+    }
   }
 
   handleSetStargazer(user: UserEntity) {
@@ -34,12 +46,28 @@ class StargazerList extends React.Component<Props> {
     this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
   }
 
+  handleRemoveStargazer(user: UserEntity) {
+    this.props.RemoveUserFromStargazerListAction(user.attributes.login);
+  }
+
   get stargazerList() {
     return Object.values(this.props.stargazerList)
-      .map((user) => <div onClick={() => this.handleSetStargazer(user)} key={user.id}>
-        <img width={50} src={user.attributes.avatarUrl} alt={`${user.attributes.login} avatar`}/>
-        {user.attributes.name}
-      </div>);
+      .map((user) => {
+        const noneSelected = !this.props.currentStargazer;
+        let shouldGreyscaleImage = true;
+
+        if (noneSelected) {
+          shouldGreyscaleImage = false;
+        } else if (this.props.currentStargazer.login === user.attributes.login) {
+          shouldGreyscaleImage = false;
+        }
+        return <StargazerDetail key={user.id}
+                                shouldGreyscaleImage={shouldGreyscaleImage}
+                                handleClickStargazer={() => this.handleSetStargazer(user)}
+                                handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
+                                user={user}
+        />;
+      });
   }
 
   render() {
@@ -62,6 +90,7 @@ function mapDispatchToProps(dispatch) {
     {
       SetCurrentStargazerAction,
       ClearCurrentStargazerAction,
+      RemoveUserFromStargazerListAction,
     },
     dispatch,
   );
