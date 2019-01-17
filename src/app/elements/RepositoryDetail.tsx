@@ -75,9 +75,15 @@ export class RepositoryDetail extends React.Component<Props> {
       <Item className='repository-list-item'>
         <ItemHeader>
           <Links>
-            <StargazerLink onClick={this.props.handleStargazerClick}>
-              {this.stargazerLink}
-            </StargazerLink>
+            {this.props.repository.isUser ? (
+              <StargazerLink onClick={this.props.handleStargazerClick}>
+                {this.stargazerLink}
+              </StargazerLink>
+            ) : (
+              <DisabledStargazerLink title={`${this.props.repository.owner.login} is an Organization`}>
+                {this.stargazerLink}
+              </DisabledStargazerLink>
+            )}
             &nbsp;/&nbsp;
             <NameLink href={this.htmlUrl} className='open-link-externally'>
               {this.name}
@@ -106,12 +112,22 @@ const Links = styled.div`
 `;
 
 const NameLink = styled.a`
+  cursor: pointer;
   font-weight: 600;
   color: ${themeConfig.colors.purple};
   text-decoration: none;
   &:hover {
     color: ${themeConfig.colors['purple-dark']}
     text-decoration: underline;
+  }
+`;
+
+const DisabledStargazerLink = styled(NameLink)`
+  cursor: unset;
+  color: ${themeConfig.colors.purple};
+  &:hover {
+    color: ${themeConfig.colors.purple};
+    text-decoration: none;
   }
 `;
 

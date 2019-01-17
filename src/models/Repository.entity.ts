@@ -11,6 +11,7 @@ export class RepositoryEntity {
         language: response.language,
         owner: {
           login: response.owner.login,
+          type: response.owner.type.toLowerCase(),
           htmlUrl: response.owner.html_url,
           avatarUrl: response.owner.avatar_url,
         } as Owner,
@@ -21,6 +22,18 @@ export class RepositoryEntity {
         forksCount: response.forks_count,
       },
     );
+  }
+
+  get owner(): Owner {
+    return this.attributes.owner;
+  }
+
+  get isUser(): boolean {
+    return this.attributes && this.attributes.owner.type === 'user';
+  }
+
+  get isOrganization(): boolean {
+    return this.attributes && this.attributes.owner.type === 'organization';
   }
 
   constructor(

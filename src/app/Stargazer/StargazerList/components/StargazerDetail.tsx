@@ -1,3 +1,4 @@
+import { Icon } from '@/app/TrendingRepos/components/LanguageListPicker';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { UserEntity } from '@/models/User.entity';
 import * as React from 'react';
@@ -6,23 +7,35 @@ import styled from 'styled-components';
 interface Props {
   shouldGreyscaleImage: boolean;
   user: UserEntity;
+
   handleClickStargazer(): void;
+
   handleRemoveStargazer(): void;
 }
 
 export class StargazerDetail extends React.Component<Props> {
+  readonly iconClear = require('@/infrastructure/assets/icons/icon-close-circle.svg');
+
   render() {
     const { user } = this.props;
     return <>
-      <Item onClick={this.props.handleClickStargazer} key={user.id}>
+      <Item>
         <Avatar className={`${this.props.shouldGreyscaleImage ? 'add-greyscale' : null} avatar`}
-             src={user.attributes.avatarUrl}
-             alt={`${user.attributes.login} avatar`}
+                onClick={this.props.handleClickStargazer}
+                src={user.attributes.avatarUrl}
+                alt={`${user.attributes.login} avatar`}
         />
         <Description>
-          <p>{user.attributes.name}</p>
-          <p>{user.attributes.login}</p>
-          <a onClick={this.props.handleRemoveStargazer}>Remove</a>
+          <Name>
+            {user.attributes.name}
+            <Icon onClick={this.props.handleRemoveStargazer}
+                  title='All Languages'
+                  dangerouslySetInnerHTML={{ __html: this.iconClear }}
+            />
+          </Name>
+          <p>{user.attributes.bio}</p>
+          <p>{user.attributes.publicRepoCount}</p>
+          <p>{user.attributes.publicGistCount}</p>
         </Description>
       </Item>
     </>;
@@ -31,6 +44,9 @@ export class StargazerDetail extends React.Component<Props> {
 
 const Item = styled.div`
    display: flex;
+`;
+
+const Name = styled.h4`
 `;
 
 const Description = styled.div`
