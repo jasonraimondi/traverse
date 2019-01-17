@@ -61,22 +61,12 @@ class StargazerList extends React.Component<Props> {
 
   get stargazerList() {
     return Object.values(this.props.stargazerList)
-      .map((user) => {
-        const noneSelected = !this.props.currentStargazer;
-        let shouldGreyscaleImage = true;
-
-        if (noneSelected) {
-          shouldGreyscaleImage = false;
-        } else if (this.props.currentStargazer.login === user.attributes.login) {
-          shouldGreyscaleImage = false;
-        }
-        return <StargazerDetail key={user.id}
-                                shouldGreyscaleImage={shouldGreyscaleImage}
-                                handleClickStargazer={() => this.handleSetStargazer(user)}
-                                handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
-                                user={user}
-        />;
-      });
+      .map((user) => <StargazerDetail key={user.id}
+                                      handleClickStargazer={() => this.handleSetStargazer(user)}
+                                      handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
+                                      user={user}
+        />,
+      );
   }
 
   render() {

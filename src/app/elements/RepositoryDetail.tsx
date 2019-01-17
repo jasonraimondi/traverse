@@ -140,6 +140,8 @@ const Language = styled.p`
   color: ${themeConfig.colors['grey-darker']}
 `;
 const Description = styled.p`
+  overflow: hidden;
+  max-height: ${themeConfig.sizes.sidebarWidth};
 `;
 const Bottom = styled.p`
   font-weight: 600;

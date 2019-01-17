@@ -5,11 +5,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  shouldGreyscaleImage: boolean;
   user: UserEntity;
-
   handleClickStargazer(): void;
-
   handleRemoveStargazer(): void;
 }
 
@@ -20,7 +17,7 @@ export class StargazerDetail extends React.Component<Props> {
     const { user } = this.props;
     return <>
       <Item>
-        <Avatar className={`${this.props.shouldGreyscaleImage ? 'add-greyscale' : null} avatar`}
+        <Avatar className='avatar'
                 onClick={this.props.handleClickStargazer}
                 src={user.attributes.avatarUrl}
                 alt={`${user.attributes.login} avatar`}
@@ -28,19 +25,32 @@ export class StargazerDetail extends React.Component<Props> {
         <Description>
           <Name>
             {user.attributes.name}
-            <Icon onClick={this.props.handleRemoveStargazer}
+            <CloseIcon onClick={this.props.handleRemoveStargazer}
                   title='All Languages'
                   dangerouslySetInnerHTML={{ __html: this.iconClear }}
             />
           </Name>
-          <p>{user.attributes.bio}</p>
-          <p>{user.attributes.publicRepoCount}</p>
-          <p>{user.attributes.publicGistCount}</p>
+          {/*<p>{user.attributes.bio}</p>*/}
+          <p>{user.attributes.company}</p>
+          {/*<p>{user.attributes.publicGistCount}</p>*/}
         </Description>
       </Item>
     </>;
   }
 }
+
+const CloseIcon = styled(Icon)`
+  float: right;
+  & svg {
+    cursor: pointer;
+  }
+  &:hover .primary {
+    fill: ${themeConfig.colors['green-darker']};
+  }
+  &:hover .secondary {
+    fill: ${themeConfig.colors.green};
+  }
+`;
 
 const Item = styled.div`
    display: flex;
@@ -51,6 +61,7 @@ const Name = styled.h4`
 
 const Description = styled.div`
   flex: 1;
+  padding: 0 1rem;
 `;
 
 const Avatar = styled.img`

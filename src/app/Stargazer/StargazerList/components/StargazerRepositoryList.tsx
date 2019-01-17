@@ -58,11 +58,11 @@ class StargazerRepositoryList extends React.Component<Props> {
     if (this.props.currentStargazer) {
       content = <>
         <TitleBar>
-          <Icon onClick={this.handleStargazerPin}
+          <NavIcon onClick={this.handleStargazerPin}
                 title='Add to your stargazer list'
                 dangerouslySetInnerHTML={{ __html: this.iconPin }}
           />
-          <Icon onClick={this.handleStargazerClear}
+          <NavIcon onClick={this.handleStargazerClear}
                 title='Add to your stargazer list'
                 dangerouslySetInnerHTML={{ __html: this.iconClose }}
           />
@@ -78,6 +78,9 @@ class StargazerRepositoryList extends React.Component<Props> {
     }
 
     return <>
+      <Close onClick={this.handleStargazerClear}>
+        Close
+      </Close>
       <StargazerDetail>{content}</StargazerDetail>
     </>;
   }
@@ -87,6 +90,18 @@ const ScrollView = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: auto;
+`;
+
+const NavIcon = styled(Icon)`
+  & svg {
+    cursor: pointer;
+  }
+  &:hover .primary {
+    fill: ${themeConfig.colors['green-darker']};
+  }
+  &:hover .secondary {
+    fill: ${themeConfig.colors.green};
+  }
 `;
 
 const TitleBar = styled.div`
@@ -99,12 +114,16 @@ const TitleBar = styled.div`
 `;
 
 const Close = styled.a`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
+  color: ${themeConfig.colors.white};
   top: ${themeConfig.sizes.topbarHeight};
   left: 0;
   bottom: ${themeConfig.sizes.bottomNavHeight};
-  background-color: rgba(63, 63, 63, 0.5);
+  background-color: ${themeConfig.colors['grey-darker']};
   right: calc(100% - ${themeConfig.sizes.sidebarWidth});
 `;
 
