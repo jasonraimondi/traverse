@@ -1,4 +1,4 @@
-import { flashMessage } from '@/infrastructure/FlashMessage';
+import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 
 export const REMOVE_USER_FROM_STARGAZER_LIST = '[CURRENT_STARGAZER LIST] remove user';

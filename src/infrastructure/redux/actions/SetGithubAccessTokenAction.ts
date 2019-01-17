@@ -1,4 +1,4 @@
-import { flashMessage } from '@/infrastructure/FlashMessage';
+import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';

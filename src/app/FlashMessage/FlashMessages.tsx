@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { flashMessage, FlashMessage } from '@/infrastructure/FlashMessage';
+import { flashMessage, FlashMessage } from '@/app/FlashMessage/FlashMessage';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface State {

@@ -1,4 +1,4 @@
-import { flashMessage } from '@/infrastructure/FlashMessage';
+import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 

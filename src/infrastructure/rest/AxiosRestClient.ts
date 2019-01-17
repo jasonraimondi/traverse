@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosPromise } from 'axios';
+import { injectable } from 'inversify';
 
 export interface RestClientInterface {
   setBaseURL(baseURL: string): void;
@@ -8,14 +9,9 @@ export interface RestClientInterface {
   post(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 }
 
+@injectable()
 export class AxiosRestClient implements RestClientInterface {
   private readonly axios = axios.create();
-
-  constructor(basePath: string = null) {
-    if (basePath === null) {
-      this.setBaseURL(basePath);
-    }
-  }
 
   setBaseURL(baseURL: string): void {
     this.axios.defaults.baseURL = baseURL;

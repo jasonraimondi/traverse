@@ -32,9 +32,18 @@ class StargazerList extends React.Component<Props> {
     super(props);
     this.handleSetStargazer = this.handleSetStargazer.bind(this);
     this.handleRemoveStargazer = this.handleRemoveStargazer.bind(this);
+    this.clearStargazerWhenNavigatingToList = this.clearStargazerWhenNavigatingToList.bind(this);
+  }
+
+  componentDidMount(): void {
+    this.clearStargazerWhenNavigatingToList();
   }
 
   componentDidUpdate(): void {
+    this.clearStargazerWhenNavigatingToList();
+  }
+
+  clearStargazerWhenNavigatingToList() {
     if (this.props.history.location.pathname === '/stargazer' && this.props.currentStargazer) {
       this.props.ClearCurrentStargazerAction();
     }

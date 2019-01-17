@@ -1,10 +1,14 @@
+import TYPES from '@/infrastructure/container/Types';
 import { AxiosRestClient, RestClientInterface } from '@/infrastructure/rest/AxiosRestClient';
 import { AxiosPromise } from 'axios';
+import { inject, injectable } from 'inversify';
 
+@injectable()
 export class GithubRestClient implements RestClientInterface {
+  githubAccessToken: string = null;
+
   constructor(
-    readonly restClient: AxiosRestClient,
-    private readonly githubAccessToken: string|null,
+    @inject(TYPES.AxiosRestClient) private readonly restClient: AxiosRestClient,
   ) {
     this.setBaseURL('https://api.github.com');
   }

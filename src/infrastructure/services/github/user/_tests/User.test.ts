@@ -1,4 +1,5 @@
 import { assert } from 'chai';
+import 'reflect-metadata';
 
 import { FakeRestClient } from '@/infrastructure/rest/_tests/FakeRestClient';
 import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
@@ -9,7 +10,9 @@ describe('fetch user self', () => {
 
   beforeEach(() => {
     githubService = new GithubService(
-      new GithubRestClient(FakeRestClient.create(), null),
+      new GithubRestClient(
+        FakeRestClient.create(),
+      ),
     );
   });
 

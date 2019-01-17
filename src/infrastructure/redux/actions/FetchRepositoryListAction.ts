@@ -1,5 +1,5 @@
+import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { flashMessage } from '@/infrastructure/FlashMessage';
 import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';

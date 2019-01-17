@@ -1,19 +1,24 @@
+import { store } from '@/renderer';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import container from '@/infrastructure/container/InversifyContainer';
+import TYPES from '@/infrastructure/container/Types';
 import { listByIdsReducer } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
 import {
   SET_CURRENT_STARGAZER, SetCurrentStargazerFailureAction,
   SetCurrentStargazerSuccessAction,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
-import { serviceFactory } from '@/infrastructure/services/ServiceFactory';
+import { GithubService } from '@/infrastructure/services/github/GithubService';
 
 export function* setCurrentStargazerSaga() {
   yield takeEvery(SET_CURRENT_STARGAZER, setCurrentStargazer);
 }
 
 function listStarredRepositoriesForUser(username: string) {
-  return serviceFactory.githubClient.user.listStarred(username);
+  const githubService = container.get<GithubService>(TYPES.GithubService);
+  githubService.accessToken = store.getState().githubAccessToken;
+  return githubService.user.listStarred(username);
 }
 
 function* setCurrentStargazer(action) {

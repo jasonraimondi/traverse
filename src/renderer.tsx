@@ -1,11 +1,12 @@
+import { FlashMessages } from '@/app/FlashMessage/FlashMessages';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import 'reflect-metadata';
 
 import App from '@/app/App';
-import { FlashMessages } from '@/app/elements/FlashMessages';
 import { openLinkExternally } from '@/electron/OpenLinkExternally';
 import { composeEnhancers } from '@/environment';
 import { rootReducer } from '@/infrastructure/redux/reducers/rootReducer';

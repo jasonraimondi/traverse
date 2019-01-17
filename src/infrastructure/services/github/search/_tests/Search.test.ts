@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import * as dayjs from 'dayjs';
+import 'reflect-metadata';
 
 import { FakeRestClient } from '@/infrastructure/rest/_tests/FakeRestClient';
 import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
@@ -11,7 +12,9 @@ describe('Search Github Tests', () => {
 
   beforeEach(() => {
     githubService = new GithubService(
-      new GithubRestClient(FakeRestClient.create(), null),
+      new GithubRestClient(
+        FakeRestClient.create(),
+      ),
     );
   });
 

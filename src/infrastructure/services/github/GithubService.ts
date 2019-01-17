@@ -1,9 +1,18 @@
-import { RestClientInterface } from '@/infrastructure/rest/AxiosRestClient';
+import TYPES from '@/infrastructure/container/Types';
+import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
+import { inject, injectable } from 'inversify';
+
 import { Search } from '@/infrastructure/services/github/search/Search';
 import { User } from '@/infrastructure/services/github/user/User';
 
+@injectable()
 export class GithubService {
-  constructor(private readonly restClient: RestClientInterface) {
+  constructor(
+    @inject(TYPES.GithubRestClient) private readonly restClient: GithubRestClient,
+  ) {}
+
+  set accessToken(accessToken: string) {
+    this.restClient.githubAccessToken = accessToken;
   }
 
   async validateAccessToken(accessToken: string) {
