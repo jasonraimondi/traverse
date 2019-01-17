@@ -1,18 +1,29 @@
 import axios, { AxiosError, AxiosPromise } from 'axios';
 
 export interface RestClientInterface {
+  setBaseURL(baseURL: string): void;
+
   get(path: string, queryParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 
   post(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 }
 
 export class AxiosRestClient implements RestClientInterface {
-  constructor(private basePath: string = '/') {
+  private readonly axios = axios.create();
+
+  constructor(basePath: string = null) {
+    if (basePath === null) {
+      this.setBaseURL(basePath);
+    }
+  }
+
+  setBaseURL(baseURL: string): void {
+    this.axios.defaults.baseURL = baseURL;
   }
 
   get(path: string, queryParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
-    return axios.get(
-      this.makeUrl(path),
+    return this.axios.get(
+      path,
       {
         headers,
         params: queryParameters,
@@ -22,21 +33,14 @@ export class AxiosRestClient implements RestClientInterface {
   }
 
   post(path: string, formParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
-    return axios.post(
-      this.makeUrl(path),
+    return this.axios.post(
+      path,
       formParameters,
       {
         headers,
         timeout,
       },
     );
-  }
-
-  private makeUrl(path: string): string {
-    if (path[0] === '/') {
-      path = path.slice(1);
-    }
-    return `${this.basePath}/${path}`;
   }
 
   static handleError(err: AxiosError) {

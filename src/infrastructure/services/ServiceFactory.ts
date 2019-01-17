@@ -14,7 +14,7 @@ const githubAccessToken = 'befe47d7ed69e48762c2cc41eea661d6d2778998';
 
 export const serviceFactory = new ServiceFactory(
   new GithubRestClient(
-    new AxiosRestClient('https://api.github.com'),
+    new AxiosRestClient(),
     githubAccessToken,
   ),
 );

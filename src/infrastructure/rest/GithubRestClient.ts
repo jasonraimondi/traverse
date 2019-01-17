@@ -6,11 +6,11 @@ export class GithubRestClient implements RestClientInterface {
     readonly restClient: AxiosRestClient,
     private readonly githubAccessToken: string|null,
   ) {
+    this.setBaseURL('https://api.github.com');
   }
 
-  private get accessToken() {
-    const accessToken = this.githubAccessToken;
-    return accessToken === null ? {} : { access_token: accessToken };
+  setBaseURL(baseURL: string): void {
+    this.restClient.setBaseURL(baseURL);
   }
 
   get(path: string, queryParams = {}, headers = {}, timeout: number = 5000): AxiosPromise {
@@ -39,9 +39,11 @@ export class GithubRestClient implements RestClientInterface {
   }
 
   private mergeQueryParams(params: {}) {
+    const accessToken = this.githubAccessToken ? { access_token: this.githubAccessToken } : {};
     return {
       ...params,
-      ...this.accessToken,
+      ...accessToken,
     };
   }
+
 }
