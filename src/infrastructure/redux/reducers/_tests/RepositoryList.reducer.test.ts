@@ -1,14 +1,14 @@
 import { assert } from 'chai';
 
 import { FetchRepositoryListSuccessAction } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
-import { repositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
+import { trendingRepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 describe('RepositoryList Reducer', () => {
   test('INITIAL_STATE for repository list is blank', () => {
     const action = { type: undefined };
     const initialState = {};
-    assert.deepStrictEqual(repositoryListReducer(undefined, action), initialState);
+    assert.deepStrictEqual(trendingRepositoryListReducer(undefined, action), initialState);
   });
 
   test('FETCH_REPOSITORY_LIST_SUCCESS updates the repository list reducer properly', () => {
@@ -16,7 +16,7 @@ describe('RepositoryList Reducer', () => {
     const list = data.items.map((repo) => RepositoryEntity.fromResponse(repo));
     const action = FetchRepositoryListSuccessAction(list);
 
-    const repositoryList = repositoryListReducer(undefined, action);
+    const repositoryList = trendingRepositoryListReducer(undefined, action);
     assert.strictEqual(Object.values(repositoryList)[0].id, 147134009);
     assert.strictEqual(Object.values(repositoryList)[0].attributes.name, 'vscode-wal');
     assert.strictEqual(Object.values(repositoryList)[0].attributes.htmlUrl, 'https://github.com/cmschuetz/vscode-wal');

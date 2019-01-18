@@ -7,23 +7,22 @@ import About from '@/app/About/About';
 import { formatRoute, Routes } from '@/app/Routes';
 import Settings from '@/app/Settings/Settings';
 import Stargazer from '@/app/Stargazer/Stargazer';
-import { TitleBar } from '@/app/TitleBar';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import { themeConfig } from '@/infrastructure/styles/Theme';
-
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
-  match: any;
+  history: any;
   frequency: FrequencyType;
   language: ILanguage;
 }
 
 class App extends React.Component<Props> {
-  readonly homeIcon = require('@/infrastructure/assets/icons/icon-code.svg');
-  readonly settingsIcon = require('@/infrastructure/assets/icons/icon-cog.svg');
-  readonly starredIcon = require('@/infrastructure/assets/icons/icon-star.svg');
+  readonly iconHome = require('@/infrastructure/assets/icons/icon-code.svg');
+  readonly iconSettings = require('@/infrastructure/assets/icons/icon-cog.svg');
+  readonly iconStarred = require('@/infrastructure/assets/icons/icon-star.svg');
+  readonly iconStarredSearch = require('@/infrastructure/assets/icons/icon-search.svg');
 
   render() {
     return <>
@@ -46,18 +45,24 @@ class App extends React.Component<Props> {
                        exact
                        activeClassName='selected'
                        title='Trending Repositories'
-                       dangerouslySetInnerHTML={{__html: this.homeIcon}}
+                       dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
               <NavLink to={formatRoute(Routes.STARGAZER)}
                        activeClassName='selected'
                        title='Starred'
-                       dangerouslySetInnerHTML={{__html: this.starredIcon}}
+                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
+              />
+              <NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}
+                       activeClassName='selected'
+                       title='Starred Search'
+                       className='small'
+                       dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
               />
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        exact
                        activeClassName='selected'
                        title='Settings'
-                       dangerouslySetInnerHTML={{__html: this.settingsIcon}}
+                       dangerouslySetInnerHTML={{__html: this.iconSettings}}
               />
             </Left>
             <Right>
@@ -141,6 +146,8 @@ const Right = styled.div`
 
 const Left = styled.div`
   flex: 1;
+  display: flex;
+  align-items: center;
   > a {
     margin-right: 0.75rem;
   }
@@ -153,6 +160,10 @@ const iconStyles = `
     background-color: ${themeConfig.colors.white};
     border-radius: 999px;
     padding: 0.1rem;
+  }
+  .small svg {
+    width: 1.25rem;
+    height: 1.25rem;
   }
   svg .primary {
     fill: ${themeConfig.colors['grey-darker']};

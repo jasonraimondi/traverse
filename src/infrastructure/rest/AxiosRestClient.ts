@@ -7,6 +7,8 @@ export interface RestClientInterface {
   get(path: string, queryParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 
   post(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
+  put(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
+  delete(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
 }
 
 @injectable()
@@ -17,7 +19,7 @@ export class AxiosRestClient implements RestClientInterface {
     this.axios.defaults.baseURL = baseURL;
   }
 
-  get(path: string, queryParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  get(path: string, queryParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.get(
       path,
       {
@@ -28,10 +30,31 @@ export class AxiosRestClient implements RestClientInterface {
     );
   }
 
-  post(path: string, formParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  post(path: string, formParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.post(
       path,
       formParameters,
+      {
+        headers,
+        timeout,
+      },
+    );
+  }
+
+  put(path: string, formParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
+    return this.axios.put(
+      path,
+      formParameters,
+      {
+        headers,
+        timeout,
+      },
+    );
+  }
+
+  delete(path: string, headers: any = {}, timeout: number = 5000): AxiosPromise {
+    return this.axios.delete(
+      path,
       {
         headers,
         timeout,

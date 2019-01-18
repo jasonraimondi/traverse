@@ -26,7 +26,7 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
-import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
+import { RepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 

@@ -1,5 +1,5 @@
 import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
-import { RepositoryListReducer } from '@/infrastructure/redux/reducers/RepositoryList.reducer';
+import { RepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
 import * as React from 'react';
 import styled from 'styled-components';
 
