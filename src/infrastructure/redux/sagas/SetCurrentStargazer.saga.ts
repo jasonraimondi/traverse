@@ -27,7 +27,7 @@ function* setCurrentStargazer(action) {
     const repositoryList = response.reduce(listByIdsReducer, {});
     const currentStargazer: CurrentStargazerReducer = {
       login: action.payload,
-      repositoryList,
+      repositoryList: trendingRepositoryList,
     };
     yield put(SetCurrentStargazerSuccessAction(currentStargazer));
   } catch (error) {

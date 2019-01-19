@@ -20,7 +20,7 @@ const INITIAL_STATE = {
     title: 'TypeScript',
   },
   frequency: 'weekly',
-  repositoryList: {
+  trendingRepositoryList: {
     abc: new RepositoryEntity('abc'),
   },
 };

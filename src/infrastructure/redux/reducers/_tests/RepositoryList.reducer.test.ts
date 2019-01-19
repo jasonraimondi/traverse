@@ -1,7 +1,7 @@
+import { trendingRepositoryListReducer } from '@/infrastructure/redux/reducers/TrendingRepositoryListReducer';
 import { assert } from 'chai';
 
 import { FetchRepositoryListSuccessAction } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
-import { trendingRepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 describe('RepositoryList Reducer', () => {

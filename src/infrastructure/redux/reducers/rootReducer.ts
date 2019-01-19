@@ -11,7 +11,7 @@ import { stargazerListReducer } from '@/infrastructure/redux/reducers/StargazerL
 export const rootReducer = combineReducers({
   language: languageReducer,
   frequency: frequencyReducer,
-  repositoryList: trendingRepositoryListReducer,
+  trendingRepositoryList: trendingRepositoryListReducer,
   currentStargazer: currentStargazerReducer,
   stargazerList: stargazerListReducer,
   languageListType: languageListTypeReducer,

@@ -1,14 +1,14 @@
-import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
-import { RepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
+import { RepositoryEntity } from '@/models/Repository.entity';
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
 import { UnstyledList } from '@/app/elements/Base';
 
 interface Props {
   handleStargazerClick(login: string): void;
   emptyRepositoryList: string|JSX.Element;
-  repositoryList: RepositoryListReducer;
+  repositoryList: RepositoryEntity[];
 }
 
 export class RepositoryList extends React.Component<Props> {
@@ -16,18 +16,8 @@ export class RepositoryList extends React.Component<Props> {
   static readonly STARGAZERS_ICON = require('@/infrastructure/assets/icons/icon-star.svg');
   static readonly WATCHERS_ICON = require('@/infrastructure/assets/icons/icon-user-circle.svg');
 
-  get sortedRepositoryList() {
-    return Object.values(this.props.repositoryList)
-      .sort((a, b) => {
-        if (a.attributes && b.attributes) {
-          return b.attributes.stargazersCount - a.attributes.stargazersCount;
-        }
-        return -1;
-      });
-  }
-
   get listItems() {
-    return this.sortedRepositoryList.map((repository, idx) => {
+    return this.props.repositoryList.map((repository, idx) => {
       const handleStargazerClick = () => this.props.handleStargazerClick(repository.attributes.owner.login);
       return <RepositoryDetail handleStargazerClick={handleStargazerClick}
                                key={idx}

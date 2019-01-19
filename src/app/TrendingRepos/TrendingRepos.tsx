@@ -1,10 +1,10 @@
 import { Title } from '@/app/elements/Base';
-import { FormTitle } from '@/app/elements/Form';
 import { formatRoute, Routes } from '@/app/Routes';
 import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
 } from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
+import { RepositoryListReducer } from '@/infrastructure/redux/reducers/TrendingRepositoryListReducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -26,13 +26,12 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
-import { RepositoryListReducer } from 'TrendingRepositoryListReducer.ts';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
 
 interface Props {
   history: any;
-  repositoryList: RepositoryListReducer;
+  trendingRepositoryList: RepositoryListReducer;
   frequency: FrequencyType;
   language: ILanguage;
   languageListType: ListType;
@@ -143,7 +142,7 @@ class App extends React.Component<Props, State> {
           />
         </LanguageListContainer>
         <RepoListContainer>
-          <RepositoryList repositoryList={this.props.repositoryList}
+          <RepositoryList trendingRepositoryList={this.props.trendingRepositoryList}
                           handleStargazerClick={this.handleStargazerClick}
                           emptyRepositoryList={
                             <EmptyTrendingRepositoryList frequency={this.props.frequency}
@@ -161,7 +160,7 @@ function mapStateToProps(state) {
   return {
     language: state.language,
     frequency: state.frequency,
-    repositoryList: state.repositoryList,
+    trendingRepositoryList: state.trendingRepositoryList,
     languageListType: state.languageListType,
   };
 }
