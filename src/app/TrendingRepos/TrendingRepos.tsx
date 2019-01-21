@@ -17,9 +17,9 @@ import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker'
 import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
 import {
-  FetchRepositoryListAction,
-  FetchRepositoryListActionType,
-} from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+  FetchTrendingRepositoryListAction,
+  FetchTrendingRepositoryListActionType,
+} from 'FetchTrendingRepositoryListAction.ts';
 import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequencyAction';
 import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguageAction';
 import {
@@ -38,7 +38,7 @@ interface Props {
   SetLanguageAction: SetLanguageActionType;
   SetFrequencyAction: SetFrequencyActionType;
   SetLanguageListTypeAction: SetLanguageListTypeActionType;
-  FetchRepositoryListAction: FetchRepositoryListActionType;
+  FetchTrendingRepositoryListAction: FetchTrendingRepositoryListActionType;
   SetCurrentStargazerAction: SetCurrentStargazerActionType;
 }
 
@@ -63,7 +63,7 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.props.FetchRepositoryListAction({
+    this.props.FetchTrendingRepositoryListAction({
       language: this.props.language,
       frequency: this.props.frequency,
     });
@@ -71,7 +71,7 @@ class App extends React.Component<Props, State> {
 
   handleSetFrequency(frequency: FrequencyType) {
     this.props.SetFrequencyAction(frequency);
-    this.props.FetchRepositoryListAction({
+    this.props.FetchTrendingRepositoryListAction({
       language: this.props.language,
       frequency,
     });
@@ -79,7 +79,7 @@ class App extends React.Component<Props, State> {
 
   handleSetLanguage(language: ILanguage) {
     this.props.SetLanguageAction(language);
-    this.props.FetchRepositoryListAction({
+    this.props.FetchTrendingRepositoryListAction({
       language,
       frequency: this.props.frequency,
     });
@@ -170,7 +170,7 @@ function mapDispatchToProps(dispatch) {
     {
       SetLanguageAction,
       SetFrequencyAction,
-      FetchRepositoryListAction,
+      FetchTrendingRepositoryListAction: FetchTrendingRepositoryListAction,
       SetLanguageListTypeAction,
       SetCurrentStargazerAction,
     },

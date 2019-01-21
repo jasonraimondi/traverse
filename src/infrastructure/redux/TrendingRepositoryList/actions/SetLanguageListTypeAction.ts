@@ -1,5 +1,5 @@
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { ActionResponse } from 'Interfaces.ts';
+import { ActionResponse } from '../../Interfaces';
 
 export const SET_LANGUAGE_LIST_TYPE = '[LANGUAGE LIST TYPE] Set';
 

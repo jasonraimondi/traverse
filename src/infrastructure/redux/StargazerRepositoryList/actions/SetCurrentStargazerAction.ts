@@ -1,5 +1,5 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { ActionResponse } from 'Interfaces.ts';
+import { ActionResponse } from '../../Interfaces';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 
 export const SET_CURRENT_STARGAZER = '[SET CURRENT_STARGAZER] set';

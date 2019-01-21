@@ -6,9 +6,9 @@ import configureStore from 'redux-mock-store';
 
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import {
-  FetchRepositoryListAction,
-  FetchRepositoryListActionFields,
-} from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+  FetchTrendingRepositoryListAction,
+  FetchTrendingRepositoryListActionFields,
+} from 'FetchTrendingRepositoryListAction.ts';
 import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequencyAction';
 import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguageAction';
 import { RepositoryEntity } from '@/models/Repository.entity';
@@ -47,7 +47,7 @@ describe('<TrendingRepos />', () => {
     const frequency = 'monthly';
 
     assert.deepStrictEqual(store.getActions()[0], SetFrequencyAction(frequency));
-    assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({
+    assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
       language: INITIAL_STATE.language,
       frequency,
     }));
@@ -64,9 +64,9 @@ describe('<TrendingRepos />', () => {
     };
 
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
-    assert.deepStrictEqual(store.getActions()[1], FetchRepositoryListAction({
+    assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
       language,
       frequency: INITIAL_STATE.frequency,
-    } as FetchRepositoryListActionFields));
+    } as FetchTrendingRepositoryListActionFields));
   });
 });

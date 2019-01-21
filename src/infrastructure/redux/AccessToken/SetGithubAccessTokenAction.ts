@@ -1,5 +1,5 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { ActionResponse } from 'Interfaces.ts';
+import { ActionResponse } from '../Interfaces';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
 export const SET_GITHUB_ACCESS_TOKEN_SUCCESS = '[GITHUB ACCESS TOKEN] validate - success';
