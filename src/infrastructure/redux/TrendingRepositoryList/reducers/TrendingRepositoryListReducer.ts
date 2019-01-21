@@ -1,4 +1,4 @@
-import { FETCH_REPOSITORY_LIST_SUCCESS } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
+import { FETCH_TRENDING_REPOSITORY_LIST } from '@/infrastructure/redux/TrendingRepositoryList/actions/FetchTrendingRepositoryListAction';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
 const INITIAL_STATE = {};
@@ -13,7 +13,7 @@ export interface TrendingRepositoryListReducer {
 
 export const trendingRepositoryListReducer = (state = INITIAL_STATE, action): TrendingRepositoryListReducer => {
   switch (action.type) {
-    case FETCH_REPOSITORY_LIST_SUCCESS:
+    case FETCH_TRENDING_REPOSITORY_LIST:
       return action.payload;
     default:
       return state;

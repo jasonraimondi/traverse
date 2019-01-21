@@ -1,11 +1,11 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
 export const SET_GITHUB_ACCESS_TOKEN_SUCCESS = '[GITHUB ACCESS TOKEN] validate - success';
 export const SET_GITHUB_ACCESS_TOKEN_FAILURE = '[GITHUB ACCESS TOKEN] validate - failure';
 
-export type SetGithubAccessTokenActionType = (githubAccessToken: string) => IActionResponse<string>;
+export type SetGithubAccessTokenActionType = (githubAccessToken: string) => ActionResponse<string>;
 
 export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (githubAccessToken: string) => {
   return {

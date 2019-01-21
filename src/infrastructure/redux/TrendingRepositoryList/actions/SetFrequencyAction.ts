@@ -1,9 +1,9 @@
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 import { FrequencyType } from '@/models/Frequency.type';
 
 export const SET_FREQUENCY = '[FREQUENCY] Set';
 
-export type SetFrequencyActionType = (frequency: FrequencyType) => IActionResponse<string>;
+export type SetFrequencyActionType = (frequency: FrequencyType) => ActionResponse<string>;
 
 export const SetFrequencyAction: SetFrequencyActionType = (frequency: FrequencyType) => {
   return {

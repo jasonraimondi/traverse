@@ -1,9 +1,9 @@
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 
 export const SET_LANGUAGE = '[LANGUAGE] Set';
 
-export type SetLanguageActionType = (language: ILanguage) => IActionResponse<ILanguage>;
+export type SetLanguageActionType = (language: ILanguage) => ActionResponse<ILanguage>;
 
 export const SetLanguageAction: SetLanguageActionType = (language: ILanguage) => {
   return {

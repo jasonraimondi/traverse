@@ -1,9 +1,9 @@
+import { listByIdsReducer } from '@/infrastructure/redux/actions/FetchTrendingRepositoryListAction';
 import { store } from '@/renderer';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import container from '@/infrastructure/container/InversifyContainer';
 import TYPES from '@/infrastructure/container/Types';
-import { listByIdsReducer } from '@/infrastructure/redux/actions/FetchRepositoryListAction';
 import {
   SET_CURRENT_STARGAZER, SetCurrentStargazerFailureAction,
   SetCurrentStargazerSuccessAction,

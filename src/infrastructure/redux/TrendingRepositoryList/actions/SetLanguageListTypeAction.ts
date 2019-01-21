@@ -1,9 +1,9 @@
 import { ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 
 export const SET_LANGUAGE_LIST_TYPE = '[LANGUAGE LIST TYPE] Set';
 
-export type SetLanguageListTypeActionType = (languageListType: ListType) => IActionResponse<string>;
+export type SetLanguageListTypeActionType = (languageListType: ListType) => ActionResponse<string>;
 
 export const SetLanguageListTypeAction: SetLanguageListTypeActionType = (languageListType: ListType) => {
   return {

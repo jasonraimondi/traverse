@@ -1,12 +1,12 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
 
 export const SET_CURRENT_STARGAZER = '[SET CURRENT_STARGAZER] set';
 export const SET_CURRENT_STARGAZER_SUCCESS = '[SET CURRENT_STARGAZER] set success';
 export const SET_CURRENT_STARGAZER_FAILURE = '[SET CURRENT_STARGAZER] set failure';
 
-export type SetCurrentStargazerActionType = (login: string) => IActionResponse<string>;
+export type SetCurrentStargazerActionType = (login: string) => ActionResponse<string>;
 
 export const SetCurrentStargazerAction: SetCurrentStargazerActionType = (user) => {
   return {
@@ -22,7 +22,7 @@ export const SetCurrentStargazerSuccessAction = (currentStargazerReducer: Curren
   };
 };
 
-export function SetCurrentStargazerFailureAction(message): IActionResponse<string> {
+export function SetCurrentStargazerFailureAction(message): ActionResponse<string> {
   flashMessage.error(message);
   return {
     type: SET_CURRENT_STARGAZER_FAILURE,

@@ -1,9 +1,9 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { IActionResponse } from '@/infrastructure/redux/ActionResponse';
+import { ActionResponse } from 'Interfaces.ts';
 
 export const REMOVE_USER_FROM_STARGAZER_LIST = '[CURRENT_STARGAZER LIST] remove user';
 
-export type RemoveUserFromStargazerListActionType = (username: string) => IActionResponse<string>;
+export type RemoveUserFromStargazerListActionType = (username: string) => ActionResponse<string>;
 
 export const RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType = (user) => {
   flashMessage.success('User Removed!');
