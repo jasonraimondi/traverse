@@ -8,7 +8,7 @@ import { SettingsStore } from '@/infrastructure/redux/Settings/Store';
 const INITIAL_STATE: SettingsStore = {
 };
 
-export const reducer = (state = INITIAL_STATE, action): SettingsStore => {
+export const SettingsReducer = (state = INITIAL_STATE, action): SettingsStore => {
   switch (action.type) {
     case SET_GITHUB_ACCESS_TOKEN:
       return {
@@ -48,7 +48,11 @@ export const reducer = (state = INITIAL_STATE, action): SettingsStore => {
         github: {
           ...state.github,
           accessToken: {
-            loaded: true,
+            loaded: false,
+            loading: false,
+          },
+          user: {
+            loaded: false,
             loading: false,
           },
         },
