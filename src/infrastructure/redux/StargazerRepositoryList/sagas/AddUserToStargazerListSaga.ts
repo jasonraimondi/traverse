@@ -1,15 +1,13 @@
-import container from '@/infrastructure/container/InversifyContainer';
-import TYPES from '@/infrastructure/container/Types';
-import { store } from '@/renderer';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { GithubService } from '@/infrastructure/services/github/GithubService';
-
+import container from '@/infrastructure/container/InversifyContainer';
+import TYPES from '@/infrastructure/container/Types';
 import {
   ADD_USER_TO_STARGAZER_LIST,
   AddUserToStargazerListFailureAction,
   AddUserToStargazerListSuccessAction,
-} from '@/infrastructure/redux/actions/AddUserToStargazerListAction';
+} from '@/infrastructure/redux/StargazerRepositoryList/actions/AddUserToStargazerListAction';
+import { GithubService } from '@/infrastructure/services/github/GithubService';
 
 export function* addUserToStargazerListSaga() {
   yield takeEvery(ADD_USER_TO_STARGAZER_LIST, addUserToStargazerList);
@@ -17,7 +15,7 @@ export function* addUserToStargazerListSaga() {
 
 function addUserToStargazerListApiCall(username: string) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
-  githubService.accessToken = store.getState().githubAccessToken;
+  // githubService.accessToken = store.getState().accessToken;
   return githubService.user.getUserDetail(username);
 }
 

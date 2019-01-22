@@ -1,5 +1,6 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
-import { ActionResponse } from '../Interfaces';
+import { UserEntity } from '@/models/User.entity';
+import { ActionResponse } from '../../Interfaces';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';
 export const SET_GITHUB_ACCESS_TOKEN_SUCCESS = '[GITHUB ACCESS TOKEN] validate - success';
@@ -14,11 +15,16 @@ export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (githu
   };
 };
 
-export const SetGithubAccessTokenSuccessAction: SetGithubAccessTokenActionType = (githubAccessToken: string) => {
+interface SetGithubAccessTokenSuccessFields {
+  token: string;
+  user: UserEntity;
+}
+
+export const SetGithubAccessTokenSuccessAction = (success: SetGithubAccessTokenSuccessFields) => {
   flashMessage.success('Token Saved');
   return {
     type: SET_GITHUB_ACCESS_TOKEN_SUCCESS,
-    payload: githubAccessToken,
+    payload: success,
   };
 };
 

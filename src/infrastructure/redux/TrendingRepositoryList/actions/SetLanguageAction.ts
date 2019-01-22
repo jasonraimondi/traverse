@@ -1,5 +1,5 @@
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { ActionResponse } from '../../Interfaces';
+import { ActionResponse } from '@/infrastructure/redux/Interfaces';
 
 export const SET_LANGUAGE = '[LANGUAGE] Set';
 

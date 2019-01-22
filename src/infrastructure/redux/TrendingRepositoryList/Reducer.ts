@@ -1,4 +1,7 @@
-import { FETCH_TRENDING_REPOSITORY_LIST } from '@/infrastructure/redux/TrendingRepositoryList/actions/FetchTrendingRepositoryListAction';
+import {
+  FETCH_TRENDING_REPOSITORY_LIST, FETCH_TRENDING_REPOSITORY_LIST_FAILURE,
+  FETCH_TRENDING_REPOSITORY_LIST_SUCCESS,
+} from '@/infrastructure/redux/TrendingRepositoryList/actions/FetchTrendingRepositoryListAction';
 import { SET_FREQUENCY } from '@/infrastructure/redux/TrendingRepositoryList/actions/SetFrequencyAction';
 import { SET_LANGUAGE } from '@/infrastructure/redux/TrendingRepositoryList/actions/SetLanguageAction';
 import { SET_LANGUAGE_LIST_TYPE } from '@/infrastructure/redux/TrendingRepositoryList/actions/SetLanguageListTypeAction';
@@ -45,7 +48,39 @@ export const TrendingRepositoryListReducer = (state = INITIAL_STATE, action): Tr
         },
       };
     case FETCH_TRENDING_REPOSITORY_LIST:
-      return action.payload;
+      return {
+        ...state,
+        loaded: false,
+        loading: false,
+        data: {
+          [action.payload.language.value]: {
+            [action.payload.frequency]: [],
+          },
+        },
+      };
+    case FETCH_TRENDING_REPOSITORY_LIST_SUCCESS:
+      return {
+        ...state,
+        loaded: true,
+        loading: true,
+        data: {
+          [action.payload.language.value]: {
+            [action.payload.frequency]: action.payload,
+          },
+        },
+      };
+    case FETCH_TRENDING_REPOSITORY_LIST_FAILURE:
+      return {
+        ...state,
+        loaded: true,
+        loading: true,
+        error: action.payload,
+        data: {
+          [action.payload.language.value]: {
+            [action.payload.frequency]: [],
+          },
+        },
+      };
     default:
       return state;
   }

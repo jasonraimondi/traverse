@@ -1,4 +1,6 @@
 import { FlashMessages } from '@/app/FlashMessage/FlashMessages';
+import { rootReducer } from '@/infrastructure/redux/Reducer';
+import rootSaga from '@/infrastructure/redux/Saga';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -9,8 +11,6 @@ import 'reflect-metadata';
 import App from '@/app/App';
 import { openLinkExternally } from '@/electron/OpenLinkExternally';
 import { composeEnhancers } from '@/environment';
-import { rootReducer } from '@/infrastructure/redux/reducers/rootReducer';
-import sagas from '@/infrastructure/redux/sagas/rootSaga';
 import { loadStateFromElectronSettings, saveStateToElectronSettings } from '@/infrastructure/redux/StateToLocalStorage';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -23,15 +23,13 @@ export const store = createStore(
 
 store.subscribe(() => {
   saveStateToElectronSettings({
-    stargazerList: store.getState().stargazerList,
-    language: store.getState().language,
-    frequency: store.getState().frequency,
-    languageListType: store.getState().languageListType,
-    githubAccessToken: store.getState().githubAccessToken,
+    trendingRepositoryList: store.getState().trendingRepositoryList,
+    // stargazerRepositoryList: store.getState().stargazerRepositoryList,
+    // accessToken: store.getState().accessToken,
   });
 });
 
-sagaMiddleware.run(sagas);
+sagaMiddleware.run(rootSaga);
 
 document.addEventListener('click', openLinkExternally, false);
 

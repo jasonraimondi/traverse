@@ -1,6 +1,6 @@
 import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
-import { ActionResponse } from '../../Interfaces';
+import { ActionResponse } from '@/infrastructure/redux/Interfaces';
 import { FrequencyType } from '@/models/Frequency.type';
 import { RepositoryEntity } from '@/models/Repository.entity';
 
