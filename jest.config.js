@@ -6,14 +6,11 @@ module.exports = {
     },
     preset: "ts-jest",
     collectCoverage: true,
-    collectCoverageFrom: ["src/{app,infrastructure,models}/**/*.{js,jsx,ts,tsx}"],
+    collectCoverageFrom: ["src/{renderer}/**/*.{js,jsx,ts,tsx}"],
     coverageReporters: ["lcov"],
     transform: {
         "^.+\\.tsx?$": "ts-jest"
     },
-    "transformIgnorePatterns": [
-        "node_modules/?!(typesafe-react-router)"
-    ],
     moduleFileExtensions: [
         "ts",
         "tsx",

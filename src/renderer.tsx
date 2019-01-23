@@ -1,5 +1,3 @@
-import { FlashMessages } from '@/app/FlashMessage/FlashMessages';
-import rootSaga from '@/infrastructure/redux/Saga';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,11 +5,13 @@ import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import 'reflect-metadata';
 
-import App from '@/app/App';
-import { openLinkExternally } from '@/electron/OpenLinkExternally';
 import { composeEnhancers } from '@/environment';
-import { rootReducer } from '@/infrastructure/redux/RootReducer';
-import { loadStateFromElectronSettings, saveStateToElectronSettings } from '@/infrastructure/redux/StateToLocalStorage';
+import { openLinkExternally } from '@/main/OpenLinkExternally';
+import App from '@/renderer/App';
+import { FlashMessages } from '@/renderer/app/FlashMessage/FlashMessages';
+import { rootReducer } from '@/renderer/store/RootReducer';
+import rootSaga from '@/renderer/store/Saga';
+import { loadStateFromElectronSettings, saveStateToElectronSettings } from '@/renderer/store/StateToLocalStorage';
 
 const sagaMiddleware = createSagaMiddleware();
 
