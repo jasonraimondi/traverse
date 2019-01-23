@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import About from '@/app/About/About';
+import { About} from '@/app/About/About';
 import { formatRoute, Routes } from '@/app/Routes';
 import Settings from '@/app/Settings/Settings';
 import Stargazer from '@/app/Stargazer/Stargazer';
@@ -13,6 +13,8 @@ import { themeConfig } from '@/infrastructure/styles/Theme';
 class App extends React.Component {
   readonly iconHome = require('@/infrastructure/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/infrastructure/assets/icons/icon-cog.svg');
+  readonly iconStarred = require('@/infrastructure/assets/icons/icon-star.svg');
+  readonly iconStarredSearch = require('@/infrastructure/assets/icons/icon-search.svg');
 
   render() {
     return <>

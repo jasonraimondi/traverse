@@ -14,10 +14,6 @@ export const SettingsReducer = (state = SETTINGS_INITIAL_STATE, action): Setting
         ...state,
         github: {
           ...state.github,
-          accessToken: {
-            loaded: false,
-            loading: true,
-          },
           user: {
             loaded: false,
             loading: true,
@@ -29,11 +25,7 @@ export const SettingsReducer = (state = SETTINGS_INITIAL_STATE, action): Setting
         ...state,
         github: {
           ...state.github,
-          accessToken: {
-            loaded: true,
-            loading: false,
-            accessToken: action.payload.token,
-          },
+          accessToken: action.payload.token,
           user: {
             loaded: true,
             loading: false,
@@ -46,10 +38,6 @@ export const SettingsReducer = (state = SETTINGS_INITIAL_STATE, action): Setting
         ...state,
         github: {
           ...state.github,
-          accessToken: {
-            loaded: false,
-            loading: false,
-          },
           user: {
             loaded: false,
             loading: false,

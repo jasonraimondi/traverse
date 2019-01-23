@@ -7,26 +7,26 @@ import { Donation } from '@/app/About/components/Donation';
 import { Title } from '@/app/elements/Base';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
-class About extends React.Component {
+export class About extends React.Component {
   render() {
     return <>
       <Title>About</Title>
       <AboutContainer>
         <Main>
-          <OpenSource href='https://github.com/jasonraimondi/traverse' className='open-link-externally'>
-            Traverse is Open Source
-          </OpenSource>
           <TraverseTitle id='traverse-title'>
             <Icon src='../resources/icon.png' alt='Traverse Icon'/>
             Traverse
             <br/>
-            <Version>v{remote.app.getVersion()}</Version>
+            <OpenSource href='https://github.com/jasonraimondi/traverse' className='open-link-externally'>
+              Traverse is Open Source
+            </OpenSource>
+            <Version>v{remote && remote.app ? remote.app.getVersion() : 'DEV'}</Version>
           </TraverseTitle>
           <DonateTitle>Beer Me</DonateTitle>
           <Donation walletType='Ether' address='0x13EcA749be300C1951bD6E9d86bB395e2734BE20'/>
           <Donation walletType='Nano' address='xrb_3ii5t9x8a7or17zkf6syp7ntprd77z7tx9migsghb9rx5ymiop76kyrahef8'/>
         </Main>
-        <Copyright>
+        <Copyright className='copyright'>
           Copyright © 2019
           &nbsp;
           <a href='https://jasonraimondi.com' className='open-link-externally'>Jason Raimondi</a>,
@@ -38,10 +38,11 @@ class About extends React.Component {
   }
 }
 const OpenSource = styled.a`
-  padding-top: 0.5rem;
+  padding: 0.5rem 0 0.35rem;
   font-size: 0.7rem;
   color: ${themeConfig.colors.purple};
 `;
+
 const Icon = styled.img`
     width: 175px;
     height: 175px;
@@ -91,4 +92,3 @@ const Copyright = styled.h4`
     color: ${themeConfig.colors['purple-dark']}
    }
 `;
-export default withRouter(About);

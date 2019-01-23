@@ -22,7 +22,7 @@ interface FormValues {
   githubAccessToken: string;
 }
 
-export class AccessTokenForm extends React.Component<Props, State> {
+export class GithubAccessTokenForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

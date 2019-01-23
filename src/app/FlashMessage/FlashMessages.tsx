@@ -18,12 +18,16 @@ export class FlashMessages extends React.Component<{}, State> {
 
   get flashMessages() {
     return this.state.flashMessages.map((message, idx) => {
-      return <Message key={idx} className={message.level}>{message.message}</Message>;
+      return <Message key={idx} className={`flash-message ${message.level}`}>{message.message}</Message>;
     });
   }
 
   componentDidMount(): void {
-    flashMessage.messageList$.subscribe((messages) => this.setState({flashMessages: Object.values(messages)}));
+    flashMessage.messageList$.subscribe((messages) => {
+      this.setState({
+        flashMessages: Object.values(messages),
+      });
+    });
   }
 
   render() {

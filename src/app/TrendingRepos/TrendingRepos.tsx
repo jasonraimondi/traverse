@@ -127,11 +127,11 @@ class App extends React.Component<Props, State> {
   }
 
   get trendingRepositoryList(): RepositoryEntity[] {
-    const { list } = this.props.trending.data;
+    const {list} = this.props.trending;
     if (!list || !list[this.language.value] || !list[this.language.value][this.frequency]) {
       return [];
     }
-    return list[this.language.value][this.frequency] || [];
+    return list[this.language.value][this.frequency].list || [];
   }
 
   render() {

@@ -1,3 +1,4 @@
+import { store } from '@/renderer';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import container from '@/infrastructure/container/InversifyContainer';
@@ -17,7 +18,10 @@ export function* FetchTrendingRepositoryListSaga() {
 
 function FetchTrendingRepositoryListApiCall(fields: FetchTrendingRepositoryListActionFields) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
-  // githubService.accessToken = store.getState().accessToken;
+  const { github } = store.getState().settings;
+  if (github && github.accessToken && github.accessToken) {
+    githubService.accessToken = github.accessToken;
+  }
   return githubService.search.forRepositories(fields.language.value, fields.frequency);
 }
 

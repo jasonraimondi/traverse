@@ -17,15 +17,17 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   rootReducer,
-  Object.assign({}, loadStateFromElectronSettings()),
+  {
+    ...loadStateFromElectronSettings(),
+  },
   composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
 store.subscribe(() => {
   saveStateToElectronSettings({
-    // trending: store.getState().trending,
-    // stargazer: store.getState().stargazer,
-    // settings: store.getState().settings,
+    trending: store.getState().trending,
+    stargazer: store.getState().stargazer,
+    settings: store.getState().settings,
   });
 });
 

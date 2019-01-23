@@ -8,10 +8,10 @@ export const SET_GITHUB_ACCESS_TOKEN_FAILURE = '[GITHUB ACCESS TOKEN] validate -
 
 export type SetGithubAccessTokenActionType = (githubAccessToken: string) => ActionResponse<string>;
 
-export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (githubAccessToken: string) => {
+export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (accessToken: string) => {
   return {
     type: SET_GITHUB_ACCESS_TOKEN,
-    payload: githubAccessToken,
+    payload: accessToken,
   };
 };
 

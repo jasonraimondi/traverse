@@ -22,13 +22,13 @@ export class UserEntity {
     );
   }
 
-  get isUser() {
-    return this.attributes && this.attributes.type === 'user';
-  }
-
-  get isOrganization() {
-    return this.attributes && this.attributes.type === 'organization';
-  }
+  // get isUser() {
+  //   return this.attributes && this.attributes.type === 'user';
+  // }
+  //
+  // get isOrganization() {
+  //   return this.attributes && this.attributes.type === 'organization';
+  // }
 
   constructor(
     readonly id: string | number,

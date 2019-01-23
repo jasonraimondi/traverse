@@ -19,12 +19,15 @@ const mockStore = configureStore();
 const initialState = {
   trending: {
     ...TRENDING_INITIAL_STATE,
-    data: {
+    list: {
       typescript: {
-        weekly: [
-          DummyRepositoryEntity(),
-          DummyRepositoryEntity(),
-        ],
+        weekly: {
+          lastUpdated: Date.now(),
+          list: [
+            DummyRepositoryEntity(),
+            DummyRepositoryEntity(),
+          ],
+        },
       },
     },
   },

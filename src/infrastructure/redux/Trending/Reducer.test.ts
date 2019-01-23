@@ -16,10 +16,8 @@ describe('StargazerReducer', () => {
         frequency: 'weekly',
         list: 'popular',
       },
-      data: {
-        loading: false,
-        loaded: false,
-      },
+      loading: false,
+      loaded: false,
     };
   });
 

@@ -15,13 +15,6 @@ export class GithubService {
     this.restClient.githubAccessToken = accessToken;
   }
 
-  async validateAccessToken(accessToken: string) {
-    const search = await this.restClient.get('/users', {
-      access_token: accessToken,
-    });
-    return search.status < 300 || search.status === 304;
-  }
-
   get search() {
     return new Search(this.restClient);
   }

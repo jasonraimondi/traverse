@@ -17,10 +17,8 @@ export const TRENDING_INITIAL_STATE: TrendingStore = {
     frequency: 'weekly',
     list: 'popular',
   },
-  data: {
-    loading: false,
-    loaded: false,
-  },
+  loading: false,
+  loaded: false,
 };
 
 export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): TrendingStore => {
@@ -52,23 +50,22 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
     case FETCH_TRENDING_REPOSITORY_LIST:
       return {
         ...state,
-        data: {
-          ...state.data,
-          loaded: false,
-          loading: true,
-        },
+        loaded: false,
+        loading: true,
       };
     case FETCH_TRENDING_REPOSITORY_LIST_SUCCESS:
+      const {language, frequency, data} = action.payload;
       return {
         ...state,
-        data: {
-          loaded: true,
-          loading: false,
-          list: {
-            ...state.data.list,
-            [action.payload.language.value]: {
-              ...(state.data.list ? state.data.list[action.payload.language.value] : {}),
-              [action.payload.frequency]: action.payload.data,
+        loaded: true,
+        loading: false,
+        list: {
+          ...state.list,
+          [language.value]: {
+            ...(state.list ? state.list[language.value] : {}),
+            [frequency]: {
+              lastUpdated: Date.now(),
+              list: data,
             },
           },
         },
@@ -76,17 +73,8 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
     case FETCH_TRENDING_REPOSITORY_LIST_FAILURE:
       return {
         ...state,
-        data: {
-          loaded: false,
-          loading: false,
-          list: {
-            ...state.data.list,
-            [action.payload.language.value]: {
-              ...(state.data.list ? state.data.list[action.payload.language.value] : {}),
-              [action.payload.frequency]: [],
-            },
-          },
-        },
+        loaded: false,
+        loading: false,
       };
     default:
       return state;

@@ -14,6 +14,6 @@ describe('SetGithubAccessToken', () => {
 
     const expected = SettingsReducer(undefined, action);
 
-    assert.strictEqual(expected.github.accessToken.accessToken, accessToken);
+    assert.strictEqual(expected.github.accessToken, accessToken);
   });
 });

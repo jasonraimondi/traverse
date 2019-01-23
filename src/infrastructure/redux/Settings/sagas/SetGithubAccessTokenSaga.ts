@@ -1,4 +1,4 @@
-import { store } from '@/renderer';
+import { ActionResponse } from '@/infrastructure/redux/Interfaces';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import container from '@/infrastructure/container/InversifyContainer';
@@ -9,21 +9,22 @@ import {
 } from '@/infrastructure/redux/Settings/actions/SetGithubAccessTokenAction';
 import { GithubService } from '@/infrastructure/services/github/GithubService';
 
-export function* setGithubAccessTokenSaga() {
+export function* SetGithubAccessTokenSaga() {
   yield takeEvery(SET_GITHUB_ACCESS_TOKEN, setGithubAccessToken);
 }
 
-async function validateAccessToken(accessToken: string) {
+async function fetchAuthUserDetails(accessToken: string) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
   githubService.accessToken = accessToken;
-  return await githubService.validateAccessToken(accessToken);
+  return await githubService.user.self();
 }
 
-function* setGithubAccessToken(action) {
+function* setGithubAccessToken(action: ActionResponse<string>) {
   try {
-    const isValid = yield call(validateAccessToken, action.payload);
-    if (isValid) {
-      yield put(SetGithubAccessTokenSuccessAction(action.payload));
+    const token = action.payload;
+    const user = yield call(fetchAuthUserDetails, token);
+    if (user) {
+      yield put(SetGithubAccessTokenSuccessAction({token, user}));
     } else {
       yield fail();
     }

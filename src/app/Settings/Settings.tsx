@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { Title } from '@/app/elements/Base';
-import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
+import { GithubAccessTokenForm } from '@/app/Settings/components/GithubAccessTokenForm';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
@@ -37,8 +37,8 @@ class Settings extends React.Component<Props, State> {
   }
 
   get accessToken() {
-    if (this.props.settings.github && this.props.settings.github.accessToken) {
-      return this.props.settings.github.accessToken.accessToken;
+    if (this.props.settings.github) {
+      return this.props.settings.github.accessToken;
     }
     return '';
   }
@@ -48,10 +48,11 @@ class Settings extends React.Component<Props, State> {
       <Title>Settings</Title>
       <SettingsContainer>
         <SettingsTitle>Settings</SettingsTitle>
-        <AccessTokenForm title='Github Access Token'
-                         small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
-                         formValue={this.accessToken}
-                         handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
+        <GithubAccessTokenForm
+          title='Github Access Token'
+          small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
+          formValue={this.accessToken}
+          handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
         />
       </SettingsContainer>
     </>;

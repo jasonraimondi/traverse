@@ -23,6 +23,14 @@ export class User {
     return [];
   }
 
+  async self(): Promise<UserEntity|false> {
+    const response = await this.restClient.get('/user');
+    if (response.status === 200) {
+      return UserEntity.fromResponse(response.data);
+    }
+    return false;
+  }
+
   // async starRepository(username: string, repository: string) {
   //   const response = await this.restClient.put(`/user/starred/${username}/${repository}`);
   //   return response.status === 204;
