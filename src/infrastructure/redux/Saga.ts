@@ -1,8 +1,6 @@
 import { fork } from 'redux-saga/effects';
 
-import {
-  FetchTrendingRepositoryListSaga,
-} from '@/infrastructure/redux/TrendingRepositoryList/sagas/FetchTrendingRepositoryListSaga';
+import { FetchTrendingRepositoryListSaga } from '@/infrastructure/redux/Trending/sagas/FetchTrendingRepositoryListSaga';
 
 // import { addUserToStargazerListSaga } from '@/infrastructure/redux/sagas/AddUserToStargazerList.saga';
 // import { FetchTrendingRepositoryListSaga } from '@/infrastructure/redux/sagas/FetchTrendingRepositoryList.saga';

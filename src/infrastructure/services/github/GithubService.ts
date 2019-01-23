@@ -1,7 +1,7 @@
-import TYPES from '@/infrastructure/container/Types';
-import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
 import { inject, injectable } from 'inversify';
 
+import TYPES from '@/infrastructure/container/Types';
+import { GithubRestClient } from '@/infrastructure/rest/GithubRestClient';
 import { Search } from '@/infrastructure/services/github/search/Search';
 import { User } from '@/infrastructure/services/github/user/User';
 

@@ -1,40 +1,37 @@
-import { Title } from '@/app/elements/Base';
-import { formatRoute, Routes } from '@/app/Routes';
-import {
-  SetCurrentStargazerAction,
-  SetCurrentStargazerActionType,
-} from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
-import { RepositoryListReducer } from '@/infrastructure/redux/reducers/TrendingRepositoryListReducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
 
+import { Title } from '@/app/elements/Base';
 import { RepositoryList } from '@/app/elements/RepositoryList';
+import { formatRoute, Routes } from '@/app/Routes';
 import { EmptyTrendingRepositoryList } from '@/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import { FrequencyPicker } from '@/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/app/TrendingRepos/components/LanguageListPicker';
 import {
+  SetCurrentStargazerAction,
+  SetCurrentStargazerActionType,
+} from '@/infrastructure/redux/Stargazer/actions/SetCurrentStargazerAction';
+import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListActionType,
-} from 'FetchTrendingRepositoryListAction.ts';
-import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/actions/SetFrequencyAction';
-import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/actions/SetLanguageAction';
+} from '@/infrastructure/redux/Trending/actions/FetchTrendingRepositoryListAction';
+import { SetFrequencyAction, SetFrequencyActionType } from '@/infrastructure/redux/Trending/actions/SetFrequencyAction';
+import { SetLanguageAction, SetLanguageActionType } from '@/infrastructure/redux/Trending/actions/SetLanguageAction';
 import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
-} from '@/infrastructure/redux/actions/SetLanguageListTypeAction';
+} from '@/infrastructure/redux/Trending/actions/SetLanguageListTypeAction';
+import { TrendingStore } from '@/infrastructure/redux/Trending/Store';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 import { FrequencyType } from '@/models/Frequency.type';
+import { RepositoryEntity } from '@/models/Repository.entity';
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
 
 interface Props {
   history: any;
-  trendingRepositoryList: RepositoryListReducer;
-  frequency: FrequencyType;
-  language: ILanguage;
-  languageListType: ListType;
+  trending: TrendingStore;
   SetLanguageAction: SetLanguageActionType;
   SetFrequencyAction: SetFrequencyActionType;
   SetLanguageListTypeAction: SetLanguageListTypeActionType;
@@ -50,7 +47,7 @@ class App extends React.Component<Props, State> {
   private readonly ALL_LANGUAGES = require('@/infrastructure/data/all-languages.json');
   private readonly POPULAR_LANGUAGES = require('@/infrastructure/data/popular-languages.json');
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.handleSetFrequency = this.handleSetFrequency.bind(this);
     this.handleSetLanguage = this.handleSetLanguage.bind(this);
@@ -58,21 +55,21 @@ class App extends React.Component<Props, State> {
     this.handleRollDice = this.handleRollDice.bind(this);
     this.handleStargazerClick = this.handleStargazerClick.bind(this);
     this.state = {
-      selectedLanguageListType: props.languageListType,
+      selectedLanguageListType: this.props.trending.options.list,
     };
   }
 
   componentDidMount() {
     this.props.FetchTrendingRepositoryListAction({
-      language: this.props.language,
-      frequency: this.props.frequency,
+      language: this.props.trending.options.language,
+      frequency: this.props.trending.options.frequency,
     });
   }
 
   handleSetFrequency(frequency: FrequencyType) {
     this.props.SetFrequencyAction(frequency);
     this.props.FetchTrendingRepositoryListAction({
-      language: this.props.language,
+      language: this.language,
       frequency,
     });
   }
@@ -81,18 +78,18 @@ class App extends React.Component<Props, State> {
     this.props.SetLanguageAction(language);
     this.props.FetchTrendingRepositoryListAction({
       language,
-      frequency: this.props.frequency,
+      frequency: this.frequency,
     });
   }
 
   handleSetLanguageList(listType: ListType) {
     this.props.SetLanguageListTypeAction(listType);
-    this.setState({ selectedLanguageListType: listType });
+    this.setState({selectedLanguageListType: listType});
   }
 
   handleStargazerClick(login: string) {
     this.props.SetCurrentStargazerAction(login);
-    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
   }
 
   handleRollDice() {
@@ -121,32 +118,48 @@ class App extends React.Component<Props, State> {
     return language;
   }
 
+  get frequency() {
+    return this.props.trending.options.frequency;
+  }
+
+  get language() {
+    return this.props.trending.options.language;
+  }
+
+  get trendingRepositoryList(): RepositoryEntity[] {
+    const { list } = this.props.trending.data;
+    if (!list || !list[this.language.value] || !list[this.language.value][this.frequency]) {
+      return [];
+    }
+    return list[this.language.value][this.frequency] || [];
+  }
+
   render() {
     return <>
-      <Title>{this.filterLanguage(this.props.language.title)} | {this.ucFirst(this.props.frequency)}</Title>
+      <Title>{this.filterLanguage(this.language.title)} | {this.ucFirst(this.frequency)}</Title>
       <Main>
         <NavContainer>
           <LanguageListPicker selected={this.state.selectedLanguageListType}
                               handleSetLanguageList={this.handleSetLanguageList}
                               onClickRoll={this.handleRollDice}
           />
-          <FrequencyPicker frequency={this.props.frequency} handleSetFrequency={this.handleSetFrequency}/>
+          <FrequencyPicker frequency={this.frequency} handleSetFrequency={this.handleSetFrequency}/>
         </NavContainer>
         <LanguageListContainer id='language-container'>
           <LanguageList
             languageListType={this.state.selectedLanguageListType}
-            selectedLanguage={this.props.language}
+            selectedLanguage={this.language}
             popularLanguageList={this.POPULAR_LANGUAGES}
             allLanguageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
         </LanguageListContainer>
         <RepoListContainer>
-          <RepositoryList trendingRepositoryList={this.props.trendingRepositoryList}
+          <RepositoryList repositoryList={this.trendingRepositoryList}
                           handleStargazerClick={this.handleStargazerClick}
                           emptyRepositoryList={
-                            <EmptyTrendingRepositoryList frequency={this.props.frequency}
-                                                         language={this.props.language}
+                            <EmptyTrendingRepositoryList frequency={this.frequency}
+                                                         language={this.language}
                             />
                           }
           />
@@ -158,10 +171,7 @@ class App extends React.Component<Props, State> {
 
 function mapStateToProps(state) {
   return {
-    language: state.language,
-    frequency: state.frequency,
-    trendingRepositoryList: state.trendingRepositoryList,
-    languageListType: state.languageListType,
+    trending: state.trending,
   };
 }
 
@@ -170,7 +180,7 @@ function mapDispatchToProps(dispatch) {
     {
       SetLanguageAction,
       SetFrequencyAction,
-      FetchTrendingRepositoryListAction: FetchTrendingRepositoryListAction,
+      FetchTrendingRepositoryListAction,
       SetLanguageListTypeAction,
       SetCurrentStargazerAction,
     },

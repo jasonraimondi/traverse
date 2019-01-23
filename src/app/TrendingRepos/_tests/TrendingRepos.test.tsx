@@ -8,23 +8,29 @@ import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListActionFields,
-} from 'FetchTrendingRepositoryListAction.ts';
-import { SetFrequencyAction } from '@/infrastructure/redux/actions/SetFrequencyAction';
-import { SetLanguageAction } from '@/infrastructure/redux/actions/SetLanguageAction';
-import { RepositoryEntity } from '@/models/Repository.entity';
+} from '@/infrastructure/redux/Trending/actions/FetchTrendingRepositoryListAction';
+import { SetFrequencyAction } from '@/infrastructure/redux/Trending/actions/SetFrequencyAction';
+import { SetLanguageAction } from '@/infrastructure/redux/Trending/actions/SetLanguageAction';
+import { TRENDING_INITIAL_STATE } from '@/infrastructure/redux/Trending/Reducer';
+import { DummyRepositoryEntity } from '@/models/_tests/Dummy';
 
 const mockStore = configureStore();
-const INITIAL_STATE = {
-  language: {
-    value: 'typescript',
-    title: 'TypeScript',
-  },
-  frequency: 'weekly',
-  trendingRepositoryList: {
-    abc: new RepositoryEntity('abc'),
+
+const initialState = {
+  trending: {
+    ...TRENDING_INITIAL_STATE,
+    data: {
+      typescript: {
+        weekly: [
+          DummyRepositoryEntity(),
+          DummyRepositoryEntity(),
+        ],
+      },
+    },
   },
 };
-const store = mockStore(INITIAL_STATE);
+
+const store = mockStore(initialState);
 
 describe('<TrendingRepos />', () => {
   let app;
@@ -36,19 +42,16 @@ describe('<TrendingRepos />', () => {
 
   test('renders viewport content correctly', () => {
     assert.strictEqual(app.find('.name').first().text(), 'Unknown');
-    assert.strictEqual(app.find('.language').first().text(), 'Unknown');
+    assert.strictEqual(app.find('.language').first().text(), 'TypeScript');
   });
 
   test('selecting frequency runs set action and fetch repository list action', () => {
     store.clearActions();
-
     app.find('button#select-monthly').simulate('click');
-
     const frequency = 'monthly';
-
     assert.deepStrictEqual(store.getActions()[0], SetFrequencyAction(frequency));
     assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
-      language: INITIAL_STATE.language,
+      language: initialState.trending.options.language,
       frequency,
     }));
   });
@@ -66,7 +69,7 @@ describe('<TrendingRepos />', () => {
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
     assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
       language,
-      frequency: INITIAL_STATE.frequency,
+      frequency: initialState.trending.options.frequency,
     } as FetchTrendingRepositoryListActionFields));
   });
 });

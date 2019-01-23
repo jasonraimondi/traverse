@@ -2,8 +2,8 @@ import { RepositoryEntity } from '@/models/Repository.entity';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
 import { UnstyledList } from '@/app/elements/Base';
+import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
 
 interface Props {
   handleStargazerClick(login: string): void;

@@ -5,10 +5,9 @@ import {
 } from '@/infrastructure/redux/Settings/actions/SetGithubAccessTokenAction';
 import { SettingsStore } from '@/infrastructure/redux/Settings/Store';
 
-const INITIAL_STATE: SettingsStore = {
-};
+export const SETTINGS_INITIAL_STATE: SettingsStore = {};
 
-export const SettingsReducer = (state = INITIAL_STATE, action): SettingsStore => {
+export const SettingsReducer = (state = SETTINGS_INITIAL_STATE, action): SettingsStore => {
   switch (action.type) {
     case SET_GITHUB_ACCESS_TOKEN:
       return {

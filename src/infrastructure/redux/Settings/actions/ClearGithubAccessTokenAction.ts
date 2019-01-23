@@ -1,4 +1,4 @@
-import { ActionResponse } from '../../Interfaces';
+import { ActionResponse } from '@/infrastructure/redux/Interfaces';
 
 export const CLEAR_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] Clear';
 

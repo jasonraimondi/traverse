@@ -1,27 +1,26 @@
-import { formatRoute, Routes } from '@/app/Routes';
-import { StargazerDetail } from '@/app/Stargazer/StargazerList/components/StargazerDetail';
-import StargazerRepositoryList from '@/app/Stargazer/StargazerList/components/StargazerRepositoryList';
-import { ClearCurrentStargazerAction } from '@/infrastructure/redux/actions/ClearCurrentStargazerAction';
-import {
-  RemoveUserFromStargazerListAction,
-  RemoveUserFromStargazerListActionType,
-} from '@/infrastructure/redux/actions/RemoveUserFromStargazerListAction';
-import {
-  SetCurrentStargazerAction,
-  SetCurrentStargazerActionType,
-} from '@/infrastructure/redux/actions/SetCurrentStargazerAction';
-import { CurrentStargazerReducer } from '@/infrastructure/redux/reducers/CurrentStargazer.reducer';
-import { StargazerListReducer } from '@/infrastructure/redux/reducers/StargazerList.reducer';
-import { UserEntity } from '@/models/User.entity';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+
+import { formatRoute, Routes } from '@/app/Routes';
+import { StargazerDetail } from '@/app/Stargazer/StargazerList/components/StargazerDetail';
+import StargazerRepositoryList from '@/app/Stargazer/StargazerList/StargazerRepositoryList/StargazerRepositoryList';
+import { ClearCurrentStargazerAction } from '@/infrastructure/redux/Stargazer/actions/ClearCurrentStargazerAction';
+import {
+  RemoveUserFromStargazerListAction,
+  RemoveUserFromStargazerListActionType,
+} from '@/infrastructure/redux/Stargazer/actions/RemoveUserFromStargazerListAction';
+import {
+  SetCurrentStargazerAction,
+  SetCurrentStargazerActionType,
+} from '@/infrastructure/redux/Stargazer/actions/SetCurrentStargazerAction';
+import { StargazerStore } from '@/infrastructure/redux/Stargazer/Store';
+import { UserEntity } from '@/models/User.entity';
 import { bindActionCreators } from 'redux';
 
 interface Props {
   history: any;
-  currentStargazer: CurrentStargazerReducer;
-  stargazerList: StargazerListReducer;
+  stargazer: StargazerStore;
   SetCurrentStargazerAction: SetCurrentStargazerActionType;
   ClearCurrentStargazerAction: () => void;
   RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
@@ -44,7 +43,7 @@ class StargazerList extends React.Component<Props> {
   }
 
   clearStargazerWhenNavigatingToList() {
-    if (this.props.history.location.pathname === '/stargazer' && this.props.currentStargazer) {
+    if (this.props.history.location.pathname === '/stargazer' && this.props.stargazer.currentUserLogin) {
       this.props.ClearCurrentStargazerAction();
     }
   }
@@ -52,7 +51,7 @@ class StargazerList extends React.Component<Props> {
   handleSetStargazer(user: UserEntity) {
     const login = user.attributes.login;
     this.props.SetCurrentStargazerAction(login);
-    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
   }
 
   handleRemoveStargazer(user: UserEntity) {
@@ -60,11 +59,12 @@ class StargazerList extends React.Component<Props> {
   }
 
   get stargazerList() {
-    return Object.values(this.props.stargazerList)
-      .map((user) => <StargazerDetail key={user.id}
-                                      handleClickStargazer={() => this.handleSetStargazer(user)}
-                                      handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
-                                      user={user}
+    return Object.values(this.props.stargazer.userList)
+      .map(
+        (user) => <StargazerDetail key={user.id}
+                                   handleClickStargazer={() => this.handleSetStargazer(user)}
+                                   handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
+                                   user={user}
         />,
       );
   }
@@ -79,8 +79,7 @@ class StargazerList extends React.Component<Props> {
 
 function mapStateToProps(state) {
   return {
-    currentStargazer: state.currentStargazer,
-    stargazerList: state.stargazerList,
+    stargazer: state.stargazer,
   };
 }
 

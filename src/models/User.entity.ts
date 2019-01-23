@@ -38,21 +38,21 @@ export class UserEntity {
 }
 
 export interface UserAttributes extends Owner {
-  name: string;
-  company: string|null;
-  website: string|null;
-  location: string|null;
-  email: string|null;
-  bio: string|null;
-  publicRepoCount: number|null;
-  publicGistCount: number|null;
-  followersCount: number|null;
-  followingCount: number|null;
+  name?: string;
+  company?: string|null;
+  website?: string|null;
+  location?: string|null;
+  email?: string|null;
+  bio?: string|null;
+  publicRepoCount?: number|null;
+  publicGistCount?: number|null;
+  followersCount?: number|null;
+  followingCount?: number|null;
 }
 
 export interface Owner {
-  readonly login: string;
-  readonly htmlUrl: string;
-  readonly avatarUrl: string;
-  readonly type: 'organization'|'user'|null;
+  readonly login?: string;
+  readonly htmlUrl?: string;
+  readonly avatarUrl?: string;
+  readonly type?: 'organization'|'user'|null;
 }

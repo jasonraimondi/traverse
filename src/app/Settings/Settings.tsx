@@ -9,14 +9,15 @@ import { AccessTokenForm } from '@/app/Settings/components/AccessTokenForm';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
-} from '@/infrastructure/redux/actions/ClearGithubAccessTokenAction';
+} from '@/infrastructure/redux/Settings/actions/ClearGithubAccessTokenAction';
 import {
   SetGithubAccessTokenAction,
   SetGithubAccessTokenActionType,
-} from '@/infrastructure/redux/actions/SetGithubAccessTokenAction';
+} from '@/infrastructure/redux/Settings/actions/SetGithubAccessTokenAction';
+import { SettingsStore } from '@/infrastructure/redux/Settings/Store';
 
 interface Props {
-  githubAccessToken: string;
+  settings: SettingsStore;
   SetGithubAccessTokenAction: SetGithubAccessTokenActionType;
   ClearGithubAccessTokenAction: ClearGithubAccessTokenActionType;
 }
@@ -31,8 +32,15 @@ class Settings extends React.Component<Props, State> {
     super(props);
     this.state = {
       isEditMode: false,
-      githubAccessToken: props.githubAccessToken,
+      githubAccessToken: this.accessToken,
     };
+  }
+
+  get accessToken() {
+    if (this.props.settings.github && this.props.settings.github.accessToken) {
+      return this.props.settings.github.accessToken.accessToken;
+    }
+    return '';
   }
 
   render() {
@@ -42,7 +50,7 @@ class Settings extends React.Component<Props, State> {
         <SettingsTitle>Settings</SettingsTitle>
         <AccessTokenForm title='Github Access Token'
                          small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
-                         formValue={this.props.githubAccessToken}
+                         formValue={this.accessToken}
                          handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
         />
       </SettingsContainer>
@@ -60,7 +68,7 @@ const SettingsContainer = styled.div`
 
 function mapStateToProps(state) {
   return {
-    githubAccessToken: state.githubAccessToken,
+    settings: state.settings,
   };
 }
 

@@ -7,22 +7,12 @@ import About from '@/app/About/About';
 import { formatRoute, Routes } from '@/app/Routes';
 import Settings from '@/app/Settings/Settings';
 import Stargazer from '@/app/Stargazer/Stargazer';
-import { ILanguage } from '@/app/TrendingRepos/components/LanguageList';
 import TrendingRepos from '@/app/TrendingRepos/TrendingRepos';
 import { themeConfig } from '@/infrastructure/styles/Theme';
-import { FrequencyType } from '@/models/Frequency.type';
 
-interface Props {
-  history: any;
-  frequency: FrequencyType;
-  language: ILanguage;
-}
-
-class App extends React.Component<Props> {
+class App extends React.Component {
   readonly iconHome = require('@/infrastructure/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/infrastructure/assets/icons/icon-cog.svg');
-  readonly iconStarred = require('@/infrastructure/assets/icons/icon-star.svg');
-  readonly iconStarredSearch = require('@/infrastructure/assets/icons/icon-search.svg');
 
   render() {
     return <>
@@ -77,14 +67,6 @@ class App extends React.Component<Props> {
       </Router>
     </>;
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    errorMessage: state.errorMessage,
-    language: state.language,
-    frequency: state.frequency,
-  };
 }
 
 const Main = styled.main`
@@ -200,4 +182,4 @@ const inputStyle = `
   }
 `;
 
-export default connect(mapStateToProps)(App);
+export default App;

@@ -17,17 +17,18 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   get stargazerLink() {
-    const login = this.attributes ? this.attributes.owner.login : 'Unknown';
-    return <Name className='name'>{login.replace('/', ' / ')}</Name>;
+    const login = this.attributes && this.attributes.owner && this.attributes.owner.login
+      ? this.attributes.owner.login : 'Unknown';
+    return <Name className='stargazerLink'>{login.replace('/', ' / ')}</Name>;
   }
 
   get name() {
-    const name = this.attributes ? this.attributes.name : 'Unknown';
+    const name = this.attributes && this.attributes.name ? this.attributes.name : 'Unknown';
     return <Name className='name'>{name}</Name>;
   }
 
   get language() {
-    const language = this.attributes && this.attributes.language !== null ? this.attributes.language : 'Unknown';
+    const language = this.attributes && this.attributes.language ? this.attributes.language : 'Unknown';
     return <Language className='language'>{language}</Language>;
   }
 
@@ -40,7 +41,7 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   get forksCount() {
-    const forksCount = this.attributes ? this.attributes.forksCount : false;
+    const forksCount = this.attributes && this.attributes.forksCount ? this.attributes.forksCount : false;
     const title = `${forksCount} Forks`;
     return <ForksCount title={title} className='forks-count'>
       <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.FORKS_ICON }}/>
@@ -49,7 +50,7 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   get watchersCount() {
-    const watchersCount = this.attributes ? this.attributes.watchersCount : false;
+    const watchersCount = this.attributes && this.attributes.watchersCount ? this.attributes.watchersCount : false;
     const title = `${watchersCount} Watchers`;
     return <WatchersCount title={title} className='watchers-count'>
       <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.WATCHERS_ICON }} />
@@ -58,7 +59,8 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   get stargazersCount() {
-    const stargazersCount = this.attributes ? this.attributes.stargazersCount : false;
+    const stargazersCount = this.attributes && this.attributes.stargazersCount
+      ? this.attributes.stargazersCount : false;
     const title = `${stargazersCount} Stargazers`;
     return <StargazersCount title={title} className='stargazers-count'>
       <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.STARGAZERS_ICON }} />
@@ -67,7 +69,7 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   get htmlUrl() {
-    return this.attributes ? this.attributes.htmlUrl : null;
+    return this.attributes && this.attributes.htmlUrl ? this.attributes.htmlUrl : null;
   }
 
   render() {

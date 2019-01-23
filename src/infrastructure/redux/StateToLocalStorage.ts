@@ -1,3 +1,4 @@
+import { flashMessage } from '@/app/FlashMessage/FlashMessage';
 import { ElectronSettingService } from '@/electron/SettingsService';
 
 export const loadStateFromElectronSettings = () => {
@@ -12,6 +13,6 @@ export const saveStateToElectronSettings = (state) => {
   try {
     ElectronSettingService.set('state', state);
   } catch (err) {
-    console.log('Error Loading Electron State', err);
+    flashMessage.error('Error Loading Electron State');
   }
 };

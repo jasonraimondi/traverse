@@ -1,10 +1,10 @@
-import { FormContainer, FormTitle, Label, Submit } from '@/app/elements/Form';
 import { Field, Form, Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { FormContainer, FormTitle, Label, Submit } from '@/app/elements/Form';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {

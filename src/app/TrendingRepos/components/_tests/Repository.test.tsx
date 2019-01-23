@@ -3,11 +3,11 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
-import { RepositoryEntity } from '@/models/Repository.entity';
+import { DummyRepositoryEntity } from '@/models/_tests/Dummy';
 
 describe('<Repository />', () => {
   test('displays list items', () => {
-    const repository = new RepositoryEntity('def');
+    const repository = DummyRepositoryEntity();
     const component = shallow(
       <RepositoryDetail repository={repository}
                         handleStargazerClick={() => null}

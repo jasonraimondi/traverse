@@ -47,6 +47,7 @@
     "electron-updater": "^4.0.6",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "faker": "^4.1.0",
     "file-loader": "^2.0.0",
     "formik": "^1.4.2",
     "html-webpack-plugin": "^3.2.0",

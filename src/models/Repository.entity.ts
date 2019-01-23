@@ -43,14 +43,14 @@ export class RepositoryEntity {
   }
 }
 
-interface RepositoryEntityAttributes {
-  name: string;
-  description: string;
-  language: string;
-  owner: Owner;
-  longName: string;
-  htmlUrl: string;
-  stargazersCount: number;
-  watchersCount: number;
-  forksCount: number;
+export interface RepositoryEntityAttributes {
+  name?: string;
+  description?: string;
+  language?: string;
+  owner?: Owner;
+  longName?: string;
+  htmlUrl?: string;
+  stargazersCount?: number;
+  watchersCount?: number;
+  forksCount?: number;
 }
