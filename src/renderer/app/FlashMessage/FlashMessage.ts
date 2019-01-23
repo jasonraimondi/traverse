@@ -5,6 +5,8 @@ export type Level = 'error' | 'success';
 export interface FlashMessage {
   message: string;
   level: Level;
+  isSuccess: boolean;
+  isError: boolean;
 }
 
 export interface FlashMessageList {
@@ -27,7 +29,12 @@ class Flash {
   }
 
   private flashMessage(message: string, level: Level, ttl: number = 2750): void {
-    const randomId = this.addMessageToList({message, level});
+    const randomId = this.addMessageToList({
+      message,
+      level,
+      isSuccess: level === 'success',
+      isError: level === 'error',
+    });
     setTimeout(() => this.removeMessageFromList(randomId), ttl);
   }
 
