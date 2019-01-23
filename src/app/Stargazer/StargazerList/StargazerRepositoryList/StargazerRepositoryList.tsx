@@ -1,3 +1,4 @@
+import { EmptyTrendingRepositoryList } from '@/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -73,7 +74,7 @@ class StargazerRepositoryList extends React.Component<Props> {
           <RepositoryList
             repositoryList={this.props.stargazer.repositoryList.list[this.props.stargazer.currentUserLogin]}
             handleStargazerClick={this.handleStargazerClick}
-            emptyRepositoryList={<EmptyStargazerRepositoryList/>}
+            emptyRepositoryList={() => <EmptyStargazerRepositoryList/>}
           />
         </ScrollView>
       </>;

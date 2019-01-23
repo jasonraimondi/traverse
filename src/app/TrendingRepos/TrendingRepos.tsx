@@ -155,13 +155,15 @@ class App extends React.Component<Props, State> {
           />
         </LanguageListContainer>
         <RepoListContainer>
-          <RepositoryList repositoryList={this.trendingRepositoryList}
-                          handleStargazerClick={this.handleStargazerClick}
-                          emptyRepositoryList={
-                            <EmptyTrendingRepositoryList frequency={this.frequency}
-                                                         language={this.language}
-                            />
-                          }
+          <RepositoryList
+            repositoryList={this.trendingRepositoryList}
+            handleStargazerClick={this.handleStargazerClick}
+            emptyRepositoryList={
+              () => <EmptyTrendingRepositoryList
+                frequency={this.frequency}
+                language={this.language}
+              />
+            }
           />
         </RepoListContainer>
       </Main>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {
-  title: JSX.Element;
+  title: () => JSX.Element;
 }
 
 const Title = styled.div`
@@ -19,6 +19,8 @@ const Title = styled.div`
 
 export class TitleBar extends React.Component<Props> {
   render() {
-    return <Title className='title-bar'>{this.props.title}</Title>;
+    return <Title className='title-bar'>
+      {this.props.title}
+    </Title>;
   }
 }
