@@ -13,13 +13,10 @@ describe('<FlashMessages />', () => {
   });
 
   test('error messages', () => {
-    flashMessage.error('error 1');
-    flashMessage.error('error 2');
-    assert.lengthOf(component.find('.error'), 2);
-  });
-
-  test('success messages', () => {
-    flashMessage.success('success 1');
+    flashMessage.error('error 1', 50000);
+    flashMessage.error('error 2', 50000);
+    flashMessage.success('success 1', 50000);
     assert.lengthOf(component.find('.success'), 1);
+    assert.lengthOf(component.find('.error'), 2);
   });
 });

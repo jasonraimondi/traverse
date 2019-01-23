@@ -32,7 +32,7 @@ class Flash {
   }
 
   private addMessageToList(message: FlashMessage): number {
-    const randomId = Date.now();
+    const randomId = Date.now() + Math.floor(Math.random() * 10);
     const messageList = {
       ...this.messageList$.value,
       [randomId]: message,
