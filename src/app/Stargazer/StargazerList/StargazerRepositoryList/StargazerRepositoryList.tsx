@@ -74,7 +74,7 @@ class StargazerRepositoryList extends React.Component<Props> {
           <RepositoryList
             repositoryList={this.props.stargazer.repositoryList.list[this.props.stargazer.currentUserLogin]}
             handleStargazerClick={this.handleStargazerClick}
-            emptyRepositoryList={() => <EmptyStargazerRepositoryList/>}
+            emptyRepositoryList={<EmptyStargazerRepositoryList/>}
           />
         </ScrollView>
       </>;

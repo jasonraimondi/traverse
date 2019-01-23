@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { themeConfig } from '@/infrastructure/styles/Theme';
 
 interface Props {
-  title: () => JSX.Element;
+  title: JSX.Element;
 }
 
 const Title = styled.div`

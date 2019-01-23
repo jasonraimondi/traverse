@@ -159,7 +159,7 @@ class App extends React.Component<Props, State> {
             repositoryList={this.trendingRepositoryList}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={
-              () => <EmptyTrendingRepositoryList
+              <EmptyTrendingRepositoryList
                 frequency={this.frequency}
                 language={this.language}
               />
