@@ -13,7 +13,11 @@ interface Props {
 
 export class RepositoryDetail extends React.Component<Props> {
   get attributes() {
-    return this.props.repository.attributes;
+    return this.repository.attributes;
+  }
+
+  get repository() {
+    return this.props.repository;
   }
 
   get stargazerLink() {
@@ -73,16 +77,17 @@ export class RepositoryDetail extends React.Component<Props> {
   }
 
   render() {
+    const title = `Is ${this.repository.isUser ? 'User' : 'Organization'}`;
     return (
       <Item className='repository-list-item'>
         <ItemHeader>
           <Links>
-            {this.props.repository.isUser ? (
-              <StargazerLink onClick={this.props.handleStargazerClick}>
+            {false && this.repository.isUser ? (
+              <StargazerLink title={title} onClick={this.props.handleStargazerClick}>
                 {this.stargazerLink}
               </StargazerLink>
             ) : (
-              <DisabledStargazerLink title={`${this.props.repository.owner.login} is an Organization`}>
+              <DisabledStargazerLink title={title}>
                 {this.stargazerLink}
               </DisabledStargazerLink>
             )}

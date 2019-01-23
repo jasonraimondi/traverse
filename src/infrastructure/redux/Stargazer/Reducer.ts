@@ -33,21 +33,21 @@ export const StargazerReducer = (state = STARGAZER_INITIAL_STATE, action): Starg
     case ADD_USER_TO_STARGAZER_LIST:
       return {
         ...state,
-        repositoryList: {
+        userList: {
+          ...state.userList,
           loading: true,
-          loaded: true,
-          list: {
-            [action.payload.attributes.login]: action.payload,
-          },
+          loaded: false,
         },
       };
     case ADD_USER_TO_STARGAZER_LIST_SUCCESS:
       return {
         ...state,
-        repositoryList: {
+        userList: {
+          ...state.userList,
           loading: false,
           loaded: true,
           list: {
+            ...state.userList.list,
             [action.payload.attributes.login]: action.payload,
           },
         },

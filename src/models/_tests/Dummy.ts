@@ -22,16 +22,16 @@ export function DummyRepositoryEntity(id?: number, attributes?: RepositoryEntity
   return new RepositoryEntity(id, attributes);
 }
 
-// export function DummyUserEntity(id?: number, attributes?: UserAttributes) {
-//   if (!id) {
-//     id = faker.random.number();
-//   }
-//   if (!attributes) {
-//     attributes = {
-//       name: faker.name.firstName + faker.name.lastName,
-//       company: faker.company.companyName,
-//       website: faker.internet.url,
-//     } as UserAttributes;
-//   }
-//   return new UserEntity(id, attributes);
-// }
+export function DummyUserEntity(id?: number, attributes?: UserAttributes) {
+  if (!id) {
+    id = faker.random.number();
+  }
+  if (!attributes) {
+    attributes = {
+      name: faker.name.firstName + faker.name.lastName,
+      company: faker.company.companyName,
+      website: faker.internet.url,
+    } as UserAttributes;
+  }
+  return new UserEntity(id, attributes);
+}

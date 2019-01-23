@@ -1,7 +1,8 @@
+import { ActionResponse } from '@/infrastructure/redux/Interfaces';
 import {
   FETCH_TRENDING_REPOSITORY_LIST,
   FETCH_TRENDING_REPOSITORY_LIST_FAILURE,
-  FETCH_TRENDING_REPOSITORY_LIST_SUCCESS,
+  FETCH_TRENDING_REPOSITORY_LIST_SUCCESS, FetchTrendingRepositoryListActionFields,
 } from '@/infrastructure/redux/Trending/actions/FetchTrendingRepositoryListAction';
 import { SET_FREQUENCY } from '@/infrastructure/redux/Trending/actions/SetFrequencyAction';
 import { SET_LANGUAGE } from '@/infrastructure/redux/Trending/actions/SetLanguageAction';
@@ -20,6 +21,20 @@ export const TRENDING_INITIAL_STATE: TrendingStore = {
   loading: false,
   loaded: false,
 };
+
+function FetchTrendingRepositoryListReducer(action: ActionResponse<FetchTrendingRepositoryListActionFields>, state) {
+  const { language, frequency } = action.payload;
+  return {
+    ...state,
+    options: {
+      ...state.options,
+      language,
+      frequency,
+    },
+    loaded: false,
+    loading: true,
+  };
+}
 
 export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): TrendingStore => {
   switch (action.type) {
@@ -48,15 +63,16 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
         },
       };
     case FETCH_TRENDING_REPOSITORY_LIST:
-      return {
-        ...state,
-        loaded: false,
-        loading: true,
-      };
+      return FetchTrendingRepositoryListReducer(action, state);
     case FETCH_TRENDING_REPOSITORY_LIST_SUCCESS:
       const {language, frequency, data} = action.payload;
       return {
         ...state,
+        options: {
+          ...state.options,
+          language,
+          frequency,
+        },
         loaded: true,
         loading: false,
         list: {

@@ -7,7 +7,6 @@ import { RepositoryDetail } from '@/app/elements/RepositoryDetail';
 
 interface Props {
   handleStargazerClick(login: string): void;
-
   emptyRepositoryList: () => JSX.Element;
   repositoryList: RepositoryEntity[];
 }
@@ -19,10 +18,11 @@ export class RepositoryList extends React.Component<Props> {
 
   get listItems() {
     return this.props.repositoryList.map((repository, idx) => {
-      const handleStargazerClick = () => this.props.handleStargazerClick(repository.attributes.owner.login);
+      const { owner } = repository.attributes;
+      const handleStargazerClick = () => this.props.handleStargazerClick(owner.login);
       return <RepositoryDetail
-        handleStargazerClick={handleStargazerClick}
         key={idx}
+        handleStargazerClick={handleStargazerClick}
         repository={repository}
       />;
     });

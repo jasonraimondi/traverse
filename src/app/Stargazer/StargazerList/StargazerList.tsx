@@ -59,7 +59,12 @@ class StargazerList extends React.Component<Props> {
   }
 
   get stargazerList() {
-    return Object.values(this.props.stargazer.userList)
+    const userList = this.props.stargazer.userList[this.props.stargazer.currentUserLogin];
+    if (!userList) {
+      return [];
+    }
+
+    return userList[this.props.stargazer.currentUserLogin]
       .map(
         (user) => <StargazerDetail key={user.id}
                                    handleClickStargazer={() => this.handleSetStargazer(user)}

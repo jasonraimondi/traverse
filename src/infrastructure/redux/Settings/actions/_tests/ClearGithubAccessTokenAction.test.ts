@@ -1,3 +1,4 @@
+import { DummyRepositoryEntity, DummyUserEntity } from '@/models/_tests/Dummy';
 import { assert } from 'chai';
 
 import { ClearGithubAccessTokenAction } from '@/infrastructure/redux/Settings/actions/ClearGithubAccessTokenAction';
@@ -8,10 +9,11 @@ describe('SetGithubAccessToken', () => {
     const action = ClearGithubAccessTokenAction();
     const state = SettingsReducer({
       github: {
-        accessToken: {
-          accessToken: 'dummy-access-token-24f45',
-          loading: true,
-          loaded: false,
+        accessToken: 'dummy-access-token-24f45',
+        user: {
+          loading: false,
+          loaded: true,
+          user: DummyUserEntity(),
         },
       },
     }, action);

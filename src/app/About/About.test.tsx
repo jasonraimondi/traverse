@@ -9,7 +9,6 @@ describe('<About />', () => {
   test('AboutTest', () => {
     const component = shallow(<About/>);
     const copyrightText = component.find('.copyright').text();
-    console.log(copyrightText);
-    // assert.isTrue(copyrightText.includes('2019'));
+    assert.isTrue(copyrightText.includes('2019'));
   });
 });

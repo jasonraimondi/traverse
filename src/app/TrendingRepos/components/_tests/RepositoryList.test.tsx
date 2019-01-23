@@ -16,7 +16,7 @@ describe('<RepositoryList />', () => {
       <RepositoryList
         handleStargazerClick={() => null}
         repositoryList={list}
-        emptyRepositoryList={'empty'}
+        emptyRepositoryList={() => <p>Empty</p>}
       />,
     );
     assert.lengthOf(component.find('li.repository-list-item'), 2);
