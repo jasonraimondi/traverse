@@ -1,3 +1,4 @@
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -7,9 +8,9 @@ import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 
 interface Props {
   handleStargazerClick(login: string): void;
-
   emptyRepositoryList?: JSX.Element;
   repositoryList: RepositoryEntity[];
+  lastUpdatedAt?: Date|null;
 }
 
 export class RepositoryList extends React.Component<Props> {
@@ -34,7 +35,12 @@ export class RepositoryList extends React.Component<Props> {
   }
 
   render() {
-    return <List id='repository-list'>{this.listItems}</List>;
+    return <List id='repository-list'>
+      {this.listItems}
+      {this.props.lastUpdatedAt ? (
+        <LastUpdated>Last Updated: <span>{this.props.lastUpdatedAt.toLocaleString()}</span></LastUpdated>
+      ) : null}
+    </List>;
   }
 }
 
@@ -46,4 +52,14 @@ const List = styled(UnstyledList)`
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
+  padding-bottom: 0;
+`;
+
+const LastUpdated = styled.p`
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.5rem 0;
+  background-color: ${themeConfig.colors['grey-lightest']};
 `;

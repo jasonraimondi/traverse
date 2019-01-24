@@ -27,7 +27,7 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/renderer/store/Trending/actions/SetLanguageListTypeAction';
-import { TrendingStore } from '@/renderer/store/Trending/Store';
+import { TrendingRepositoryListStore, TrendingStore } from '@/renderer/store/Trending/Store';
 
 interface Props {
   history: any;
@@ -126,12 +126,23 @@ class App extends React.Component<Props, State> {
     return this.props.trending.options.language;
   }
 
-  get trendingRepositoryList(): RepositoryEntity[] {
+  get lastUpdated(): Date {
+    return new Date();
+  }
+
+  get list(): TrendingRepositoryListStore|void {
     const {list} = this.props.trending;
     if (!list || !list[this.language.value] || !list[this.language.value][this.frequency]) {
+      return;
+    }
+    return list[this.language.value][this.frequency];
+  }
+
+  get trendingRepositoryList(): RepositoryEntity[] {
+    if (!this.list) {
       return [];
     }
-    return list[this.language.value][this.frequency].list || [];
+    return this.list.list;
   }
 
   render() {
@@ -156,6 +167,7 @@ class App extends React.Component<Props, State> {
         </LanguageListContainer>
         <RepoListContainer>
           <RepositoryList
+            lastUpdatedAt={this.list ? new Date(this.list.lastUpdated) : null}
             repositoryList={this.trendingRepositoryList}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={

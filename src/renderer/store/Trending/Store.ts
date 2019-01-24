@@ -4,12 +4,14 @@ import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { RemoteSource } from '@/renderer/store/Interfaces';
 
-interface TrendingRepositoryListStore {
+export interface TrendingRepositoryListStore {
+  lastUpdated: number;
+  list: RepositoryEntity[];
+}
+
+export interface TrendingRepositoryStore {
   [language: string]: {
-    [frequency: string]: {
-      lastUpdated: number,
-      list: RepositoryEntity[],
-    },
+    [frequency: string]: TrendingRepositoryListStore,
   };
 }
 
@@ -19,5 +21,5 @@ export interface TrendingStore extends RemoteSource {
     frequency: FrequencyType,
     list: ListType,
   };
-  list?: TrendingRepositoryListStore;
+  list?: TrendingRepositoryStore;
 }
