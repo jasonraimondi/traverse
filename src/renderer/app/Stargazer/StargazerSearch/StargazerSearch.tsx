@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { FormContainer, FormTitle, Label, Submit } from '@/renderer/app/elements/Form';
+import { FormContainer, FormTitle, Label, Submit } from '@/renderer/elements/Form';
 import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
-} from '@/renderer/infrastructure/redux/Stargazer/actions/AddUserToStargazerListAction';
+} from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
 
 interface MyFormValues {
   githubUsername: string;

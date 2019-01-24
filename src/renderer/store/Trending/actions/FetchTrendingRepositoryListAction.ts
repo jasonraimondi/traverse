@@ -1,5 +1,5 @@
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
 import { ILanguage } from '@/renderer/app/TrendingRepos/components/LanguageList';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
 import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';

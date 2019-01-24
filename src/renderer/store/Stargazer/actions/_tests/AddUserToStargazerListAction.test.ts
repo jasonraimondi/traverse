@@ -3,17 +3,17 @@ import { StargazerReducer } from '@/renderer/store/Stargazer/Reducer';
 import { assert } from 'chai';
 
 describe('StargazerReducer', () => {
-  test('ADD_USER_TO_STARGAZER_LIST_SUCCESS updates the stargazer list reducer properly', () => {
+  test('ADD_USER_TO_STARGAZER_LIST_SUCCESS updates the stargazer repositoryList reducer properly', () => {
     const action = AddUserToStargazerListAction('jasonraimondi');
     const stargazerList = StargazerReducer(undefined, action);
     assert.isTrue(stargazerList.userList.loading);
     assert.isFalse(stargazerList.userList.loaded);
   });
 
-  // test('ADD_USER_TO_STARGAZER_LIST_SUCCESS updates the stargazer list reducer properly', () => {
+  // test('ADD_USER_TO_STARGAZER_LIST_SUCCESS updates the stargazer repositoryList reducer properly', () => {
   //   const data = require('@/renderer/infrastructure/rest/_tests/responses/user-detail-success.json');
-  //   const list = UserEntity.fromResponse(data);
-  //   const action = AddUserToStargazerListSuccessAction(list);
+  //   const repositoryList = UserEntity.fromResponse(data);
+  //   const action = AddUserToStargazerListSuccessAction(repositoryList);
   //
   //   const stargazerList = StargazerReducer(undefined, action);
   //

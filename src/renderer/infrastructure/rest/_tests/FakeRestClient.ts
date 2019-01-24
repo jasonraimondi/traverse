@@ -18,6 +18,7 @@ export class FakeRestClient extends AxiosRestClient {
     this.mock.onGet('/search/repositories').reply(200, searchRepositoryData);
     this.mock.onGet('/users/jasonraimondi/starred').reply(200, listStarredData);
     this.mock.onGet('/users/jasonraimondi').reply(200, userDetailData);
+    this.mock.onGet('/user').reply(200, userDetailData);
   }
 
   get(path: string, queryParameters: any, headers: any = {}, timeout: number = 5000): AxiosPromise {

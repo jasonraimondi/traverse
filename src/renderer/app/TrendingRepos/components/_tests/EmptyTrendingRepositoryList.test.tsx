@@ -2,9 +2,9 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { FrequencyType } from '@/models/Frequency.type';
 import { EmptyTrendingRepositoryList } from '@/renderer/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import { ILanguage } from '@/renderer/app/TrendingRepos/components/LanguageList';
+import { FrequencyType } from '@/renderer/model/Frequency.type';
 
 describe('<EmptyTrendingRepositoryList />', () => {
   test('die roller passes click function up', () => {

@@ -9,6 +9,7 @@ import { composeEnhancers } from '@/environment';
 import { openLinkExternally } from '@/main/OpenLinkExternally';
 import App from '@/renderer/App';
 import { FlashMessages } from '@/renderer/app/FlashMessage/FlashMessages';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
 import { rootReducer } from '@/renderer/store/RootReducer';
 import rootSaga from '@/renderer/store/Saga';
 import { loadStateFromElectronSettings, saveStateToElectronSettings } from '@/renderer/store/StateToLocalStorage';
@@ -38,7 +39,7 @@ document.addEventListener('click', openLinkExternally, false);
 export default ReactDOM.render(
   <Provider store={store}>
     <>
-      <FlashMessages/>
+      <FlashMessages flash={flashMessage}/>
       <App/>
     </>
   </Provider>,

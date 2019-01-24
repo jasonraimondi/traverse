@@ -1,26 +1,25 @@
-import { EmptyTrendingRepositoryList } from '@/renderer/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { RepositoryList } from '@/renderer/app/elements/RepositoryList';
-import { formatRoute, Routes } from '@/renderer/app/Routes';
 import {
   EmptyStargazerRepositoryList,
-} from '@/renderer/app/Stargazer/StargazerList/StargazerRepositoryList/components/EmptyStargazerRepositoryList';
+} from '@/renderer/app/Stargazer/StargazerRepositoryList/components/EmptyStargazerRepositoryList';
 import { Icon } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
+import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
+import { formatRoute, Routes } from '@/renderer/Routes';
 import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
-} from '@/renderer/infrastructure/redux/Stargazer/actions/AddUserToStargazerListAction';
-import { ClearCurrentStargazerAction } from '@/renderer/infrastructure/redux/Stargazer/actions/ClearCurrentStargazerAction';
+} from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
+import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
 import {
   SetCurrentStargazerAction,
   SetCurrentStargazerActionType,
-} from '@/renderer/infrastructure/redux/Stargazer/actions/SetCurrentStargazerAction';
-import { StargazerStore } from '@/renderer/infrastructure/redux/Stargazer/Store';
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
+} from '@/renderer/store/Stargazer/actions/SetCurrentStargazerAction';
+import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
 interface Props {
   history: any;

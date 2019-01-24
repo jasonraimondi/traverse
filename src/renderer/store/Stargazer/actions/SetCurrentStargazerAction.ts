@@ -1,4 +1,6 @@
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
+import { RepositoryEntity } from '@/renderer/model/Repository.entity';
+import { UserEntity } from '@/renderer/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
 export const SET_CURRENT_STARGAZER = '[SET CURRENT_STARGAZER] set';
@@ -14,10 +16,15 @@ export const SetCurrentStargazerAction: SetCurrentStargazerActionType = (user) =
   };
 };
 
-export const SetCurrentStargazerSuccessAction = (currentStargazerReducer) => {
+export interface SetCurrentStargazerSuccessActionFields {
+  repositoryList: RepositoryEntity[];
+  user: UserEntity;
+}
+
+export const SetCurrentStargazerSuccessAction = (fields: SetCurrentStargazerSuccessActionFields) => {
   return {
     type: SET_CURRENT_STARGAZER_SUCCESS,
-    payload: currentStargazerReducer,
+    payload: fields,
   };
 };
 

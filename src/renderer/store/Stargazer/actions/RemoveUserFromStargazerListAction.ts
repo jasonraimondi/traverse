@@ -1,4 +1,4 @@
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
 export const REMOVE_USER_FROM_STARGAZER_LIST = '[CURRENT_STARGAZER LIST] remove user';

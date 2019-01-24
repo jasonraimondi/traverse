@@ -18,10 +18,7 @@ export function* FetchTrendingRepositoryListSaga() {
 
 function FetchTrendingRepositoryListApiCall(fields: FetchTrendingRepositoryListActionFields) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
-  const {github} = store.getState().settings;
-  if (github && github.accessToken && github.accessToken) {
-    githubService.accessToken = github.accessToken;
-  }
+  githubService.setAccessTokenFromStore();
   return githubService.search.forRepositories(fields.language.value, fields.frequency);
 }
 

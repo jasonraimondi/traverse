@@ -1,4 +1,4 @@
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 

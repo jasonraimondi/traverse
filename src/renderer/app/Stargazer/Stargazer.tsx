@@ -1,14 +1,15 @@
-import { Title, UnstyledList } from '@/renderer/app/elements/Base';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { formatRoute, Routes } from '@/renderer/app/Routes';
 import StargazerList from '@/renderer/app/Stargazer/StargazerList/StargazerList';
+import StargazerRepositoryList from '@/renderer/app/Stargazer/StargazerRepositoryList/StargazerRepositoryList';
 import StargazerSearch from '@/renderer/app/Stargazer/StargazerSearch/StargazerSearch';
-import { StargazerStore } from '@/renderer/infrastructure/redux/Stargazer/Store';
+import { Title, UnstyledList } from '@/renderer/elements/Base';
+import { formatRoute, Routes } from '@/renderer/Routes';
+import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
 interface Props {
   stargazer: StargazerStore;
@@ -34,6 +35,7 @@ class Stargazer extends React.Component<Props> {
         <Switch>
           <Route path={Routes.STARGAZER_SEARCH} exact component={StargazerSearch}/>
           <Route path={Routes.STARGAZER} component={StargazerList}/>
+          <Route path={Routes.STARGAZER_DETAIL} component={StargazerRepositoryList}/>
         </Switch>
       </Container>
     </>;

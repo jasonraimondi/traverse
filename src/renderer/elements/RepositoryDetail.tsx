@@ -82,7 +82,7 @@ export class RepositoryDetail extends React.Component<Props> {
       <Item className='repository-list-item'>
         <ItemHeader>
           <Links>
-            {false && this.repository.isUser ? (
+            {this.repository.isUser ? (
               <StargazerLink title={title} onClick={this.props.handleStargazerClick}>
                 {this.stargazerLink}
               </StargazerLink>

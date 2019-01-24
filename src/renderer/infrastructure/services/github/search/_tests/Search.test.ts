@@ -3,23 +3,17 @@ import * as dayjs from 'dayjs';
 import 'reflect-metadata';
 
 import { FakeRestClient } from '@/renderer/infrastructure/rest/_tests/FakeRestClient';
-import { GithubRestClient } from '@/renderer/infrastructure/rest/GithubRestClient';
-import { GithubService } from '@/renderer/infrastructure/services/github/GithubService';
 import { Search } from '@/renderer/infrastructure/services/github/search/Search';
 
 describe('Search Github Tests', () => {
-  let githubService: GithubService;
+  let search: Search;
 
   beforeEach(() => {
-    githubService = new GithubService(
-      new GithubRestClient(
-        FakeRestClient.create(),
-      ),
-    );
+    search = new Search(FakeRestClient.create());
   });
 
   test('github search for repositories', async () => {
-    const repositories = await githubService.search.forRepositories('typescript', 'weekly');
+    const repositories = await search.forRepositories('typescript', 'weekly');
 
     assert.strictEqual(repositories[0].id, 147137240);
     assert.strictEqual(repositories[0].attributes.name, 'redux-saga-starwars-react-native');

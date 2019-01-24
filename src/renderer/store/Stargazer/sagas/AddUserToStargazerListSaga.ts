@@ -9,13 +9,13 @@ import {
   AddUserToStargazerListSuccessAction,
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
 
-export function* addUserToStargazerListSaga() {
+export function* AddUserToStargazerListSaga() {
   yield takeEvery(ADD_USER_TO_STARGAZER_LIST, addUserToStargazerList);
 }
 
 function addUserToStargazerListApiCall(username: string) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
-  // githubService.accessToken = store.getState().accessToken;
+  githubService.setAccessTokenFromStore();
   return githubService.user.getUserDetail(username);
 }
 

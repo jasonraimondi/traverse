@@ -9,12 +9,12 @@ export function DummyRepositoryEntity(id?: number, attributes?: RepositoryEntity
   }
   if (!attributes) {
     attributes = {
-      description: faker.lorem.words,
+      description: faker.lorem.words(),
       language: 'TypeScript',
       owner: {
-        login: faker.internet.username,
-        htmlUrl: faker.internet.url,
-        avatarUrl: faker.image.imageUrl,
+        login: faker.internet.userName(),
+        htmlUrl: faker.internet.url(),
+        avatarUrl: faker.image.imageUrl(),
         type: faker.random.arrayElement('organization', 'user'),
       },
     };
@@ -28,9 +28,10 @@ export function DummyUserEntity(id?: number, attributes?: UserAttributes) {
   }
   if (!attributes) {
     attributes = {
-      name: faker.name.firstName + faker.name.lastName,
-      company: faker.company.companyName,
-      website: faker.internet.url,
+      name: faker.name.firstName() + faker.name.lastName(),
+      login: faker.internet.userName(),
+      company: faker.company.companyName(),
+      website: faker.internet.url(),
     } as UserAttributes;
   }
   return new UserEntity(id, attributes);

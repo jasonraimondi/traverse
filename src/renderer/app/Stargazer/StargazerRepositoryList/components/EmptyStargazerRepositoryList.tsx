@@ -5,9 +5,7 @@ export class EmptyStargazerRepositoryList extends React.Component {
   render() {
     return (
       <EmptyContainer>
-        <h4>
-          I didn't find any starred repos trending for that user.
-        </h4>
+        <h4>I didn't find any starred repos trending for that user.</h4>
       </EmptyContainer>
     );
   }

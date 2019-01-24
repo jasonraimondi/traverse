@@ -4,17 +4,17 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { Title } from '@/renderer/app/elements/Base';
 import { GithubAccessTokenForm } from '@/renderer/app/Settings/components/GithubAccessTokenForm';
+import { Title } from '@/renderer/elements/Base';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
-} from '@/renderer/infrastructure/redux/Settings/actions/ClearGithubAccessTokenAction';
+} from '@/renderer/store/Settings/actions/ClearGithubAccessTokenAction';
 import {
   SetGithubAccessTokenAction,
   SetGithubAccessTokenActionType,
-} from '@/renderer/infrastructure/redux/Settings/actions/SetGithubAccessTokenAction';
-import { SettingsStore } from '@/renderer/infrastructure/redux/Settings/Store';
+} from '@/renderer/store/Settings/actions/SetGithubAccessTokenAction';
+import { SettingsStore } from '@/renderer/store/Settings/Store';
 
 interface Props {
   settings: SettingsStore;

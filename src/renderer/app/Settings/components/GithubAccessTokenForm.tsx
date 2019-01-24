@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { FormContainer, FormTitle, Label, Submit } from '@/renderer/app/elements/Form';
+import { FormContainer, FormTitle, Label, Submit } from '@/renderer/elements/Form';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {

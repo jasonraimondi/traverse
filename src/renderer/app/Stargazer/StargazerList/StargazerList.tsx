@@ -4,7 +4,6 @@ import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { StargazerDetail } from '@/renderer/app/Stargazer/StargazerList/components/StargazerDetail';
-import StargazerRepositoryList from '@/renderer/app/Stargazer/StargazerList/StargazerRepositoryList/StargazerRepositoryList';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
@@ -59,13 +58,17 @@ class StargazerList extends React.Component<Props> {
   }
 
   get stargazerList() {
-    const userList = this.props.stargazer.userList[this.props.stargazer.currentUserLogin];
+    if (!this.props.stargazer.userList.list) {
+      return [];
+    }
+
+    const userList = Object.values(this.props.stargazer.userList.list);
+
     if (!userList) {
       return [];
     }
 
-    return userList[this.props.stargazer.currentUserLogin]
-      .map(
+    return userList.map(
         (user) => <StargazerDetail key={user.id}
                                    handleClickStargazer={() => this.handleSetStargazer(user)}
                                    handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
@@ -77,7 +80,6 @@ class StargazerList extends React.Component<Props> {
   render() {
     return <>
       {this.stargazerList.length ? this.stargazerList : 'No stargazers'}
-      <Route path={Routes.STARGAZER_DETAIL} component={StargazerRepositoryList}/>
     </>;
   }
 }

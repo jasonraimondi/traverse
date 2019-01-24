@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 export type Level = 'error' | 'success';
 
@@ -13,11 +13,14 @@ export interface FlashMessageList {
   [id: number]: FlashMessage;
 }
 
-class Flash {
-  readonly messageList$: BehaviorSubject<FlashMessageList>;
+export class FlashMessageService {
+  constructor(readonly messageList$: BehaviorSubject<FlashMessageList>) {
+  }
 
-  constructor(messageList: FlashMessageList = {}) {
-    this.messageList$ = new BehaviorSubject(messageList);
+  static create() {
+    return new FlashMessageService(
+      new BehaviorSubject<FlashMessageList>({}),
+    );
   }
 
   success(message: string, ttl?: number) {
@@ -55,4 +58,4 @@ class Flash {
   }
 }
 
-export const flashMessage = new Flash();
+export const flashMessage = FlashMessageService.create();

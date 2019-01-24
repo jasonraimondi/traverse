@@ -1,5 +1,5 @@
 import { ElectronSettingService } from '@/main/SettingsService';
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
+import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
 
 export const loadStateFromElectronSettings = () => {
   const serializedState = ElectronSettingService.get('state');

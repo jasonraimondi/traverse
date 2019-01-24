@@ -4,7 +4,7 @@ import { RemoteSource } from '@/renderer/store/Interfaces';
 
 export interface UserListStore extends RemoteSource {
   list?: {
-    [login: string]: UserEntity[];
+    [login: string]: UserEntity;
   };
 }
 
