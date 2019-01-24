@@ -5,7 +5,7 @@ import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListSuccessAction,
 } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
-import { TrendingReducer } from '@/renderer/store/Trending/Reducer';
+import { TRENDING_INITIAL_STATE, TrendingReducer } from '@/renderer/store/Trending/Reducer';
 
 describe('TrendingReducer', () => {
   test('FETCH_TRENDING_REPOSITORY_LIST', () => {
@@ -19,9 +19,14 @@ describe('TrendingReducer', () => {
   });
 
   test('FETCH_TRENDING_REPOSITORY_LIST_SUCCESS', () => {
-    const action = FetchTrendingRepositoryListSuccessAction({
+    const initialState = TRENDING_INITIAL_STATE;
+    initialState.options = {
+      ...initialState.options,
       language: {value: 'Assembly', title: 'Assembly'},
       frequency: 'monthly',
+    };
+    const action = FetchTrendingRepositoryListSuccessAction({
+      ...initialState.options,
       data: [
         DummyRepositoryEntity(),
         DummyRepositoryEntity(),

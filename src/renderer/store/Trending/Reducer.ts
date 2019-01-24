@@ -68,11 +68,6 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
       const {language, frequency, data} = action.payload;
       return {
         ...state,
-        options: {
-          ...state.options,
-          language,
-          frequency,
-        },
         loaded: true,
         loading: false,
         list: {
