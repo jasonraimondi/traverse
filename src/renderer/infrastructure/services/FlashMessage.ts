@@ -1,8 +1,9 @@
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 export type Level = 'error' | 'success';
 
 export interface FlashMessage {
+  id: number;
   message: string;
   level: Level;
   isSuccess: boolean;
@@ -31,30 +32,30 @@ export class FlashMessageService {
     this.flashMessage(message, 'error', ttl);
   }
 
+  remove(id: number): void {
+    const existing = this.messageList$.value;
+    delete existing[id];
+    this.messageList$.next(existing);
+  }
+
   private flashMessage(message: string, level: Level, ttl: number = 2750): void {
-    const randomId = this.addMessageToList({
+    const id = Date.now() + Math.floor(Math.random() * 10);
+    this.addMessageToList({
+      id,
       message,
       level,
       isSuccess: level === 'success',
       isError: level === 'error',
     });
-    setTimeout(() => this.removeMessageFromList(randomId), ttl);
+    setTimeout(() => this.remove(id), ttl);
   }
 
-  private addMessageToList(message: FlashMessage): number {
-    const randomId = Date.now() + Math.floor(Math.random() * 10);
+  private addMessageToList(message: FlashMessage): void {
     const messageList = {
       ...this.messageList$.value,
-      [randomId]: message,
+      [message.id]: message,
     };
     this.messageList$.next(messageList);
-    return randomId;
-  }
-
-  private removeMessageFromList(id: number): void {
-    const existing = this.messageList$.value;
-    delete existing[id];
-    this.messageList$.next(existing);
   }
 }
 

@@ -22,8 +22,16 @@ export class FlashMessages extends React.Component<Props, State> {
 
   get flashMessages() {
     return this.state.flashMessages.map((message, idx) => {
-      return <Message key={idx} className={`flash-message ${message.level}`}>{message.message}</Message>;
+      return <Message key={idx}
+                      onClick={() => this.dismiss(message.id)}
+                      className={`flash-message ${message.level}`}>
+        {message.message}
+      </Message>;
     });
+  }
+
+  dismiss(id: number): void {
+    this.props.flash.remove(id);
   }
 
   componentDidMount(): void {
