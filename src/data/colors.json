@@ -1,5 +1,8 @@
 {
   "transparent": "transparent",
+  "25": "rgba(16, 42, 67, 0.25)",
+  "50": "rgba(16, 42, 67, 0.5)",
+  "75": "rgba(16, 42, 67, 0.75)",
   "black": "#102A43",
   "grey-darkest": "#243B53",
   "grey-darker": "#486581",

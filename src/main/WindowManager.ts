@@ -1,4 +1,4 @@
-import { BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+import { BrowserWindow, BrowserWindowConstructorOptions, dialog, screen } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import * as merge from 'lodash.merge';
 import { join } from 'path';
@@ -11,8 +11,9 @@ export class WindowManager {
   private readonly DEFAULT_OPTIONS: BrowserWindowConstructorOptions = {
     title: 'Traverse',
     width: 600,
-    height: 600,
-    titleBarStyle: 'hiddenInset',
+    height: 900,
+    frame: false,
+    titleBarStyle: 'hidden',
     resizable: true,
     backgroundColor: '#22292f',
     minHeight: 400,
@@ -58,10 +59,16 @@ export class WindowManager {
 
   createMainWindow(options: BrowserWindowConstructorOptions = {}): BrowserWindow {
     const baseOptions = this.DEFAULT_OPTIONS;
+    const { height } = screen.getPrimaryDisplay().workAreaSize;
 
     if (this.lastWindow) {
       baseOptions.x = this.lastWindow.getBounds().x + 20;
       baseOptions.y = this.lastWindow.getBounds().y;
+    }
+
+    if (height > baseOptions.height) {
+      baseOptions.height = 900;
+      baseOptions.width = 700;
     }
 
     const windowOptions = merge(baseOptions, this.DEFAULT_OPTIONS, options);

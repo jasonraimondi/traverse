@@ -22,7 +22,9 @@ class App extends React.Component {
       <style>{iconStyles}</style>
       <Router>
         <Main>
-          <TitleContainer />
+          <TitleContainer>
+            <TitleHoverGrabber className='hover-to-move' />
+          </TitleContainer>
           <RouterOutlet>
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
@@ -40,15 +42,15 @@ class App extends React.Component {
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
               {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
-                       {/*activeClassName='selected'*/}
-                       {/*title='Starred'*/}
-                       {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
+              {/*activeClassName='selected'*/}
+              {/*title='Starred'*/}
+              {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
               {/*/>*/}
               {/*<NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}*/}
-                       {/*activeClassName='selected'*/}
-                       {/*title='Starred Search'*/}
-                       {/*className='small'*/}
-                       {/*dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}*/}
+              {/*activeClassName='selected'*/}
+              {/*title='Starred Search'*/}
+              {/*className='small'*/}
+              {/*dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}*/}
               {/*/>*/}
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        exact
@@ -89,12 +91,20 @@ const Main = styled.main`
 
 const TitleContainer = styled.div`
   grid-area: title;
+  z-index: 10;
+  height: ${themeConfig.sizes.topbarHeight};
+  background-color: ${themeConfig.colors.purple};
+  &:hover .hover-to-move {
+    background-color: ${themeConfig.colors['purple-dark']};
+  }
+`;
+
+const TitleHoverGrabber = styled.div`
+  display: block;
   -webkit-app-region: drag;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid ${themeConfig.colors.black};
+  height: 22px;
+  width: 100%;
+  transition: background-color 0.1s;
 `;
 
 const RouterOutlet = styled.div`

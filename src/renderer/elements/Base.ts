@@ -3,16 +3,13 @@ import styled from 'styled-components';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 export const Title = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   height: ${themeConfig.sizes.topbarHeight};
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${themeConfig.colors.white};
+  color: ${themeConfig.colors.black};
 `;
 
 export const UnstyledList = styled.ul`
@@ -25,6 +22,7 @@ export const Button = styled.button`
 `;
 
 export const PillButton = styled.button`
+  padding: 2px 8px;
   background-color: ${themeConfig.colors.white};
   border-radius: 999px;
   border: 2px solid ${themeConfig.colors.white};
@@ -33,7 +31,7 @@ export const PillButton = styled.button`
   color: ${themeConfig.colors.black};
   &:active, &:hover, &.selected {
     outline: none;
-    text-decoration: underline;
+    border-color: ${themeConfig.colors['green-dark']};
     color: ${themeConfig.colors['green-dark']};
   }
   &.disabled {
