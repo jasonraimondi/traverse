@@ -2,15 +2,15 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import { flashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
 import { FlashMessages } from '@/renderer/app/FlashMessage/FlashMessages';
+import { FlashMessageService } from '@/renderer/infrastructure/services/FlashMessage';
 
 describe('<FlashMessages />', () => {
   let component;
+  const flashMessage = FlashMessageService.create();
 
   beforeEach(() => {
-    flashMessage.messageList$.next({});
-    component = shallow(<FlashMessages/>);
+    component = shallow(<FlashMessages flash={flashMessage}/>);
   });
 
   test('error messages', (done) => {

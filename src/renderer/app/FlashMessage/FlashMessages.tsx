@@ -1,14 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { flashMessage, FlashMessage } from '@/renderer/app/FlashMessage/FlashMessage';
+import { FlashMessage, FlashMessageService } from '@/renderer/infrastructure/services/FlashMessage';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface State {
   flashMessages: FlashMessage[];
 }
 
-export class FlashMessages extends React.Component<{}, State> {
+interface Props {
+  flash: FlashMessageService;
+}
+
+export class FlashMessages extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +27,7 @@ export class FlashMessages extends React.Component<{}, State> {
   }
 
   componentDidMount(): void {
-    flashMessage.messageList$.subscribe((messages) => {
+    this.props.flash.messageList$.subscribe((messages) => {
       this.setState({
         flashMessages: Object.values(messages),
       });
@@ -59,6 +63,8 @@ const Container = styled.div`
     right: 0;
     height: ${themeConfig.sizes.topbarHeight};
     text-align: center;
+    animation-name: example;
+    animation-duration: 0.5s;
 `;
 
 const Message = styled.p`
