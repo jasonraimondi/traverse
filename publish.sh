@@ -11,6 +11,8 @@ if [ ! -f ./.env.sh ]; then
     exit 1
 fi
 
+rm -rf coverage/ dist/ dist-build/
+
 source ./.env.sh
 
 npm install
