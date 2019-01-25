@@ -49,10 +49,9 @@ class Settings extends React.Component<Props, State> {
       <SettingsContainer>
         <SettingsTitle>Settings</SettingsTitle>
         <GithubAccessTokenForm
-          title='Github Access Token'
-          small='Adding this will allow more API calls per minute. For those rapid dice roll sessions.'
-          formValue={this.accessToken}
-          handleSubmit={(accessToken: string) => this.props.SetGithubAccessTokenAction(accessToken)}
+          accessToken={this.accessToken}
+          handleSubmit={this.props.SetGithubAccessTokenAction}
+          handleClear={this.props.ClearGithubAccessTokenAction}
         />
       </SettingsContainer>
     </>;

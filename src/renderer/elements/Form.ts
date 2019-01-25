@@ -9,9 +9,20 @@ export const FormContainer = styled.div`
   padding: 0.35rem;
 `;
 
+export const Input = styled.input`
+  display: block;
+  max-width: 350px;
+  width: 100%;
+  margin: 7.5px 0 10px;
+`;
+
 export const Label = styled.label`
   display: block;
   font-size: 1rem;
+  & small {
+    display: block;
+    color: ${themeConfig.colors['grey-dark']};
+  }
 `;
 
 export const FormTitle = styled.h5`
