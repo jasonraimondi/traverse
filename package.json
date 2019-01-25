@@ -2,7 +2,7 @@
   "name": "traverse",
   "author": "Jason Raimondi <jason@raimondi.us>",
   "description": "Traverse is a GitHub explorer. You can browse repositories trending by frequency and language.",
-  "version": "0.10.5",
+  "version": "0.10.6",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
