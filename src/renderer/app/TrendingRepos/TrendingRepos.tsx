@@ -218,7 +218,7 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
+  height: 46px;
   border-bottom: 2px solid ${themeConfig.colors.black};
   background-color: ${themeConfig.colors.purple};
   & a:hover, button:hover {
