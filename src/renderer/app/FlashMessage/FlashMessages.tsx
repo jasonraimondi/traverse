@@ -44,7 +44,6 @@ export class FlashMessages extends React.Component<Props, State> {
 
   render() {
     return <>
-      <style>{animationStyle}</style>
       {this.state.flashMessages.length ? (
         <Container>{this.flashMessages}</Container>
       ) : null}
@@ -52,27 +51,14 @@ export class FlashMessages extends React.Component<Props, State> {
   }
 }
 
-const animationStyle = `
-    @-webkit-keyframes slideDown {
-        0%, 100% { -webkit-transform: translateY(-50px); }
-        10%, 90% { -webkit-transform: translateY(0px); }
-    }
-    @-moz-keyframes slideDown {
-        0%, 100% { -moz-transform: translateY(-50px); }
-        10%, 90% { -moz-transform: translateY(0px); }
-    }
-`;
-
 const Container = styled.div`
     position: absolute;
     z-index: 101;
     top: 0;
     left: 0;
     right: 0;
-    height: ${themeConfig.sizes.topbarHeight}px;
+    height: ${themeConfig.sizes.flashMessageHeight}px;
     text-align: center;
-    animation-name: example;
-    animation-duration: 0.5s;
 `;
 
 const Message = styled.p`

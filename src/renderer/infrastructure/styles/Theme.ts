@@ -7,6 +7,7 @@ class Theme {
   readonly sizes = {
     sidebarWidth: 140,
     topbarHeight: 22,
+    flashMessageHeight: 22 * 2,
     bottomNavHeight: 40,
     appDragHeight: 22,
   };
