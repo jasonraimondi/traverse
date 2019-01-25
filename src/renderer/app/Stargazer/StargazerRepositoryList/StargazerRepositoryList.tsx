@@ -122,19 +122,19 @@ const Close = styled.a`
   align-items: center;
   position: absolute;
   color: ${themeConfig.colors.white};
-  top: ${themeConfig.sizes.topbarHeight};
+  top: ${themeConfig.sizes.topbarHeight}px;
   left: 0;
-  bottom: ${themeConfig.sizes.bottomNavHeight};
+  bottom: ${themeConfig.sizes.bottomNavHeight}px;
   background-color: ${themeConfig.colors['grey-darker']};
-  right: calc(100% - ${themeConfig.sizes.sidebarWidth});
+  right: calc(100% - ${themeConfig.sizes.sidebarWidth}px);
 `;
 
 const StargazerDetail = styled.div`
   position: absolute;
-  top: ${themeConfig.sizes.topbarHeight};
-  bottom: ${themeConfig.sizes.bottomNavHeight};
+  top: ${themeConfig.sizes.topbarHeight}px;
+  bottom: ${themeConfig.sizes.bottomNavHeight}px;
   right: 0;
-  left: ${themeConfig.sizes.sidebarWidth};
+  left: ${themeConfig.sizes.sidebarWidth}px;
   background-color: rgba(255, 255, 255, 0.98);
   overflow-y: auto;
 `;

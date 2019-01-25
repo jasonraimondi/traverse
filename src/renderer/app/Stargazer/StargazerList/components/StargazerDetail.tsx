@@ -64,6 +64,6 @@ const Description = styled.div`
 `;
 
 const Avatar = styled.img`
-   width: ${themeConfig.sizes.sidebarWidth};
-   height: ${themeConfig.sizes.sidebarWidth};
+   width: ${themeConfig.sizes.sidebarWidth}px;
+   height: ${themeConfig.sizes.sidebarWidth}px;
 `;

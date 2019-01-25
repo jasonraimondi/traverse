@@ -5,9 +5,10 @@ class Theme {
   readonly screens = require('@/data/screens.json');
   readonly mediaQuery: ScreenSizesFunctions = mediaQueries(this.screens);
   readonly sizes = {
-    sidebarWidth: '140px',
-    topbarHeight: '25px',
-    bottomNavHeight: '40px',
+    sidebarWidth: 140,
+    topbarHeight: 22,
+    bottomNavHeight: 40,
+    appDragHeight: 22,
   };
 }
 

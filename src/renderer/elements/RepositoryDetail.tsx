@@ -148,7 +148,7 @@ const Language = styled.p`
 `;
 const Description = styled.p`
   overflow: hidden;
-  max-height: ${themeConfig.sizes.sidebarWidth};
+  max-height: ${themeConfig.sizes.sidebarWidth}px;
 `;
 const Bottom = styled.p`
   font-weight: 600;

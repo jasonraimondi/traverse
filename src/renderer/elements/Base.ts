@@ -4,7 +4,7 @@ import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 export const Title = styled.div`
   width: 100%;
-  height: ${themeConfig.sizes.topbarHeight};
+  height: ${themeConfig.sizes.topbarHeight}px;
   display: none;
   flex-direction: column;
   justify-content: center;

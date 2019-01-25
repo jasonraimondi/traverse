@@ -69,7 +69,7 @@ const Container = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    height: ${themeConfig.sizes.topbarHeight};
+    height: ${themeConfig.sizes.topbarHeight}px;
     text-align: center;
     animation-name: example;
     animation-duration: 0.5s;

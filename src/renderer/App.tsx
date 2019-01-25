@@ -82,7 +82,7 @@ const Main = styled.main`
     "title"
     "content"
     "bottom-nav";
-  grid-template-rows: ${themeConfig.sizes.topbarHeight} 1fr ${themeConfig.sizes.bottomNavHeight};
+  grid-template-rows: ${themeConfig.sizes.topbarHeight}px 1fr ${themeConfig.sizes.bottomNavHeight}px;
   overflow-wrap: normal;
   overflow-wrap: break-word;
   color: ${themeConfig.colors.black};
@@ -92,7 +92,7 @@ const Main = styled.main`
 const TitleContainer = styled.div`
   grid-area: title;
   z-index: 10;
-  height: ${themeConfig.sizes.topbarHeight};
+  height: ${themeConfig.sizes.topbarHeight}px;
   background-color: ${themeConfig.colors.purple};
   &:hover .hover-to-move {
     background-color: ${themeConfig.colors['purple-dark']};
@@ -102,7 +102,7 @@ const TitleContainer = styled.div`
 const TitleHoverGrabber = styled.div`
   display: block;
   -webkit-app-region: drag;
-  height: 22px;
+  height: ${themeConfig.sizes.appDragHeight}px;
   width: 100%;
   transition: background-color 0.1s;
 `;
