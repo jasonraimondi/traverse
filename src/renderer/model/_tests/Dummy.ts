@@ -9,6 +9,7 @@ export function DummyRepositoryEntity(id?: number, attributes?: RepositoryEntity
   }
   if (!attributes) {
     attributes = {
+      longName: `${faker.lorem.word()}/${faker.lorem.word()}`,
       description: faker.lorem.words(),
       language: 'TypeScript',
       owner: {
