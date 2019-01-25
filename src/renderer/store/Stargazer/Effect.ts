@@ -7,6 +7,7 @@ export function SetCurrentStargazerSuccessReducer(
   state: StargazerStore,
   action: ActionResponse<SetCurrentStargazerSuccessActionFields>,
 ) {
+  Object.freeze(state);
   const {user, repositoryList} = action.payload;
   return {
     ...state,

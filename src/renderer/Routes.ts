@@ -5,6 +5,7 @@ export const Routes = {
   SETTINGS: '/settings',
   ABOUT: '/about',
   STARGAZER: '/stargazer',
+  STARGAZER_SELF: '/stargazer/self',
   STARGAZER_SEARCH: '/stargazer/search',
   STARGAZER_DETAIL: '/stargazer/:login',
 };

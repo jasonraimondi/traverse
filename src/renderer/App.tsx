@@ -41,17 +41,23 @@ class App extends React.Component {
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
-              {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
-              {/*activeClassName='selected'*/}
-              {/*title='Starred'*/}
-              {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
-              {/*/>*/}
-              {/*<NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}*/}
-              {/*activeClassName='selected'*/}
-              {/*title='Starred Search'*/}
-              {/*className='small'*/}
-              {/*dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}*/}
-              {/*/>*/}
+              <NavLink to={formatRoute(Routes.STARGAZER)}
+              activeClassName='selected'
+              title='Starred'
+              dangerouslySetInnerHTML={{__html: this.iconStarred}}
+              />
+              <NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}
+                       activeClassName='selected'
+                       title='Starred Search'
+                       className='small'
+                       dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
+              />
+              <NavLink to={formatRoute(Routes.STARGAZER_SELF)}
+                       activeClassName='selected'
+                       title='Starred Self'
+                       className='small'
+                       dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
+              />
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        exact
                        activeClassName='selected'
