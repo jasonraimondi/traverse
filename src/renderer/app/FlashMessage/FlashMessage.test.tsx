@@ -7,17 +7,22 @@ import { FlashMessageService } from '@/renderer/infrastructure/services/FlashMes
 
 describe('<FlashMessages />', () => {
   let component;
-  const flashMessage = FlashMessageService.create();
+  let flashMessage;
 
   beforeEach(() => {
+    flashMessage = FlashMessageService.create();
     component = shallow(<FlashMessages flash={flashMessage}/>);
+  });
+
+  test('success messages', (done) => {
+    flashMessage.success('success 1', 50000);
+    assert.lengthOf(component.find('.success'), 1);
+    done();
   });
 
   test('error messages', (done) => {
     flashMessage.error('error 1', 50000);
     flashMessage.error('error 2', 50000);
-    flashMessage.success('success 1', 50000);
-    assert.lengthOf(component.find('.success'), 1);
     assert.lengthOf(component.find('.error'), 2);
     done();
   });

@@ -25,11 +25,11 @@ export class FlashMessageService {
   }
 
   success(message: string, ttl?: number) {
-    this.flashMessage(message, 'success', ttl);
+    this.flash(message, 'success', ttl);
   }
 
   error(message: string, ttl?: number) {
-    this.flashMessage(message, 'error', ttl);
+    this.flash(message, 'error', ttl);
   }
 
   remove(id: number): void {
@@ -38,7 +38,7 @@ export class FlashMessageService {
     this.messageList$.next(existing);
   }
 
-  private flashMessage(message: string, level: Level, ttl: number = 2750): void {
+  private flash(message: string, level: Level, ttl: number = 2750): void {
     const id = Date.now() + Math.floor(Math.random() * 10);
     this.addMessageToList({
       id,
