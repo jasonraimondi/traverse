@@ -1,6 +1,12 @@
+import { SettingsStore } from '@/renderer/store/Settings/Store';
+import { FetchTrendingRepositoryListAction } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
+import { SetFrequencyAction } from '@/renderer/store/Trending/actions/SetFrequencyAction';
+import { SetLanguageAction } from '@/renderer/store/Trending/actions/SetLanguageAction';
+import { SetLanguageListTypeAction } from '@/renderer/store/Trending/actions/SetLanguageListTypeAction';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
@@ -10,11 +16,19 @@ import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { formatRoute, Routes } from '@/renderer/Routes';
 
-class App extends React.Component {
+interface Props {
+  settings: SettingsStore;
+}
+
+class App extends React.Component<Props> {
   readonly iconHome = require('@/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/assets/icons/icon-cog.svg');
   readonly iconStarred = require('@/assets/icons/icon-star.svg');
   readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
+
+  get user() {
+    return this.props.settings.github && this.props.settings.github.user ? this.props.settings.github.user : false;
+  }
 
   render() {
     return <>
@@ -23,7 +37,7 @@ class App extends React.Component {
       <Router>
         <Main>
           <TitleContainer>
-            <TitleHoverGrabber className='hover-to-move' />
+            <TitleHoverGrabber className='hover-to-move'/>
           </TitleContainer>
           <RouterOutlet>
             <Switch>
@@ -42,9 +56,9 @@ class App extends React.Component {
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
               <NavLink to={formatRoute(Routes.STARGAZER)}
-              activeClassName='selected'
-              title='Starred'
-              dangerouslySetInnerHTML={{__html: this.iconStarred}}
+                       activeClassName='selected'
+                       title='Starred'
+                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
               />
               <NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}
                        activeClassName='selected'
@@ -52,12 +66,14 @@ class App extends React.Component {
                        className='small'
                        dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
               />
-              <NavLink to={formatRoute(Routes.STARGAZER_SELF)}
-                       activeClassName='selected'
-                       title='Starred Self'
-                       className='small'
-                       dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
-              />
+              {this.user ? (
+                <NavLink to={formatRoute(Routes.STARGAZER_SELF)}
+                         activeClassName='selected'
+                         title='Starred Self'
+                         className='small'
+                         dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
+                />
+              ) : null}
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        exact
                        activeClassName='selected'
@@ -200,4 +216,17 @@ const inputStyle = `
   }
 `;
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    settings: state.settings,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {},
+    dispatch,
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

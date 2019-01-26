@@ -14,17 +14,11 @@ import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
-import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
-import {
-  SetCurrentStargazerAction,
-  SetCurrentStargazerActionType,
-} from '@/renderer/store/Stargazer/actions/SetCurrentStargazerAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
 interface Props {
   history: any;
   stargazer: StargazerStore;
-  SetCurrentStargazerAction: SetCurrentStargazerActionType;
   AddUserToStargazerListAction: AddUserToStargazerListActionType;
   ClearCurrentStargazerAction: () => void;
 }
@@ -41,7 +35,7 @@ class StargazerRepositoryList extends React.Component<Props> {
   }
 
   handleStargazerClick(login: string) {
-    this.props.SetCurrentStargazerAction(login);
+    this.props.AddUserToStargazerListAction(login);
     this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login }));
   }
 
@@ -71,7 +65,7 @@ class StargazerRepositoryList extends React.Component<Props> {
         </TitleBar>
         <ScrollView>
           <RepositoryList
-            repositoryList={this.props.stargazer.repositoryList.list[this.props.stargazer.currentUserLogin]}
+            repositoryList={this.props.stargazer.list[this.props.stargazer.currentUserLogin].stargazerRepositoryList}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={<EmptyStargazerRepositoryList/>}
           />
@@ -148,8 +142,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      SetCurrentStargazerAction,
-      ClearCurrentStargazerAction,
       AddUserToStargazerListAction,
     },
     dispatch,

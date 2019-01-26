@@ -6,22 +6,15 @@ import { bindActionCreators } from 'redux';
 import { StargazerDetail } from '@/renderer/app/Stargazer/StargazerList/components/StargazerDetail';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
-import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
 import {
   RemoveUserFromStargazerListAction,
   RemoveUserFromStargazerListActionType,
 } from '@/renderer/store/Stargazer/actions/RemoveUserFromStargazerListAction';
-import {
-  SetCurrentStargazerAction,
-  SetCurrentStargazerActionType,
-} from '@/renderer/store/Stargazer/actions/SetCurrentStargazerAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
 interface Props {
   history: any;
   stargazer: StargazerStore;
-  SetCurrentStargazerAction: SetCurrentStargazerActionType;
-  ClearCurrentStargazerAction: () => void;
   RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
 }
 
@@ -43,13 +36,11 @@ class StargazerList extends React.Component<Props> {
 
   clearStargazerWhenNavigatingToList() {
     if (this.props.history.location.pathname === '/stargazer' && this.props.stargazer.currentUserLogin) {
-      this.props.ClearCurrentStargazerAction();
     }
   }
 
   handleSetStargazer(user: UserEntity) {
     const login = user.attributes.login;
-    this.props.SetCurrentStargazerAction(login);
     this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
   }
 
@@ -58,11 +49,11 @@ class StargazerList extends React.Component<Props> {
   }
 
   get stargazerList() {
-    if (!this.props.stargazer.userList.list) {
+    if (!this.props.stargazer.list) {
       return [];
     }
 
-    const userList = Object.values(this.props.stargazer.userList.list);
+    const userList = Object.values(this.props.stargazer.list).map((stargazer) => stargazer.user);
 
     if (!userList) {
       return [];
@@ -93,8 +84,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      SetCurrentStargazerAction,
-      ClearCurrentStargazerAction,
       RemoveUserFromStargazerListAction,
     },
     dispatch,

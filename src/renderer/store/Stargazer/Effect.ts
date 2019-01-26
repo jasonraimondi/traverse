@@ -1,45 +1,17 @@
-import { UserEntity } from '@/renderer/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
-import { SetCurrentStargazerSuccessActionFields } from '@/renderer/store/Stargazer/actions/SetCurrentStargazerAction';
+import { AddUserToStargazerListSuccessFields } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
-export function SetCurrentStargazerSuccessReducer(
-  state: StargazerStore,
-  action: ActionResponse<SetCurrentStargazerSuccessActionFields>,
-) {
-  Object.freeze(state);
-  const {user, repositoryList} = action.payload;
-  return {
-    ...state,
-    currentUserLogin: user.attributes.login,
-    repositoryList: {
-      ...state.repositoryList,
-      loaded: true,
-      loading: false,
-      list: {
-        ...(state.repositoryList.list ? state.repositoryList.list : {}),
-        [user.attributes.login]: repositoryList,
-      },
-    },
-  };
-}
-
 export function ClearCurrentStargazerReducer(state: StargazerStore, action) {
-  const {
-    currentUserLogin,
-    ...updatedState
-  } = state;
+  const {currentUserLogin, ...updatedState} = state;
   return updatedState;
 }
 
 export function AddUserToStargazerListReducer(state: StargazerStore, action) {
   return {
     ...state,
-    userList: {
-      ...state.userList,
-      loading: true,
-      loaded: false,
-    },
+    loading: true,
+    loaded: false,
   };
 }
 
@@ -47,28 +19,29 @@ export function RemoveUserFromStargazerListReducer(
   state: StargazerStore,
   action: ActionResponse<string>,
 ) {
-  const {list} = state.userList;
+  const {list} = state;
   if (list.hasOwnProperty(action.payload)) {
-    delete state.userList.list[action.payload];
+    delete state.list[action.payload];
   }
   return {...state};
 }
 
 export function AddUserToStargazerListSuccessReducer(
   state: StargazerStore,
-  action: ActionResponse<UserEntity>,
+  action: ActionResponse<AddUserToStargazerListSuccessFields>,
 ) {
-  const user = action.payload;
+  const {user, stargazerRepositoryList} = action.payload;
   return {
     ...state,
     currentUserLogin: user.attributes.login,
-    userList: {
-      ...state.userList,
-      loading: false,
-      loaded: true,
-      list: {
-        ...state.userList.list,
-        [user.attributes.login]: user,
+    loading: false,
+    loaded: true,
+    list: {
+      ...state.list,
+      [user.attributes.login]: {
+        ...state.list[user.attributes.login],
+        user,
+        stargazerRepositoryList,
       },
     },
   };

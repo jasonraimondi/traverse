@@ -7,7 +7,7 @@ export interface UserStore extends RemoteSource {
 
 export interface SettingsStore {
   github?: {
-    accessToken?: string;
+    accessToken: string;
     user: UserStore;
   };
 }

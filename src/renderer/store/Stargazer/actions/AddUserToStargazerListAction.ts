@@ -1,4 +1,5 @@
 import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
+import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
@@ -15,11 +16,15 @@ export const AddUserToStargazerListAction: AddUserToStargazerListActionType = (u
   };
 };
 
-export const AddUserToStargazerListSuccessAction = (user: UserEntity) => {
-  flashMessage.success('User Added');
+export interface AddUserToStargazerListSuccessFields {
+  user: UserEntity;
+  stargazerRepositoryList: RepositoryEntity[];
+}
+
+export const AddUserToStargazerListSuccessAction = (fields: AddUserToStargazerListSuccessFields) => {
   return {
     type: ADD_USER_TO_STARGAZER_LIST_SUCCESS,
-    payload: user,
+    payload: fields,
   };
 };
 

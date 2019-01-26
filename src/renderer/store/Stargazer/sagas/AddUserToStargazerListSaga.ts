@@ -13,17 +13,27 @@ export function* AddUserToStargazerListSaga() {
   yield takeEvery(ADD_USER_TO_STARGAZER_LIST, addUserToStargazerList);
 }
 
-function addUserToStargazerListApiCall(username: string) {
+function* addUserToStargazerList(action) {
+  try {
+    const user = yield call(fetchUserDetails, action.payload);
+    const stargazerRepositoryList = yield call(fetchStarredRepositoryList, action.payload);
+    yield put(AddUserToStargazerListSuccessAction({
+      user,
+      stargazerRepositoryList,
+    }));
+  } catch (error) {
+    yield put(AddUserToStargazerListFailureAction(error.message));
+  }
+}
+
+function fetchUserDetails(username: string) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
   githubService.setAccessTokenFromStore();
   return githubService.user.getUserDetail(username);
 }
 
-function* addUserToStargazerList(action) {
-  try {
-    const response = yield call(addUserToStargazerListApiCall, action.payload);
-    yield put(AddUserToStargazerListSuccessAction(response));
-  } catch (error) {
-    yield put(AddUserToStargazerListFailureAction(error.message));
-  }
+function fetchStarredRepositoryList(username: string) {
+  const githubService = container.get<GithubService>(TYPES.GithubService);
+  githubService.setAccessTokenFromStore();
+  return githubService.user.listStarred(username);
 }

@@ -10,8 +10,11 @@ describe('RemoveUserFromStargazerList', () => {
   test('REMOVE_USER_FROM_STARGAZER_LIST updates the stargazer repositoryList reducer properly', () => {
     const action = RemoveUserFromStargazerListAction('jasonraimondi');
     const initialState = STARGAZER_INITIAL_STATE;
-    initialState.userList.list = {
-      jasonraimondi: DummyUserEntity(),
+    initialState.list = {
+      jasonraimondi: {
+        user: DummyUserEntity(),
+        stargazerRepositoryList: [],
+      },
     };
     const stargazerList = StargazerReducer(initialState, action);
 

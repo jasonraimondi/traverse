@@ -8,14 +8,9 @@ describe('StargazerReducer', () => {
     const actual = StargazerReducer(undefined, action);
 
     const initialState = {
-      userList: {
-        loaded: false,
-        loading: false,
-      },
-      repositoryList: {
-        loaded: false,
-        loading: false,
-      },
+      loaded: false,
+      loading: false,
+      list: {},
     };
     assert.deepStrictEqual(actual, initialState);
   });

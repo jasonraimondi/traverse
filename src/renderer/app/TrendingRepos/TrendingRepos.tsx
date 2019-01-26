@@ -14,10 +14,6 @@ import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import {
-  SetCurrentStargazerAction,
-  SetCurrentStargazerActionType,
-} from '@/renderer/store/Stargazer/actions/SetCurrentStargazerAction';
-import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListActionType,
 } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
@@ -36,7 +32,6 @@ interface Props {
   SetFrequencyAction: SetFrequencyActionType;
   SetLanguageListTypeAction: SetLanguageListTypeActionType;
   FetchTrendingRepositoryListAction: FetchTrendingRepositoryListActionType;
-  SetCurrentStargazerAction: SetCurrentStargazerActionType;
 }
 
 interface State {
@@ -88,7 +83,6 @@ class App extends React.Component<Props, State> {
   }
 
   handleStargazerClick(login: string) {
-    this.props.SetCurrentStargazerAction(login);
     this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
   }
 
@@ -196,7 +190,6 @@ function mapDispatchToProps(dispatch) {
       SetFrequencyAction,
       FetchTrendingRepositoryListAction,
       SetLanguageListTypeAction,
-      SetCurrentStargazerAction,
     },
     dispatch,
   );

@@ -7,7 +7,7 @@ import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 
 interface Props {
-  handleStargazerClick(login: string): void;
+  handleStargazerClick?: (login: string) => void;
   emptyRepositoryList?: JSX.Element;
   repositoryList: RepositoryEntity[];
   lastUpdatedAt?: Date|null;
