@@ -21,7 +21,7 @@ interface Props {
   AddUserToStargazerListAction: AddUserToStargazerListActionType;
 }
 
-class StargazerSelf extends React.Component<Props> {
+class Myself extends React.Component<Props> {
   get user() {
     if (this.props.settings.github
       && this.props.settings.github.user
@@ -89,4 +89,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StargazerSelf);
+export default connect(mapStateToProps, mapDispatchToProps)(Myself);

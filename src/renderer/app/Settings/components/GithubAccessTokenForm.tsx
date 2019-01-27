@@ -34,10 +34,11 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   }
 
   render() {
+    const accessToken = this.props.accessToken ? this.props.accessToken : '';
     return <FormContainer>
       <Formik
         enableReinitialize
-        initialValues={{accessToken: this.props.accessToken}}
+        initialValues={{accessToken}}
         validate={(values: any) => {
           const errors: any = {};
           if (!values.accessToken) {
@@ -61,7 +62,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
               Github Access Token
               <small>Adding this will allow more API calls per minute. For those rapid dice roll sessions.</small>
               <Error>
-                {!this.props.accessToken && errors.accessToken && touched.accessToken && errors.accessToken}
+                {!accessToken && errors.accessToken && touched.accessToken && errors.accessToken}
               </Error>
               <Input
                 type='text'
@@ -71,7 +72,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
                 value={values.accessToken}
               />
             </Label>
-            {this.props.accessToken ? <Clear onClick={this.handleClear}>Clear</Clear> : (
+            {accessToken ? <Clear onClick={this.handleClear}>Clear</Clear> : (
               <Submit type='submit' disabled={isSubmitting}>
                 Submit
               </Submit>

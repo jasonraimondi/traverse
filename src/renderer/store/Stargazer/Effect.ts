@@ -2,11 +2,6 @@ import { ActionResponse } from '@/renderer/store/Interfaces';
 import { AddUserToStargazerListSuccessFields } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
-export function ClearCurrentStargazerReducer(state: StargazerStore, action) {
-  const {currentUserLogin, ...updatedState} = state;
-  return updatedState;
-}
-
 export function AddUserToStargazerListReducer(state: StargazerStore, action) {
   return {
     ...state,

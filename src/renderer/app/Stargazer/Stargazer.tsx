@@ -1,4 +1,3 @@
-import StargazerSelf from '@/renderer/app/Stargazer/StargazerSelf/StargazerSelf';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
@@ -29,16 +28,15 @@ class Stargazer extends React.Component<Props> {
     return <>
       <Title>{this.title}</Title>
       <Container>
-        <UnstyledList>
-          <li><Link to={formatRoute(Routes.STARGAZER)}>List</Link></li>
-          <li><Link to={formatRoute(Routes.STARGAZER_SEARCH)}>Search</Link></li>
-          <li><Link to={formatRoute(Routes.STARGAZER_SELF)}>Search</Link></li>
-        </UnstyledList>
+        {/*<UnstyledList>*/}
+          {/*<li><Link to={formatRoute(Routes.STARGAZER)}>List</Link></li>*/}
+          {/*<li><Link to={formatRoute(Routes.STARGAZER_SEARCH)}>Search</Link></li>*/}
+          {/*<li><Link to={formatRoute(Routes.STARGAZER_SELF)}>Search</Link></li>*/}
+        {/*</UnstyledList>*/}
         <Switch>
           <Route path={Routes.STARGAZER_SEARCH} exact component={StargazerSearch}/>
-          <Route path={Routes.STARGAZER_SELF} component={StargazerSelf}/>
+          <Route path={Routes.STARGAZER_DETAIL} component={() => <p>I AM STARGAZER</p>}/>
           <Route path={Routes.STARGAZER} component={StargazerList}/>
-          <Route path={Routes.STARGAZER_DETAIL} component={StargazerRepositoryList}/>
         </Switch>
       </Container>
     </>;

@@ -1,3 +1,5 @@
+import { FormContainer } from '@/renderer/elements/Form';
+import { SettingsStore } from '@/renderer/store/Settings/Store';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
@@ -15,6 +17,7 @@ import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 interface Props {
   history: any;
   stargazer: StargazerStore;
+  settings: SettingsStore;
   RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
 }
 
@@ -59,17 +62,20 @@ class StargazerList extends React.Component<Props> {
       return [];
     }
 
-    return userList.map(
-        (user) => <StargazerDetail key={user.id}
-                                   handleClickStargazer={() => this.handleSetStargazer(user)}
-                                   handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
-                                   user={user}
-        />,
-      );
+    return userList.map((user) => {
+      const isCurrentUser = this.props.settings.github && this.props.settings.github.user.login === user.attributes.login;
+      return <StargazerDetail key={user.id}
+                              isLocked={isCurrentUser}
+                              handleClickStargazer={() => this.handleSetStargazer(user)}
+                              handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
+                              user={user}
+      />;
+    });
   }
 
   render() {
     return <>
+      <h1>Stargazer List</h1>
       {this.stargazerList.length ? this.stargazerList : 'No stargazers'}
     </>;
   }
@@ -78,6 +84,7 @@ class StargazerList extends React.Component<Props> {
 function mapStateToProps(state) {
   return {
     stargazer: state.stargazer,
+    settings: state.settings,
   };
 }
 

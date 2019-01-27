@@ -6,8 +6,11 @@ import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { UserEntity } from '@/renderer/model/User.entity';
 
 interface Props {
+  isLocked: boolean;
   user: UserEntity;
+
   handleClickStargazer(): void;
+
   handleRemoveStargazer(): void;
 }
 
@@ -15,7 +18,7 @@ export class StargazerDetail extends React.Component<Props> {
   readonly iconClear = require('@/assets/icons/icon-close-circle.svg');
 
   render() {
-    const { user } = this.props;
+    const {user} = this.props;
     return <>
       <Item>
         <Avatar className='avatar'
@@ -27,11 +30,16 @@ export class StargazerDetail extends React.Component<Props> {
           <Name>
             {user.attributes.name}
             <CloseIcon onClick={this.props.handleRemoveStargazer}
-                  title='All Languages'
-                  dangerouslySetInnerHTML={{ __html: this.iconClear }}
+                       className={this.props.isLocked ? 'hidden' : null}
+                       title='All Languages'
+                       dangerouslySetInnerHTML={{__html: this.iconClear}}
             />
           </Name>
-          <p>{user.attributes.company}</p>
+          <p>
+            {user.attributes.location}
+            <br/>{user.attributes.company}
+            <br/>{user.attributes.email}
+          </p>
         </Description>
       </Item>
     </>;

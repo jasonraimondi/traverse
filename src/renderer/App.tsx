@@ -1,3 +1,4 @@
+import Myself from '@/renderer/app/Myself/Myself';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
 import { FetchTrendingRepositoryListAction } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
 import { SetFrequencyAction } from '@/renderer/store/Trending/actions/SetFrequencyAction';
@@ -25,6 +26,7 @@ class App extends React.Component<Props> {
   readonly iconSettings = require('@/assets/icons/icon-cog.svg');
   readonly iconStarred = require('@/assets/icons/icon-star.svg');
   readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
+  readonly iconStarredSelf = require('@/assets/icons/icon-user-circle.svg');
 
   get user() {
     return this.props.settings.github && this.props.settings.github.user ? this.props.settings.github.user : false;
@@ -45,6 +47,7 @@ class App extends React.Component<Props> {
               <Route path={Routes.STARGAZER} component={Stargazer}/>
               <Route path={Routes.SETTINGS} component={Settings}/>
               <Route path={Routes.ABOUT} component={About}/>
+              <Route path={Routes.MYSELF} exact component={Myself}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
@@ -55,23 +58,22 @@ class App extends React.Component<Props> {
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
-              <NavLink to={formatRoute(Routes.STARGAZER)}
-                       activeClassName='selected'
-                       title='Starred'
-                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
-              />
-              <NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}
-                       activeClassName='selected'
-                       title='Starred Search'
-                       className='small'
-                       dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
-              />
+              {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
+                       {/*activeClassName='selected'*/}
+                       {/*title='Starred'*/}
+                       {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
+              {/*/>*/}
+              {/*<NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}*/}
+                       {/*activeClassName='selected'*/}
+                       {/*title='Starred Search'*/}
+                       {/*className='small'*/}
+                       {/*dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}*/}
+              {/*/>*/}
               {this.user ? (
-                <NavLink to={formatRoute(Routes.STARGAZER_SELF)}
+                <NavLink to={formatRoute(Routes.MYSELF)}
                          activeClassName='selected'
-                         title='Starred Self'
-                         className='small'
-                         dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}
+                         title='Myself'
+                         dangerouslySetInnerHTML={{__html: this.iconStarredSelf}}
                 />
               ) : null}
               <NavLink to={formatRoute(Routes.SETTINGS)}

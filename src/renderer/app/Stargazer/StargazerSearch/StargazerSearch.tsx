@@ -1,7 +1,8 @@
+import { formatRoute, Routes } from '@/renderer/Routes';
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, Switch, withRouter } from 'react-router-dom';
+import { Link, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { FormContainer, FormTitle, Label, Submit } from '@/renderer/elements/Form';
@@ -19,6 +20,7 @@ interface State {
 }
 
 interface Props {
+  history: Router;
   AddUserToStargazerListAction: AddUserToStargazerListActionType;
 }
 
@@ -34,10 +36,12 @@ class StargazerSearch extends React.Component<Props, State> {
   onSubmitSearch(values: MyFormValues) {
     this.props.AddUserToStargazerListAction(values.githubUsername);
     this.setState({ formValue: '' });
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, { login: values.githubUsername}));
   }
 
   render() {
     return <FormContainer>
+      <h1>Stargazer Search</h1>
       <Formik
         initialValues={{
           githubUsername: this.state.formValue,

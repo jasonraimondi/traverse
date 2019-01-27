@@ -15,7 +15,7 @@ export const SetGithubAccessTokenAction: SetGithubAccessTokenActionType = (acces
   };
 };
 
-interface SetGithubAccessTokenSuccessFields {
+export interface SetGithubAccessTokenSuccessFields {
   token: string;
   user: UserEntity;
 }

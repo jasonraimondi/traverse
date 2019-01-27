@@ -3,6 +3,7 @@ import { RemoteSource } from '@/renderer/store/Interfaces';
 
 export interface UserStore extends RemoteSource {
   user?: UserEntity;
+  login?: string;
 }
 
 export interface SettingsStore {

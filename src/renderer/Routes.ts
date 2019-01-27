@@ -4,8 +4,8 @@ export const Routes = {
   TRENDING: '/',
   SETTINGS: '/settings',
   ABOUT: '/about',
+  MYSELF: '/me',
   STARGAZER: '/stargazer',
-  STARGAZER_SELF: '/stargazer/self',
   STARGAZER_SEARCH: '/stargazer/search',
   STARGAZER_DETAIL: '/stargazer/:login',
 };
