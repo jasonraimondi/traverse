@@ -67,6 +67,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
               <Input
                 type='text'
                 name='accessToken'
+                disabled={!!accessToken}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.accessToken}
