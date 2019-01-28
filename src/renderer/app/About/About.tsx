@@ -17,10 +17,10 @@ export class About extends React.Component {
             <Icon src='../resources/icon.png' alt='Traverse Icon'/>
             Traverse
             <br/>
-            <OpenSource href='https://github.com/jasonraimondi/traverse' className='open-link-externally'>
-              Traverse is Open Source
-            </OpenSource>
             <Version>v{remote && remote.app ? remote.app.getVersion() : 'DEV'}</Version>
+            <OpenSource href='https://github.com/jasonraimondi/traverse' className='open-link-externally'>
+              view source
+            </OpenSource>
           </TraverseTitle>
           <DonateTitle>Beer Me</DonateTitle>
           <Donation walletType='Ether' address='0x13EcA749be300C1951bD6E9d86bB395e2734BE20'/>
