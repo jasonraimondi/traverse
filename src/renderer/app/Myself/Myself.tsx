@@ -62,15 +62,25 @@ class Myself extends React.Component<Props> {
       <UserContainer>
         <UserProfile user={this.user} />
       </UserContainer>
-      <RepositoryList repositoryList={ this.repositoryList }
-      />
+      <RepositoryContainer>
+        <RepositoryList repositoryList={ this.repositoryList }/>
+      </RepositoryContainer>
     </>;
   }
 }
 
 const UserContainer = styled.div`
   width: 100%;
-  background-color: ${themeConfig.colors.white}
+  background-color: ${themeConfig.colors['grey-lightest']}
+`;
+
+const RepositoryContainer = styled.div`
+  width: 100%;
+  background-color: ${themeConfig.colors['grey-lightest']}
+  & ul {
+    background-color: ${themeConfig.colors['grey-lightest']}
+    border-top: 1px solid ${themeConfig.colors.black};
+  }
 `;
 
 function mapStateToProps(state) {
