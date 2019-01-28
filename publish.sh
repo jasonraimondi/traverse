@@ -18,6 +18,7 @@ rm -rf coverage/ dist/ dist-build/
 source ./.env.sh
 
 npm install
+npm run clean
 npm run test
 npm run webpack:prod
 npm run electron:publish
