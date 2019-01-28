@@ -23,7 +23,7 @@ export const baseConfig: Configuration = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         enforce: 'pre',
         use: [
           {
@@ -32,7 +32,7 @@ export const baseConfig: Configuration = {
               emitErrors: false,
               failOnHint: true,
               typeCheck: false,
-              // fix: true,
+              fix: devMode,
               tsConfigFile: projectRoot + '/tsconfig.json',
             },
           },
