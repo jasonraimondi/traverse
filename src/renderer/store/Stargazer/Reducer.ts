@@ -2,10 +2,12 @@ import {
   ADD_USER_TO_STARGAZER_LIST,
   ADD_USER_TO_STARGAZER_LIST_SUCCESS,
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
+import { CLEAR_CURRENT_STARGAZER } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
 import { REMOVE_USER_FROM_STARGAZER_LIST } from '@/renderer/store/Stargazer/actions/RemoveUserFromStargazerListAction';
 import {
   AddUserToStargazerListReducer,
   AddUserToStargazerListSuccessReducer,
+  ClearCurrentStargazerReducer,
   RemoveUserFromStargazerListReducer,
 } from '@/renderer/store/Stargazer/Effect';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
@@ -18,6 +20,8 @@ export const STARGAZER_INITIAL_STATE: StargazerStore = {
 
 export const StargazerReducer = (state = STARGAZER_INITIAL_STATE, action): StargazerStore => {
   switch (action.type) {
+    case CLEAR_CURRENT_STARGAZER:
+      return ClearCurrentStargazerReducer(state);
     case ADD_USER_TO_STARGAZER_LIST:
       return AddUserToStargazerListReducer(state, action);
     case ADD_USER_TO_STARGAZER_LIST_SUCCESS:

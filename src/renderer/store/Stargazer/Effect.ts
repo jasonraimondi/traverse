@@ -10,6 +10,14 @@ export function AddUserToStargazerListReducer(state: StargazerStore, action) {
   };
 }
 
+export function ClearCurrentStargazerReducer(state: StargazerStore) {
+  const {
+    currentUserLogin,
+    ...storeWithout
+  } = state;
+  return storeWithout;
+}
+
 export function RemoveUserFromStargazerListReducer(
   state: StargazerStore,
   action: ActionResponse<string>,

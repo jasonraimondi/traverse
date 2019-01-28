@@ -1,5 +1,3 @@
-import { FormContainer } from '@/renderer/elements/Form';
-import { SettingsStore } from '@/renderer/store/Settings/Store';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
@@ -8,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import { StargazerDetail } from '@/renderer/app/Stargazer/StargazerList/components/StargazerDetail';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
+import { SettingsStore } from '@/renderer/store/Settings/Store';
+import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
 import {
   RemoveUserFromStargazerListAction,
   RemoveUserFromStargazerListActionType,
@@ -18,6 +18,7 @@ interface Props {
   history: any;
   stargazer: StargazerStore;
   settings: SettingsStore;
+  ClearCurrentStargazerAction(): void;
   RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
 }
 
@@ -39,6 +40,7 @@ class StargazerList extends React.Component<Props> {
 
   clearStargazerWhenNavigatingToList() {
     if (this.props.history.location.pathname === '/stargazer' && this.props.stargazer.currentUserLogin) {
+      this.props.ClearCurrentStargazerAction();
     }
   }
 
@@ -63,7 +65,9 @@ class StargazerList extends React.Component<Props> {
     }
 
     return userList.map((user) => {
-      const isCurrentUser = this.props.settings.github && this.props.settings.github.user.login === user.attributes.login;
+      const isCurrentUser = this.props.settings.github
+        && this.props.settings.github.user.login === user.attributes.login;
+
       return <StargazerDetail key={user.id}
                               isLocked={isCurrentUser}
                               handleClickStargazer={() => this.handleSetStargazer(user)}
@@ -91,6 +95,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
+      ClearCurrentStargazerAction,
       RemoveUserFromStargazerListAction,
     },
     dispatch,
