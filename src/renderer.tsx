@@ -26,9 +26,9 @@ export const store = createStore(
 
 store.subscribe(() => {
   saveStateToElectronSettings({
-    trending: store.getState().trending,
-    // stargazer: store.getState().stargazer,
     settings: store.getState().settings,
+    stargazer: store.getState().stargazer,
+    trending: store.getState().trending,
   });
 });
 

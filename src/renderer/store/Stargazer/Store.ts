@@ -8,8 +8,10 @@ export interface StargazerDetailStore {
 }
 
 export interface StargazerStore extends RemoteSource {
-  currentUserLogin?: string;
-  list: {
+  stargazerList: {
+    [login: string]: UserEntity;
+  };
+  repositoryList: {
     [login: string]: StargazerDetailStore,
   };
 }

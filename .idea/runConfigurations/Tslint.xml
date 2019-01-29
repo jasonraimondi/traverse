@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tslint" type="BashConfigurationType" factoryName="Bash">
+    <module name="react-typescript" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="INTERPRETER_PATH" value="" />
+    <option name="PROJECT_INTERPRETER" value="true" />
+    <option name="WORKING_DIRECTORY" value="" />
+    <option name="PARENT_ENVS" value="true" />
+    <option name="SCRIPT_NAME" value="tslint" />
+    <option name="PARAMETERS" value="--fix -p ." />
+    <method v="2" />
+  </configuration>
+</component>

@@ -14,7 +14,10 @@ import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
-import { ClearCurrentStargazerAction } from '@/renderer/store/Stargazer/actions/ClearCurrentStargazerAction';
+import {
+  FetchUserStarredRepositoryListAction,
+  FetchUserStarredRepositoryListActionType,
+} from '@/renderer/store/Stargazer/actions/FetchUserStarredRepositoryListAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
 
 interface Props {
@@ -22,7 +25,7 @@ interface Props {
   history: any;
   stargazer: StargazerStore;
   AddUserToStargazerListAction: AddUserToStargazerListActionType;
-  ClearCurrentStargazerAction(): void;
+  FetchUserStarredRepositoryListAction: FetchUserStarredRepositoryListActionType;
 }
 
 class StargazerShow extends React.Component<Props> {
@@ -37,11 +40,11 @@ class StargazerShow extends React.Component<Props> {
   }
 
   componentDidMount(): void {
-    this.props.AddUserToStargazerListAction(this.currentUserLogin);
+    this.props.FetchUserStarredRepositoryListAction(this.currentUserLogin);
   }
 
   handleStargazerClick(login: string) {
-    this.props.AddUserToStargazerListAction(login);
+    this.props.FetchUserStarredRepositoryListAction(login);
     this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
   }
 
@@ -50,7 +53,6 @@ class StargazerShow extends React.Component<Props> {
   }
 
   handleStargazerClear() {
-    this.props.ClearCurrentStargazerAction();
     this.props.history.push(formatRoute(Routes.STARGAZER));
   }
 
@@ -59,11 +61,11 @@ class StargazerShow extends React.Component<Props> {
   }
 
   get repositoryList() {
-    if (this.props.stargazer.list
-      && this.props.stargazer.list[this.currentUserLogin]
-      && this.props.stargazer.list[this.currentUserLogin].stargazerRepositoryList
+    if (this.props.stargazer.repositoryList
+      && this.props.stargazer.repositoryList[this.currentUserLogin]
+      && this.props.stargazer.repositoryList[this.currentUserLogin].stargazerRepositoryList
     ) {
-      return this.props.stargazer.list[this.currentUserLogin].stargazerRepositoryList;
+      return this.props.stargazer.repositoryList[this.currentUserLogin].stargazerRepositoryList;
     }
     return [];
   }
@@ -147,7 +149,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       AddUserToStargazerListAction,
-      ClearCurrentStargazerAction,
+      FetchUserStarredRepositoryListAction,
     },
     dispatch,
   );

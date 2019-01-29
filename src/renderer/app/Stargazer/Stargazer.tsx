@@ -21,7 +21,7 @@ class Stargazer extends React.Component<Props> {
   }
 
   get title() {
-    return this.stargazer.currentUserLogin ? `${this.stargazer.currentUserLogin}'s Starred Repos` : 'Stargazer List';
+    return 'Starred Repos';
   }
 
   render() {

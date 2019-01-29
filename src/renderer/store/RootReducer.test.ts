@@ -5,8 +5,8 @@ import { SETTINGS_INITIAL_STATE } from '@/renderer/store/Settings/Reducer';
 import { STARGAZER_INITIAL_STATE } from '@/renderer/store/Stargazer/Reducer';
 import { TRENDING_INITIAL_STATE } from '@/renderer/store/Trending/Reducer';
 
-describe('SetGithubAccessToken', () => {
-  test('CLEAR_ACCESS_TOKEN updates the accessToken reducer properly', () => {
+describe('RootReducer', () => {
+  test('root reducer initial state', () => {
     const state = rootReducer({
       trending: TRENDING_INITIAL_STATE,
       stargazer: STARGAZER_INITIAL_STATE,

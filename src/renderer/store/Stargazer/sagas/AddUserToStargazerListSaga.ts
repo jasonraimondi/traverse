@@ -16,11 +16,7 @@ export function* AddUserToStargazerListSaga() {
 function* addUserToStargazerList(action) {
   try {
     const user = yield call(fetchUserDetails, action.payload);
-    const stargazerRepositoryList = yield call(fetchStarredRepositoryList, action.payload);
-    yield put(AddUserToStargazerListSuccessAction({
-      user,
-      stargazerRepositoryList,
-    }));
+    yield put(AddUserToStargazerListSuccessAction(user));
   } catch (error) {
     yield put(AddUserToStargazerListFailureAction(error.message));
   }
@@ -30,10 +26,4 @@ function fetchUserDetails(username: string) {
   const githubService = container.get<GithubService>(TYPES.GithubService);
   githubService.setAccessTokenFromStore();
   return githubService.user.getUserDetail(username);
-}
-
-function fetchStarredRepositoryList(username: string) {
-  const githubService = container.get<GithubService>(TYPES.GithubService);
-  githubService.setAccessTokenFromStore();
-  return githubService.user.listStarred(username);
 }

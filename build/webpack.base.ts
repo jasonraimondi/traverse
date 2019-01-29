@@ -32,7 +32,6 @@ export const baseConfig: Configuration = {
               emitErrors: false,
               failOnHint: true,
               typeCheck: false,
-              fix: devMode,
               tsConfigFile: projectRoot + '/tsconfig.json',
             },
           },
