@@ -25,7 +25,7 @@ class App extends React.Component<Props> {
   readonly iconHome = require('@/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/assets/icons/icon-cog.svg');
   readonly iconStarred = require('@/assets/icons/icon-star.svg');
-  // readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
+  readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
   readonly iconStarredSelf = require('@/assets/icons/icon-user-circle.svg');
 
   get user() {
@@ -58,17 +58,11 @@ class App extends React.Component<Props> {
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
-              {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
-                       {/*activeClassName='selected'*/}
-                       {/*title='Starred'*/}
-                       {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
-              {/*/>*/}
-              {/*<NavLink to={formatRoute(Routes.STARGAZER_SEARCH)}*/}
-                       {/*activeClassName='selected'*/}
-                       {/*title='Starred Search'*/}
-                       {/*className='small'*/}
-                       {/*dangerouslySetInnerHTML={{__html: this.iconStarredSearch}}*/}
-              {/*/>*/}
+              <NavLink to={formatRoute(Routes.STARGAZER)}
+                       activeClassName='selected'
+                       title='Starred'
+                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
+              />
               {this.user ? (
                 <NavLink to={formatRoute(Routes.MYSELF)}
                          activeClassName='selected'
