@@ -1,6 +1,6 @@
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { UserEntity } from '@/renderer/model/User.entity';
-import { RemoteSource } from '@/renderer/store/Interfaces';
+import { RemoteSource, TrackUpdateSource } from '@/renderer/store/Interfaces';
 
 export interface StargazerDetailStore {
   user: UserEntity;
@@ -9,9 +9,9 @@ export interface StargazerDetailStore {
 
 export interface StargazerStore extends RemoteSource {
   stargazerList: {
-    [login: string]: UserEntity;
+    [login: string]: TrackUpdateSource<UserEntity>;
   };
   repositoryList: {
-    [login: string]: StargazerDetailStore,
+    [login: string]: TrackUpdateSource<StargazerDetailStore>,
   };
 }

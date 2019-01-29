@@ -1,3 +1,4 @@
+import { TrendingStore } from '@/renderer/store/Trending/Store';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -23,7 +24,6 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/renderer/store/Trending/actions/SetLanguageListTypeAction';
-import { TrendingRepositoryListStore, TrendingStore } from '@/renderer/store/Trending/Store';
 
 interface Props {
   history: any;

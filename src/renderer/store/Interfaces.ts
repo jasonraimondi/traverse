@@ -8,3 +8,8 @@ export interface RemoteSource {
   loading: boolean;
   error?: string;
 }
+
+export interface TrackUpdateSource<T = any> {
+  lastUpdated: number;
+  data: T;
+}

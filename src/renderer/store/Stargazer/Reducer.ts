@@ -1,10 +1,6 @@
-import { ActionResponse } from '@/renderer/store/Interfaces';
 import {
   SET_GITHUB_ACCESS_TOKEN_SUCCESS,
-  SetGithubAccessTokenSuccessFields,
 } from '@/renderer/store/Settings/actions/SetGithubAccessTokenAction';
-import { SetGithubAccessTokenSuccessReducer } from '@/renderer/store/Settings/Effect';
-import { SettingsStore } from '@/renderer/store/Settings/Store';
 import {
   ADD_USER_TO_STARGAZER_LIST,
   ADD_USER_TO_STARGAZER_LIST_SUCCESS,

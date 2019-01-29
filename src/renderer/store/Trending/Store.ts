@@ -2,16 +2,11 @@ import { ILanguage } from '@/renderer/app/TrendingRepos/components/LanguageList'
 import { ListType } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
 import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
-import { RemoteSource } from '@/renderer/store/Interfaces';
-
-export interface TrendingRepositoryListStore {
-  lastUpdated: number;
-  list: RepositoryEntity[];
-}
+import { RemoteSource, TrackUpdateSource } from '@/renderer/store/Interfaces';
 
 export interface TrendingRepositoryStore {
   [language: string]: {
-    [frequency: string]: TrendingRepositoryListStore,
+    [frequency: string]: TrackUpdateSource<RepositoryEntity[]>,
   };
 }
 

@@ -33,7 +33,10 @@ export function AddUserToStargazerListSuccessReducer(
     ...state,
     stargazerList: {
       ...state.stargazerList,
-      [action.payload.attributes.login]: action.payload,
+      [action.payload.attributes.login]: {
+        lastUpdated: Date.now(),
+        data: action.payload,
+      },
     },
     loading: false,
     loaded: true,
@@ -53,9 +56,11 @@ export function FetchUserStarredRepositoryListSuccessReducer(
     repositoryList: {
       ...state.repositoryList,
       [login]: {
-        ...state.repositoryList[login],
-        user,
-        stargazerRepositoryList,
+        lastUpdated: Date.now(),
+        data: {
+          user,
+          stargazerRepositoryList,
+        },
       },
     },
   };
@@ -70,7 +75,10 @@ export function SetAuthUserStargazerSuccessReducer(
   return {
     ...state,
     stargazerList: {
-      [user.attributes.login]: user,
+      [user.attributes.login]: {
+        lastUpdated: Date.now(),
+        data: user,
+      },
       ...state.stargazerList,
     },
   };
