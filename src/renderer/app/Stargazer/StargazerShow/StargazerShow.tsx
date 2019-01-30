@@ -63,9 +63,9 @@ class StargazerShow extends React.Component<Props> {
   get repositoryList() {
     if (this.props.stargazer.repositoryList
       && this.props.stargazer.repositoryList[this.currentUserLogin]
-      && this.props.stargazer.repositoryList[this.currentUserLogin].stargazerRepositoryList
+      && this.props.stargazer.repositoryList[this.currentUserLogin].data
     ) {
-      return this.props.stargazer.repositoryList[this.currentUserLogin].stargazerRepositoryList;
+      return this.props.stargazer.repositoryList[this.currentUserLogin].data.stargazerRepositoryList;
     }
     return [];
   }

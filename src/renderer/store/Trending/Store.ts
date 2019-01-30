@@ -16,5 +16,5 @@ export interface TrendingStore extends RemoteSource {
     frequency: FrequencyType,
     list: ListType,
   };
-  list?: TrendingRepositoryStore;
+  repositoryList: TrendingRepositoryStore;
 }

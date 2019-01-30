@@ -18,6 +18,6 @@ describe('<LanguageList />', () => {
       handleSetLanguage={HANDLE_SET_LANGUAGE}
     />);
 
-    assert.lengthOf(component.find('li.language-list-item'), 304);
+    assert.lengthOf(component.find('li.language-selectedTrend-item'), 304);
   });
 });

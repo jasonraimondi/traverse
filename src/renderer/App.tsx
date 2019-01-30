@@ -1,9 +1,5 @@
 import Myself from '@/renderer/app/Myself/Myself';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
-import { FetchTrendingRepositoryListAction } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
-import { SetFrequencyAction } from '@/renderer/store/Trending/actions/SetFrequencyAction';
-import { SetLanguageAction } from '@/renderer/store/Trending/actions/SetLanguageAction';
-import { SetLanguageListTypeAction } from '@/renderer/store/Trending/actions/SetLanguageListTypeAction';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';

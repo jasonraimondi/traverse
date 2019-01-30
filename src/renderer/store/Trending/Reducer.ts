@@ -20,6 +20,7 @@ export const TRENDING_INITIAL_STATE: TrendingStore = {
   },
   loading: false,
   loaded: false,
+  repositoryList: {},
 };
 
 function FetchTrendingRepositoryListReducer(action: ActionResponse<FetchTrendingRepositoryListActionFields>, state) {
@@ -70,13 +71,13 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
         ...state,
         loaded: true,
         loading: false,
-        list: {
-          ...state.list,
+        repositoryList: {
+          ...state.repositoryList,
           [language.value]: {
-            ...(state.list ? state.list[language.value] : {}),
+            ...(state.repositoryList ? state.repositoryList[language.value] : {}),
             [frequency]: {
               lastUpdated: Date.now(),
-              list: data,
+              data,
             },
           },
         },

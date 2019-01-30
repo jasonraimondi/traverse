@@ -35,6 +35,6 @@ describe('TrendingReducer', () => {
     const repositoryStore = TrendingReducer(undefined, action);
     assert.strictEqual(repositoryStore.options.language.value, 'Assembly');
     assert.strictEqual(repositoryStore.options.frequency, 'monthly');
-    assert.lengthOf(repositoryStore.list.Assembly.monthly.data, 2);
+    assert.lengthOf(repositoryStore.repositoryList.Assembly.monthly.data, 2);
   });
 });

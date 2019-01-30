@@ -18,6 +18,7 @@ describe('StargazerReducer', () => {
       },
       loading: false,
       loaded: false,
+      repositoryList: {},
     };
   });
 

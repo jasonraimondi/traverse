@@ -48,7 +48,7 @@ describe('<TrendingRepos />', () => {
     assert.strictEqual(app.find('.language').first().text(), 'TypeScript');
   });
 
-  test('selecting frequency runs set action and fetch repository list action', () => {
+  test('selecting frequency runs set action and fetch repository selectedTrend action', () => {
     store.clearActions();
     app.find('button#select-monthly').simulate('click');
     const frequency = 'monthly';
@@ -59,10 +59,10 @@ describe('<TrendingRepos />', () => {
     }));
   });
 
-  test('selecting language runs set action and fetch repository list action', () => {
+  test('selecting language runs set action and fetch repository selectedTrend action', () => {
     store.clearActions();
 
-    app.find('li.language-list-item button').at(2).simulate('click');
+    app.find('li.language-selectedTrend-item button').at(2).simulate('click');
 
     const language = {
       value: 'CSharp',

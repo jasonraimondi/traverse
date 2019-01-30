@@ -19,9 +19,10 @@ export class RepositoryList extends React.Component<Props> {
   static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
 
   get listItems() {
-    if (this.props.repositoryList.length === 0 && this.props.emptyRepositoryList) {
-      return this.props.emptyRepositoryList;
-    }
+    console.log(this.props);
+    // if (this.props.repositoryList.length === 0 && this.props.emptyRepositoryList) {
+    //   return this.props.emptyRepositoryList;
+    // }
 
     return this.props.repositoryList.map((repository, idx) => {
       const {owner} = repository.attributes;

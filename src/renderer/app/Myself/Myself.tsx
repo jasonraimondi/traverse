@@ -45,9 +45,9 @@ class Myself extends React.Component<Props> {
     if (
       this.login
       && this.props.stargazer.repositoryList[this.login]
-      && this.props.stargazer.repositoryList[this.login].stargazerRepositoryList
+      && this.props.stargazer.repositoryList[this.login].data.stargazerRepositoryList
     ) {
-      return this.props.stargazer.repositoryList[this.login].stargazerRepositoryList;
+      return this.props.stargazer.repositoryList[this.login].data.stargazerRepositoryList;
     }
 
     return [];
@@ -55,15 +55,15 @@ class Myself extends React.Component<Props> {
 
   render() {
     if (!this.user) {
-      return <Redirect to={formatRoute(Routes.STARGAZER)} />;
+      return <Redirect to={formatRoute(Routes.STARGAZER)}/>;
     }
 
     return <>
       <UserContainer>
-        <UserProfile user={this.user} />
+        <UserProfile user={this.user}/>
       </UserContainer>
       <RepositoryContainer>
-        <RepositoryList repositoryList={ this.repositoryList }/>
+        <RepositoryList repositoryList={this.repositoryList}/>
       </RepositoryContainer>
     </>;
   }

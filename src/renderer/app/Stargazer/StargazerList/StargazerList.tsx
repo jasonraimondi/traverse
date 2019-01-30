@@ -41,7 +41,7 @@ class StargazerList extends React.Component<Props> {
       return [];
     }
 
-    const userList = Object.values(this.props.stargazer.stargazerList).map((stargazer) => stargazer);
+    const userList = Object.values(this.props.stargazer.stargazerList).map((stargazer) => stargazer.data);
 
     if (!userList) {
       return [];

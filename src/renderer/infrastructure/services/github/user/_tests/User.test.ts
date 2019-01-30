@@ -11,7 +11,7 @@ describe('fetch user self', () => {
     user = new User(FakeRestClient.create());
   });
 
-  test('github list starred repositories', async () => {
+  test('github selectedTrend starred repositories', async () => {
     const users = await user.listStarred('jasonraimondi');
     assert.strictEqual(users[0].id, 94367677);
     assert.strictEqual(users[0].attributes.name, 'formik');

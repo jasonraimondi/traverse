@@ -27,10 +27,10 @@ function* FetchTrendingRepositoryList(action: ActionResponse<FetchTrendingReposi
   const trending = store.getState().trending;
   const updateCheck = 1000 * 60 * 5; // five minutes
 
-  const hasBeenUpdatedRecently = trending.list
-    && trending.list[language.value]
-    && trending.list[language.value][frequency]
-    && Date.now() - trending.list[language.value][frequency].lastUpdated < updateCheck;
+  const hasBeenUpdatedRecently = trending.repositoryList
+    && trending.repositoryList[language.value]
+    && trending.repositoryList[language.value][frequency]
+    && Date.now() - trending.repositoryList[language.value][frequency].lastUpdated < updateCheck;
 
   if (hasBeenUpdatedRecently) {
     return;

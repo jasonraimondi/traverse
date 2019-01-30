@@ -1,4 +1,3 @@
-import { TrendingStore } from '@/renderer/store/Trending/Store';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,6 +13,7 @@ import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
+import { TrackUpdateSource } from '@/renderer/store/Interfaces';
 import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListActionType,
@@ -24,6 +24,7 @@ import {
   SetLanguageListTypeAction,
   SetLanguageListTypeActionType,
 } from '@/renderer/store/Trending/actions/SetLanguageListTypeAction';
+import { TrendingStore } from '@/renderer/store/Trending/Store';
 
 interface Props {
   history: any;
@@ -120,23 +121,19 @@ class App extends React.Component<Props, State> {
     return this.props.trending.options.language;
   }
 
-  get lastUpdated(): Date {
-    return new Date();
-  }
-
-  get list(): TrendingRepositoryListStore|void {
-    const {list} = this.props.trending;
-    if (!list || !list[this.language.value] || !list[this.language.value][this.frequency]) {
-      return;
+  get selectedTrend(): TrackUpdateSource<RepositoryEntity[]> | false {
+    const {repositoryList} = this.props.trending;
+    if (repositoryList
+      && repositoryList[this.language.value]
+      && repositoryList[this.language.value][this.frequency]
+    ) {
+      return repositoryList[this.language.value][this.frequency];
     }
-    return list[this.language.value][this.frequency];
+    return false;
   }
 
   get trendingRepositoryList(): RepositoryEntity[] {
-    if (!this.list) {
-      return [];
-    }
-    return this.list.list;
+    return this.selectedTrend ? this.selectedTrend.data : [];
   }
 
   render() {
@@ -161,7 +158,7 @@ class App extends React.Component<Props, State> {
         </LanguageListContainer>
         <RepoListContainer>
           <RepositoryList
-            lastUpdatedAt={this.list ? new Date(this.list.lastUpdated) : null}
+            lastUpdatedAt={this.selectedTrend ? new Date(this.selectedTrend.lastUpdated) : null}
             repositoryList={this.trendingRepositoryList}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={
