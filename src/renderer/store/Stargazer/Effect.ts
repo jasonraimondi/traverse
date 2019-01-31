@@ -1,4 +1,4 @@
-import { UserEntity } from '@/renderer/model/User.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 import { SetGithubAccessTokenSuccessFields } from '@/renderer/store/Settings/actions/SetGithubAccessTokenAction';
 import {

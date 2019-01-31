@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 
-import { RepositoryEntity, RepositoryEntityAttributes } from '@/renderer/model/Repository.entity';
-import { UserAttributes, UserEntity } from '@/renderer/model/User.entity';
+import { RepositoryEntity, RepositoryEntityAttributes } from '@/renderer/infrastructure/model/Repository.entity';
+import { UserAttributes, UserEntity } from '@/renderer/infrastructure/model/User.entity';
 
 export function DummyRepositoryEntity(id?: number, attributes?: RepositoryEntityAttributes) {
   if (!id) {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { PillButton, UnstyledList } from '@/renderer/elements/Base';
-import { FrequencyType } from '@/renderer/model/Frequency.type';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
 
 interface Props {
   frequency: FrequencyType;

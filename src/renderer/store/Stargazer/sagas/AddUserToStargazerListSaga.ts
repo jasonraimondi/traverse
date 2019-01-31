@@ -10,10 +10,10 @@ import {
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
 
 export function* AddUserToStargazerListSaga() {
-  yield takeEvery(ADD_USER_TO_STARGAZER_LIST, addUserToStargazerList);
+  yield takeEvery(ADD_USER_TO_STARGAZER_LIST, saga);
 }
 
-function* addUserToStargazerList(action) {
+function* saga(action) {
   try {
     const user = yield call(fetchUserDetails, action.payload);
     yield put(AddUserToStargazerListSuccessAction(user));

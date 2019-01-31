@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { DummyRepositoryEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyRepositoryEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListSuccessAction,

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
-import { DummyRepositoryEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyRepositoryEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 
 describe('<RepositoryList />', () => {
   test('Repository List', () => {

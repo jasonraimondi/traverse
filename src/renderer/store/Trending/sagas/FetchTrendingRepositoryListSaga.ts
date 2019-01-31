@@ -1,6 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { store } from '@/renderer';
 import container from '@/renderer/infrastructure/container/InversifyContainer';
 import TYPES from '@/renderer/infrastructure/container/Types';
 import { GithubService } from '@/renderer/infrastructure/services/github/GithubService';
@@ -8,31 +7,22 @@ import { ActionResponse } from '@/renderer/store/Interfaces';
 import {
   FETCH_TRENDING_REPOSITORY_LIST,
   FetchTrendingRepositoryListActionFields,
-  FetchTrendingRepositoryListFailureAction,
+  FetchTrendingRepositoryListFailureAction, FetchTrendingRepositoryListNoActionRequired,
   FetchTrendingRepositoryListSuccessAction,
 } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
+import { TrendingLastUpdated } from '@/renderer/store/Trending/LastUpdated';
 
 export function* FetchTrendingRepositoryListSaga() {
-  yield takeEvery(FETCH_TRENDING_REPOSITORY_LIST, FetchTrendingRepositoryList);
+  yield takeEvery(FETCH_TRENDING_REPOSITORY_LIST, saga);
 }
 
-function FetchTrendingRepositoryListApiCall(fields: FetchTrendingRepositoryListActionFields) {
-  const githubService = container.get<GithubService>(TYPES.GithubService);
-  githubService.setAccessTokenFromStore();
-  return githubService.search.forRepositories(fields.language.value, fields.frequency);
-}
+function* saga(action: ActionResponse<FetchTrendingRepositoryListActionFields>) {
+  const { language, frequency } = action.payload;
 
-function* FetchTrendingRepositoryList(action: ActionResponse<FetchTrendingRepositoryListActionFields>) {
-  const {language, frequency} = action.payload;
-  const trending = store.getState().trending;
-  const updateCheck = 1000 * 60 * 5; // five minutes
-
-  const hasBeenUpdatedRecently = trending.repositoryList
-    && trending.repositoryList[language.value]
-    && trending.repositoryList[language.value][frequency]
-    && Date.now() - trending.repositoryList[language.value][frequency].lastUpdated < updateCheck;
+  const { hasBeenUpdatedRecently } = TrendingLastUpdated(language, frequency);
 
   if (hasBeenUpdatedRecently) {
+    yield put(FetchTrendingRepositoryListNoActionRequired());
     return;
   }
 
@@ -46,4 +36,10 @@ function* FetchTrendingRepositoryList(action: ActionResponse<FetchTrendingReposi
   } catch (error) {
     yield put(FetchTrendingRepositoryListFailureAction(error.message));
   }
+}
+
+function FetchTrendingRepositoryListApiCall(fields: FetchTrendingRepositoryListActionFields) {
+  const githubService = container.get<GithubService>(TYPES.GithubService);
+  githubService.setAccessTokenFromStore();
+  return githubService.search.forRepositories(fields.language.value, fields.frequency);
 }

@@ -1,7 +1,7 @@
 import { ActionResponse } from '@/renderer/store/Interfaces';
 import {
   FETCH_TRENDING_REPOSITORY_LIST,
-  FETCH_TRENDING_REPOSITORY_LIST_FAILURE,
+  FETCH_TRENDING_REPOSITORY_LIST_FAILURE, FETCH_TRENDING_REPOSITORY_LIST_NO_ACTION,
   FETCH_TRENDING_REPOSITORY_LIST_SUCCESS, FetchTrendingRepositoryListActionFields,
 } from '@/renderer/store/Trending/actions/FetchTrendingRepositoryListAction';
 import { SET_FREQUENCY } from '@/renderer/store/Trending/actions/SetFrequencyAction';
@@ -81,6 +81,12 @@ export const TrendingReducer = (state = TRENDING_INITIAL_STATE, action): Trendin
             },
           },
         },
+      };
+    case FETCH_TRENDING_REPOSITORY_LIST_NO_ACTION:
+      return {
+        ...state,
+        loaded: true,
+        loading: false,
       };
     case FETCH_TRENDING_REPOSITORY_LIST_FAILURE:
       return {

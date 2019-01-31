@@ -1,4 +1,4 @@
-import { FrequencyType } from '@/renderer/model/Frequency.type';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
 export const SET_FREQUENCY = '[FREQUENCY] Set';

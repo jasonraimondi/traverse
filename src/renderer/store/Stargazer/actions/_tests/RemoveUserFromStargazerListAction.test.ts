@@ -1,4 +1,4 @@
-import { DummyUserEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyUserEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 import { assert } from 'chai';
 
 import {
@@ -7,7 +7,7 @@ import {
 import { STARGAZER_INITIAL_STATE, StargazerReducer } from '@/renderer/store/Stargazer/Reducer';
 
 describe('RemoveUserFromStargazerList', () => {
-  test('REMOVE_USER_FROM_STARGAZER_LIST updates the stargazer repositoryList reducer properly', () => {
+  test('REMOVE_USER_FROM_STARGAZER_LIST updates the stargazer stargazerRepositoryList reducer properly', () => {
     const action = RemoveUserFromStargazerListAction('jasonraimondi');
     const initialState = STARGAZER_INITIAL_STATE;
     initialState.repositoryList = {

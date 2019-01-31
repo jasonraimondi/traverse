@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
-import { DummyRepositoryEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyRepositoryEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 
 describe('<Repository />', () => {
   test('displays selectedTrend items', () => {

@@ -1,7 +1,7 @@
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { RestClientInterface } from '@/renderer/infrastructure/rest/AxiosRestClient';
 import { Order } from '@/renderer/infrastructure/services/github/search/Search';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
-import { UserEntity } from '@/renderer/model/User.entity';
 
 type StarredRepositorySort = 'created';
 

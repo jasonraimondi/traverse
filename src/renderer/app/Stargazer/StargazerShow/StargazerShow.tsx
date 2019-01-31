@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import {
-  EmptyStargazerRepositoryList,
-} from '@/renderer/app/Stargazer/StargazerShow/components/EmptyStargazerRepositoryList';
 import { Icon } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { UserStarredRepositoryList } from '@/renderer/elements/UserStarredRepositoryList';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import {
@@ -60,14 +57,27 @@ class StargazerShow extends React.Component<Props> {
     return this.props.match.params.login;
   }
 
-  get repositoryList() {
+  get stargazerData() {
     if (this.props.stargazer.repositoryList
       && this.props.stargazer.repositoryList[this.currentUserLogin]
-      && this.props.stargazer.repositoryList[this.currentUserLogin].data
-    ) {
-      return this.props.stargazer.repositoryList[this.currentUserLogin].data.stargazerRepositoryList;
+      && this.props.stargazer.repositoryList[this.currentUserLogin].data) {
+      return this.props.stargazer.repositoryList[this.currentUserLogin].data;
     }
-    return [];
+    return false;
+  }
+
+  get stargazerUser() {
+    if (this.stargazerData === false) {
+      return null;
+    }
+    return this.stargazerData.user;
+  }
+
+  get stargazerRepositoryList() {
+    if (this.stargazerData === false) {
+      return [];
+    }
+    return this.stargazerData.stargazerRepositoryList;
   }
 
   render() {
@@ -84,11 +94,12 @@ class StargazerShow extends React.Component<Props> {
           />
         </TitleBar>
         <ScrollView>
-          <RepositoryList
-            loading={this.props.stargazer.loading}
-            repositoryList={this.repositoryList}
+          <UserStarredRepositoryList
             handleStargazerClick={this.handleStargazerClick}
-            emptyRepositoryList={<EmptyStargazerRepositoryList/>}
+            isLoading={this.props.stargazer.loading}
+            user={this.stargazerUser}
+            repositoryList={this.stargazerRepositoryList}
+            FetchUserStarredRepositoryListAction={this.props.FetchUserStarredRepositoryListAction}
           />
         </ScrollView>
       </StargazerDetail>

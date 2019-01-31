@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { FrequencyType } from '@/renderer/model/Frequency.type';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
 import { SetFrequencyAction } from '@/renderer/store/Trending/actions/SetFrequencyAction';
 import { TrendingReducer } from '@/renderer/store/Trending/Reducer';
 

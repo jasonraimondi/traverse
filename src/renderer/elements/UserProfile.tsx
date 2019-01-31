@@ -1,4 +1,4 @@
-import { UserEntity } from '@/renderer/model/User.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import * as React from 'react';
 import styled from 'styled-components';
 

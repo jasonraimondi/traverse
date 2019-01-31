@@ -1,8 +1,8 @@
 import * as dayjs from 'dayjs';
 
+import { FrequencyType, frequencyTypeDate } from '@/renderer/infrastructure/model/Frequency.type';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { AxiosRestClient, RestClientInterface } from '@/renderer/infrastructure/rest/AxiosRestClient';
-import { FrequencyType, frequencyTypeDate } from '@/renderer/model/Frequency.type';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 
 export type SearchRepositorySort = 'stars' | 'forks' | 'updated';
 export type Order = 'asc' | 'desc';

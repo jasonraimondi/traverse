@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import { UnstyledList } from '@/renderer/elements/Base';
 import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 
 interface Props {
   loading: boolean;
-  handleStargazerClick?: (login: string) => void;
+  handleStargazerClick: (login: string) => void;
   emptyRepositoryList?: JSX.Element;
   repositoryList: RepositoryEntity[];
   lastUpdatedAt?: Date|null;

@@ -1,10 +1,11 @@
 import { ILanguage } from '@/renderer/app/TrendingRepos/components/LanguageList';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
-import { FrequencyType } from '@/renderer/model/Frequency.type';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
 export const FETCH_TRENDING_REPOSITORY_LIST = '[TRENDING REPOSITORY LIST] fetch';
+export const FETCH_TRENDING_REPOSITORY_LIST_NO_ACTION = '[TRENDING REPOSITORY LIST] fetch - blocked (recently updated)';
 export const FETCH_TRENDING_REPOSITORY_LIST_SUCCESS = '[TRENDING REPOSITORY LIST] fetch - success';
 export const FETCH_TRENDING_REPOSITORY_LIST_FAILURE = '[TRENDING REPOSITORY LIST] fetch - failure';
 
@@ -24,6 +25,13 @@ export const FetchTrendingRepositoryListAction: FetchTrendingRepositoryListActio
   return {
     type: FETCH_TRENDING_REPOSITORY_LIST,
     payload: fields,
+  };
+};
+
+export const FetchTrendingRepositoryListNoActionRequired = () => {
+  return {
+    type: FETCH_TRENDING_REPOSITORY_LIST_NO_ACTION,
+    payload: null,
   };
 };
 

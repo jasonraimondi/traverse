@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Icon } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
-import { UserEntity } from '@/renderer/model/User.entity';
 
 interface Props {
   isLocked: boolean;

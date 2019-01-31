@@ -10,8 +10,8 @@ import { ILanguage, LanguageList } from '@/renderer/app/TrendingRepos/components
 import { LanguageListPicker, ListType } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
 import { Title } from '@/renderer/elements/Base';
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
-import { FrequencyType } from '@/renderer/model/Frequency.type';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { TrackUpdateSource } from '@/renderer/store/Interfaces';
 import {

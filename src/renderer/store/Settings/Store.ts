@@ -1,4 +1,4 @@
-import { UserEntity } from '@/renderer/model/User.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { RemoteSource } from '@/renderer/store/Interfaces';
 
 export interface UserStore extends RemoteSource {

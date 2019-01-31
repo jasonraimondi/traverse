@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
-import { DummyRepositoryEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyRepositoryEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 import {
   FetchTrendingRepositoryListAction,
   FetchTrendingRepositoryListActionFields,

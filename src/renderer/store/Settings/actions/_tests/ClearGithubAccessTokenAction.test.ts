@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { DummyUserEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyUserEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 import { ClearGithubAccessTokenAction } from '@/renderer/store/Settings/actions/ClearGithubAccessTokenAction';
 import { SettingsReducer } from '@/renderer/store/Settings/Reducer';
 

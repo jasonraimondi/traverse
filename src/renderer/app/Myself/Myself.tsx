@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
-import { UserProfile } from '@/renderer/elements/UserProfile';
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
+import { UserStarredRepositoryList } from '@/renderer/elements/UserStarredRepositoryList';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
 import {
@@ -13,16 +11,26 @@ import {
   FetchUserStarredRepositoryListActionType,
 } from '@/renderer/store/Stargazer/actions/FetchUserStarredRepositoryListAction';
 import { StargazerStore } from '@/renderer/store/Stargazer/Store';
-import styled from 'styled-components';
 
 interface Props {
+  history: Router;
   settings: SettingsStore;
   stargazer: StargazerStore;
   FetchUserStarredRepositoryListAction: FetchUserStarredRepositoryListActionType;
 }
 
 class Myself extends React.Component<Props> {
-  get user() {
+  constructor(props: Props) {
+    super(props);
+    this.handleStargazerClick = this.handleStargazerClick.bind(this);
+  }
+
+  handleStargazerClick(login: string) {
+    this.props.FetchUserStarredRepositoryListAction(login);
+    this.props.history.push(formatRoute(Routes.STARGAZER_DETAIL, {login}));
+  }
+
+  private get user() {
     if (this.props.settings.github
       && this.props.settings.github.user
       && this.props.settings.github.user.user) {
@@ -31,17 +39,11 @@ class Myself extends React.Component<Props> {
     return false;
   }
 
-  get login() {
+  private get login() {
     return this.user && this.user.attributes.login ? this.user.attributes.login : false;
   }
 
-  componentDidMount(): void {
-    if (this.login) {
-      this.props.FetchUserStarredRepositoryListAction(this.login);
-    }
-  }
-
-  get repositoryList() {
+  private get repositoryList() {
     if (
       this.login
       && this.props.stargazer.repositoryList[this.login]
@@ -59,32 +61,16 @@ class Myself extends React.Component<Props> {
     }
 
     return <>
-      <UserContainer>
-        <UserProfile user={this.user}/>
-      </UserContainer>
-      <RepositoryContainer>
-        <RepositoryList
-          loading={this.props.stargazer.loading}
-          repositoryList={this.repositoryList}
-        />
-      </RepositoryContainer>
+      <UserStarredRepositoryList
+        handleStargazerClick={this.handleStargazerClick}
+        isLoading={this.props.stargazer.loading}
+        user={this.user}
+        repositoryList={this.repositoryList}
+        FetchUserStarredRepositoryListAction={this.props.FetchUserStarredRepositoryListAction}
+      />
     </>;
   }
 }
-
-const UserContainer = styled.div`
-  width: 100%;
-  background-color: ${themeConfig.colors['grey-lightest']}
-`;
-
-const RepositoryContainer = styled.div`
-  width: 100%;
-  background-color: ${themeConfig.colors['grey-lightest']}
-  & ul {
-    background-color: ${themeConfig.colors['grey-lightest']}
-    border-top: 1px solid ${themeConfig.colors.black};
-  }
-`;
 
 function mapStateToProps(state) {
   return {
@@ -102,4 +88,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Myself);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Myself));

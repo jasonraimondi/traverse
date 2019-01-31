@@ -1,5 +1,5 @@
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { flashMessage } from '@/renderer/infrastructure/services/FlashMessage';
-import { UserEntity } from '@/renderer/model/User.entity';
 import { ActionResponse } from '@/renderer/store/Interfaces';
 
 export const SET_GITHUB_ACCESS_TOKEN = '[GITHUB ACCESS TOKEN] attempt to validate and set';

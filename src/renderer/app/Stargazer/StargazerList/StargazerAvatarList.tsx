@@ -1,10 +1,10 @@
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { UserEntity } from '@/renderer/model/User.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
 import {
@@ -52,14 +52,12 @@ class StargazerAvatarList extends React.Component<Props> {
     return userList.map((user) => {
       const isCurrentUser = this.props.match.params && this.props.match.params.login === user.attributes.login;
 
-      return <>
-        <Avatar className={`avatar ${isCurrentUser ? 'selected' : null}`}
-                key={user.id}
+      return <Avatar className={`avatar ${isCurrentUser ? 'selected' : null}`}
+                key={user.attributes.login}
                 onClick={() => this.handleSetStargazer(user)}
                 src={user.attributes.avatarUrl}
                 alt={`${user.attributes.login} avatar`}
-        />
-      </>;
+        />;
     });
   }
 

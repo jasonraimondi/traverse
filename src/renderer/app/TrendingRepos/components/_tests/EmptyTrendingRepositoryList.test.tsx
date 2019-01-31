@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { EmptyTrendingRepositoryList } from '@/renderer/app/TrendingRepos/components/EmptyTrendingRepositoryList';
 import { ILanguage } from '@/renderer/app/TrendingRepos/components/LanguageList';
-import { FrequencyType } from '@/renderer/model/Frequency.type';
+import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
 
 describe('<EmptyTrendingRepositoryList />', () => {
   test('die roller passes click function up', () => {

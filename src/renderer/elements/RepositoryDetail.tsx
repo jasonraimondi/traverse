@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 
 interface Props {
   handleStargazerClick(): void;

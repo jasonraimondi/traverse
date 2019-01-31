@@ -4,7 +4,7 @@ import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-
 import { bindActionCreators } from 'redux';
 
 import { StargazerDetail } from '@/renderer/app/Stargazer/StargazerList/components/StargazerDetail';
-import { UserEntity } from '@/renderer/model/User.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
 import {

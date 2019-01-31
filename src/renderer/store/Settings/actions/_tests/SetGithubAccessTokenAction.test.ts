@@ -1,4 +1,4 @@
-import { DummyUserEntity } from '@/renderer/model/_tests/Dummy';
+import { DummyUserEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 import { assert } from 'chai';
 
 import { SetGithubAccessTokenSuccessAction } from '@/renderer/store/Settings/actions/SetGithubAccessTokenAction';

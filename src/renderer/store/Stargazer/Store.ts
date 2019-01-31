@@ -1,5 +1,5 @@
-import { RepositoryEntity } from '@/renderer/model/Repository.entity';
-import { UserEntity } from '@/renderer/model/User.entity';
+import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
+import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { RemoteSource, TrackUpdateSource } from '@/renderer/store/Interfaces';
 
 export interface StargazerDetailStore {

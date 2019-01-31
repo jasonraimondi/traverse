@@ -1,4 +1,4 @@
-import { Owner } from '@/renderer/model/User.entity';
+import { Owner } from '@/renderer/infrastructure/model/User.entity';
 
 export class RepositoryEntity {
 
