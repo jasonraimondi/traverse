@@ -14,6 +14,7 @@ describe('<RepositoryList />', () => {
 
     const component = mount(
       <RepositoryList
+        loading={false}
         handleStargazerClick={() => null}
         repositoryList={list}
       />,
@@ -25,6 +26,7 @@ describe('<RepositoryList />', () => {
     const list = [];
     const component = mount(
       <RepositoryList
+        loading={false}
         handleStargazerClick={() => null}
         repositoryList={list}
         emptyRepositoryList={<p className='empty'>No Repos</p>}

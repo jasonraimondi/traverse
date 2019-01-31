@@ -18,11 +18,11 @@ export function RemoveUserFromStargazerListReducer(
   state: StargazerStore,
   action: ActionResponse<string>,
 ): StargazerStore {
-  const {repositoryList} = state;
-  if (repositoryList.hasOwnProperty(action.payload)) {
-    delete state.repositoryList[action.payload];
+  const foo = { ...state };
+  if (foo.stargazerList.hasOwnProperty(action.payload)) {
+    delete foo.stargazerList[action.payload];
   }
-  return {...state};
+  return foo;
 }
 
 export function AddUserToStargazerListSuccessReducer(

@@ -45,7 +45,7 @@ const LanguageSelect = styled.div`
   align-items: center;
 `;
 
-export const Icon = styled.a`
+export const Icon = styled.span`
   margin-right: 0.5rem;
   &:last-child {
     margin-right: 0;

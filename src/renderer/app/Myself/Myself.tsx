@@ -63,7 +63,10 @@ class Myself extends React.Component<Props> {
         <UserProfile user={this.user}/>
       </UserContainer>
       <RepositoryContainer>
-        <RepositoryList repositoryList={this.repositoryList}/>
+        <RepositoryList
+          loading={this.props.stargazer.loading}
+          repositoryList={this.repositoryList}
+        />
       </RepositoryContainer>
     </>;
   }

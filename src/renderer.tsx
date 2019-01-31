@@ -40,7 +40,7 @@ export default ReactDOM.render(
   <Provider store={store}>
     <>
       <FlashMessages flash={flashMessage}/>
-      <App/>
+      <App />
     </>
   </Provider>,
   document.getElementById('app-root'),

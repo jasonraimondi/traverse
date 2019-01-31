@@ -1,9 +1,9 @@
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { StargazerDetail } from '@/renderer/app/Stargazer/StargazerList/components/StargazerDetail';
 import { UserEntity } from '@/renderer/model/User.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
@@ -16,12 +16,13 @@ import styled from 'styled-components';
 
 interface Props {
   history: Router;
+  match: Router;
   stargazer: StargazerStore;
   settings: SettingsStore;
   RemoveUserFromStargazerListAction: RemoveUserFromStargazerListActionType;
 }
 
-class StargazerList extends React.Component<Props> {
+class StargazerAvatarList extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.handleSetStargazer = this.handleSetStargazer.bind(this);
@@ -49,27 +50,38 @@ class StargazerList extends React.Component<Props> {
     }
 
     return userList.map((user) => {
-      const isAuthenticatedUser = this.props.settings.github
-        && this.props.settings.github.user.login === user.attributes.login;
+      const isCurrentUser = this.props.match.params && this.props.match.params.login === user.attributes.login;
 
-      return <StargazerDetail key={user.id}
-                              isLocked={isAuthenticatedUser}
-                              handleClickStargazer={() => this.handleSetStargazer(user)}
-                              handleRemoveStargazer={() => this.handleRemoveStargazer(user)}
-                              user={user}
-      />;
+      return <>
+        <Avatar className={`avatar ${isCurrentUser ? 'selected' : null}`}
+                key={user.id}
+                onClick={() => this.handleSetStargazer(user)}
+                src={user.attributes.avatarUrl}
+                alt={`${user.attributes.login} avatar`}
+        />
+      </>;
     });
   }
 
   render() {
     return <>
-      <Title>Stargazer List</Title>
       {this.stargazerList.length ? this.stargazerList : 'No stargazers'}
     </>;
   }
 }
 
-const Title = styled.h1`
+const borderWidth = 4;
+
+const Avatar = styled.img`
+  width: calc(100% + ${borderWidth}px);
+  height: auto;
+  border-left: ${borderWidth}px solid transparent;
+  position: relative;
+  left: -${borderWidth}px;
+  &.selected {
+    left: 0;
+    border-left: 4px solid ${themeConfig.colors.green}
+  }
 `;
 
 function mapStateToProps(state) {
@@ -88,4 +100,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StargazerList);
+export default connect(mapStateToProps, mapDispatchToProps)(StargazerAvatarList);

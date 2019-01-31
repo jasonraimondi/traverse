@@ -72,9 +72,6 @@ class StargazerShow extends React.Component<Props> {
 
   render() {
     return <>
-      <Close onClick={this.handleStargazerClear}>
-        Close
-      </Close>
       <StargazerDetail>
         <TitleBar>
           <NavIcon onClick={this.handleStargazerPin}
@@ -88,6 +85,7 @@ class StargazerShow extends React.Component<Props> {
         </TitleBar>
         <ScrollView>
           <RepositoryList
+            loading={this.props.stargazer.loading}
             repositoryList={this.repositoryList}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={<EmptyStargazerRepositoryList/>}
@@ -117,7 +115,7 @@ const NavIcon = styled(Icon)`
 `;
 
 const TitleBar = styled.div`
-  background-color: ${themeConfig.colors.purple};
+  background-color: ${themeConfig.colors.grey};
   display: flex;
   justify-content: space-between;
   align-items: center;

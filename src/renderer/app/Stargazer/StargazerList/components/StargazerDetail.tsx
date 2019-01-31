@@ -8,9 +8,7 @@ import { UserEntity } from '@/renderer/model/User.entity';
 interface Props {
   isLocked: boolean;
   user: UserEntity;
-
   handleClickStargazer(): void;
-
   handleRemoveStargazer(): void;
 }
 
@@ -21,7 +19,7 @@ export class StargazerDetail extends React.Component<Props> {
     const {user} = this.props;
     return <>
       <Item>
-        <Avatar className='avatar'
+        <Avatar className={'avatar'}
                 onClick={this.props.handleClickStargazer}
                 src={user.attributes.avatarUrl}
                 alt={`${user.attributes.login} avatar`}

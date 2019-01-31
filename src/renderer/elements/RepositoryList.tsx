@@ -7,6 +7,7 @@ import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 
 interface Props {
+  loading: boolean;
   handleStargazerClick?: (login: string) => void;
   emptyRepositoryList?: JSX.Element;
   repositoryList: RepositoryEntity[];
@@ -19,10 +20,9 @@ export class RepositoryList extends React.Component<Props> {
   static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
 
   get listItems() {
-    console.log(this.props);
-    // if (this.props.repositoryList.length === 0 && this.props.emptyRepositoryList) {
-    //   return this.props.emptyRepositoryList;
-    // }
+    if (this.props.repositoryList.length === 0 && this.props.emptyRepositoryList) {
+      return this.props.emptyRepositoryList;
+    }
 
     return this.props.repositoryList.map((repository, idx) => {
       const {owner} = repository.attributes;
@@ -36,6 +36,10 @@ export class RepositoryList extends React.Component<Props> {
   }
 
   render() {
+    if (this.props.loading) {
+      return 'Loading Repositories';
+    }
+
     return <List id='repository-list'>
       {this.listItems}
       {this.props.lastUpdatedAt ? (
@@ -46,6 +50,7 @@ export class RepositoryList extends React.Component<Props> {
 }
 
 const List = styled(UnstyledList)`
+  height: 100%;
   flex: 1;
   overflow-y: auto;
   overflow-wrap: break-word;

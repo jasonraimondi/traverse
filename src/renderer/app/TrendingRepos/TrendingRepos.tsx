@@ -1,3 +1,4 @@
+import { Main, MainContent, MainSideNav, MainTopbar } from '@/renderer/elements/Layout';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,7 +10,6 @@ import { ILanguage, LanguageList } from '@/renderer/app/TrendingRepos/components
 import { LanguageListPicker, ListType } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
 import { Title } from '@/renderer/elements/Base';
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { FrequencyType } from '@/renderer/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/model/Repository.entity';
 import { formatRoute, Routes } from '@/renderer/Routes';
@@ -138,16 +138,15 @@ class App extends React.Component<Props, State> {
 
   render() {
     return <>
-      <Title>{this.filterLanguage(this.language.title)} | {this.ucFirst(this.frequency)}</Title>
-      <Main>
-        <NavContainer>
+      <Container>
+        <Topbar>
           <LanguageListPicker selected={this.state.selectedLanguageListType}
                               handleSetLanguageList={this.handleSetLanguageList}
                               onClickRoll={this.handleRollDice}
           />
           <FrequencyPicker frequency={this.frequency} handleSetFrequency={this.handleSetFrequency}/>
-        </NavContainer>
-        <LanguageListContainer id='language-container'>
+        </Topbar>
+        <Sidebar id='language-container'>
           <LanguageList
             languageListType={this.state.selectedLanguageListType}
             selectedLanguage={this.language}
@@ -155,9 +154,10 @@ class App extends React.Component<Props, State> {
             allLanguageList={this.ALL_LANGUAGES}
             handleSetLanguage={this.handleSetLanguage}
           />
-        </LanguageListContainer>
-        <RepoListContainer>
+        </Sidebar>
+        <Content>
           <RepositoryList
+            loading={this.props.trending.loading}
             lastUpdatedAt={this.selectedTrend ? new Date(this.selectedTrend.lastUpdated) : null}
             repositoryList={this.trendingRepositoryList}
             handleStargazerClick={this.handleStargazerClick}
@@ -168,8 +168,8 @@ class App extends React.Component<Props, State> {
               />
             }
           />
-        </RepoListContainer>
-      </Main>
+        </Content>
+      </Container>
     </>;
   }
 }
@@ -192,46 +192,16 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-const Main = styled.div`
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-gap: 0;
-  grid-template-areas:
-    "nav nav"
-    "sidebar content";
-  grid-template-columns: 140px 1fr;
+const Container = styled(Main)`
 `;
 
-const NavContainer = styled.nav`
-  grid-area: nav;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 46px;
-  border-bottom: 2px solid ${themeConfig.colors.black};
-  background-color: ${themeConfig.colors.purple};
-  & a:hover, button:hover {
-    cursor: pointer;
-  }
+const Topbar = styled(MainTopbar)`
 `;
 
-const LanguageListContainer = styled.div`
-  grid-area: sidebar;
-  min-height: 0;
-  overflow-y: auto;
-  border-right: 2px solid ${themeConfig.colors.black};
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
+const Sidebar = styled(MainSideNav)`
 `;
 
-const RepoListContainer = styled.div`
-  grid-area: content;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+const Content = styled(MainContent)`
 `;
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

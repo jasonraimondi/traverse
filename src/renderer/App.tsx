@@ -1,5 +1,3 @@
-import Myself from '@/renderer/app/Myself/Myself';
-import { SettingsStore } from '@/renderer/store/Settings/Store';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -7,11 +5,14 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
+import Myself from '@/renderer/app/Myself/Myself';
 import Settings from '@/renderer/app/Settings/Settings';
 import Stargazer from '@/renderer/app/Stargazer/Stargazer';
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
+import { TitleStuff } from '@/renderer/elements/Title';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { formatRoute, Routes } from '@/renderer/Routes';
+import { SettingsStore } from '@/renderer/store/Settings/Store';
 
 interface Props {
   settings: SettingsStore;
@@ -34,9 +35,7 @@ class App extends React.Component<Props> {
       <style>{iconStyles}</style>
       <Router>
         <Main>
-          <TitleContainer>
-            <TitleHoverGrabber className='hover-to-move'/>
-          </TitleContainer>
+          <TitleStuff />
           <RouterOutlet>
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
@@ -101,24 +100,6 @@ const Main = styled.main`
   overflow-wrap: break-word;
   color: ${themeConfig.colors.black};
   background-color: ${themeConfig.colors.black};
-`;
-
-const TitleContainer = styled.div`
-  grid-area: title;
-  z-index: 10;
-  height: ${themeConfig.sizes.topbarHeight}px;
-  background-color: ${themeConfig.colors.purple};
-  &:hover .hover-to-move {
-    background-color: ${themeConfig.colors['purple-dark']};
-  }
-`;
-
-const TitleHoverGrabber = styled.div`
-  display: block;
-  -webkit-app-region: drag;
-  height: ${themeConfig.sizes.appDragHeight}px;
-  width: 100%;
-  transition: background-color 0.1s;
 `;
 
 const RouterOutlet = styled.div`

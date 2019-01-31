@@ -1,3 +1,4 @@
+import StargazerList from '@/renderer/app/Stargazer/StargazerList/StargazerList';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
@@ -40,28 +41,30 @@ class StargazerSearch extends React.Component<Props, State> {
   }
 
   render() {
-    return <FormContainer>
-      <h1>Stargazer Search</h1>
-      <Formik
-        initialValues={{
-          githubUsername: this.state.formValue,
-        }}
-        onSubmit={this.onSubmitSearch}
-        render={({ isSubmitting }) => (
-          <Form>
-            <Label htmlFor='githubUsername'>
-              <FormTitle>Search by GitHub username</FormTitle>
-            </Label>
-            <Field id='githubUsername'
-                   name='githubUsername'
-                   placeholder='GitHub Username'
-                   type='text'
-            />
-            <Submit type='submit'>Submit</Submit>
-          </Form>
-        )}
-      />
-    </FormContainer>;
+    return <>
+      <FormContainer>
+        <h1>Stargazer Search</h1>
+        <Formik
+          initialValues={{
+            githubUsername: this.state.formValue,
+          }}
+          onSubmit={this.onSubmitSearch}
+          render={({ isSubmitting }) => (
+            <Form>
+              <Label htmlFor='githubUsername'>
+                <FormTitle>Search by GitHub username</FormTitle>
+              </Label>
+              <Field id='githubUsername'
+                     name='githubUsername'
+                     placeholder='GitHub Username'
+                     type='text'
+              />
+              <Submit type='submit'>Submit</Submit>
+            </Form>
+          )}
+        />
+      </FormContainer>
+    </>;
   }
 }
 

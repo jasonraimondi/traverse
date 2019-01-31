@@ -6,10 +6,11 @@ class Theme {
   readonly mediaQuery: ScreenSizesFunctions = mediaQueries(this.screens);
   readonly sizes = {
     sidebarWidth: 140,
-    topbarHeight: 22,
+    topbarHeight: 26,
+    topnavHeight: 46,
     flashMessageHeight: 22 * 2,
     bottomNavHeight: 40,
-    appDragHeight: 22,
+    appDragHeight: 26,
   };
 }
 
