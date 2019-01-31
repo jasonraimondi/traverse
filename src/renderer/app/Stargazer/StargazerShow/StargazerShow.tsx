@@ -118,7 +118,7 @@ const NavIcon = styled(Icon)`
     cursor: pointer;
   }
   &:hover .primary {
-    fill: ${themeConfig.colors['green-darker']};
+    fill: ${themeConfig.colors.greenDarker};
   }
   &:hover .secondary {
     fill: ${themeConfig.colors.green};
@@ -140,7 +140,7 @@ const Close = styled.a`
   justify-content: center;
   align-items: center;
   color: ${themeConfig.colors.white};
-  background-color: ${themeConfig.colors['grey-darker']};
+  background-color: ${themeConfig.colors.greyDarker};
 `;
 
 const StargazerDetail = styled.div`

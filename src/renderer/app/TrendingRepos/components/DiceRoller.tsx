@@ -67,7 +67,7 @@ const DiceIcon = styled.a`
     padding: 0.1rem;
   }
   & svg #primary {
-    fill: ${themeConfig.colors['grey-darker']};
+    fill: ${themeConfig.colors.greyDarker};
   }
   & svg #secondary,
   & svg #secondary path {

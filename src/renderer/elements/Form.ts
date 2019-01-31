@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export const FormContainer = styled.div`
   margin-top: 0.5rem;
   border-radius: 3px;
-  border: 2px solid ${themeConfig.colors['grey-lighter']};
-  background-color: ${themeConfig.colors['grey-lightest']};
+  border: 2px solid ${themeConfig.colors.greyLighter};
+  background-color: ${themeConfig.colors.greyLightest};
   padding: 0.35rem;
 `;
 
@@ -21,7 +21,7 @@ export const Label = styled.label`
   font-size: 1rem;
   & small {
     display: block;
-    color: ${themeConfig.colors['grey-dark']};
+    color: ${themeConfig.colors.greyDark};
   }
 `;
 
@@ -30,7 +30,7 @@ export const FormTitle = styled.h5`
   margin: 0;
   margin-bottom: 0.5rem;
   &.selected {
-    color: ${themeConfig.colors['green-darker']}
+    color: ${themeConfig.colors.greenDarker}
   }
 `;
 

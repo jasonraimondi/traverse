@@ -61,14 +61,14 @@ export class UserStarredRepositoryList extends React.Component<Props> {
 
 const UserContainer = styled.div`
   width: 100%;
-  background-color: ${themeConfig.colors['grey-lightest']}
+  background-color: ${themeConfig.colors.greyLightest}
 `;
 
 const RepositoryContainer = styled.div`
   width: 100%;
-  background-color: ${themeConfig.colors['grey-lightest']}
+  background-color: ${themeConfig.colors.greyLightest}
   & ul {
-    background-color: ${themeConfig.colors['grey-lightest']}
+    background-color: ${themeConfig.colors.greyLightest}
     border-top: 1px solid ${themeConfig.colors.black};
   }
 `;

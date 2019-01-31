@@ -155,13 +155,13 @@ const iconStyles = `
     height: 1.25rem;
   }
   svg .primary {
-    fill: ${themeConfig.colors['grey-darker']};
+    fill: ${themeConfig.colors.greyDarker};
   }
   svg .secondary {
     fill: ${themeConfig.colors.grey};
   }
   .selected .primary {
-    fill: ${themeConfig.colors['green-darker']};
+    fill: ${themeConfig.colors.greenDarker};
   }
   .selected .secondary {
     fill: ${themeConfig.colors.green};

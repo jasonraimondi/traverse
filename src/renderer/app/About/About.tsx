@@ -89,6 +89,6 @@ const Copyright = styled.h4`
      color: ${themeConfig.colors.purple}
    }
    & a:hover, a:active {
-    color: ${themeConfig.colors['purple-dark']}
+    color: ${themeConfig.colors.purpleDark}
    }
 `;

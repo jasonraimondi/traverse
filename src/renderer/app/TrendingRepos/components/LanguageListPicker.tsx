@@ -58,13 +58,13 @@ export const Icon = styled.span`
     padding: 0.1rem;
   }
   & .primary {
-    fill: ${themeConfig.colors['grey-darker']};
+    fill: ${themeConfig.colors.greyDarker};
   }
   & .secondary {
     fill: ${themeConfig.colors.grey};
   }
   &.selected .primary {
-    fill: ${themeConfig.colors['green-darker']};
+    fill: ${themeConfig.colors.greenDarker};
   }
   &.selected .secondary {
     fill: ${themeConfig.colors.green};

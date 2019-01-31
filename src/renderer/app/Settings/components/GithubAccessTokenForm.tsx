@@ -101,7 +101,7 @@ const Clear = styled(Submit)`
   border-color: ${themeConfig.colors.red};
   color: ${themeConfig.colors.red};
   &:hover {
-    border-color: ${themeConfig.colors['red-dark']};
-    color: ${themeConfig.colors['red-dark']};
+    border-color: ${themeConfig.colors.redDark};
+    color: ${themeConfig.colors.redDark};
   }
 `;

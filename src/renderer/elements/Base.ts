@@ -31,13 +31,13 @@ export const PillButton = styled.button`
   color: ${themeConfig.colors.black};
   &:active, &:hover, &.selected {
     outline: none;
-    border-color: ${themeConfig.colors['green-dark']};
-    color: ${themeConfig.colors['green-dark']};
+    border-color: ${themeConfig.colors.greenDark};
+    color: ${themeConfig.colors.greenDark};
   }
   &.disabled {
-    border-color: ${themeConfig.colors['grey-lighter']};
-    background-color: ${themeConfig.colors['grey-lighter']};
-    color: ${themeConfig.colors['grey-dark']};
+    border-color: ${themeConfig.colors.greyLighter};
+    background-color: ${themeConfig.colors.greyLighter};
+    color: ${themeConfig.colors.greyDark};
     text-decoration: none;
   }
 `;

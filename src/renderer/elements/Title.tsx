@@ -28,7 +28,7 @@ const TitleContainer = styled.div`
   height: ${themeConfig.sizes.topbarHeight}px;
   background-color: ${themeConfig.colors.purple};
   &:hover .hover-to-move {
-    background-color: ${themeConfig.colors['purple-dark']};
+    background-color: ${themeConfig.colors.purpleDark};
   }
 `;
 

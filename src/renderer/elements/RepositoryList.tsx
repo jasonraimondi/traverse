@@ -67,5 +67,5 @@ const LastUpdated = styled.p`
   font-size: 0.8rem;
   font-weight: 400;
   padding: 0.5rem 0;
-  background-color: ${themeConfig.colors['grey-lightest']};
+  background-color: ${themeConfig.colors.greyLightest};
 `;

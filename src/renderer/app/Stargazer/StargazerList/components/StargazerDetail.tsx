@@ -50,7 +50,7 @@ const CloseIcon = styled(Icon)`
     cursor: pointer;
   }
   &:hover .primary {
-    fill: ${themeConfig.colors['green-darker']};
+    fill: ${themeConfig.colors.greenDarker};
   }
   &:hover .secondary {
     fill: ${themeConfig.colors.green};

@@ -124,7 +124,7 @@ const NameLink = styled.a`
   color: ${themeConfig.colors.purple};
   text-decoration: none;
   &:hover {
-    color: ${themeConfig.colors['purple-dark']}
+    color: ${themeConfig.colors.purpleDark}
     text-decoration: underline;
   }
 `;
@@ -144,7 +144,7 @@ const StargazerLink = styled(NameLink)`
 const Language = styled.p`
   font-size: 0.7rem;
   font-weight: 400;
-  color: ${themeConfig.colors['grey-darker']}
+  color: ${themeConfig.colors.greyDarker}
 `;
 const Description = styled.p`
   overflow: hidden;
@@ -164,7 +164,7 @@ const StargazersCount = styled(Bottom)`
 `;
 const Item = styled.li`
   padding: 0.5rem 1.25rem 0.5rem 1rem;
-  background-color: ${themeConfig.colors['grey-lightest']};
+  background-color: ${themeConfig.colors.greyLightest};
   border-bottom: 1px solid ${themeConfig.colors.black};
 `;
 const ItemHeader = styled.header`
@@ -182,7 +182,7 @@ const MiniIcon = styled.span`
     height: 1rem;
   }
   & svg .primary {
-    fill: ${themeConfig.colors['green-darker']};
+    fill: ${themeConfig.colors.greenDarker};
   }
   & svg .secondary {
     fill: ${themeConfig.colors.green};
