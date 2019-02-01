@@ -22,15 +22,7 @@ class Stargazer extends React.Component<Props> {
   readonly iconAll = require('@/assets/icons/icon-asterisk.svg');
   readonly iconSearch = require('@/assets/icons/icon-search.svg');
 
-  get stargazer() {
-    return this.props.stargazer;
-  }
-
-  get title() {
-    return 'Starred Repos';
-  }
-
-  get showSidebar() {
+  private get showSidebar() {
     return this.props.location.pathname !== Routes.STARGAZER;
   }
 
@@ -64,7 +56,6 @@ class Stargazer extends React.Component<Props> {
 
 const Container = styled(Main)`
 `;
-
 const Topbar = styled(MainTopbar)`
 `;
 const Sidebar = styled(MainSideNav)`
