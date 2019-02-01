@@ -13,7 +13,7 @@ import {
 import styled from 'styled-components';
 
 interface Props {
-  user: UserEntity;
+  user?: UserEntity;
   isLoading: boolean;
   repositoryList: RepositoryEntity[];
   handleStargazerClick(login: string): void;
@@ -40,13 +40,9 @@ export class UserStarredRepositoryList extends React.Component<Props> {
   }
 
   render() {
-    if (!this.user) {
-      return <Redirect to={formatRoute(Routes.STARGAZER)}/>;
-    }
-
     return <>
       <UserContainer>
-        <UserProfile user={this.user}/>
+        {this.user ? <UserProfile user={this.user}/> : null}
       </UserContainer>
       <RepositoryContainer>
         <RepositoryList

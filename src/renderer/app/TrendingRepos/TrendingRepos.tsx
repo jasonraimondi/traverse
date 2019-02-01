@@ -146,7 +146,7 @@ class App extends React.Component<Props, State> {
           />
           <FrequencyPicker frequency={this.frequency} handleSetFrequency={this.handleSetFrequency}/>
         </Topbar>
-        <Sidebar id='language-container'>
+        <Sidebar>
           <LanguageList
             languageListType={this.state.selectedLanguageListType}
             selectedLanguage={this.language}

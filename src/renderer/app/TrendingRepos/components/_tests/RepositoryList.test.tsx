@@ -19,7 +19,7 @@ describe('<RepositoryList />', () => {
         repositoryList={list}
       />,
     );
-    assert.lengthOf(component.find('li.repository-selectedTrend-item'), 2);
+    assert.lengthOf(component.find('li.repository-list-item'), 2);
   });
 
   test('Empty Repository List Display', () => {

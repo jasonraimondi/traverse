@@ -31,6 +31,17 @@ export const MainTopbar = styled.nav`
   }
 `;
 
+export const MainTopbarLeft = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  > a {
+    margin-right: 0.75rem;
+  }
+`;
+export const MainTopbarRight = styled.div`
+`;
+
 export const MainContent = styled.div`
   grid-area: content;
   word-wrap: break-word;

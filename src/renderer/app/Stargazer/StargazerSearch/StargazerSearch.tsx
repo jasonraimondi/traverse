@@ -1,4 +1,3 @@
-import StargazerList from '@/renderer/app/Stargazer/StargazerList/StargazerList';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
@@ -11,6 +10,7 @@ import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
 } from '@/renderer/store/Stargazer/actions/AddUserToStargazerListAction';
+import styled from 'styled-components';
 
 interface MyFormValues {
   githubUsername: string;
@@ -41,9 +41,8 @@ class StargazerSearch extends React.Component<Props, State> {
   }
 
   render() {
-    return <>
+    return <Container>
       <FormContainer>
-        <h1>Stargazer Search</h1>
         <Formik
           initialValues={{
             githubUsername: this.state.formValue,
@@ -52,7 +51,8 @@ class StargazerSearch extends React.Component<Props, State> {
           render={({ isSubmitting }) => (
             <Form>
               <Label htmlFor='githubUsername'>
-                <FormTitle>Search by GitHub username</FormTitle>
+                Search by GitHub username
+                <small>For the moment, I need an exact match to GitHub username.</small>
               </Label>
               <Field id='githubUsername'
                      name='githubUsername'
@@ -64,9 +64,13 @@ class StargazerSearch extends React.Component<Props, State> {
           )}
         />
       </FormContainer>
-    </>;
+    </Container>;
   }
 }
+
+const Container = styled.div`
+  padding: 1rem;
+`;
 
 function mapStateToProps(state) {
   return {

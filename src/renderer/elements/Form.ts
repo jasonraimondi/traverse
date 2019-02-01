@@ -20,6 +20,7 @@ export const Label = styled.label`
   display: block;
   font-size: 1rem;
   & small {
+    margin-top: 3px;
     display: block;
     color: ${themeConfig.colors.greyDark};
   }

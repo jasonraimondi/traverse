@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
 
-import { GithubAccessTokenForm } from '@/renderer/app/Settings/components/GithubAccessTokenForm';
-import { Title } from '@/renderer/elements/Base';
+import { GithubAccessTokenForm } from '@/renderer/elements/GithubAccessTokenForm';
 import {
   ClearGithubAccessTokenAction,
   ClearGithubAccessTokenActionType,
@@ -15,6 +12,7 @@ import {
   SetGithubAccessTokenActionType,
 } from '@/renderer/store/Settings/actions/SetGithubAccessTokenAction';
 import { SettingsStore } from '@/renderer/store/Settings/Store';
+import styled from 'styled-components';
 
 interface Props {
   settings: SettingsStore;
@@ -22,19 +20,7 @@ interface Props {
   ClearGithubAccessTokenAction: ClearGithubAccessTokenActionType;
 }
 
-interface State {
-  isEditMode: boolean;
-  githubAccessToken: string;
-}
-
-class Settings extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      isEditMode: false,
-      githubAccessToken: this.accessToken,
-    };
-  }
+class AddToken extends React.Component<Props> {
 
   get accessToken() {
     if (this.props.settings.github) {
@@ -44,26 +30,18 @@ class Settings extends React.Component<Props, State> {
   }
 
   render() {
-    return <>
-      <Title>Settings</Title>
-      <SettingsContainer>
-        <SettingsTitle>Settings</SettingsTitle>
-        <GithubAccessTokenForm
-          accessToken={this.accessToken}
-          handleSubmit={this.props.SetGithubAccessTokenAction}
-          handleClear={this.props.ClearGithubAccessTokenAction}
-        />
-      </SettingsContainer>
-    </>;
+    return <Container>
+      <GithubAccessTokenForm
+        accessToken={this.accessToken}
+        handleSubmit={this.props.SetGithubAccessTokenAction}
+        handleClear={this.props.ClearGithubAccessTokenAction}
+      />
+    </Container>;
   }
 }
 
-const SettingsTitle = styled.h1`
-  margin: 0;
-  padding: 0;
-`;
-const SettingsContainer = styled.div`
-  padding: 0.5rem;
+const Container = styled.div`
+  padding: 1rem;
 `;
 
 function mapStateToProps(state) {
@@ -82,4 +60,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(AddToken);

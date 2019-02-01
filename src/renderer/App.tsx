@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
 import Myself from '@/renderer/app/Myself/Myself';
-import Settings from '@/renderer/app/Settings/Settings';
 import Stargazer from '@/renderer/app/Stargazer/Stargazer';
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import { TitleStuff } from '@/renderer/elements/Title';
@@ -40,7 +39,6 @@ class App extends React.Component<Props> {
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
               <Route path={Routes.STARGAZER} component={Stargazer}/>
-              <Route path={Routes.SETTINGS} component={Settings}/>
               <Route path={Routes.ABOUT} component={About}/>
               <Route path={Routes.MYSELF} exact component={Myself}/>
             </Switch>
@@ -65,12 +63,6 @@ class App extends React.Component<Props> {
                          dangerouslySetInnerHTML={{__html: this.iconStarredSelf}}
                 />
               ) : null}
-              <NavLink to={formatRoute(Routes.SETTINGS)}
-                       exact
-                       activeClassName='selected'
-                       title='Settings'
-                       dangerouslySetInnerHTML={{__html: this.iconSettings}}
-              />
             </Left>
             <Right>
               <NavLink to={formatRoute(Routes.ABOUT)}

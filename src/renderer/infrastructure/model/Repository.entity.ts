@@ -1,6 +1,16 @@
 import { Owner } from '@/renderer/infrastructure/model/User.entity';
 
 export class RepositoryEntity {
+  readonly isUser: boolean;
+  readonly isOrganization: boolean;
+
+  constructor(
+    readonly id: string | number,
+    readonly attributes?: RepositoryEntityAttributes,
+  ) {
+    this.isUser = this.attributes && this.attributes.owner.type === 'user';
+    this.isOrganization = this.attributes && this.attributes.owner.type === 'organization';
+  }
 
   static fromResponse(response: any) {
     return new RepositoryEntity(
@@ -26,20 +36,6 @@ export class RepositoryEntity {
 
   get owner(): Owner {
     return this.attributes.owner;
-  }
-
-  get isUser(): boolean {
-    return this.attributes && this.attributes.owner.type === 'user';
-  }
-
-  get isOrganization(): boolean {
-    return this.attributes && this.attributes.owner.type === 'organization';
-  }
-
-  constructor(
-    readonly id: string|number,
-    readonly attributes?: RepositoryEntityAttributes,
-  ) {
   }
 }
 

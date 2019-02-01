@@ -1,3 +1,4 @@
+import { TrendingStore } from '@/renderer/store/Trending/Store';
 import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -16,24 +17,22 @@ import { TRENDING_INITIAL_STATE } from '@/renderer/store/Trending/Reducer';
 
 const mockStore = configureStore();
 
-const initialState = {
-  trending: {
+const trendingStore: TrendingStore = {
     ...TRENDING_INITIAL_STATE,
-    list: {
+    repositoryList: {
       typescript: {
         weekly: {
           lastUpdated: Date.now(),
-          list: [
+          data: [
             DummyRepositoryEntity(),
             DummyRepositoryEntity(),
           ],
         },
       },
     },
-  },
 };
 
-const store = mockStore(initialState);
+const store = mockStore({ trending: trendingStore });
 
 describe('<TrendingRepos />', () => {
   let app;
@@ -54,7 +53,7 @@ describe('<TrendingRepos />', () => {
     const frequency = 'monthly';
     assert.deepStrictEqual(store.getActions()[0], SetFrequencyAction(frequency));
     assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
-      language: initialState.trending.options.language,
+      language: trendingStore.options.language,
       frequency,
     }));
   });
@@ -62,7 +61,7 @@ describe('<TrendingRepos />', () => {
   test('selecting language runs set action and fetch repository selectedTrend action', () => {
     store.clearActions();
 
-    app.find('li.language-selectedTrend-item button').at(2).simulate('click');
+    app.find('li.language-list-item button').at(2).simulate('click');
 
     const language = {
       value: 'CSharp',
@@ -72,7 +71,7 @@ describe('<TrendingRepos />', () => {
     assert.deepStrictEqual(store.getActions()[0], SetLanguageAction(language));
     assert.deepStrictEqual(store.getActions()[1], FetchTrendingRepositoryListAction({
       language,
-      frequency: initialState.trending.options.frequency,
+      frequency: trendingStore.options.frequency,
     } as FetchTrendingRepositoryListActionFields));
   });
 });
