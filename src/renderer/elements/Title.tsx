@@ -1,8 +1,5 @@
 import { About } from '@/renderer/app/About/About';
-import Myself from '@/renderer/app/Myself/Myself';
-import Settings from '@/renderer/app/Settings/Settings';
 import Stargazer from '@/renderer/app/Stargazer/Stargazer';
-import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';

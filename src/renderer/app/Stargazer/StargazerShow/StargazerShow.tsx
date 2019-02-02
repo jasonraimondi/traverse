@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,12 +29,14 @@ interface Props {
 class StargazerShow extends React.Component<Props> {
   readonly iconPin = require('@/assets/icons/icon-pin.svg');
   readonly iconClose = require('@/assets/icons/icon-close-circle.svg');
+  readonly scrollToRef: RefObject<any>;
 
   constructor(props: Props) {
     super(props);
     this.handleStargazerClick = this.handleStargazerClick.bind(this);
     this.handleStargazerPin = this.handleStargazerPin.bind(this);
     this.handleStargazerClear = this.handleStargazerClear.bind(this);
+    this.scrollToRef = React.createRef();
   }
 
   componentDidMount(): void {
@@ -80,6 +83,12 @@ class StargazerShow extends React.Component<Props> {
     return this.stargazerData.stargazerRepositoryList;
   }
 
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
+    if (JSON.stringify(this.props) !== JSON.stringify(prevProps)) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   render() {
     return <>
       <StargazerDetail>
@@ -93,7 +102,7 @@ class StargazerShow extends React.Component<Props> {
                    dangerouslySetInnerHTML={{__html: this.iconClose}}
           />
         </TitleBar>
-        <ScrollView>
+        <ScrollView ref={this.scrollToRef}>
           <UserStarredRepositoryList
             handleStargazerClick={this.handleStargazerClick}
             isLoading={this.props.stargazer.loading}

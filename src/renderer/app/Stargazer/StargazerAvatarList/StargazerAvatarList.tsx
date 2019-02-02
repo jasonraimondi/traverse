@@ -54,7 +54,7 @@ class StargazerAvatarList extends React.Component<Props> {
 
       return <Avatar className={`avatar ${isCurrentUser ? 'selected' : null}`}
                 key={user.attributes.login}
-                onClick={() => this.handleSetStargazer(user)}
+                onClick={() => isCurrentUser ? null : this.handleSetStargazer(user)}
                 src={user.attributes.avatarUrl}
                 alt={`${user.attributes.login} avatar`}
         />;

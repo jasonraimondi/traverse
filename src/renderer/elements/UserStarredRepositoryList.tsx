@@ -41,16 +41,16 @@ export class UserStarredRepositoryList extends React.Component<Props> {
 
   render() {
     return <>
-      <UserContainer>
-        {this.user ? <UserProfile user={this.user}/> : null}
-      </UserContainer>
-      <RepositoryContainer>
+      <Container>
+        <UserContainer>
+          {this.user ? <UserProfile user={this.user}/> : null}
+        </UserContainer>
         <RepositoryList
           loading={this.props.isLoading}
           repositoryList={this.repositoryList}
           handleStargazerClick={this.props.handleStargazerClick}
         />
-      </RepositoryContainer>
+      </Container>
     </>;
   }
 }
@@ -60,9 +60,10 @@ const UserContainer = styled.div`
   background-color: ${themeConfig.colors.greyLightest}
 `;
 
-const RepositoryContainer = styled.div`
+const Container = styled.div`
   width: 100%;
-  background-color: ${themeConfig.colors.greyLightest}
+  background-color: ${themeConfig.colors.greyLightest};
+  overflow-y: auto;
   & ul {
     background-color: ${themeConfig.colors.greyLightest}
     border-top: 1px solid ${themeConfig.colors.black};

@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
-import Myself from '@/renderer/app/Myself/Myself';
 import Stargazer from '@/renderer/app/Stargazer/Stargazer';
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import { TitleStuff } from '@/renderer/elements/Title';
@@ -24,10 +23,6 @@ class App extends React.Component<Props> {
   readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
   readonly iconStarredSelf = require('@/assets/icons/icon-user-circle.svg');
 
-  get user() {
-    return this.props.settings.github && this.props.settings.github.user ? this.props.settings.github.user : false;
-  }
-
   render() {
     return <>
       <style>{inputStyle}</style>
@@ -40,7 +35,6 @@ class App extends React.Component<Props> {
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
               <Route path={Routes.STARGAZER} component={Stargazer}/>
               <Route path={Routes.ABOUT} component={About}/>
-              <Route path={Routes.MYSELF} exact component={Myself}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
@@ -56,13 +50,6 @@ class App extends React.Component<Props> {
                        title='Starred'
                        dangerouslySetInnerHTML={{__html: this.iconStarred}}
               />
-              {this.user ? (
-                <NavLink to={formatRoute(Routes.MYSELF)}
-                         activeClassName='selected'
-                         title='Myself'
-                         dangerouslySetInnerHTML={{__html: this.iconStarredSelf}}
-                />
-              ) : null}
             </Left>
             <Right>
               <NavLink to={formatRoute(Routes.ABOUT)}
