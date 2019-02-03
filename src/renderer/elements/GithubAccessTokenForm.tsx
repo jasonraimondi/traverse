@@ -58,7 +58,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Label>
+            <Label className='access-token-label'>
               Add a Github Access Token
               <small>Easily see your starred repositories and enable 3x more API calls per minute.</small>
               <Error>
