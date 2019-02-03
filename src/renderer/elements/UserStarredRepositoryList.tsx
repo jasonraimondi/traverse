@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
+import {
+  EmptyStargazerRepositoryList,
+} from '@/renderer/app/Stargazer/StargazerShow/components/EmptyStargazerRepositoryList';
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
 import { UserProfile } from '@/renderer/elements/UserProfile';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { UserEntity } from '@/renderer/infrastructure/model/User.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
-import { formatRoute, Routes } from '@/renderer/Routes';
 import {
   FetchUserStarredRepositoryListActionType,
 } from '@/renderer/store/Stargazer/actions/FetchUserStarredRepositoryListAction';
-import styled from 'styled-components';
 
 interface Props {
   user?: UserEntity;
@@ -49,6 +51,7 @@ export class UserStarredRepositoryList extends React.Component<Props> {
           loading={this.props.isLoading}
           repositoryList={this.repositoryList}
           handleStargazerClick={this.props.handleStargazerClick}
+          emptyRepositoryList={<EmptyStargazerRepositoryList/>}
         />
       </Container>
     </>;

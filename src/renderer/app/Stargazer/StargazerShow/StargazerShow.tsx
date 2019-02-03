@@ -143,15 +143,6 @@ const TitleBar = styled.div`
   padding: 0 1rem;
 `;
 
-const Close = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: ${themeConfig.colors.white};
-  background-color: ${themeConfig.colors.greyDarker};
-`;
-
 const StargazerDetail = styled.div`
   background-color: rgba(255, 255, 255, 0.98);
   overflow-y: auto;
