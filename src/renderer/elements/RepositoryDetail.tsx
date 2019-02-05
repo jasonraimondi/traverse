@@ -8,6 +8,7 @@ import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {
   handleStargazerClick(): void;
+
   repository: RepositoryEntity;
 }
 
@@ -48,7 +49,7 @@ export class RepositoryDetail extends React.Component<Props> {
     const forksCount = this.attributes && this.attributes.forksCount ? this.attributes.forksCount : false;
     const title = `${forksCount} Forks`;
     return <ForksCount title={title} className='forks-count'>
-      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.FORKS_ICON }}/>
+      <MiniIcon dangerouslySetInnerHTML={{__html: RepositoryList.FORKS_ICON}}/>
       {forksCount}
     </ForksCount>;
   }
@@ -57,7 +58,7 @@ export class RepositoryDetail extends React.Component<Props> {
     const watchersCount = this.attributes && this.attributes.watchersCount ? this.attributes.watchersCount : false;
     const title = `${watchersCount} Watchers`;
     return <WatchersCount title={title} className='watchers-count'>
-      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.WATCHERS_ICON }} />
+      <MiniIcon dangerouslySetInnerHTML={{__html: RepositoryList.WATCHERS_ICON}}/>
       {watchersCount}
     </WatchersCount>;
   }
@@ -67,7 +68,7 @@ export class RepositoryDetail extends React.Component<Props> {
       ? this.attributes.stargazersCount : false;
     const title = `${stargazersCount} Stargazers`;
     return <StargazersCount title={title} className='stargazers-count'>
-      <MiniIcon dangerouslySetInnerHTML={{ __html: RepositoryList.STARGAZERS_ICON }} />
+      <MiniIcon dangerouslySetInnerHTML={{__html: RepositoryList.STARGAZERS_ICON}}/>
       {stargazersCount}
     </StargazersCount>;
   }
@@ -83,7 +84,10 @@ export class RepositoryDetail extends React.Component<Props> {
         <ItemHeader>
           <Links>
             {this.repository.isUser ? (
-              <StargazerLink title={title} onClick={this.props.handleStargazerClick}>
+              <StargazerLink title={title}
+                             className={this.repository.isUser ? 'is-user' : 'is-organization'}
+                             onClick={this.props.handleStargazerClick}
+              >
                 {this.stargazerLink}
               </StargazerLink>
             ) : (
@@ -139,6 +143,12 @@ const DisabledStargazerLink = styled(NameLink)`
 `;
 
 const StargazerLink = styled(NameLink)`
+  &.is-user {
+    colors: blue;
+  }
+  &.is-organization {
+    colors: teal;
+  }
 `;
 
 const Language = styled.p`

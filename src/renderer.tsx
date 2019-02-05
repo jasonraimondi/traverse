@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import 'reflect-metadata';
@@ -38,10 +39,10 @@ document.addEventListener('click', openLinkExternally, false);
 
 export default ReactDOM.render(
   <Provider store={store}>
-    <>
+    <Router>
       <FlashMessages flash={flashMessage}/>
       <App />
-    </>
+    </Router>
   </Provider>,
   document.getElementById('app-root'),
 );

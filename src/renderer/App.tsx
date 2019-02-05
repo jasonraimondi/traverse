@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
-import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
+import { NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
@@ -16,51 +16,62 @@ interface Props {
   settings: SettingsStore;
 }
 
+interface State {
+  firstPage: boolean;
+}
+
 class App extends React.Component<Props> {
+  state = {
+    firstPage: true,
+  };
+
   readonly iconHome = require('@/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/assets/icons/icon-cog.svg');
   readonly iconStarred = require('@/assets/icons/icon-star.svg');
   readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
   readonly iconStarredSelf = require('@/assets/icons/icon-user-circle.svg');
+  readonly iconBack = require('@/assets/icons/icon-arrow-thick-left-circle.svg');
 
   render() {
     return <>
       <style>{inputStyle}</style>
       <style>{iconStyles}</style>
-      <Router>
-        <Main>
-          <TitleStuff />
-          <RouterOutlet>
-            <Switch>
-              <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
-              <Route path={Routes.STARGAZER} component={Stargazer}/>
-              <Route path={Routes.ABOUT} component={About}/>
-            </Switch>
-          </RouterOutlet>
-          <NavigationContainer>
-            <Left>
-              <NavLink to={formatRoute(Routes.TRENDING)}
-                       exact
-                       activeClassName='selected'
-                       title='Trending Repositories'
-                       dangerouslySetInnerHTML={{__html: this.iconHome}}
-              />
-              <NavLink to={formatRoute(Routes.STARGAZER)}
-                       activeClassName='selected'
-                       title='Starred'
-                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
-              />
-            </Left>
-            <Right>
-              <NavLink to={formatRoute(Routes.ABOUT)}
-                       exact
-                       title='About Page'
-                       activeClassName='selected'
-              >About</NavLink>
-            </Right>
-          </NavigationContainer>
-        </Main>
-      </Router>
+      <Main>
+        <TitleStuff/>
+        <RouterOutlet>
+          <Switch>
+            <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
+            <Route path={Routes.STARGAZER} component={Stargazer}/>
+            <Route path={Routes.ABOUT} component={About}/>
+          </Switch>
+        </RouterOutlet>
+        <NavigationContainer>
+          <Left>
+            <a title='Trending Repositories'
+               onClick={() => window.history.back()}
+               dangerouslySetInnerHTML={{__html: this.iconBack}}
+            />
+            <NavLink to={formatRoute(Routes.TRENDING)}
+                     exact
+                     activeClassName='selected'
+                     title='Trending Repositories'
+                     dangerouslySetInnerHTML={{__html: this.iconHome}}
+            />
+            <NavLink to={formatRoute(Routes.STARGAZER)}
+                     activeClassName='selected'
+                     title='Starred'
+                     dangerouslySetInnerHTML={{__html: this.iconStarred}}
+            />
+          </Left>
+          <Right>
+            <NavLink to={formatRoute(Routes.ABOUT)}
+                     exact
+                     title='About Page'
+                     activeClassName='selected'
+            >About</NavLink>
+          </Right>
+        </NavigationContainer>
+      </Main>
     </>;
   }
 }
@@ -181,4 +192,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
