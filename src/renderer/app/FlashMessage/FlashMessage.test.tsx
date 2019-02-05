@@ -21,6 +21,7 @@ describe('<FlashMessages />', () => {
   });
 
   test('error messages', (done) => {
+    flashMessage.error('error 1', 50000);
     flashMessage.error('error 2', 50000);
     assert.lengthOf(component.find('.error'), 2);
     done();
