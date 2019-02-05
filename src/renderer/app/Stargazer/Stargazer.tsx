@@ -1,18 +1,18 @@
-import AddToken from '@/renderer/app/Stargazer/AddToken/AddToken';
-import Myself from '@/renderer/app/Stargazer/Myself/Myself';
-import StargazerAvatarList from '@/renderer/app/Stargazer/StargazerAvatarList/StargazerAvatarList';
-import StargazerSearch from '@/renderer/app/Stargazer/StargazerSearch/StargazerSearch';
-import { SettingsStore } from '@/renderer/store/Settings/Store';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import AddToken from '@/renderer/app/Stargazer/AddToken/AddToken';
+import Myself from '@/renderer/app/Stargazer/Myself/Myself';
+import StargazerAvatarList from '@/renderer/app/Stargazer/StargazerAvatarList/StargazerAvatarList';
+import StargazerSearch from '@/renderer/app/Stargazer/StargazerSearch/StargazerSearch';
 import StargazerShow from '@/renderer/app/Stargazer/StargazerShow/StargazerShow';
 import { Icon } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
 import { Main, MainContent, MainSideNav, MainTopbar, MainTopbarLeft } from '@/renderer/elements/Layout';
 import { formatRoute, Routes } from '@/renderer/Routes';
+import { SettingsStore } from '@/renderer/store/Settings/Store';
 import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
@@ -35,6 +35,7 @@ class Stargazer extends React.Component<Props> {
       this.props.AddUserToStargazerListAction('jasonraimondi');
     }
   }
+
   get authUser() {
     return this.props.settings.github && this.props.settings.github.user ? this.props.settings.github.user : false;
   }

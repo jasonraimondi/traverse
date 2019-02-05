@@ -29,14 +29,12 @@ interface Props {
 class StargazerShow extends React.Component<Props> {
   readonly iconPin = require('@/assets/icons/icon-pin.svg');
   readonly iconClose = require('@/assets/icons/icon-close-circle.svg');
-  readonly scrollToRef: RefObject<any>;
 
   constructor(props: Props) {
     super(props);
     this.handleStargazerClick = this.handleStargazerClick.bind(this);
     this.handleStargazerPin = this.handleStargazerPin.bind(this);
     this.handleStargazerClear = this.handleStargazerClear.bind(this);
-    this.scrollToRef = React.createRef();
   }
 
   componentDidMount(): void {
@@ -54,6 +52,10 @@ class StargazerShow extends React.Component<Props> {
 
   handleStargazerClear() {
     this.props.history.push(formatRoute(Routes.STARGAZER));
+  }
+
+  get isUserAlreadyInStargazerList(): boolean {
+    return this.props.stargazer.stargazerList.hasOwnProperty(this.currentUserLogin);
   }
 
   get currentUserLogin() {
@@ -92,17 +94,19 @@ class StargazerShow extends React.Component<Props> {
   render() {
     return <>
       <StargazerDetail>
-        <TitleBar>
-          <NavIcon onClick={this.handleStargazerPin}
-                   title='Add to your stargazer list'
-                   dangerouslySetInnerHTML={{__html: this.iconPin}}
-          />
-          <NavIcon onClick={this.handleStargazerClear}
-                   title='Add to your stargazer list'
-                   dangerouslySetInnerHTML={{__html: this.iconClose}}
-          />
-        </TitleBar>
-        <ScrollView ref={this.scrollToRef}>
+        {this.isUserAlreadyInStargazerList ? null : (
+          <TitleBar>
+            <NavIcon onClick={this.handleStargazerPin}
+                     title='Add to your stargazer list'
+                     dangerouslySetInnerHTML={{__html: this.iconPin}}
+            />
+            <NavIcon onClick={this.handleStargazerClear}
+                     title='Add to your stargazer list'
+                     dangerouslySetInnerHTML={{__html: this.iconClose}}
+            />
+          </TitleBar>
+        )}
+        <ScrollView>
           <UserStarredRepositoryList
             handleStargazerClick={this.handleStargazerClick}
             isLoading={this.props.stargazer.loading}

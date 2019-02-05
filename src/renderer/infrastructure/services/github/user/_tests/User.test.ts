@@ -1,8 +1,8 @@
-import { User } from '@/renderer/infrastructure/services/github/user/User';
 import { assert } from 'chai';
 import 'reflect-metadata';
 
 import { FakeRestClient } from '@/renderer/infrastructure/rest/_tests/FakeRestClient';
+import { User } from '@/renderer/infrastructure/services/github/user/User';
 
 describe('fetch user self', () => {
   let user: User;
