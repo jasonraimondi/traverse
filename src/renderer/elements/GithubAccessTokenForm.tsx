@@ -21,6 +21,8 @@ interface FormValues {
 }
 
 export class GithubAccessTokenForm extends React.Component<Props> {
+  private readonly findWhiteSpace = /\s/g;
+
   constructor(props: Props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,11 +30,14 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   }
 
   handleClear() {
-    this.props.handleClear();
+    if (window.confirm('This will clear your token, you sure you want to do that?')) {
+      this.props.handleClear();
+    }
   }
 
   handleSubmit(values: FormValues, {setSubmitting}: FormikActions<FormValues>) {
-    this.props.handleSubmit(values.accessToken);
+    const accessToken = values.accessToken.replace(this.findWhiteSpace, '');
+    this.props.handleSubmit(accessToken);
     setTimeout(() => setSubmitting(false), 500);
   }
 
@@ -49,14 +54,17 @@ export class GithubAccessTokenForm extends React.Component<Props> {
 
   render() {
     const accessToken = this.props.accessToken ? this.props.accessToken : '';
+    const formValues: FormValues = {accessToken};
     return <FormContainer>
       <Formik
         enableReinitialize
-        initialValues={{accessToken}}
-        validate={(values: any) => {
+        initialValues={formValues}
+        validate={(values: FormValues) => {
           const errors: any = {};
           if (!values.accessToken) {
             errors.accessToken = 'Required';
+          } else if (this.findWhiteSpace.test(values.accessToken)) {
+            errors.accessToken = 'No Spaces';
           }
           return errors;
         }}
@@ -75,9 +83,13 @@ export class GithubAccessTokenForm extends React.Component<Props> {
             <Label htmlFor='accessToken' className='access-token-label'>
               <h4>
                 Github Access Token
-                <SmallAnchor className='open-link-externally'
-                             href={this.githubLink}
-                >Click here to create a token</SmallAnchor>
+                {accessToken ? (
+                  <Clear onClick={this.handleClear}>&times;</Clear>
+                ) : (
+                  <SmallAnchor className='open-link-externally'
+                               href={this.githubLink}
+                  >Click here to create a token</SmallAnchor>
+                )}
               </h4>
               <p>Easily see your starred repositories and enable 3x more API calls per minute.</p>
             </Label>
@@ -93,7 +105,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
             <Error>
               {!accessToken && errors.accessToken && touched.accessToken && errors.accessToken}
             </Error>
-            {accessToken ? <Clear onClick={this.handleClear}>Clear</Clear> : (
+            {accessToken ? null : (
               <>
                 <HollowButtonPrimary type='submit' disabled={isSubmitting}>
                   Submit
@@ -117,14 +129,12 @@ const Error = styled.span`
   color: ${themeConfig.colors.red};
 `;
 
-const Clear = styled(HollowButtonPrimary)`
+const Clear = styled.span`
   float: right;
-  position: relative;
-  bottom: 39.5px;
-  border-color: ${themeConfig.colors.red};
-  color: ${themeConfig.colors.red};
+  border-color: ${themeConfig.colors.purple};
+  color: ${themeConfig.colors.purple};
   &:hover {
-    border-color: ${themeConfig.colors.redDark};
-    color: ${themeConfig.colors.redDark};
+    border-color: ${themeConfig.colors.purpleDark};
+    color: ${themeConfig.colors.purpleDark};
   }
 `;

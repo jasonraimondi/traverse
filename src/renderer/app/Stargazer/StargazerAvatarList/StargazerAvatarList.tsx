@@ -38,6 +38,15 @@ class StargazerAvatarList extends React.Component<Props> {
     this.props.RemoveUserFromStargazerListAction(user.attributes.login);
   }
 
+  get authUser() {
+    if (this.props.settings.github
+      && this.props.settings.github.user
+      && this.props.settings.github.user.user
+    ) {
+      return this.props.settings.github.user.user;
+    }
+  }
+
   get stargazerList() {
     if (!this.props.stargazer.stargazerList) {
       return [];
@@ -47,6 +56,10 @@ class StargazerAvatarList extends React.Component<Props> {
 
     if (!userList) {
       return [];
+    }
+
+    if (this.authUser) {
+      userList.unshift(this.authUser);
     }
 
     return userList.map((user) => {

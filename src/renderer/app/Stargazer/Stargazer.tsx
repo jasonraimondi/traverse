@@ -31,9 +31,9 @@ class Stargazer extends React.Component<Props> {
   readonly iconSearch = require('@/assets/icons/icon-search.svg');
 
   componentDidMount(): void {
-    if (Object.keys(this.props.stargazer.stargazerList).length === 0) {
-      this.props.AddUserToStargazerListAction('jasonraimondi');
-    }
+    // if (Object.keys(this.props.stargazer.stargazerList).length === 0) {
+    //   this.props.AddUserToStargazerListAction('jasonraimondi');
+    // }
   }
 
   get authUser() {
