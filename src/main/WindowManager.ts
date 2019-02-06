@@ -23,7 +23,7 @@ export class WindowManager {
     },
   };
   private windows: Map<string, BrowserWindow> = new Map();
-  private settingsWindow: BrowserWindow | null = null;
+  private settingsWindow: BrowserWindow = null;
 
   private mainWindowUrl = format({
     pathname: join(__dirname, 'index.html'),
@@ -75,7 +75,6 @@ export class WindowManager {
     const window = new BrowserWindow(windowOptions);
 
     if (IS_DEV_ENV) {
-      console.log('is development environment');
       window.webContents.openDevTools();
     }
 
@@ -90,10 +89,6 @@ export class WindowManager {
     window.on('closed', () => {
       this.windows.delete(id);
       ElectronSettingService.delete(settingsId);
-
-      if (this.windows.size === 0 && this.settingsWindow) {
-        this.settingsWindow.close();
-      }
     });
 
     window.on('moved', () => {

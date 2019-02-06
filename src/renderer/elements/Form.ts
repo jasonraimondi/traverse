@@ -11,9 +11,15 @@ export const FormContainer = styled.div`
 
 export const Input = styled.input`
   display: block;
-  max-width: 350px;
   width: 100%;
   margin: 7.5px 0 10px;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid ${themeConfig.colors.purple};
+  &:hover, &:focus, &:selected {
+    outline: 1px solid ${themeConfig.colors.purple};
+  }
 `;
 
 export const Label = styled.label`
@@ -23,6 +29,10 @@ export const Label = styled.label`
     margin-top: 3px;
     display: block;
     color: ${themeConfig.colors.greyDark};
+  }
+  & h4, p {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 `;
 
@@ -35,7 +45,7 @@ export const FormTitle = styled.h5`
   }
 `;
 
-export const Submit = styled.button`
+export const HollowButtonPrimary = styled.button`
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 700;

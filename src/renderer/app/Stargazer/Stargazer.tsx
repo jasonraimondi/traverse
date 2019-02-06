@@ -4,8 +4,8 @@ import { Link, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import AddToken from '@/renderer/app/Stargazer/AddToken/AddToken';
 import Myself from '@/renderer/app/Stargazer/Myself/Myself';
+import NotLoggedIn from '@/renderer/app/Stargazer/Myself/NotLoggedIn';
 import StargazerAvatarList from '@/renderer/app/Stargazer/StargazerAvatarList/StargazerAvatarList';
 import StargazerSearch from '@/renderer/app/Stargazer/StargazerSearch/StargazerSearch';
 import StargazerShow from '@/renderer/app/Stargazer/StargazerShow/StargazerShow';
@@ -63,7 +63,7 @@ class Stargazer extends React.Component<Props> {
             {this.authUser ? (
               <Route path={Routes.STARGAZER} component={Myself}/>
             ) : (
-              <Route path={Routes.STARGAZER} component={AddToken}/>
+              <Route path={Routes.STARGAZER} component={NotLoggedIn}/>
             )}
           </Switch>
         </Content>

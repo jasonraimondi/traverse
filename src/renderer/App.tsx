@@ -1,3 +1,5 @@
+import Settings from '@/renderer/app/Settings/Settings';
+import { ipcRenderer } from 'electron';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -35,6 +37,7 @@ class App extends React.Component<Props> {
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
               <Route path={Routes.STARGAZER} component={Stargazer}/>
               <Route path={Routes.ABOUT} component={About}/>
+              <Route path={Routes.SETTINGS} component={Settings}/>
             </Switch>
           </RouterOutlet>
           <NavigationContainer>
@@ -49,6 +52,11 @@ class App extends React.Component<Props> {
                        activeClassName='selected'
                        title='Starred'
                        dangerouslySetInnerHTML={{__html: this.iconStarred}}
+              />
+              <NavLink to={formatRoute(Routes.SETTINGS)}
+                       activeClassName='selected'
+                       title='Settings'
+                       dangerouslySetInnerHTML={{__html: this.iconSettings}}
               />
             </Left>
             <Right>

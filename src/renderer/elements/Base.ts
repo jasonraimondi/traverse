@@ -18,6 +18,14 @@ export const UnstyledList = styled.ul`
   padding-left: 0;
 `;
 
+export const Anchor = styled.a`
+  color: ${themeConfig.colors.purple};
+  &:hover {
+    text-direction: none;
+    color: ${themeConfig.colors.purpleDark};
+  }
+`;
+
 export const Button = styled.button`
 `;
 

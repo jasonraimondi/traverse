@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { FormContainer, FormTitle, Label, Submit } from '@/renderer/elements/Form';
+import { FormContainer, HollowButtonPrimary, Label } from '@/renderer/elements/Form';
 import {
   AddUserToStargazerListAction,
   AddUserToStargazerListActionType,
@@ -59,7 +59,7 @@ class StargazerSearch extends React.Component<Props, State> {
                      placeholder='GitHub Username'
                      type='text'
               />
-              <Submit type='submit'>Submit</Submit>
+              <HollowButtonPrimary type='submit'>Submit</HollowButtonPrimary>
             </Form>
           )}
         />

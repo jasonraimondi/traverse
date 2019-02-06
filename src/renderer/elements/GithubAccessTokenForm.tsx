@@ -1,3 +1,4 @@
+import { Anchor } from '@/renderer/elements/Base';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { Formik, FormikActions } from 'formik';
 import * as React from 'react';
@@ -5,11 +6,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { FormContainer, Input, Label, Submit } from '@/renderer/elements/Form';
+import { FormContainer, HollowButtonPrimary, Input, Label } from '@/renderer/elements/Form';
 
 interface Props {
   accessToken: string;
+
   handleSubmit(accessToken: string): void;
+
   handleClear(): void;
 }
 
@@ -31,6 +34,17 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   handleSubmit(values: FormValues, {setSubmitting}: FormikActions<FormValues>) {
     this.props.handleSubmit(values.accessToken);
     setTimeout(() => setSubmitting(false), 500);
+  }
+
+  get githubLink() {
+    const description = 'Traverse';
+    const scopes = [
+      'public_repo',
+      'read:user',
+      'user:email',
+      'user:follow',
+    ];
+    return `https://github.com/settings/tokens/new?description=${description}&scopes=${scopes.join(',')}`;
   }
 
   render() {
@@ -58,27 +72,34 @@ export class GithubAccessTokenForm extends React.Component<Props> {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Label className='access-token-label'>
-              Add a Github Access Token
-              <small>Easily see your starred repositories and enable 3x more API calls per minute.</small>
-              <Error>
-                {!accessToken && errors.accessToken && touched.accessToken && errors.accessToken}
-              </Error>
-              <Input
-                type='text'
-                name='accessToken'
-                disabled={!!accessToken}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.accessToken}
-              />
+            <Label htmlFor='accessToken' className='access-token-label'>
+              <h4>
+                Github Access Token
+                <SmallAnchor className='open-link-externally'
+                             href={this.githubLink}
+                >Click here to create a token</SmallAnchor>
+              </h4>
+              <p>Easily see your starred repositories and enable 3x more API calls per minute.</p>
             </Label>
+            <Input
+              type='text'
+              name='accessToken'
+              placeholder='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+              disabled={!!accessToken}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.accessToken}
+            />
+            <Error>
+              {!accessToken && errors.accessToken && touched.accessToken && errors.accessToken}
+            </Error>
             {accessToken ? <Clear onClick={this.handleClear}>Clear</Clear> : (
-              <Submit type='submit' disabled={isSubmitting}>
-                Submit
-              </Submit>
+              <>
+                <HollowButtonPrimary type='submit' disabled={isSubmitting}>
+                  Submit
+                </HollowButtonPrimary>
+              </>
             )}
-
           </form>
         )}
       </Formik>
@@ -86,15 +107,17 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   }
 }
 
+const SmallAnchor = styled(Anchor)`
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+`;
+
 const Error = styled.span`
   float: right;
-  position: relative;
-  top: 7.5px;
-  font-size: 0.8rem;
   color: ${themeConfig.colors.red};
 `;
 
-const Clear = styled(Submit)`
+const Clear = styled(HollowButtonPrimary)`
   float: right;
   position: relative;
   bottom: 39.5px;
