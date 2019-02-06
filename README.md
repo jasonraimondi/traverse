@@ -17,7 +17,9 @@ If you find Traverse interesting, please consider giving it a Star.
 
 I love browsing [trending repositories on GitHub](https://github.com/trending). Historically, that page was kinda hidden and took some digging to get to. I wanted to build an app that would make findind new repositories easier.
 
-I was building this app, and ended up finding this awesome extension called [GitHunt](http://github.com/kamranahmedse/githunt) using Traverse. My only complaint about GitHunt is that it opens every new tab, even when I am in the middle of something. I've gotten sidetracked before while opening a new tab and finding a cool project. Need to focus? Not a problem, Traverse is a dedicated application you can open and close at your hearts content.
+I was building this app, and ended up finding this awesome extension called [GitHunt](http://github.com/kamranahmedse/githunt) using Traverse. GitHunt is great, but it can be distracting when it opens and I am in the middle of something. I've gotten sidetracked before while working when I opened a new tab and finding a cool project and went down that whole rabbit hole.
+
+Need to focus? Not a problem. Traverse is a dedicated application you can open and close at your hearts content.
 
 ## Installing
 
