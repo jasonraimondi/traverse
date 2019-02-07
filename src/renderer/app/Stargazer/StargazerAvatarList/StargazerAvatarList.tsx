@@ -52,11 +52,11 @@ class StargazerAvatarList extends React.Component<Props> {
       return [];
     }
 
-    const userList = Object.values(this.props.stargazer.stargazerList).map((stargazer) => stargazer.data);
-
-    if (!userList) {
-      return [];
+    if (this.authUser && this.props.stargazer.stargazerList[this.authUser.attributes.login]) {
+      delete this.props.stargazer.stargazerList[this.authUser.attributes.login];
     }
+
+    const userList = Object.values(this.props.stargazer.stargazerList).map((stargazer) => stargazer.data);
 
     if (this.authUser) {
       userList.unshift(this.authUser);
