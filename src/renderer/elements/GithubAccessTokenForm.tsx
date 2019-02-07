@@ -90,7 +90,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
                 ) : (
                   <SmallAnchor className='open-link-externally'
                                href={this.githubLink}
-                  >Click here to create a token</SmallAnchor>
+                  >Create a token</SmallAnchor>
                 )}
               </h4>
               <p>Easily see your starred repositories and enable 3x more API calls per minute.</p>

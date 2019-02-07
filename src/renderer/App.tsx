@@ -48,11 +48,11 @@ class App extends React.Component<Props> {
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
-              <NavLink to={formatRoute(Routes.STARGAZER)}
-                       activeClassName='selected'
-                       title='Starred'
-                       dangerouslySetInnerHTML={{__html: this.iconStarred}}
-              />
+              {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
+                       {/*activeClassName='selected'*/}
+                       {/*title='Starred'*/}
+                       {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
+              {/*/>*/}
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        activeClassName='selected'
                        title='Settings'
