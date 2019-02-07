@@ -62,11 +62,11 @@ class StargazerAvatarList extends React.Component<Props> {
       userList.unshift(this.authUser);
     }
 
-    return userList.map((user) => {
+    return userList.map((user, idx) => {
       const isCurrentUser = this.props.match.params && this.props.match.params.login === user.attributes.login;
 
       return <Avatar className={`avatar ${isCurrentUser ? 'selected' : null}`}
-                key={user.attributes.login}
+                key={idx}
                 onClick={() => isCurrentUser ? null : this.handleSetStargazer(user)}
                 src={user.attributes.avatarUrl}
                 alt={`${user.attributes.login} avatar`}

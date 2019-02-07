@@ -1,12 +1,13 @@
-import { Anchor } from '@/renderer/elements/Base';
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
+import * as dayjs from 'dayjs';
 import { Formik, FormikActions } from 'formik';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { Anchor } from '@/renderer/elements/Base';
 import { FormContainer, HollowButtonPrimary, Input, Label } from '@/renderer/elements/Form';
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {
   accessToken: string;
@@ -42,7 +43,8 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   }
 
   get githubLink() {
-    const description = 'Traverse';
+    const dateString = dayjs().format('YYYY-MM-DD');
+    const description = encodeURIComponent(`Traverse ${dateString}`);
     const scopes = [
       'public_repo',
       'read:user',
