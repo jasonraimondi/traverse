@@ -7,6 +7,22 @@ export const projectRoot = resolve(__dirname, '../');
 
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
+    presets: [
+      '@babel/preset-env',
+    ],
+    plugins: [
+      '@babel/plugin-transform-regenerator',
+      '@babel/plugin-proposal-async-generator-functions',
+      '@babel/proposal-class-properties',
+      '@babel/proposal-object-rest-spread',
+    ],
+    compact: !devMode,
+  },
+};
+
 export const baseConfig: Configuration = {
   mode: devMode ? 'development' : 'production',
   devtool: devMode ? 'cheap-module-eval-source-map' : false,
@@ -41,6 +57,7 @@ export const baseConfig: Configuration = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
+          // babelLoader,
           {
             loader: 'ts-loader',
             options: {
