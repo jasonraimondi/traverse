@@ -44,10 +44,6 @@
     "title": "Go"
   },
   {
-    "value": "hack",
-    "title": "Hack"
-  },
-  {
     "value": "haskell",
     "title": "Haskell"
   },
@@ -66,10 +62,6 @@
   {
     "value": "lua",
     "title": "Lua"
-  },
-  {
-    "value": "markdown",
-    "title": "Markdown"
   },
   {
     "value": "objective-c",
@@ -116,16 +108,8 @@
     "title": "Shell"
   },
   {
-    "value": "sql",
-    "title": "SQL"
-  },
-  {
     "value": "swift",
     "title": "Swift"
-  },
-  {
-    "value": "twig",
-    "title": "Twig"
   },
   {
     "value": "typescript",
