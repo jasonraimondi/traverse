@@ -3,12 +3,10 @@ import { injectable } from 'inversify';
 
 export interface RestClientInterface {
   setBaseURL(baseURL: string): void;
-
-  get(path: string, queryParameters?: any, headers?: any, timeout?: number): AxiosPromise;
-
-  post(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
-  put(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
-  delete(path: string, formParameters?: any, headers?: any, timeout?: number): AxiosPromise;
+  get(path: string, query?, headers?, timeout?: number): AxiosPromise;
+  post(path: string, data?, headers?, query?, timeout?: number): AxiosPromise;
+  put(path: string, data?, headers?, query?, timeout?: number): AxiosPromise;
+  delete(path: string, data?, headers?, timeout?: number): AxiosPromise;
 }
 
 @injectable()
@@ -19,44 +17,47 @@ export class AxiosRestClient implements RestClientInterface {
     this.axios.defaults.baseURL = baseURL;
   }
 
-  get(path: string, queryParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  get(path: string, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.get(
       path,
       {
         headers,
-        params: queryParameters,
+        params: query,
         timeout,
       },
     );
   }
 
-  post(path: string, formParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  post(path: string, data = {}, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.post(
       path,
-      formParameters,
+      data,
       {
         headers,
+        params: query,
         timeout,
       },
     );
   }
 
-  put(path: string, formParameters: any = {}, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  put(path: string, data = {}, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.put(
       path,
-      formParameters,
+      data,
       {
         headers,
+        params: query,
         timeout,
       },
     );
   }
 
-  delete(path: string, headers: any = {}, timeout: number = 5000): AxiosPromise {
+  delete(path: string, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.axios.delete(
       path,
       {
         headers,
+        params: query,
         timeout,
       },
     );

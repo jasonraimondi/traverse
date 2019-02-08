@@ -27,27 +27,30 @@ export class GithubRestClient implements RestClientInterface {
     );
   }
 
-  post(path: string, formParams = {}, headers = {}, timeout: number = 5000): AxiosPromise {
+  post(path: string, form = {}, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.restClient.post(
       path,
-      formParams,
+      form,
+      this.mergeQueryParams(query),
       this.mergeHeaders(headers),
       timeout,
     );
   }
 
-  put(path: string, formParams = {}, headers = {}, timeout: number = 5000): AxiosPromise {
+  put(path: string, form = {}, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.restClient.put(
       path,
-      formParams,
+      form,
+      this.mergeQueryParams(query),
       this.mergeHeaders(headers),
       timeout,
     );
   }
 
-  delete(path: string, headers = {}, timeout: number = 5000): AxiosPromise {
+  delete(path: string, query = {}, headers = {}, timeout: number = 5000): AxiosPromise {
     return this.restClient.delete(
       path,
+      this.mergeQueryParams(query),
       this.mergeHeaders(headers),
       timeout,
     );
