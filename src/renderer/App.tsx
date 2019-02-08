@@ -22,8 +22,6 @@ class App extends React.Component<Props> {
   readonly iconHome = require('@/assets/icons/icon-code.svg');
   readonly iconSettings = require('@/assets/icons/icon-cog.svg');
   readonly iconStarred = require('@/assets/icons/icon-star.svg');
-  readonly iconStarredSearch = require('@/assets/icons/icon-search.svg');
-  readonly iconStarredSelf = require('@/assets/icons/icon-user-circle.svg');
 
   render() {
     return <>
