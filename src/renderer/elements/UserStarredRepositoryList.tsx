@@ -2,9 +2,6 @@ import * as React from 'react';
 import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import {
-  EmptyStargazerRepositoryList,
-} from '@/renderer/app/Stargazer/StargazerShow/components/EmptyStargazerRepositoryList';
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
 import { UserProfile } from '@/renderer/elements/UserProfile';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
@@ -51,7 +48,7 @@ export class UserStarredRepositoryList extends React.Component<Props> {
           loading={this.props.isLoading}
           repositoryList={this.repositoryList}
           handleStargazerClick={this.props.handleStargazerClick}
-          emptyRepositoryList={<EmptyStargazerRepositoryList/>}
+          emptyRepositoryList={'EMPTY'}
         />
       </Container>
     </>;

@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
-import Stargazer from '@/renderer/app/Stargazer/Stargazer';
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import { TitleStuff } from '@/renderer/elements/Title';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
@@ -33,7 +32,6 @@ class App extends React.Component<Props> {
           <RouterOutlet>
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>
-              <Route path={Routes.STARGAZER} component={Stargazer}/>
               <Route path={Routes.ABOUT} component={About}/>
               <Route path={Routes.SETTINGS} component={Settings}/>
             </Switch>
@@ -46,11 +44,6 @@ class App extends React.Component<Props> {
                        title='Trending Repositories'
                        dangerouslySetInnerHTML={{__html: this.iconHome}}
               />
-              {/*<NavLink to={formatRoute(Routes.STARGAZER)}*/}
-                       {/*activeClassName='selected'*/}
-                       {/*title='Starred'*/}
-                       {/*dangerouslySetInnerHTML={{__html: this.iconStarred}}*/}
-              {/*/>*/}
               <NavLink to={formatRoute(Routes.SETTINGS)}
                        activeClassName='selected'
                        title='Settings'

@@ -9,7 +9,7 @@ import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.ent
 interface Props {
   loading: boolean;
   handleStargazerClick: (login: string) => void;
-  emptyRepositoryList?: JSX.Element;
+  emptyRepositoryList?: JSX.Element|string;
   repositoryList: RepositoryEntity[];
   lastUpdatedAt?: Date|null;
 }
