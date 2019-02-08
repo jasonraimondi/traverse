@@ -88,12 +88,21 @@ class App extends React.Component<Props, State> {
   }
 
   handleRollDice() {
-    this.handleSetLanguage(this.randomLanguage);
+    this.props.FetchTrendingRepositoryListAction({
+      language: this.randomLanguage,
+      frequency: this.randomFrequency,
+    });
   }
 
   private get useAllLanguageList() {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
     return randomNumber === 1;
+  }
+
+  private get randomFrequency(): FrequencyType {
+    const list: FrequencyType[] = ['daily', 'weekly', 'monthly', 'yearly'];
+    const randomKey = Math.floor(Math.random() * list.length);
+    return list[randomKey];
   }
 
   private get randomLanguage(): ILanguage {
