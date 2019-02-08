@@ -1,3 +1,4 @@
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import { BrowserWindow, BrowserWindowConstructorOptions, dialog, screen } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import * as merge from 'lodash.merge';
@@ -15,7 +16,7 @@ export class WindowManager {
     frame: false,
     titleBarStyle: 'hidden',
     resizable: true,
-    backgroundColor: '#22292f',
+    backgroundColor: themeConfig.colors.white,
     minHeight: 400,
     minWidth: 500,
     webPreferences: {

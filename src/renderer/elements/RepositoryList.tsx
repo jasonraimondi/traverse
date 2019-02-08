@@ -2,7 +2,7 @@ import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UnstyledList } from '@/renderer/elements/Base';
+import { CenterContainer, UnstyledList } from '@/renderer/elements/Base';
 import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 
@@ -37,7 +37,9 @@ export class RepositoryList extends React.Component<Props> {
 
   render() {
     if (this.props.loading) {
-      return 'Loading Repositories';
+      return <CenterContainer style={{ height: '100%'}}>
+        <img src='../resources/traverse-spinner-cropped.gif' alt='traverse spinner logo' height='150px' />
+      </CenterContainer>;
     }
 
     return <List id='repository-list'>

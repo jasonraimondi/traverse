@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
-export const Title = styled.div`
-  width: 100%;
-  height: ${themeConfig.sizes.topbarHeight}px;
-  display: none;
+export const CenterContainer = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const Title = styled(CenterContainer)`
+  width: 100%;
+  height: ${themeConfig.sizes.topbarHeight}px;
+  display: none;
   color: ${themeConfig.colors.black};
 `;
 
