@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -52,6 +53,7 @@ class App extends React.Component<Props, State> {
     this.handleSetLanguageList = this.handleSetLanguageList.bind(this);
     this.handleRollDice = this.handleRollDice.bind(this);
     this.handleStargazerClick = this.handleStargazerClick.bind(this);
+    this.handleStarRepository = this.handleStarRepository.bind(this);
     this.state = {
       selectedLanguageListType: this.props.trending.options.list,
     };
@@ -83,6 +85,12 @@ class App extends React.Component<Props, State> {
   handleSetLanguageList(listType: ListType) {
     this.props.SetLanguageListTypeAction(listType);
     this.setState({selectedLanguageListType: listType});
+  }
+
+  async handleStarRepository(repository: RepositoryEntity) {
+    const foo = container.get<GithubService>(TYPES.GithubService);
+    foo.setAccessTokenFromStore();
+    await foo.user.starRepository(repository.attributes.owner.login, repository.attributes.name);
   }
 
   handleStargazerClick(login: string) {
@@ -171,6 +179,7 @@ class App extends React.Component<Props, State> {
             loading={this.props.trending.loading}
             lastUpdatedAt={this.selectedTrend ? new Date(this.selectedTrend.lastUpdated) : null}
             repositoryList={this.trendingRepositoryList}
+            handleStarRepository={this.handleStarRepository}
             handleStargazerClick={this.handleStargazerClick}
             emptyRepositoryList={
               <EmptyTrendingRepositoryList

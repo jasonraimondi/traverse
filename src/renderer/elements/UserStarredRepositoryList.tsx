@@ -48,6 +48,7 @@ export class UserStarredRepositoryList extends React.Component<Props> {
           loading={this.props.isLoading}
           repositoryList={this.repositoryList}
           handleStargazerClick={this.props.handleStargazerClick}
+          handleStarRepository={() => alert('@todo implement a602')}
           emptyRepositoryList={'EMPTY'}
         />
       </Container>

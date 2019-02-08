@@ -31,15 +31,15 @@ export class User {
     return false;
   }
 
-  // async starRepository(username: string, repository: string) {
-  //   const response = await this.restClient.put(`/user/starred/${username}/${repository}`);
-  //   return response.status === 204;
-  // }
-  //
-  // async unstarRepository(username: string, repository: string) {
-  //   const response = await this.restClient.delete(`/user/starred/${username}/${repository}`);
-  //   return response.status === 204;
-  // }
+  async starRepository(username: string, repository: string) {
+    const response = await this.restClient.put(`/user/starred/${username}/${repository}`);
+    return response.status === 204;
+  }
+
+  async unstarRepository(username: string, repository: string) {
+    const response = await this.restClient.delete(`/user/starred/${username}/${repository}`);
+    return response.status === 204;
+  }
 
   async getUserDetail(username: string): Promise<UserEntity> {
     const search = await this.restClient.get(`/users/${username}`, {});

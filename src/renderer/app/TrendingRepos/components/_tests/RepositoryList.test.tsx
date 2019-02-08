@@ -16,6 +16,7 @@ describe('<RepositoryList />', () => {
       <RepositoryList
         loading={false}
         handleStargazerClick={() => null}
+        handleStarRepository={() => null}
         repositoryList={list}
       />,
     );
@@ -28,6 +29,7 @@ describe('<RepositoryList />', () => {
       <RepositoryList
         loading={false}
         handleStargazerClick={() => null}
+        handleStarRepository={() => null}
         repositoryList={list}
         emptyRepositoryList={<p className='empty'>No Repos</p>}
       />,

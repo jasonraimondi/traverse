@@ -1,17 +1,18 @@
-import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
 import { CenterContainer, UnstyledList } from '@/renderer/elements/Base';
 import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
+import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {
   loading: boolean;
-  handleStargazerClick: (login: string) => void;
   emptyRepositoryList?: JSX.Element|string;
   repositoryList: RepositoryEntity[];
   lastUpdatedAt?: Date|null;
+  handleStarRepository(repository: RepositoryEntity): void;
+  handleStargazerClick(login: string): void;
 }
 
 export class RepositoryList extends React.Component<Props> {
@@ -25,11 +26,11 @@ export class RepositoryList extends React.Component<Props> {
     }
 
     return this.props.repositoryList.map((repository, idx) => {
-      const {owner} = repository.attributes;
-      const handleStargazerClick = () => this.props.handleStargazerClick(owner.login);
+      const login = repository.attributes.owner.login;
       return <RepositoryDetail
         key={idx}
-        handleStargazerClick={handleStargazerClick}
+        handleStarRepository={() => this.props.handleStarRepository(repository)}
+        handleStargazerClick={() => this.props.handleStargazerClick(login)}
         repository={repository}
       />;
     });

@@ -10,6 +10,7 @@ describe('<Repository />', () => {
     const repository = DummyRepositoryEntity();
     const component = shallow(
       <RepositoryDetail repository={repository}
+                        handleStarRepository={() => null}
                         handleStargazerClick={() => null}
     />);
     assert.isEmpty(component.find('.description'));

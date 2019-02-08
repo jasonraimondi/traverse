@@ -7,6 +7,7 @@ import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.ent
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {
+  handleStarRepository(repository: RepositoryEntity): void;
   handleStargazerClick(): void;
   repository: RepositoryEntity;
 }
@@ -94,6 +95,7 @@ export class RepositoryDetail extends React.Component<Props> {
             <NameLink href={this.htmlUrl} className='open-link-externally'>
               {this.name}
             </NameLink>
+            <span onClick={() => this.props.handleStarRepository(this.repository)}>STARME</span>
           </Links>
           {this.language}
         </ItemHeader>
