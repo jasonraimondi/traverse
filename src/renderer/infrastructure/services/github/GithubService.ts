@@ -14,7 +14,7 @@ export class GithubService {
 
   setAccessTokenFromStore() {
     const { github } = store.getState().settings;
-    if (github && github.accessToken && github.accessToken) {
+    if (github && github.accessToken) {
       this.accessToken = github.accessToken;
     }
   }
