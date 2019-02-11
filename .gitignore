@@ -1,3 +1,4 @@
+.env
 .env.sh
 dist/
 dist-build/
