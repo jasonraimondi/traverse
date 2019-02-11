@@ -1,5 +1,9 @@
+// tslint:disable-next-line:no-var-requires
+require('dotenv').config();
+
 import {resolve} from 'path';
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components';
+import * as webpack from 'webpack';
 import {Configuration} from 'webpack';
 
 export const devMode = process.env.NODE_ENV !== 'production';
@@ -53,4 +57,11 @@ export const baseConfig: Configuration = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      env: {
+        SEGMENT_KEY: JSON.stringify(process.env.SEGMENT_KEY),
+      },
+    }),
+  ],
 };

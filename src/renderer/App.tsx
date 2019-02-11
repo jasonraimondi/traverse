@@ -1,5 +1,3 @@
-import Settings from '@/renderer/app/Settings/Settings';
-import { ipcRenderer } from 'electron';
 import * as React from 'react';
 import { connect, Provider } from 'react-redux';
 import { HashRouter as Router, NavLink, Route, Switch, withRouter } from 'react-router-dom';
@@ -7,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { About } from '@/renderer/app/About/About';
+import Settings from '@/renderer/app/Settings/Settings';
 import TrendingRepos from '@/renderer/app/TrendingRepos/TrendingRepos';
 import { TitleStuff } from '@/renderer/elements/Title';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
@@ -28,7 +27,7 @@ class App extends React.Component<Props> {
       <style>{iconStyles}</style>
       <Router>
         <Main>
-          <TitleStuff />
+          <TitleStuff/>
           <RouterOutlet>
             <Switch>
               <Route path={Routes.TRENDING} exact component={TrendingRepos}/>

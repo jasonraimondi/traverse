@@ -1,4 +1,3 @@
-import { Main, MainContent, MainSideNav, MainTopbar } from '@/renderer/elements/Layout';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,10 +7,13 @@ import { EmptyTrendingRepositoryList } from '@/renderer/app/TrendingRepos/compon
 import { FrequencyPicker } from '@/renderer/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/renderer/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
-import { Title } from '@/renderer/elements/Base';
+import { Main, MainContent, MainSideNav, MainTopbar } from '@/renderer/elements/Layout';
 import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import container from '@/renderer/infrastructure/container/InversifyContainer';
+import TYPES from '@/renderer/infrastructure/container/Types';
 import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
+import { GithubService } from '@/renderer/infrastructure/services/github/GithubService';
 import { formatRoute, Routes } from '@/renderer/Routes';
 import { TrackUpdateSource } from '@/renderer/store/Interfaces';
 import {

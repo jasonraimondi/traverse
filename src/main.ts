@@ -1,14 +1,26 @@
-import { app, Menu } from 'electron';
+declare var env: {
+  SEGMENT_KEY: string,
+};
 
 import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
 import { fileMenuTemplate } from '@/main/MainMenu';
+import { ElectronSettingService } from '@/main/SettingsService';
 import { WindowManager } from '@/main/WindowManager';
+import { TRACK } from '@/renderer/infrastructure/analytics/AnalyticsTracking';
+import Analytics from 'analytics-node';
+import { app, ipcMain, Menu } from 'electron';
+import * as uuidv4 from 'uuid/v4';
 
-export const windowManager: WindowManager = new WindowManager();
+const windowManager: WindowManager = new WindowManager();
+
+const userId: string = getUserId();
+const analytics: Analytics = new Analytics(env.SEGMENT_KEY);
+analytics.identify({userId});
 
 export function openMainWindow() {
   windowManager.createMainWindow();
 }
+
 export function reloadAllWindows() {
   windowManager.reloadAll();
 }
@@ -16,6 +28,7 @@ export function reloadAllWindows() {
 app.on('ready', () => {
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   openMainWindow();
+  trackEvent(TRACK.BootApp);
   if (IS_DEV_ENV) {
     installExtensions();
   }
@@ -36,3 +49,29 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+ipcMain.on('track-event', (event, eventName: string, meta?: {}) => {
+  trackEvent(eventName, meta);
+});
+
+function getUserId(): string {
+  let newId;
+  if (ElectronSettingService.has('userId')) {
+    newId = ElectronSettingService.get('userId');
+  } else {
+    newId = uuidv4();
+    ElectronSettingService.set('userId', newId);
+  }
+  return IS_DEV_ENV ? 'dev' : newId;
+}
+
+function trackEvent(eventName: string, meta?: {}) {
+  if (IS_DEV_ENV) {
+    return;
+  }
+  analytics.track({
+    event: eventName,
+    userId: getUserId(),
+    ...(meta ? {properties: meta} : {}),
+  });
+}

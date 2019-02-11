@@ -1,3 +1,4 @@
+import { track } from '@/renderer/infrastructure/analytics/AnalyticsTracking';
 import * as dayjs from 'dayjs';
 import { Formik, FormikActions } from 'formik';
 import * as React from 'react';
@@ -39,6 +40,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
   handleSubmit(values: FormValues, {setSubmitting}: FormikActions<FormValues>) {
     const accessToken = values.accessToken.replace(this.findWhiteSpace, '');
     this.props.handleSubmit(accessToken);
+    track.addGithubToken();
     setTimeout(() => setSubmitting(false), 500);
   }
 
