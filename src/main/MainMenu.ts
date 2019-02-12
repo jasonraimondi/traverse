@@ -40,7 +40,11 @@ const helpMenu: MenuItemConstructorOptions = {
     {
       label: 'Reset Settings',
       click() {
+        const userId = ElectronSettingService.get('userId');
         ElectronSettingService.deleteAll();
+        if (userId) {
+          ElectronSettingService.set('userId', userId);
+        }
         reloadAllWindows();
       },
     },
