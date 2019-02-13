@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { RepositoryList } from '@/renderer/app/TrendingRepos/components/RepositoryList';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
 interface Props {
+  disableStarRepository: boolean;
   handleStarRepository(repository: RepositoryEntity): void;
   handleStargazerClick(): void;
   repository: RepositoryEntity;
@@ -82,20 +83,16 @@ export class RepositoryDetail extends React.Component<Props> {
       <Item className='repository-list-item'>
         <ItemHeader>
           <Links>
-            {false && this.repository.isUser ? (
-              <StargazerLink title={title} onClick={this.props.handleStargazerClick}>
-                {this.stargazerLink}
-              </StargazerLink>
-            ) : (
-              <DisabledStargazerLink title={title}>
-                {this.stargazerLink}
-              </DisabledStargazerLink>
-            )}
+            <DisabledStargazerLink title={title}>
+              {this.stargazerLink}
+            </DisabledStargazerLink>
             &nbsp;/&nbsp;
             <NameLink href={this.htmlUrl} className='open-link-externally'>
               {this.name}
             </NameLink>
-            <span onClick={() => this.props.handleStarRepository(this.repository)}>STARME</span>
+            {this.props.disableStarRepository ? null : (
+              <span onClick={() => this.props.handleStarRepository(this.repository)}>STAR</span>
+            )}
           </Links>
           {this.language}
         </ItemHeader>

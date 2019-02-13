@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,8 +7,8 @@ import { EmptyTrendingRepositoryList } from '@/renderer/app/TrendingRepos/compon
 import { FrequencyPicker } from '@/renderer/app/TrendingRepos/components/FrequencyPicker';
 import { ILanguage, LanguageList } from '@/renderer/app/TrendingRepos/components/LanguageList';
 import { LanguageListPicker, ListType } from '@/renderer/app/TrendingRepos/components/LanguageListPicker';
+import { RepositoryList } from '@/renderer/app/TrendingRepos/components/RepositoryList';
 import { Main, MainContent, MainSideNav, MainTopbar } from '@/renderer/elements/Layout';
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
 import container from '@/renderer/infrastructure/container/InversifyContainer';
 import TYPES from '@/renderer/infrastructure/container/Types';
 import { FrequencyType } from '@/renderer/infrastructure/model/Frequency.type';

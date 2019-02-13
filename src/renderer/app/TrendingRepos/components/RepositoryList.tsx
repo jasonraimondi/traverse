@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { RepositoryDetail } from '@/renderer/app/TrendingRepos/components/RepositoryDetail';
 import { CenterContainer, UnstyledList } from '@/renderer/elements/Base';
-import { RepositoryDetail } from '@/renderer/elements/RepositoryDetail';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 
@@ -29,6 +29,7 @@ export class RepositoryList extends React.Component<Props> {
       const login = repository.attributes.owner.login;
       return <RepositoryDetail
         key={idx}
+        disableStarRepository={true}
         handleStarRepository={() => this.props.handleStarRepository(repository)}
         handleStargazerClick={() => this.props.handleStargazerClick(login)}
         repository={repository}
