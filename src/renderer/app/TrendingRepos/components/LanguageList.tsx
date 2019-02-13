@@ -20,7 +20,7 @@ interface Props {
 }
 
 export class LanguageList extends React.Component<Props> {
-  get languageList() {
+  private get languageList() {
     let languageList = this.props.popularLanguageList;
 
     if (this.props.languageListType === 'all') {

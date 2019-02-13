@@ -20,11 +20,11 @@ interface Props {
 }
 
 export class UserStarredRepositoryList extends React.Component<Props> {
-  get user() {
+  private get user() {
     return this.props.user;
   }
 
-  get login() {
+  private get login() {
     return this.user && this.user.attributes.login ? this.user.attributes.login : false;
   }
 
@@ -34,7 +34,7 @@ export class UserStarredRepositoryList extends React.Component<Props> {
     }
   }
 
-  get repositoryList() {
+  private get repositoryList() {
     return this.props.repositoryList;
   }
 

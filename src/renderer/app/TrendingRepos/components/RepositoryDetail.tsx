@@ -12,31 +12,31 @@ interface Props {
 }
 
 export class RepositoryDetail extends React.Component<Props> {
-  get attributes() {
+  private get attributes() {
     return this.repository.attributes;
   }
 
-  get repository() {
+  private get repository() {
     return this.props.repository;
   }
 
-  get stargazerLink() {
+  private get stargazerLink() {
     const login = this.attributes && this.attributes.owner && this.attributes.owner.login
       ? this.attributes.owner.login : 'Unknown';
     return <Name className='stargazerLink'>{login.replace('/', ' / ')}</Name>;
   }
 
-  get name() {
+  private get name() {
     const name = this.attributes && this.attributes.name ? this.attributes.name : 'Unknown';
     return <Name className='name'>{name}</Name>;
   }
 
-  get language() {
+  private get language() {
     const language = this.attributes && this.attributes.language ? this.attributes.language : 'Unknown';
     return <Language className='language'>{language}</Language>;
   }
 
-  get description() {
+  private get description() {
     const description = this.attributes ? this.attributes.description : false;
     if (description) {
       return <Description className='description'>{description}</Description>;
@@ -44,7 +44,7 @@ export class RepositoryDetail extends React.Component<Props> {
     return null;
   }
 
-  get forksCount() {
+  private get forksCount() {
     const forksCount = this.attributes && this.attributes.forksCount ? this.attributes.forksCount : 0;
     const title = `${forksCount} Forks`;
     return <ForksCount title={title} className='forks-count'>
@@ -53,7 +53,7 @@ export class RepositoryDetail extends React.Component<Props> {
     </ForksCount>;
   }
 
-  get watchersCount() {
+  private get watchersCount() {
     const watchersCount = this.attributes && this.attributes.watchersCount ? this.attributes.watchersCount : 0;
     const title = `${watchersCount} Watchers`;
     return <WatchersCount title={title} className='watchers-count'>
@@ -62,7 +62,7 @@ export class RepositoryDetail extends React.Component<Props> {
     </WatchersCount>;
   }
 
-  get stargazersCount() {
+  private get stargazersCount() {
     const stargazersCount = this.attributes && this.attributes.stargazersCount ? this.attributes.stargazersCount : 0;
     const title = `${stargazersCount} Stargazers`;
     return <StargazersCount title={title} className='stargazers-count'>
@@ -71,7 +71,7 @@ export class RepositoryDetail extends React.Component<Props> {
     </StargazersCount>;
   }
 
-  get htmlUrl() {
+  private get htmlUrl() {
     return this.attributes && this.attributes.htmlUrl ? this.attributes.htmlUrl : null;
   }
 

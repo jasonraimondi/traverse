@@ -19,7 +19,7 @@ export class RepositoryList extends React.Component<Props> {
   static readonly STARGAZERS_ICON = require('@/assets/icons/icon-star.svg');
   static readonly WATCHERS_ICON = require('@/assets/icons/icon-user-circle.svg');
 
-  get listItems() {
+  private get listItems() {
     if (this.props.repositoryList.length === 0 && this.props.emptyRepositoryList) {
       return this.props.emptyRepositoryList;
     }

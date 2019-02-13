@@ -44,7 +44,7 @@ export class GithubAccessTokenForm extends React.Component<Props> {
     setTimeout(() => setSubmitting(false), 500);
   }
 
-  get githubLink() {
+  private get githubLink() {
     const dateString = dayjs().format('YYYY-MM-DD');
     const description = encodeURIComponent(`Traverse ${dateString}`);
     const scopes = [

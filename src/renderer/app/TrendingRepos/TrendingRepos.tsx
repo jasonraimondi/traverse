@@ -121,15 +121,15 @@ class App extends React.Component<Props, State> {
     return language;
   }
 
-  get frequency() {
+  private get frequency() {
     return this.props.trending.options.frequency;
   }
 
-  get language() {
+  private get language() {
     return this.props.trending.options.language;
   }
 
-  get selectedTrend(): TrackUpdateSource<RepositoryEntity[]> | false {
+  private get selectedTrend(): TrackUpdateSource<RepositoryEntity[]> | false {
     const {repositoryList} = this.props.trending;
     if (repositoryList
       && repositoryList[this.language.value]
@@ -140,7 +140,7 @@ class App extends React.Component<Props, State> {
     return false;
   }
 
-  get trendingRepositoryList(): RepositoryEntity[] {
+  private get trendingRepositoryList(): RepositoryEntity[] {
     return this.selectedTrend ? this.selectedTrend.data : [];
   }
 

@@ -43,7 +43,7 @@ export class FrequencyPicker extends React.Component<Props, State> {
     this.setState({ frequency }, () => this.props.handleSetFrequency(frequency));
   }
 
-  get list() {
+  private get list() {
     return ['daily', 'weekly', 'monthly', 'yearly'].map((frequency: FrequencyType) => {
       const frequencyTitleCase = frequency.replace(/^\w/, (c) => c.toUpperCase());
       const selectedClass = this.props.frequency === frequency ? 'selected' : null;

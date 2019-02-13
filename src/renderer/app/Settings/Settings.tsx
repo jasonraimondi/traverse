@@ -36,7 +36,7 @@ class Settings extends React.Component<Props, State> {
     };
   }
 
-  get accessToken() {
+  private get accessToken() {
     if (this.props.settings.github) {
       return this.props.settings.github.accessToken;
     }

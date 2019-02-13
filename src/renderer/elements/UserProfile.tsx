@@ -7,7 +7,7 @@ interface Props {
 }
 
 export class UserProfile extends React.Component<Props> {
-  get user() {
+  private get user() {
     return this.props.user;
   }
 
