@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { RepositoryList } from '@/renderer/app/TrendingRepos/components/RepositoryList';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { themeConfig } from '@/renderer/infrastructure/styles/Theme';
 

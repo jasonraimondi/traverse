@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Redirect, Route, Router, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { RepositoryList } from '@/renderer/app/TrendingRepos/components/RepositoryList';
 import { UserProfile } from '@/renderer/elements/UserProfile';
 import { RepositoryEntity } from '@/renderer/infrastructure/model/Repository.entity';
 import { UserEntity } from '@/renderer/infrastructure/model/User.entity';

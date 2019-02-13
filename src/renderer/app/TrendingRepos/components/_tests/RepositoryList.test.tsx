@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-import { RepositoryList } from '@/renderer/elements/RepositoryList';
+import { RepositoryList } from '@/renderer/app/TrendingRepos/components/RepositoryList';
 import { DummyRepositoryEntity } from '@/renderer/infrastructure/model/_tests/Dummy';
 
 describe('<RepositoryList />', () => {
