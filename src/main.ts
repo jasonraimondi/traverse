@@ -2,20 +2,20 @@ declare var env: {
   SEGMENT_KEY: string,
 };
 
+import Analytics from 'analytics-node';
+import { app, ipcMain, Menu } from 'electron';
+import * as uuidv4 from 'uuid/v4';
+
 import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
 import { fileMenuTemplate } from '@/main/MainMenu';
 import { ElectronSettingService } from '@/main/SettingsService';
 import { WindowManager } from '@/main/WindowManager';
 import { TRACK } from '@/renderer/infrastructure/analytics/AnalyticsTracking';
-import Analytics from 'analytics-node';
-import { app, ipcMain, Menu } from 'electron';
-import * as uuidv4 from 'uuid/v4';
 
 const windowManager: WindowManager = new WindowManager();
 
 const userId: string = getUserId();
-const analytics: Analytics = new Analytics(env.SEGMENT_KEY);
-analytics.identify({userId});
+let analytics: Analytics;
 
 export function openMainWindow() {
   windowManager.createMainWindow();
@@ -28,9 +28,12 @@ export function reloadAllWindows() {
 app.on('ready', () => {
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   openMainWindow();
-  trackEvent(TRACK.BootApp);
   if (IS_DEV_ENV) {
     installExtensions();
+  } else {
+    analytics = new Analytics(env.SEGMENT_KEY);
+    analytics.identify({userId});
+    trackEvent(TRACK.BootApp);
   }
 });
 
