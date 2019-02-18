@@ -7,14 +7,13 @@ import { app, ipcMain, Menu } from 'electron';
 import * as uuidv4 from 'uuid/v4';
 
 import { installExtensions, IS_DEV_ENV, IS_MAC_OS } from '@/environment';
-import { fileMenuTemplate } from '@/main/MainMenu';
 import { ElectronSettingService } from '@/main/SettingsService';
 import { WindowManager } from '@/main/WindowManager';
 import { TRACK } from '@/renderer/infrastructure/analytics/AnalyticsTracking';
 
 const windowManager: WindowManager = new WindowManager();
 
-const userId: string = getUserId();
+let userId: string;
 let analytics: Analytics;
 
 export function openMainWindow() {
@@ -25,7 +24,9 @@ export function reloadAllWindows() {
   windowManager.reloadAll();
 }
 
-app.on('ready', () => {
+app.on('ready', async () => {
+  userId = getUserId();
+  const { fileMenuTemplate } = await import('@/main/MainMenu');
   Menu.setApplicationMenu(Menu.buildFromTemplate(fileMenuTemplate));
   openMainWindow();
   if (IS_DEV_ENV) {
