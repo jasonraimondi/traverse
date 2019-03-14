@@ -25,7 +25,7 @@ Need to focus? Not a problem. Traverse is a dedicated application you can open a
 
 Traverse is available in Homebrew Cask. If you find Traverse interesting, please consider giving it a Star. I need a minimum of 50 stars to keep this project on Homebrew Cask.
 
-```
+```bash
 brew cask install traverse
 ```
 
@@ -66,14 +66,14 @@ If you are using an IntelliJ IDE, you should see an option for 'Unit Tests' in t
 
 First you need to create a personal access token with the "repo" scope selected. Copy this access token, we are going to need to add it as `GH_TOKEN` in our [.env.sh](.env.sample.sh).
 
-```
+```bash
 cp .env.sample.sh .env.sh
 vim .env.sh
 ```
 
 After you add your token, make sure the [package.json](./package.json) version is updated.
 
-```
+```bash
 ./publish.sh
 ```
 
