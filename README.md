@@ -33,7 +33,7 @@ Note: Homebrew Cask might not have the most up to date version of Traverse, don'
 
 ## Stack
 
-It is an Electron app built with React, in TypeScript. It uses Jest/Chai + Enzyme for the test framework. Webpack to bundle, Redux and Redux Saga for the store, and uses the GitHub REST API with the Axios rest client. 
+Traverse is an Electron app built with React, in TypeScript. It uses Jest/Chai + Enzyme for the test framework. Webpack to bundle, Redux and Redux Saga for the store, and uses the GitHub REST API with the Axios rest client. 
 
 ### Development
 
