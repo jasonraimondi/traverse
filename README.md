@@ -77,7 +77,39 @@ After you add your token, make sure the [package.json](./package.json) version i
 ./publish.sh
 ```
 
+### License
+
+Traverse is [MIT licensed](./LICENSE).
+
 ### Screen Shots
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.12-0.png"
+     width="500px"
+     alt="Version 0.10.2 Screenshot 1">
+
+### Archived Images
+
+##### 0.10.7
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.7-1.png"
+     width="500px"
+     alt="Version 0.10.7 Screenshot 1">
+
+##### 0.10.6
+
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.6-1.png"
+     width="500px"
+     alt="Version 0.10.6 Screenshot 1">
+     
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.6-2.png"
+     width="500px"
+     alt="Version 0.10.6 Screenshot 2">
+     
+<img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.6-3.png"
+     width="500px"
+     alt="Version 0.10.6 Screenshot 3">
+
+##### 0.10.2
 
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.2-1.png"
      width="500px"
@@ -90,12 +122,6 @@ After you add your token, make sure the [package.json](./package.json) version i
 <img src="https://raw.githubusercontent.com/jasonraimondi/traverse/master/screenshots/0.10.2-3.png"
      width="500px"
      alt="Version 0.10.2 Screenshot 3">
-
-### License
-
-Traverse is [MIT licensed](./LICENSE).
-
-### Archived Images
 
 ##### 0.10.1
 
