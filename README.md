@@ -23,13 +23,7 @@ Need to focus? Not a problem. Traverse is a dedicated application you can open a
 
 ## Installing
 
-Traverse is available in Homebrew Cask. If you find Traverse interesting, please consider giving it a Star. I need a minimum of 50 stars to keep this project on Homebrew Cask.
-
-```bash
-brew cask install traverse
-```
-
-Note: Homebrew Cask might not have the most up to date version of Traverse, don't worry, when you launch Traverse, it will download the newest version in the background. Quitting and reopening Traverse will open the updated version.
+Traverse is unfortunately no longer available in Homebrew Cask since we did not meet the minimum downloads. To install traverse, grab it from our [latest releases](https://github.com/jasonraimondi/traverse/releases/latest)
 
 ## Stack
 
