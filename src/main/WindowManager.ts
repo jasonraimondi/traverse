@@ -5,7 +5,7 @@ import * as merge from 'lodash.merge';
 import { join } from 'path';
 import { format } from 'url';
 
-import { IS_DEV_ENV } from '@/environment';
+import { IS_DEV_ENV, IS_MAC_OS } from '@/environment';
 import { ElectronSettingService } from '@/main/SettingsService';
 
 export class WindowManager {
@@ -14,7 +14,7 @@ export class WindowManager {
     width: 600,
     height: 900,
     frame: false,
-    titleBarStyle: 'hidden',
+    titleBarStyle: IS_MAC_OS ? 'hidden' : 'default',
     resizable: true,
     backgroundColor: themeConfig.colors.white,
     minHeight: 400,

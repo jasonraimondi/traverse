@@ -40,7 +40,7 @@ publish:
 asar: true
 
 
-#linux:
-#  target:
-#    - deb
-#    - AppImage
+linux:
+  target:
+    - deb
+    - AppImage
