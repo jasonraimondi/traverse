@@ -15,7 +15,7 @@ const editMenu: MenuItemConstructorOptions = {
     { role: 'copy' },
     { role: 'paste' },
     { role: 'delete' },
-    { role: 'selectall' },
+    // { role: 'selectall' },
   ],
 };
 
@@ -87,7 +87,7 @@ const macTraverseAppMenu: MenuItemConstructorOptions = {
     // { role: 'api', submenu: [] },
     { type: 'separator' },
     { role: 'hide' },
-    { role: 'hideothers' },
+    // { role: 'hideothers' },
     { role: 'unhide' },
     { type: 'separator' },
     { role: 'quit' },
@@ -107,7 +107,7 @@ const template: MenuItemConstructorOptions[] = [
   helpMenu,
 ];
 
-if (IS_MAC_OS) {
+if (true) {
   template.unshift(fileMenu);
   template.unshift(macTraverseAppMenu);
   const windowMenuKey = findKey(template, (menuItem: MenuItemConstructorOptions) => menuItem.role === 'window');
@@ -115,7 +115,7 @@ if (IS_MAC_OS) {
 }
 
 if (IS_DEV_ENV) {
-  template.push(developerMenu);
+  // template.push(developerMenu);
 }
 
 export const fileMenuTemplate = template;

@@ -9,6 +9,7 @@ export const CenterContainer = styled.div`
   align-items: center;
 `;
 
+// @ts-ignore
 export const Title = styled(CenterContainer)`
   width: 100%;
   height: ${themeConfig.sizes.topbarHeight}px;
