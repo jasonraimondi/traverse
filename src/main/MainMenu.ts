@@ -51,7 +51,7 @@ const helpMenu: MenuItemConstructorOptions = {
     {
       label: 'Traverse Website',
       click() {
-        shell.openExternal('https://traverse.site');
+        shell.openExternal('https://github.com/jasonraimondi/traverse');
       },
     },
   ],
