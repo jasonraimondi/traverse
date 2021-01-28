@@ -43,7 +43,7 @@
     "dayjs": "^1.8.29",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.8.0",
-    "electron": "^9.1.0",
+    "electron": "^9.4.0",
     "electron-builder": "^20.44.4",
     "electron-devtools-installer": "^2.2.4",
     "electron-updater": "^4.3.1",
